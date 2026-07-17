@@ -1,0 +1,882 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style data-omelette-print-defaults>
+@media print {
+  @page { margin: 0.5in; }
+  h1, h2, h3, h4, h5, h6 { break-after: avoid; }
+  figure, table, pre, blockquote, img, svg, tr, [class~="card" i] { break-inside: avoid; }
+  img, svg { max-width: 100%; }
+  p { orphans: 3; widows: 3; }
+}
+</style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Manrope:wght@300;400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; background: #150F0B; }
+  ::selection { background: #FF5E1A; color: #150F0B; }
+  a { color: #FF8A5B; text-decoration: none; }
+  a:hover { color: #FF5E1A; }
+  @keyframes rr-blob { 0%,100% { transform: translate(0,0) scale(1); } 50% { transform: translate(5%,-4%) scale(1.12); } }
+  @keyframes rr-draw { from { stroke-dashoffset: 260; } to { stroke-dashoffset: 0; } }
+</style>
+</helmet>
+
+<div style="--bg:#150F0B; --panel:#1E1712; --panel2:#28201A; --line:#3A2E24; --cream:#F7F1E8; --muted:#A79C90; --orange:#FF5E1A; --coral:#FF8A5B; --magenta:#F0247C; --amber:#FFB347; background:var(--bg); color:var(--cream); font-family:'Manrope',system-ui,sans-serif; -webkit-font-smoothing:antialiased; overflow-x:hidden; position:relative;">
+
+  <sc-if value="{{ grain }}" hint-placeholder-val="{{ true }}">
+    <div style="position:fixed; inset:0; pointer-events:none; z-index:9998; opacity:0.045; mix-blend-mode:overlay; background-image:url(&quot;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E&quot;);"></div>
+  </sc-if>
+
+  <!-- TOP BAR -->
+  <header style="max-width:1280px; margin:0 auto; padding:28px 24px; display:flex; justify-content:space-between; align-items:center; position:relative; z-index:5;">
+    <div style="font-family:'Archivo',sans-serif; font-weight:900; font-size:19px; letter-spacing:-0.01em; display:flex; align-items:center; gap:10px;">
+      <span style="width:11px; height:11px; border-radius:50%; background:linear-gradient(135deg,var(--orange),var(--magenta)); display:inline-block;"></span>
+      RIBEIRO RINALDI
+    </div>
+    <div style="font-family:'Space Mono',monospace; font-size:12px; letter-spacing:0.16em; color:var(--muted); text-transform:uppercase;">Fase 01 · Logotipo & Símbolo</div>
+  </header>
+
+  <!-- HERO / PRIMARY LOCKUP -->
+  <section style="position:relative; min-height:92vh; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center; max-width:1280px; margin:0 auto; padding:40px 24px 80px; z-index:2;">
+    <div style="position:absolute; top:2%; left:50%; transform:translateX(-50%); width:min(70vw,720px); height:min(70vw,720px); border-radius:50%; background:radial-gradient(circle, var(--orange), transparent 60%); filter:blur(50px); opacity:0.28; animation:rr-blob 18s ease-in-out infinite; animation-play-state:{{ playState }}; z-index:-1;"></div>
+
+    <div data-reveal style="opacity:0; transform:translateY(28px); transition:opacity 1s cubic-bezier(.16,1,.3,1), transform 1s cubic-bezier(.16,1,.3,1); display:flex; flex-direction:row; align-items:center; justify-content:center; gap:clamp(20px,3.5vw,52px); flex-wrap:wrap; text-align:left;">
+      <svg viewBox="0 0 120 120" width="clamp(92px,13vw,172px)" height="clamp(92px,13vw,172px)" style="display:block; overflow:visible; flex:none;">
+        <defs><linearGradient id="rrHeroGrad" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#FF5E1A"/><stop offset="1" stop-color="#F0247C"/></linearGradient></defs>
+        <polyline points="20,66 48,96 104,24" fill="none" stroke="url(#rrHeroGrad)" stroke-width="17" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <div>
+        <div style="font-family:'Archivo',sans-serif; font-weight:900; font-size:clamp(40px,7.6vw,112px); line-height:0.88; letter-spacing:-0.035em; text-transform:uppercase;">Ribeiro<br>Rinaldi</div>
+        <div style="font-family:'Space Mono',monospace; font-size:clamp(11px,1.4vw,17px); letter-spacing:0.42em; text-transform:uppercase; color:var(--orange); margin-top:clamp(12px,1.4vw,20px); padding-left:0.42em;">Advocacia</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- O SÍMBOLO -->
+  <section style="background:var(--panel); border-top:1px solid var(--line); border-bottom:1px solid var(--line);">
+    <div style="max-width:1280px; margin:0 auto; padding:clamp(80px,12vh,150px) 24px; display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:clamp(40px,6vw,80px); align-items:center;">
+      <div data-reveal style="opacity:0; transform:translateY(24px); transition:opacity .9s cubic-bezier(.16,1,.3,1), transform .9s cubic-bezier(.16,1,.3,1);">
+        <div style="display:flex; align-items:center; gap:12px; margin-bottom:26px;">
+          <span style="width:32px; height:1px; background:var(--orange);"></span>
+          <span style="font-family:'Space Mono',monospace; font-size:13px; letter-spacing:0.22em; text-transform:uppercase; color:var(--orange);">O Símbolo</span>
+        </div>
+        <h2 style="font-family:'Archivo',sans-serif; font-weight:900; font-size:clamp(34px,4.6vw,64px); line-height:1; letter-spacing:-0.03em; margin:0 0 22px; text-transform:uppercase;">O Selo da<br>Aprovação</h2>
+        <p style="margin:0 0 20px; font-size:17px; line-height:1.6; color:var(--muted);">Um <span style="color:var(--cream); font-weight:600;">check</span> — o gesto universal de "aprovado", o seu nome selecionado na lista. Mas a perna direita sobe longa e decidida: é a <span style="color:var(--cream); font-weight:600;">virada</span>, a ascensão para a nova vida.</p>
+        <p style="margin:0; font-size:17px; line-height:1.6; color:var(--muted);">Cantos arredondados para acessibilidade e proximidade. Zero clichê jurídico — nenhuma balança, nenhum martelo.</p>
+      </div>
+      <div data-reveal style="opacity:0; transform:translateY(24px); transition:opacity .9s cubic-bezier(.16,1,.3,1) .1s, transform .9s cubic-bezier(.16,1,.3,1) .1s; aspect-ratio:1/1; border-radius:28px; background:var(--bg); border:1px solid var(--line); display:flex; align-items:center; justify-content:center; background-image:radial-gradient(circle, rgba(255,255,255,0.05) 1px, transparent 1px); background-size:26px 26px;">
+        <svg viewBox="0 0 120 120" width="46%" height="46%" style="overflow:visible;">
+          <defs><linearGradient id="rrSymGrad" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#FF5E1A"/><stop offset="1" stop-color="#F0247C"/></linearGradient></defs>
+          <polyline points="20,66 48,96 104,24" fill="none" stroke="url(#rrSymGrad)" stroke-width="17" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- VERSÕES / LOCKUPS -->
+  <section style="max-width:1280px; margin:0 auto; padding:clamp(80px,12vh,150px) 24px;">
+    <div data-reveal style="opacity:0; transform:translateY(24px); transition:opacity .9s cubic-bezier(.16,1,.3,1), transform .9s cubic-bezier(.16,1,.3,1); display:flex; align-items:center; gap:12px; margin-bottom:44px;">
+      <span style="width:32px; height:1px; background:var(--orange);"></span>
+      <span style="font-family:'Space Mono',monospace; font-size:13px; letter-spacing:0.22em; text-transform:uppercase; color:var(--orange);">Versões</span>
+    </div>
+    <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:16px;">
+      <!-- Horizontal -->
+      <div data-reveal style="opacity:0; transform:translateY(24px); transition:opacity .9s cubic-bezier(.16,1,.3,1), transform .9s cubic-bezier(.16,1,.3,1); grid-column:1/-1; background:var(--panel); border:1px solid var(--line); border-radius:22px; padding:clamp(40px,6vw,72px); display:flex; align-items:center; justify-content:center; gap:clamp(20px,3vw,40px); flex-wrap:wrap;">
+        <svg viewBox="0 0 120 120" width="88" height="88" style="overflow:visible; flex:none;">
+          <defs><linearGradient id="rrH1" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#FF5E1A"/><stop offset="1" stop-color="#F0247C"/></linearGradient></defs>
+          <polyline points="20,66 48,96 104,24" fill="none" stroke="url(#rrH1)" stroke-width="17" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <div style="text-align:left;">
+          <div style="font-family:'Archivo',sans-serif; font-weight:900; font-size:clamp(28px,4vw,52px); line-height:0.92; letter-spacing:-0.03em; text-transform:uppercase;">Ribeiro Rinaldi</div>
+          <div style="font-family:'Space Mono',monospace; font-size:clamp(9px,1vw,13px); letter-spacing:0.34em; text-transform:uppercase; color:var(--orange); margin-top:8px;">Advocacia</div>
+        </div>
+        <div style="position:absolute;"></div>
+      </div>
+      <!-- Stacked -->
+      <div data-reveal style="opacity:0; transform:translateY(24px); transition:opacity .9s cubic-bezier(.16,1,.3,1) .06s, transform .9s cubic-bezier(.16,1,.3,1) .06s; background:var(--panel); border:1px solid var(--line); border-radius:22px; padding:48px 24px; display:flex; flex-direction:column; align-items:center; text-align:center; gap:20px;">
+        <svg viewBox="0 0 120 120" width="72" height="72" style="overflow:visible;">
+          <defs><linearGradient id="rrS1" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#FF5E1A"/><stop offset="1" stop-color="#F0247C"/></linearGradient></defs>
+          <polyline points="20,66 48,96 104,24" fill="none" stroke="url(#rrS1)" stroke-width="17" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <div>
+          <div style="font-family:'Archivo',sans-serif; font-weight:900; font-size:30px; line-height:0.9; letter-spacing:-0.03em; text-transform:uppercase;">Ribeiro<br>Rinaldi</div>
+          <div style="font-family:'Space Mono',monospace; font-size:10px; letter-spacing:0.3em; text-transform:uppercase; color:var(--orange); margin-top:10px;">Advocacia</div>
+        </div>
+        <div style="font-family:'Space Mono',monospace; font-size:11px; color:var(--muted); text-transform:uppercase; letter-spacing:0.1em; margin-top:4px;">Empilhado</div>
+      </div>
+      <!-- Symbol only -->
+      <div data-reveal style="opacity:0; transform:translateY(24px); transition:opacity .9s cubic-bezier(.16,1,.3,1) .12s, transform .9s cubic-bezier(.16,1,.3,1) .12s; background:var(--panel); border:1px solid var(--line); border-radius:22px; padding:48px 24px; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:24px;">
+        <svg viewBox="0 0 120 120" width="88" height="88" style="overflow:visible;">
+          <defs><linearGradient id="rrY1" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#FF5E1A"/><stop offset="1" stop-color="#F0247C"/></linearGradient></defs>
+          <polyline points="20,66 48,96 104,24" fill="none" stroke="url(#rrY1)" stroke-width="17" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <div style="font-family:'Space Mono',monospace; font-size:11px; color:var(--muted); text-transform:uppercase; letter-spacing:0.1em;">Símbolo</div>
+      </div>
+      <!-- Wordmark only -->
+      <div data-reveal style="opacity:0; transform:translateY(24px); transition:opacity .9s cubic-bezier(.16,1,.3,1) .18s, transform .9s cubic-bezier(.16,1,.3,1) .18s; background:var(--panel); border:1px solid var(--line); border-radius:22px; padding:48px 24px; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:24px; text-align:center;">
+        <div style="font-family:'Archivo',sans-serif; font-weight:900; font-size:30px; line-height:0.9; letter-spacing:-0.03em; text-transform:uppercase;">Ribeiro<br>Rinaldi</div>
+        <div style="font-family:'Space Mono',monospace; font-size:11px; color:var(--muted); text-transform:uppercase; letter-spacing:0.1em;">Logotipo</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPLORAÇÕES DE COMPOSIÇÃO -->
+  <section style="background:var(--panel); border-top:1px solid var(--line); border-bottom:1px solid var(--line);">
+    <div style="max-width:1280px; margin:0 auto; padding:clamp(80px,12vh,150px) 24px;">
+      <div data-reveal style="opacity:0; transform:translateY(24px); transition:opacity .9s cubic-bezier(.16,1,.3,1), transform .9s cubic-bezier(.16,1,.3,1); display:flex; align-items:center; gap:12px; margin-bottom:26px;">
+        <span style="width:32px; height:1px; background:var(--orange);"></span>
+        <span style="font-family:'Space Mono',monospace; font-size:13px; letter-spacing:0.22em; text-transform:uppercase; color:var(--orange);">Explorações de Composição</span>
+      </div>
+      <p data-reveal style="opacity:0; transform:translateY(24px); transition:opacity .9s cubic-bezier(.16,1,.3,1) .06s, transform .9s cubic-bezier(.16,1,.3,1) .06s; max-width:620px; margin:0 0 52px; font-size:17px; line-height:1.6; color:var(--muted);">Decisão fechada: a composição <span style="color:var(--cream); font-weight:600;">A é o logo oficial</span>. Mantivemos a <span style="color:var(--cream); font-weight:600;">C</span> no sistema — não como logo, mas como <span style="color:var(--cream); font-weight:600;">grafismo de marca</span> para aplicações expressivas (capas, stories, primeira dobra).</p>
+
+      <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:16px;">
+
+        <!-- A · Símbolo à esquerda -->
+        <div data-reveal style="opacity:0; transform:translateY(24px); transition:opacity .9s cubic-bezier(.16,1,.3,1), transform .9s cubic-bezier(.16,1,.3,1); background:var(--bg); border:1px solid var(--line); border-radius:22px; overflow:hidden; display:flex; flex-direction:column;">
+          <div style="flex:1; min-height:190px; display:flex; align-items:center; justify-content:center; gap:20px; padding:44px 28px;">
+            <svg viewBox="0 0 120 120" width="64" height="64" style="overflow:visible; flex:none;"><defs><linearGradient id="rrEa" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#FF5E1A"/><stop offset="1" stop-color="#F0247C"/></linearGradient></defs><polyline points="20,66 48,96 104,24" fill="none" stroke="url(#rrEa)" stroke-width="17" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <div style="text-align:left;"><div style="font-family:'Archivo',sans-serif; font-weight:900; font-size:28px; line-height:0.88; letter-spacing:-0.03em; text-transform:uppercase;">Ribeiro<br>Rinaldi</div></div>
+          </div>
+          <div style="padding:22px 26px; border-top:1px solid var(--line);">
+            <div style="display:flex; align-items:center; gap:10px; margin-bottom:12px;">
+              <span style="font-family:'Space Mono',monospace; font-size:11px; color:var(--muted); text-transform:uppercase; letter-spacing:0.1em;">A · Símbolo à esquerda</span>
+              <span style="font-family:'Space Mono',monospace; font-size:10px; letter-spacing:0.08em; text-transform:uppercase; background:var(--orange); color:#160d09; padding:4px 10px; border-radius:100px; font-weight:700;">✓ Logo oficial</span>
+            </div>
+            <p style="margin:0; font-size:14px; line-height:1.55; color:var(--muted);">A cavalo de batalha. Ancora o cabeçalho do site, e-mail e cartão. Leitura natural: "aprovado → o nome". É a assinatura horizontal oficial.</p>
+          </div>
+        </div>
+
+        <!-- C · Símbolo atrás -->
+        <div data-reveal style="opacity:0; transform:translateY(24px); transition:opacity .9s cubic-bezier(.16,1,.3,1) .12s, transform .9s cubic-bezier(.16,1,.3,1) .12s; background:var(--bg); border:1px solid var(--line); border-radius:22px; overflow:hidden; display:flex; flex-direction:column;">
+          <div style="flex:1; min-height:190px; position:relative; display:flex; align-items:center; justify-content:center; padding:44px 28px; overflow:hidden;">
+            <svg viewBox="0 0 120 120" width="200" height="200" style="overflow:visible; position:absolute; opacity:0.16;"><defs><linearGradient id="rrEc" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#FF5E1A"/><stop offset="1" stop-color="#F0247C"/></linearGradient></defs><polyline points="20,66 48,96 104,24" fill="none" stroke="url(#rrEc)" stroke-width="17" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <div style="position:relative; text-align:center;"><div style="font-family:'Archivo',sans-serif; font-weight:900; font-size:28px; line-height:0.88; letter-spacing:-0.03em; text-transform:uppercase;">Ribeiro<br>Rinaldi</div></div>
+          </div>
+          <div style="padding:22px 26px; border-top:1px solid var(--line);">
+            <div style="display:flex; align-items:center; gap:10px; margin-bottom:12px;">
+              <span style="font-family:'Space Mono',monospace; font-size:11px; color:var(--muted); text-transform:uppercase; letter-spacing:0.1em;">C · Símbolo atrás</span>
+              <span style="font-family:'Space Mono',monospace; font-size:10px; letter-spacing:0.08em; text-transform:uppercase; border:1px solid var(--orange); color:var(--orange); padding:3px 9px; border-radius:100px; font-weight:700;">Grafismo de marca</span>
+            </div>
+            <p style="margin:0; font-size:14px; line-height:1.55; color:var(--muted);">Lindo como grafismo expressivo em capas, stories e a primeira dobra — dá profundidade e "assina" o fundo. Mas como logo oficial fere legibilidade e não escala. Use como textura de marca, nunca como assinatura.</p>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- PARECER -->
+      <div data-reveal style="opacity:0; transform:translateY(24px); transition:opacity .9s cubic-bezier(.16,1,.3,1) .1s, transform .9s cubic-bezier(.16,1,.3,1) .1s; margin-top:24px; border-left:2px solid var(--orange); background:var(--bg); border-radius:0 18px 18px 0; padding:30px 34px;">
+        <div style="font-family:'Space Mono',monospace; font-size:12px; letter-spacing:0.18em; text-transform:uppercase; color:var(--orange); margin-bottom:16px;">Meu parecer</div>
+        <p style="margin:0 0 14px; font-size:16px; line-height:1.65; color:var(--cream);">Decisão certa. Um sistema de marca sério precisa de <span style="font-weight:700;">uma</span> assinatura oficial — e a A entrega isso: leitura clara, escala bem e ancora qualquer peça. É o rosto fixo da marca.</p>
+        <p style="margin:0; font-size:16px; line-height:1.65; color:var(--muted);">A <span style="color:var(--cream); font-weight:600;">C</span> segue no sistema com um papel diferente e complementar: <span style="color:var(--cream); font-weight:600;">grafismo de marca</span> — o símbolo ampliado como textura de fundo em capas, stories e a primeira dobra do site. Ele reforça a identidade sem competir com o logo. A regra de ouro: o logo oficial é sempre a A; a C nunca assina sozinha uma peça.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CORES -->
+  <section style="max-width:1280px; margin:0 auto; padding:0 24px clamp(80px,12vh,150px);">
+    <div data-reveal style="opacity:0; transform:translateY(24px); transition:opacity .9s cubic-bezier(.16,1,.3,1), transform .9s cubic-bezier(.16,1,.3,1); display:flex; align-items:center; gap:12px; margin-bottom:44px;">
+      <span style="width:32px; height:1px; background:var(--orange);"></span>
+      <span style="font-family:'Space Mono',monospace; font-size:13px; letter-spacing:0.22em; text-transform:uppercase; color:var(--orange);">Aplicação de Cor</span>
+    </div>
+    <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:16px;">
+      <!-- on dark -->
+      <div data-reveal style="opacity:0; transform:translateY(24px); transition:opacity .9s cubic-bezier(.16,1,.3,1), transform .9s cubic-bezier(.16,1,.3,1); background:#150F0B; border:1px solid var(--line); border-radius:20px; padding:56px 24px; display:flex; flex-direction:column; align-items:center; gap:30px;">
+        <svg viewBox="0 0 120 120" width="70" height="70" style="overflow:visible;"><defs><linearGradient id="rrC1" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#FF5E1A"/><stop offset="1" stop-color="#F0247C"/></linearGradient></defs><polyline points="20,66 48,96 104,24" fill="none" stroke="url(#rrC1)" stroke-width="17" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <div style="font-family:'Space Mono',monospace; font-size:11px; color:var(--muted); text-transform:uppercase; letter-spacing:0.1em;">Preto quente</div>
+      </div>
+      <!-- on cream -->
+      <div data-reveal style="opacity:0; transform:translateY(24px); transition:opacity .9s cubic-bezier(.16,1,.3,1) .06s, transform .9s cubic-bezier(.16,1,.3,1) .06s; background:#F7F1E8; border:1px solid var(--line); border-radius:20px; padding:56px 24px; display:flex; flex-direction:column; align-items:center; gap:30px;">
+        <svg viewBox="0 0 120 120" width="70" height="70" style="overflow:visible;"><polyline points="20,66 48,96 104,24" fill="none" stroke="#FF5E1A" stroke-width="17" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <div style="font-family:'Space Mono',monospace; font-size:11px; color:#8a7f72; text-transform:uppercase; letter-spacing:0.1em;">Creme</div>
+      </div>
+      <!-- on orange -->
+      <div data-reveal style="opacity:0; transform:translateY(24px); transition:opacity .9s cubic-bezier(.16,1,.3,1) .12s, transform .9s cubic-bezier(.16,1,.3,1) .12s; background:linear-gradient(150deg,#FF5E1A,#F0247C); border-radius:20px; padding:56px 24px; display:flex; flex-direction:column; align-items:center; gap:30px;">
+        <svg viewBox="0 0 120 120" width="70" height="70" style="overflow:visible;"><polyline points="20,66 48,96 104,24" fill="none" stroke="#150F0B" stroke-width="17" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <div style="font-family:'Space Mono',monospace; font-size:11px; color:#160d09; text-transform:uppercase; letter-spacing:0.1em;">Acento</div>
+      </div>
+      <!-- mono -->
+      <div data-reveal style="opacity:0; transform:translateY(24px); transition:opacity .9s cubic-bezier(.16,1,.3,1) .18s, transform .9s cubic-bezier(.16,1,.3,1) .18s; background:var(--panel); border:1px solid var(--line); border-radius:20px; padding:56px 24px; display:flex; flex-direction:column; align-items:center; gap:30px;">
+        <svg viewBox="0 0 120 120" width="70" height="70" style="overflow:visible;"><polyline points="20,66 48,96 104,24" fill="none" stroke="#F7F1E8" stroke-width="17" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <div style="font-family:'Space Mono',monospace; font-size:11px; color:var(--muted); text-transform:uppercase; letter-spacing:0.1em;">Monocromático</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROTEÇÃO + MÍNIMO + USOS INCORRETOS -->
+  <section style="background:var(--panel); border-top:1px solid var(--line); border-bottom:1px solid var(--line);">
+    <div style="max-width:1280px; margin:0 auto; padding:clamp(80px,12vh,150px) 24px;">
+      <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:48px; margin-bottom:72px;">
+        <div data-reveal style="opacity:0; transform:translateY(24px); transition:opacity .9s cubic-bezier(.16,1,.3,1), transform .9s cubic-bezier(.16,1,.3,1);">
+          <div style="display:flex; align-items:center; gap:12px; margin-bottom:26px;">
+            <span style="width:32px; height:1px; background:var(--orange);"></span>
+            <span style="font-family:'Space Mono',monospace; font-size:13px; letter-spacing:0.22em; text-transform:uppercase; color:var(--orange);">Área de Proteção</span>
+          </div>
+          <div style="background:var(--bg); border:1px solid var(--line); border-radius:20px; padding:44px; display:flex; align-items:center; justify-content:center;">
+            <div style="position:relative; padding:44px; border:1px dashed var(--line);">
+              <span style="position:absolute; top:14px; left:14px; font-family:'Space Mono',monospace; font-size:11px; color:var(--muted);">x</span>
+              <svg viewBox="0 0 120 120" width="80" height="80" style="overflow:visible;"><defs><linearGradient id="rrP1" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#FF5E1A"/><stop offset="1" stop-color="#F0247C"/></linearGradient></defs><polyline points="20,66 48,96 104,24" fill="none" stroke="url(#rrP1)" stroke-width="17" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+          </div>
+          <p style="margin:20px 0 0; font-size:15px; line-height:1.55; color:var(--muted);">Respeite uma margem mínima igual à altura "x" do símbolo em todos os lados.</p>
+        </div>
+        <div data-reveal style="opacity:0; transform:translateY(24px); transition:opacity .9s cubic-bezier(.16,1,.3,1) .1s, transform .9s cubic-bezier(.16,1,.3,1) .1s;">
+          <div style="display:flex; align-items:center; gap:12px; margin-bottom:26px;">
+            <span style="width:32px; height:1px; background:var(--orange);"></span>
+            <span style="font-family:'Space Mono',monospace; font-size:13px; letter-spacing:0.22em; text-transform:uppercase; color:var(--orange);">Tamanho Mínimo</span>
+          </div>
+          <div style="background:var(--bg); border:1px solid var(--line); border-radius:20px; padding:44px; display:flex; align-items:flex-end; justify-content:center; gap:40px; min-height:180px;">
+            <div style="display:flex; flex-direction:column; align-items:center; gap:14px;">
+              <svg viewBox="0 0 120 120" width="56" height="56" style="overflow:visible;"><defs><linearGradient id="rrM1" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#FF5E1A"/><stop offset="1" stop-color="#F0247C"/></linearGradient></defs><polyline points="20,66 48,96 104,24" fill="none" stroke="url(#rrM1)" stroke-width="17" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <span style="font-family:'Space Mono',monospace; font-size:11px; color:var(--muted);">40px · digital</span>
+            </div>
+            <div style="display:flex; flex-direction:column; align-items:center; gap:14px;">
+              <svg viewBox="0 0 120 120" width="28" height="28" style="overflow:visible;"><defs><linearGradient id="rrM2" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#FF5E1A"/><stop offset="1" stop-color="#F0247C"/></linearGradient></defs><polyline points="20,66 48,96 104,24" fill="none" stroke="url(#rrM2)" stroke-width="17" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <span style="font-family:'Space Mono',monospace; font-size:11px; color:var(--muted);">10mm · impresso</span>
+            </div>
+          </div>
+          <p style="margin:20px 0 0; font-size:15px; line-height:1.55; color:var(--muted);">Abaixo desses limites, use só o símbolo — nunca o logotipo completo ilegível.</p>
+        </div>
+      </div>
+
+      <div data-reveal style="opacity:0; transform:translateY(24px); transition:opacity .9s cubic-bezier(.16,1,.3,1), transform .9s cubic-bezier(.16,1,.3,1); display:flex; align-items:center; gap:12px; margin-bottom:30px;">
+        <span style="width:32px; height:1px; background:var(--magenta);"></span>
+        <span style="font-family:'Space Mono',monospace; font-size:13px; letter-spacing:0.22em; text-transform:uppercase; color:var(--magenta);">Usos Incorretos</span>
+      </div>
+      <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:16px;">
+        <div data-reveal style="opacity:0; transform:translateY(24px); transition:opacity .9s cubic-bezier(.16,1,.3,1), transform .9s cubic-bezier(.16,1,.3,1); background:var(--bg); border:1px solid var(--line); border-radius:18px; padding:34px 20px; text-align:center;">
+          <div style="height:70px; display:flex; align-items:center; justify-content:center;"><svg viewBox="0 0 120 120" width="90" height="52" preserveAspectRatio="none" style="overflow:visible;"><defs><linearGradient id="rrX1" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#FF5E1A"/><stop offset="1" stop-color="#F0247C"/></linearGradient></defs><polyline points="20,66 48,96 104,24" fill="none" stroke="url(#rrX1)" stroke-width="17" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <div style="font-family:'Space Mono',monospace; font-size:12px; color:var(--magenta); margin-top:20px;">✕ Não distorcer</div>
+        </div>
+        <div data-reveal style="opacity:0; transform:translateY(24px); transition:opacity .9s cubic-bezier(.16,1,.3,1) .06s, transform .9s cubic-bezier(.16,1,.3,1) .06s; background:var(--bg); border:1px solid var(--line); border-radius:18px; padding:34px 20px; text-align:center;">
+          <div style="height:70px; display:flex; align-items:center; justify-content:center;"><svg viewBox="0 0 120 120" width="66" height="66" style="overflow:visible;"><polyline points="20,66 48,96 104,24" fill="none" stroke="#2E6BE0" stroke-width="17" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <div style="font-family:'Space Mono',monospace; font-size:12px; color:var(--magenta); margin-top:20px;">✕ Não recolorir</div>
+        </div>
+        <div data-reveal style="opacity:0; transform:translateY(24px); transition:opacity .9s cubic-bezier(.16,1,.3,1) .12s, transform .9s cubic-bezier(.16,1,.3,1) .12s; background:var(--bg); border:1px solid var(--line); border-radius:18px; padding:34px 20px; text-align:center;">
+          <div style="height:70px; display:flex; align-items:center; justify-content:center;"><svg viewBox="0 0 120 120" width="66" height="66" style="overflow:visible; transform:rotate(28deg);"><defs><linearGradient id="rrX3" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#FF5E1A"/><stop offset="1" stop-color="#F0247C"/></linearGradient></defs><polyline points="20,66 48,96 104,24" fill="none" stroke="url(#rrX3)" stroke-width="17" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <div style="font-family:'Space Mono',monospace; font-size:12px; color:var(--magenta); margin-top:20px;">✕ Não rotacionar</div>
+        </div>
+        <div data-reveal style="opacity:0; transform:translateY(24px); transition:opacity .9s cubic-bezier(.16,1,.3,1) .18s, transform .9s cubic-bezier(.16,1,.3,1) .18s; background:#F7F1E8; border:1px solid var(--line); border-radius:18px; padding:34px 20px; text-align:center;">
+          <div style="height:70px; display:flex; align-items:center; justify-content:center;"><svg viewBox="0 0 120 120" width="66" height="66" style="overflow:visible;"><defs><linearGradient id="rrX4" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#FF5E1A"/><stop offset="1" stop-color="#F0247C"/></linearGradient></defs><polyline points="20,66 48,96 104,24" fill="none" stroke="url(#rrX4)" stroke-width="17" stroke-linecap="round" stroke-linejoin="round" style="filter:drop-shadow(3px 4px 3px rgba(0,0,0,0.5));"/></svg></div>
+          <div style="font-family:'Space Mono',monospace; font-size:12px; color:var(--magenta); margin-top:20px;">✕ Sem sombra</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- APLICAÇÕES -->
+  <section style="max-width:1280px; margin:0 auto; padding:clamp(80px,12vh,150px) 24px;">
+    <div data-reveal style="opacity:0; transform:translateY(24px); transition:opacity .9s cubic-bezier(.16,1,.3,1), transform .9s cubic-bezier(.16,1,.3,1); display:flex; align-items:center; gap:12px; margin-bottom:44px;">
+      <span style="width:32px; height:1px; background:var(--orange);"></span>
+      <span style="font-family:'Space Mono',monospace; font-size:13px; letter-spacing:0.22em; text-transform:uppercase; color:var(--orange);">Aplicações</span>
+    </div>
+    <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:16px; align-items:start;">
+      <!-- app icon -->
+      <div data-reveal style="opacity:0; transform:translateY(24px); transition:opacity .9s cubic-bezier(.16,1,.3,1), transform .9s cubic-bezier(.16,1,.3,1); display:flex; flex-direction:column; align-items:center; gap:18px;">
+        <div style="width:130px; height:130px; border-radius:30px; background:linear-gradient(150deg,#FF5E1A,#F0247C); display:flex; align-items:center; justify-content:center; box-shadow:0 20px 50px rgba(240,36,124,0.25);">
+          <svg viewBox="0 0 120 120" width="62" height="62" style="overflow:visible;"><polyline points="20,66 48,96 104,24" fill="none" stroke="#150F0B" stroke-width="18" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <span style="font-family:'Space Mono',monospace; font-size:11px; color:var(--muted); text-transform:uppercase; letter-spacing:0.1em;">Ícone do app</span>
+      </div>
+      <!-- avatar -->
+      <div data-reveal style="opacity:0; transform:translateY(24px); transition:opacity .9s cubic-bezier(.16,1,.3,1) .06s, transform .9s cubic-bezier(.16,1,.3,1) .06s; display:flex; flex-direction:column; align-items:center; gap:18px;">
+        <div style="width:130px; height:130px; border-radius:50%; background:#150F0B; border:1px solid var(--line); display:flex; align-items:center; justify-content:center;">
+          <svg viewBox="0 0 120 120" width="60" height="60" style="overflow:visible;"><defs><linearGradient id="rrAv" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#FF5E1A"/><stop offset="1" stop-color="#F0247C"/></linearGradient></defs><polyline points="20,66 48,96 104,24" fill="none" stroke="url(#rrAv)" stroke-width="17" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <span style="font-family:'Space Mono',monospace; font-size:11px; color:var(--muted); text-transform:uppercase; letter-spacing:0.1em;">Avatar social</span>
+      </div>
+      <!-- business card -->
+      <div data-reveal style="opacity:0; transform:translateY(24px); transition:opacity .9s cubic-bezier(.16,1,.3,1) .12s, transform .9s cubic-bezier(.16,1,.3,1) .12s; grid-column:span 2; min-width:0;">
+        <div style="aspect-ratio:1.75/1; border-radius:18px; background:#150F0B; border:1px solid var(--line); padding:30px; display:flex; flex-direction:column; justify-content:space-between; overflow:hidden; position:relative;">
+          <div style="position:absolute; top:-40%; right:-15%; width:60%; height:120%; border-radius:50%; background:radial-gradient(circle, var(--orange), transparent 62%); filter:blur(30px); opacity:0.35;"></div>
+          <div style="display:flex; align-items:center; gap:14px; position:relative;">
+            <svg viewBox="0 0 120 120" width="40" height="40" style="overflow:visible;"><defs><linearGradient id="rrBc" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#FF5E1A"/><stop offset="1" stop-color="#F0247C"/></linearGradient></defs><polyline points="20,66 48,96 104,24" fill="none" stroke="url(#rrBc)" stroke-width="17" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <div style="font-family:'Archivo',sans-serif; font-weight:900; font-size:20px; line-height:0.9; letter-spacing:-0.02em; text-transform:uppercase;">Ribeiro<br>Rinaldi</div>
+          </div>
+          <div style="position:relative;">
+            <div style="font-family:'Manrope',sans-serif; font-weight:700; font-size:15px;">[ Nome do Fundador ]</div>
+            <div style="font-family:'Space Mono',monospace; font-size:11px; color:var(--muted); text-transform:uppercase; letter-spacing:0.1em; margin-top:4px;">Advogado · Auditor do Estado</div>
+          </div>
+        </div>
+        <div style="font-family:'Space Mono',monospace; font-size:11px; color:var(--muted); text-transform:uppercase; letter-spacing:0.1em; text-align:center; margin-top:16px;">Cartão de visita</div>
+      </div>
+      <!-- capa social · grafismo de marca (C) -->
+      <div data-reveal style="opacity:0; transform:translateY(24px); transition:opacity .9s cubic-bezier(.16,1,.3,1) .18s, transform .9s cubic-bezier(.16,1,.3,1) .18s; grid-column:1/-1; min-width:0;">
+        <div style="aspect-ratio:16/7; border-radius:18px; background:#150F0B; border:1px solid var(--line); overflow:hidden; position:relative; display:flex; align-items:center; padding:clamp(28px,5vw,60px);">
+          <svg viewBox="0 0 120 120" width="70%" height="150%" preserveAspectRatio="xMidYMid meet" style="overflow:visible; position:absolute; right:-6%; bottom:-30%; opacity:0.14;"><defs><linearGradient id="rrCapa" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#FF5E1A"/><stop offset="1" stop-color="#F0247C"/></linearGradient></defs><polyline points="20,66 48,96 104,24" fill="none" stroke="url(#rrCapa)" stroke-width="17" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <div style="position:relative; max-width:60%;">
+            <div style="display:flex; align-items:center; gap:12px; margin-bottom:22px;">
+              <svg viewBox="0 0 120 120" width="30" height="30" style="overflow:visible;"><defs><linearGradient id="rrCapaL" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#FF5E1A"/><stop offset="1" stop-color="#F0247C"/></linearGradient></defs><polyline points="20,66 48,96 104,24" fill="none" stroke="url(#rrCapaL)" stroke-width="17" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <span style="font-family:'Archivo',sans-serif; font-weight:900; font-size:15px; letter-spacing:-0.01em; text-transform:uppercase;">Ribeiro Rinaldi</span>
+            </div>
+            <div style="font-family:'Archivo',sans-serif; font-weight:900; font-size:clamp(24px,3.4vw,44px); line-height:0.98; letter-spacing:-0.03em; text-transform:uppercase;">Sua nomeação<br>começa aqui.</div>
+          </div>
+        </div>
+        <div style="font-family:'Space Mono',monospace; font-size:11px; color:var(--muted); text-transform:uppercase; letter-spacing:0.1em; text-align:center; margin-top:16px;">Capa social · grafismo de marca (C)</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- APLICAÇÃO NA PRÁTICA -->
+  <section style="background:var(--panel); border-top:1px solid var(--line); border-bottom:1px solid var(--line);">
+    <div style="max-width:1280px; margin:0 auto; padding:clamp(80px,12vh,150px) 24px;">
+      <div data-reveal style="opacity:0; transform:translateY(24px); transition:opacity .9s cubic-bezier(.16,1,.3,1), transform .9s cubic-bezier(.16,1,.3,1); display:flex; align-items:center; gap:12px; margin-bottom:26px;">
+        <span style="width:32px; height:1px; background:var(--orange);"></span>
+        <span style="font-family:'Space Mono',monospace; font-size:13px; letter-spacing:0.22em; text-transform:uppercase; color:var(--orange);">Aplicação na Prática</span>
+      </div>
+      <p data-reveal style="opacity:0; transform:translateY(24px); transition:opacity .9s cubic-bezier(.16,1,.3,1) .06s, transform .9s cubic-bezier(.16,1,.3,1) .06s; max-width:620px; margin:0 0 56px; font-size:17px; line-height:1.6; color:var(--muted);">As duas versões trabalhando juntas em peças reais: a <span style="color:var(--cream); font-weight:600;">logo A</span> assinando o cabeçalho e o <span style="color:var(--cream); font-weight:600;">grafismo C</span> como marca d'água discreta ao fundo.</p>
+
+      <!-- PETIÇÃO -->
+      <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:clamp(32px,5vw,64px); align-items:center; margin-bottom:80px;">
+        <div data-reveal style="opacity:0; transform:translateY(24px); transition:opacity .9s cubic-bezier(.16,1,.3,1), transform .9s cubic-bezier(.16,1,.3,1); display:flex; justify-content:center;">
+          <div style="width:100%; max-width:440px; aspect-ratio:1/1.414; background:#ffffff; color:#17110D; border-radius:8px; box-shadow:0 30px 70px rgba(0,0,0,0.45); position:relative; overflow:hidden; padding:clamp(24px,4vw,40px); display:flex; flex-direction:column;">
+            <!-- marca d'água (C) -->
+            <svg viewBox="0 0 120 120" width="66%" style="overflow:visible; position:absolute; top:50%; left:50%; transform:translate(-50%,-46%); opacity:0.06;"><defs><linearGradient id="rrPet" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#FF5E1A"/><stop offset="1" stop-color="#F0247C"/></linearGradient></defs><polyline points="20,66 48,96 104,24" fill="none" stroke="url(#rrPet)" stroke-width="17" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <!-- cabeçalho: logo A -->
+            <div style="position:relative; display:flex; align-items:center; justify-content:space-between; padding-bottom:14px; border-bottom:1.5px solid #17110D;">
+              <div style="display:flex; align-items:center; gap:9px;">
+                <svg viewBox="0 0 120 120" width="26" height="26" style="overflow:visible;"><defs><linearGradient id="rrPetL" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#FF5E1A"/><stop offset="1" stop-color="#F0247C"/></linearGradient></defs><polyline points="20,66 48,96 104,24" fill="none" stroke="url(#rrPetL)" stroke-width="17" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <div><div style="font-family:'Archivo',sans-serif; font-weight:900; font-size:13px; line-height:0.86; letter-spacing:-0.01em; text-transform:uppercase; color:#17110D;">Ribeiro<br>Rinaldi</div></div>
+              </div>
+              <div style="font-family:'Space Mono',monospace; font-size:7px; letter-spacing:0.14em; text-transform:uppercase; color:#8a7f72; text-align:right; line-height:1.5;">Advocacia<br>OAB/__ 000.000</div>
+            </div>
+            <!-- corpo -->
+            <div style="position:relative; margin-top:22px; flex:1;">
+              <div style="font-family:'Archivo',sans-serif; font-weight:800; font-size:9px; letter-spacing:0.02em; text-transform:uppercase; margin-bottom:16px; line-height:1.5;">Excelentíssimo(a) Senhor(a) Doutor(a) Juiz(a) de Direito</div>
+              <div style="font-family:'Manrope',sans-serif; font-size:7.5px; line-height:1.85; text-align:justify; color:#2a241f;">
+                <p style="margin:0 0 10px;">FULANO DE TAL, já devidamente qualificado nos autos do processo em epígrafe, vem, respeitosamente, à presença de Vossa Excelência, por intermédio de seu advogado que esta subscreve, expor e requerer o que segue.</p>
+                <p style="margin:0 0 14px;">Trata-se de demanda que visa assegurar o direito do requerente à sua legítima nomeação e posse, diante de flagrante preterição ocorrida no âmbito do certame público em referência.</p>
+                <div style="font-family:'Archivo',sans-serif; font-weight:800; font-size:8px; letter-spacing:0.04em; text-transform:uppercase; margin:0 0 8px;">I — Dos Fatos</div>
+                <p style="margin:0 0 10px;">Aprovado dentro do número de vagas previsto no edital, o requerente aguardava a convocação quando tomou ciência da nomeação de candidatos posicionados em classificação inferior à sua.</p>
+                <p style="margin:0 0 14px;">Configura-se, portanto, o direito líquido e certo à nomeação, nos termos da jurisprudência consolidada dos Tribunais Superiores.</p>
+                <div style="font-family:'Archivo',sans-serif; font-weight:800; font-size:8px; letter-spacing:0.04em; text-transform:uppercase; margin:0 0 8px;">II — Do Direito</div>
+                <p style="margin:0 0 10px;">O ordenamento jurídico assegura ao candidato aprovado dentro das vagas o direito subjetivo à nomeação, não se tratando de mera expectativa de direito.</p>
+              </div>
+            </div>
+            <!-- rodapé -->
+            <div style="position:relative; padding-top:12px; border-top:1px solid #e2dcd1; font-family:'Space Mono',monospace; font-size:6.5px; letter-spacing:0.08em; text-transform:uppercase; color:#8a7f72; text-align:center;">Rua Exemplo, 000 · Cidade/UF · contato@ribeirorinaldi.adv.br · (00) 0000-0000</div>
+          </div>
+        </div>
+        <div data-reveal style="opacity:0; transform:translateY(24px); transition:opacity .9s cubic-bezier(.16,1,.3,1) .1s, transform .9s cubic-bezier(.16,1,.3,1) .1s;">
+          <h3 style="font-family:'Archivo',sans-serif; font-weight:900; font-size:clamp(26px,3.4vw,42px); line-height:1; letter-spacing:-0.02em; margin:0 0 20px; text-transform:uppercase;">Papel timbrado<br>& petição</h3>
+          <p style="margin:0 0 16px; font-size:16px; line-height:1.6; color:var(--muted);">No documento sério, a marca se comporta com discrição. A <span style="color:var(--cream); font-weight:600;">logo A</span> assina o cabeçalho em tamanho contido; o <span style="color:var(--cream); font-weight:600;">grafismo C</span> vira marca d'água central a 6% de opacidade — presente, mas sem disputar com o texto.</p>
+          <div style="display:flex; flex-direction:column; gap:12px; margin-top:24px;">
+            <div style="display:flex; gap:12px; align-items:baseline;"><span style="font-family:'Space Mono',monospace; font-size:12px; color:var(--orange);">→</span><span style="font-size:15px; color:var(--muted);">Cabeçalho: símbolo + logotipo em preto sobre branco.</span></div>
+            <div style="display:flex; gap:12px; align-items:baseline;"><span style="font-family:'Space Mono',monospace; font-size:12px; color:var(--orange);">→</span><span style="font-size:15px; color:var(--muted);">Marca d'água: grafismo C, 5–8% de opacidade, centralizado.</span></div>
+            <div style="display:flex; gap:12px; align-items:baseline;"><span style="font-family:'Space Mono',monospace; font-size:12px; color:var(--orange);">→</span><span style="font-size:15px; color:var(--muted);">Corpo em preto quente (#17110D) para leitura confortável.</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- CARROSSEL -->
+      <div data-reveal style="opacity:0; transform:translateY(24px); transition:opacity .9s cubic-bezier(.16,1,.3,1), transform .9s cubic-bezier(.16,1,.3,1); display:flex; align-items:center; gap:12px; margin-bottom:30px;">
+        <span style="width:32px; height:1px; background:var(--orange);"></span>
+        <span style="font-family:'Space Mono',monospace; font-size:13px; letter-spacing:0.22em; text-transform:uppercase; color:var(--orange);">Card de Carrossel · Instagram</span>
+      </div>
+      <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(230px,1fr)); gap:16px;">
+        <!-- card capa -->
+        <div data-reveal style="opacity:0; transform:translateY(24px); transition:opacity .9s cubic-bezier(.16,1,.3,1), transform .9s cubic-bezier(.16,1,.3,1);">
+          <div style="aspect-ratio:4/5; border-radius:18px; overflow:hidden; position:relative; background:#150F0B; border:1px solid var(--line); padding:clamp(22px,2.4vw,30px); display:flex; flex-direction:column; justify-content:space-between;">
+            <svg viewBox="0 0 120 120" width="88%" style="overflow:visible; position:absolute; right:-14%; bottom:-16%; opacity:0.13;"><defs><linearGradient id="rrCar1" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#FF5E1A"/><stop offset="1" stop-color="#F0247C"/></linearGradient></defs><polyline points="20,66 48,96 104,24" fill="none" stroke="url(#rrCar1)" stroke-width="17" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <div style="position:relative; display:flex; align-items:center; gap:9px;">
+              <svg viewBox="0 0 120 120" width="24" height="24" style="overflow:visible;"><defs><linearGradient id="rrCar1L" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#FF5E1A"/><stop offset="1" stop-color="#F0247C"/></linearGradient></defs><polyline points="20,66 48,96 104,24" fill="none" stroke="url(#rrCar1L)" stroke-width="17" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <span style="font-family:'Archivo',sans-serif; font-weight:900; font-size:12px; letter-spacing:-0.01em; text-transform:uppercase; line-height:0.85;">Ribeiro Rinaldi</span>
+            </div>
+            <div style="position:relative;">
+              <div style="font-family:'Space Mono',monospace; font-size:10px; letter-spacing:0.16em; text-transform:uppercase; color:var(--orange); margin-bottom:14px;">Passou e não foi chamado?</div>
+              <div style="font-family:'Archivo',sans-serif; font-weight:900; font-size:clamp(22px,2.6vw,32px); line-height:0.98; letter-spacing:-0.03em; text-transform:uppercase;">A vaga é sua. E a gente vai atrás dela.</div>
+            </div>
+            <div style="position:relative; display:flex; align-items:center; justify-content:space-between;">
+              <div style="display:flex; gap:5px;"><span style="width:16px; height:3px; border-radius:2px; background:var(--orange);"></span><span style="width:6px; height:3px; border-radius:2px; background:var(--line);"></span><span style="width:6px; height:3px; border-radius:2px; background:var(--line);"></span><span style="width:6px; height:3px; border-radius:2px; background:var(--line);"></span></div>
+              <span style="font-family:'Space Mono',monospace; font-size:11px; color:var(--cream);">arraste →</span>
+            </div>
+          </div>
+          <div style="font-family:'Space Mono',monospace; font-size:11px; color:var(--muted); text-transform:uppercase; letter-spacing:0.1em; text-align:center; margin-top:14px;">Card 01 · Capa</div>
+        </div>
+        <!-- card conteúdo -->
+        <div data-reveal style="opacity:0; transform:translateY(24px); transition:opacity .9s cubic-bezier(.16,1,.3,1) .08s, transform .9s cubic-bezier(.16,1,.3,1) .08s;">
+          <div style="aspect-ratio:4/5; border-radius:18px; overflow:hidden; position:relative; background:#150F0B; border:1px solid var(--line); padding:clamp(22px,2.4vw,30px); display:flex; flex-direction:column; justify-content:space-between;">
+            <div style="position:relative; display:flex; align-items:center; justify-content:space-between;">
+              <span style="font-family:'Archivo',sans-serif; font-weight:900; font-size:clamp(40px,5vw,60px); line-height:0.8; letter-spacing:-0.04em; color:var(--orange);">01</span>
+              <svg viewBox="0 0 120 120" width="22" height="22" style="overflow:visible;"><defs><linearGradient id="rrCar2L" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#FF5E1A"/><stop offset="1" stop-color="#F0247C"/></linearGradient></defs><polyline points="20,66 48,96 104,24" fill="none" stroke="url(#rrCar2L)" stroke-width="17" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <div style="position:relative;">
+              <div style="font-family:'Archivo',sans-serif; font-weight:800; font-size:clamp(17px,2vw,23px); line-height:1.05; letter-spacing:-0.02em; text-transform:uppercase; margin-bottom:12px;">Você foi preterido</div>
+              <div style="font-family:'Manrope',sans-serif; font-size:clamp(12px,1.3vw,15px); line-height:1.55; color:var(--muted);">Chamaram gente classificada abaixo de você? Isso tem nome — e tem ação certa pra reverter. Rápido.</div>
+            </div>
+            <div style="position:relative; display:flex; align-items:center; justify-content:space-between;">
+              <div style="display:flex; gap:5px;"><span style="width:6px; height:3px; border-radius:2px; background:var(--line);"></span><span style="width:16px; height:3px; border-radius:2px; background:var(--orange);"></span><span style="width:6px; height:3px; border-radius:2px; background:var(--line);"></span><span style="width:6px; height:3px; border-radius:2px; background:var(--line);"></span></div>
+              <span style="font-family:'Space Mono',monospace; font-size:11px; color:var(--cream);">arraste →</span>
+            </div>
+          </div>
+          <div style="font-family:'Space Mono',monospace; font-size:11px; color:var(--muted); text-transform:uppercase; letter-spacing:0.1em; text-align:center; margin-top:14px;">Card 02 · Conteúdo</div>
+        </div>
+        <!-- card CTA -->
+        <div data-reveal style="opacity:0; transform:translateY(24px); transition:opacity .9s cubic-bezier(.16,1,.3,1) .16s, transform .9s cubic-bezier(.16,1,.3,1) .16s;">
+          <div style="aspect-ratio:4/5; border-radius:18px; overflow:hidden; position:relative; background:linear-gradient(155deg,#FF5E1A,#F0247C); color:#160d09; padding:clamp(22px,2.4vw,30px); display:flex; flex-direction:column; justify-content:space-between;">
+            <svg viewBox="0 0 120 120" width="88%" style="overflow:visible; position:absolute; left:-16%; top:-14%; opacity:0.14;"><polyline points="20,66 48,96 104,24" fill="none" stroke="#160d09" stroke-width="17" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <div style="position:relative; display:flex; align-items:center; gap:9px;">
+              <svg viewBox="0 0 120 120" width="24" height="24" style="overflow:visible;"><polyline points="20,66 48,96 104,24" fill="none" stroke="#160d09" stroke-width="17" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <span style="font-family:'Archivo',sans-serif; font-weight:900; font-size:12px; letter-spacing:-0.01em; text-transform:uppercase; line-height:0.85;">Ribeiro Rinaldi</span>
+            </div>
+            <div style="position:relative;">
+              <div style="font-family:'Archivo',sans-serif; font-weight:900; font-size:clamp(20px,2.4vw,30px); line-height:0.98; letter-spacing:-0.03em; text-transform:uppercase; margin-bottom:14px;">Fala com a gente</div>
+              <div style="display:inline-flex; align-items:center; gap:8px; background:#160d09; color:#F7F1E8; font-family:'Space Mono',monospace; font-size:11px; letter-spacing:0.08em; text-transform:uppercase; padding:11px 16px; border-radius:100px;">Chamar no WhatsApp →</div>
+            </div>
+            <div style="position:relative; display:flex; align-items:center; justify-content:space-between;">
+              <div style="display:flex; gap:5px;"><span style="width:6px; height:3px; border-radius:2px; background:rgba(22,13,9,0.35);"></span><span style="width:6px; height:3px; border-radius:2px; background:rgba(22,13,9,0.35);"></span><span style="width:6px; height:3px; border-radius:2px; background:rgba(22,13,9,0.35);"></span><span style="width:16px; height:3px; border-radius:2px; background:#160d09;"></span></div>
+              <span style="font-family:'Space Mono',monospace; font-size:11px; font-weight:700;">salve este post</span>
+            </div>
+          </div>
+          <div style="font-family:'Space Mono',monospace; font-size:11px; color:var(--muted); text-transform:uppercase; letter-spacing:0.1em; text-align:center; margin-top:14px;">Card 04 · CTA</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FECHAMENTO -->
+  <section style="position:relative; overflow:hidden; border-top:1px solid var(--line);">
+    <div style="position:absolute; bottom:-30%; left:50%; transform:translateX(-50%); width:min(90vw,900px); height:min(90vw,900px); border-radius:50%; background:radial-gradient(circle, var(--orange), transparent 60%); filter:blur(60px); opacity:0.2; z-index:0;"></div>
+    <div style="position:relative; z-index:1; max-width:1000px; margin:0 auto; padding:clamp(90px,15vh,180px) 24px; text-align:center;">
+      <div data-reveal style="opacity:0; transform:translateY(24px); transition:opacity .9s cubic-bezier(.16,1,.3,1), transform .9s cubic-bezier(.16,1,.3,1); font-family:'Space Mono',monospace; font-size:13px; letter-spacing:0.24em; text-transform:uppercase; color:var(--orange); margin-bottom:28px;">Próxima fase</div>
+      <h2 data-reveal style="opacity:0; transform:translateY(24px); transition:opacity 1s cubic-bezier(.16,1,.3,1), transform 1s cubic-bezier(.16,1,.3,1); font-family:'Archivo',sans-serif; font-weight:900; font-size:clamp(38px,6vw,90px); line-height:0.96; letter-spacing:-0.03em; margin:0 0 32px; text-transform:uppercase;">Sistema &<br>templates.</h2>
+      <p data-reveal style="opacity:0; transform:translateY(24px); transition:opacity .9s cubic-bezier(.16,1,.3,1) .1s, transform .9s cubic-bezier(.16,1,.3,1) .1s; max-width:560px; margin:0 auto; font-size:17px; line-height:1.6; color:var(--muted);">Com a marca definida, seguimos para os templates de post do Instagram, os anúncios de conversão e a primeira dobra do site.</p>
+    </div>
+    <div style="position:relative; z-index:1; border-top:1px solid var(--line); padding:26px 24px; text-align:center; font-family:'Space Mono',monospace; font-size:12px; letter-spacing:0.14em; text-transform:uppercase; color:var(--muted);">Ribeiro Rinaldi · Fase 01 · Logotipo & Símbolo</div>
+  </section>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;grain&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Estilo&quot;},&quot;reduceMotion&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Estilo&quot;}}">
+class Component extends DCLogic {
+  componentDidMount() {
+    try {
+      const els = document.querySelectorAll('[data-reveal]');
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) {
+            e.target.style.opacity = '1';
+            e.target.style.transform = 'none';
+            io.unobserve(e.target);
+          }
+        });
+      }, { threshold: 0.1, rootMargin: '0px 0px -6% 0px' });
+      els.forEach((el) => io.observe(el));
+    } catch (err) {}
+  }
+  renderVals() {
+    return {
+      grain: this.props.grain ?? true,
+      playState: (this.props.reduceMotion ? 'paused' : 'running')
+    };
+  }
+}
+</script>
+<script>
+(async () => {
+  if (!document.title || !document.title.trim()) document.title = "Ribeiro Rinaldi - Marca (Logo)";
+  // Prepend so page-supplied @page / break rules (deck-stage's margin:0,
+  // author CSS) keep source-order precedence over the baseline.
+  const baseCss = document.createElement('style');
+  baseCss.textContent = "@media print {\n  figure, table { break-inside: avoid; }\n  *, *::before, *::after {\n    print-color-adjust: exact; -webkit-print-color-adjust: exact;\n    backdrop-filter: none !important; -webkit-backdrop-filter: none !important;\n    animation-delay: -99s !important; animation-duration: .001s !important;\n    animation-iteration-count: 1 !important; animation-fill-mode: both !important;\n    animation-play-state: running !important; transition-duration: 0s !important;\n  }\n}";
+  document.head.prepend(baseCss);
+  if (document.readyState === 'loading') {
+    await new Promise((r) => document.addEventListener('DOMContentLoaded', r, { once: true }));
+  }
+  let ds = document.querySelector('deck-stage');
+  // whenDefined never resolves when nothing registers the element, so only
+  // await it when a <deck-stage> tag exists (and race a timeout regardless).
+  if (ds && !customElements.get('deck-stage')) {
+    try {
+      await Promise.race([
+        customElements.whenDefined('deck-stage'),
+        new Promise((r) => setTimeout(r, 3000)),
+      ]);
+    } catch (e) {}
+    ds = document.querySelector('deck-stage');
+  }
+  // dc-runtime assigns window.DCLogic at init and mounts into #dc-root on
+  // DOMContentLoaded; settle on that subtree so React has rendered before
+  // print(). Non-DC pages fall through to weighing body.
+  const isDc = !ds && 'DCLogic' in window;
+  const settleRoot = ds || (isDc ? document.getElementById('dc-root') : null) || document.body;
+  if (settleRoot) {
+    // Weigh only content children — skip script/style/template so inline
+    // Babel/CSS doesn't register as stable "content" before the framework
+    // has mounted anything.
+    const MEDIA = 'img,svg,canvas,video,picture,iframe,embed,object';
+    const weigh = () => {
+      let text = 0, media = 0;
+      for (const c of settleRoot.children) {
+        const t = c.tagName;
+        if (t === 'SCRIPT' || t === 'STYLE' || t === 'TEMPLATE') continue;
+        text += (c.textContent || '').trim().length;
+        media += c.querySelectorAll(MEDIA).length + (c.matches(MEDIA) ? 1 : 0);
+      }
+      return text + media * 100;
+    };
+    // "Non-zero and stable" alone is not sufficient to mean rendered: generic
+    // body can carry a static shell while async main content is pending, and
+    // #dc-root can carry the root DC's static text while child refs are still
+    // .sc-placeholder boxes. Gate generic on readyState 'complete', and never
+    // accept stability while a dc-runtime placeholder is present.
+    const isGeneric = settleRoot === document.body;
+    const deadline = Date.now() + 15000;
+    let last = -1, stable = 0;
+    while (Date.now() < deadline) {
+      const n = weigh();
+      const ready =
+        (!isGeneric || document.readyState === 'complete') &&
+        !settleRoot.querySelector('.sc-placeholder');
+      if (n > 0 && n === last && ready) { if (++stable >= 2) break; } else { stable = 0; }
+      last = n;
+      await new Promise((r) => setTimeout(r, 250));
+    }
+  }
+  // Project support.js may predate runtime default-seeding; push via bridge.
+  if (isDc && window.__dcSetProps && window.__dcRootName) {
+    try {
+      const dpEl = document.querySelector('script[data-dc-script]');
+      const meta = JSON.parse((dpEl && dpEl.getAttribute('data-props')) || '{}');
+      const bag = {};
+      for (const k in meta)
+        if (k[0] !== '$' && meta[k] && meta[k].default !== undefined)
+          bag[k] = meta[k].default;
+      if (Object.keys(bag).length) {
+        window.__dcSetProps(window.__dcRootName(), bag);
+        await new Promise((r) => setTimeout(r, 50));
+      }
+    } catch (e) {}
+  }
+  // Reveal content gated on scroll or visibility before printing. Lazy <img>,
+  // IntersectionObserver fade-ins, and collapsed <details> don't render while
+  // off-screen, so a long page would print with them blank or closed. Open
+  // every <details>, force native-lazy images eager, and scroll the document
+  // through its full height to trip lazy-load + IO; then wait (bounded) for the
+  // newly-triggered images. Inert for deck-stage (slides aren't scroll-gated).
+  try {
+    for (const d of document.querySelectorAll('details')) d.open = true;
+    for (const img of document.querySelectorAll('img[loading="lazy"]'))
+      img.loading = 'eager';
+    const scroller = document.scrollingElement || document.documentElement;
+    const full = Math.max(scroller.scrollHeight, document.body.scrollHeight);
+    const step = window.innerHeight || 800;
+    for (let y = 0; y <= full; y += step) {
+      window.scrollTo(0, y);
+      await new Promise((r) => requestAnimationFrame(r));
+    }
+    window.scrollTo(0, 0);
+    await Promise.race([
+      Promise.all(
+        [...document.images].map((img) =>
+          img.complete
+            ? null
+            : new Promise((res) => {
+                img.addEventListener('load', res, { once: true });
+                img.addEventListener('error', res, { once: true });
+              })
+        )
+      ),
+      new Promise((r) => setTimeout(r, 4000)),
+    ]);
+  } catch (e) {}
+  try { await document.fonts.ready; } catch (e) {}
+  // Jump every animation to its end state so print() never captures a slide
+  // mid-entrance. Ordering matters: the 0s-transition style must be live
+  // BEFORE data-deck-active is set so attribute-keyed transitions don't
+  // start a (now-0s) run from the pre-active base.
+  const st = document.createElement('style');
+  st.textContent = '*,*::before,*::after{animation-delay:-99s !important;animation-duration:.001s !important;animation-iteration-count:1 !important;animation-fill-mode:both !important;animation-play-state:running !important;transition-duration:0s !important}';
+  document.head.appendChild(st);
+  for (const d of document.querySelectorAll('deck-stage')) {
+    for (const c of d.children) {
+      const t = c.tagName;
+      if (t === 'SCRIPT' || t === 'STYLE' || t === 'TEMPLATE') continue;
+      c.setAttribute('data-deck-active', '');
+    }
+  }
+  // Re-append deck-stage's @page last so no author @page can add a margin and
+  // spill each full-bleed slide onto two sheets. Backstop for old copies.
+  if (ds) {
+    let pg = document.getElementById('deck-stage-print-page');
+    if (!pg) {
+      pg = document.createElement('style');
+      pg.textContent = '@page{size:' + (+ds.getAttribute('width') || 1920) +
+        'px ' + (+ds.getAttribute('height') || 1080) + 'px;margin:0}';
+    }
+    document.body.appendChild(pg);
+  }
+  try {
+    const sweep = () => {
+      for (const a of document.getAnimations()) {
+        try { a.finish(); } catch (e) {
+          try { a.currentTime = (a.effect && a.effect.getComputedTiming().duration) || 0; a.pause(); } catch (e2) {}
+        }
+      }
+    };
+    sweep();
+    await new Promise((r) => requestAnimationFrame(r));
+    sweep();
+    await new Promise((r) => requestAnimationFrame(r));
+  } catch (e) {}
+  // Size the PDF page to the rendered design unless the file opted into
+  // standard paper via @page{size:letter|A4|…}. Decks own their own @page.
+  // Wrappers (body, …) lose padding+margin so the frame sits at (0,0); the
+  // frame itself loses only margin — its padding is INSIDE the measured
+  // rect and must stay, or content shifts and leaves a gap at bottom/right.
+  var __m = null;
+  try { __m = (() => {
+  var STAMP = true;
+  var docEl = document.documentElement;
+  var doc = { width: docEl.scrollWidth, height: docEl.scrollHeight };
+
+  var ds = document.querySelector('deck-stage');
+  if (ds) {
+    var dw = Number(ds.getAttribute('width')) || 1920;
+    var dh = Number(ds.getAttribute('height')) || 1080;
+    var n = typeof ds.length === 'number' ? ds.length : ds.children.length;
+    var idx = typeof ds.index === 'number' ? ds.index : 0;
+    var frames = [];
+    for (var i = 0; i < n; i++) frames.push({ left: 0, top: 0, width: dw, height: dh });
+    return { kind: 'deck', source: 'declared', doc: doc, frames: frames,
+      authored: frames.map(function(){return{width:true,height:true}}),
+      deck: { width: dw, height: dh, slideCount: n, index: idx },
+      signals: { paperPage: false, pxPage: false } };
+  }
+
+  // Declared kind: a doc-page tag names the kind outright, so no signal
+  // heuristics run (like the deck branch above, signals report false —
+  // they describe inferred classifications only). The tag alone is not
+  // trusted: the element must have upgraded (shadowRoot present), so a
+  // leftover tag whose script was deleted falls through to the heuristics
+  // that handle plain markup.
+  var stageSx = window.scrollX || 0, stageSy = window.scrollY || 0;
+  var dp = document.querySelector('doc-page');
+  if (dp && dp.shadowRoot) {
+    // Crop to the sheet, not the host — the desk around it is screen-only
+    // chrome that must not land in PNG exports.
+    var sheet = dp.shadowRoot.querySelector('.sheet');
+    var sr = (sheet || dp).getBoundingClientRect();
+    return { kind: 'paper-doc', source: 'declared', doc: doc,
+      frames: [{ left: sr.left + stageSx, top: sr.top + stageSy,
+        width: sr.width, height: sr.height }],
+      authored: [{ width: false, height: false }],
+      signals: { paperPage: false, pxPage: false } };
+  }
+  var paperPage = false, pxPage = false;
+  var eachRule = function (fn) {
+    for (var s = 0; s < document.styleSheets.length; s++) {
+      var rs; try { rs = document.styleSheets[s].cssRules; } catch (e) { continue; }
+      for (var r = 0; r < rs.length; r++) {
+        fn(rs[r]);
+        if (rs[r].cssRules) for (var n = 0; n < rs[r].cssRules.length; n++) fn(rs[r].cssRules[n]);
+      }
+    }
+  };
+  eachRule(function (r) {
+    if (r.type !== 6) return;
+    var m = /\bsize\s*:\s*([^;}]+)/i.exec(r.cssText || '');
+    if (!m) return;
+    if (/\b(letter|a[3-5]|legal|ledger)\b/i.test(m[1])) paperPage = true;
+    if (/\d+(?:\.\d+)?px\b/i.test(m[1])) pxPage = true;
+  });
+  var signals = { paperPage: paperPage, pxPage: pxPage };
+
+  var pxVal = function (v) {
+    var m = /^(\d+(?:\.\d+)?)px$/.exec(v || ''); return m ? +m[1] : 0;
+  };
+  var authoredPx = function (el, prop) {
+    if (pxVal(el.style[prop])) return true;
+    var attr = el.getAttribute(prop);
+    if (attr && /^\d+$/.test(attr)) return true;
+    var hit = false;
+    eachRule(function (r) {
+      if (hit || r.type !== 1 || !r.style) return;
+      try { if (el.matches(r.selectorText) && pxVal(r.style[prop])) hit = true; } catch (e) {}
+    });
+    return hit;
+  };
+
+  var el = document.body, rootPxW = false;
+  for (;;) {
+    var kids = [];
+    for (var c = 0; c < el.children.length; c++) {
+      var t = el.children[c].tagName;
+      if (t !== 'SCRIPT' && t !== 'STYLE' && t !== 'TEMPLATE') kids.push(el.children[c]);
+    }
+    if (kids.length !== 1 || !(kids[0] instanceof HTMLElement)) break;
+    if (STAMP) el.setAttribute('data-om-frame-wrap', '');
+    el = kids[0];
+    rootPxW = authoredPx(el, 'width');
+    if (rootPxW) break;
+  }
+  if (!rootPxW) rootPxW = authoredPx(el, 'width');
+
+  // @page{size:letter} alone is a flowing doc; with a px-width root it's a
+  // fixed sheet pretending to be paper — fall through and size to render.
+  if (paperPage && !rootPxW) {
+    return { kind: 'paper-doc', source: 'inferred', doc: doc, signals: signals,
+      frames: [{ left: 0, top: 0, width: doc.width, height: doc.height }],
+      authored: [{ width: false, height: false }] };
+  }
+
+  var sx = window.scrollX || 0, sy = window.scrollY || 0;
+  var rectOf = function (e) {
+    var r = e.getBoundingClientRect();
+    var oy; try { oy = getComputedStyle(e).overflowY; } catch (err) {}
+    var h = oy === 'visible' ? Math.max(r.height, e.scrollHeight || 0) : r.height;
+    return { left: r.left + sx, top: r.top + sy, width: r.width, height: h };
+  };
+
+  // Multi-frame: off unless the page opts in via data-om-multi-frame on the
+  // stop element — the explicit opt-in is what guards against card grids
+  // and pricing tables that match the geometry but aren't separate
+  // canvases. Two ways to name the frames, explicit first:
+  // 1. Descendants marked data-om-frame-export (the social-frames starter
+  //    marks each asset frame; shells/panels around them are presentation,
+  //    so nesting is expected). Document order.
+  // 2. Fallback, no marked descendants: direct children with an authored px
+  //    width AND height (the original geometry heuristic).
+  // Frames may be different sizes (a gallery mixes 1080×1920 stories with
+  // 728×90 banners); data-om-frame-label rides along for export filenames.
+  if (el.hasAttribute('data-om-multi-frame')) {
+    var visOk = function (e) {
+      var cs; try { cs = getComputedStyle(e); } catch (err) { return false; }
+      return cs.display !== 'none' && cs.visibility !== 'hidden' && cs.position !== 'fixed';
+    };
+    // A frame's crop is its VISUAL box — never the scrollHeight-inflated
+    // rect that rectOf computes for page roots. Shadow-DOM hover controls
+    // (image-slot's Replace bar parks 29px below its host) and similar
+    // escaping UI contribute scrollable overflow to the frame, and the
+    // inflated height both squashes the nominal-size resize and drags
+    // content below the frame into the crop. Zoom-independent; bit every
+    // slot-bearing frame.
+    var frameRectOf = function (e) {
+      var r = e.getBoundingClientRect();
+      return { left: r.left + sx, top: r.top + sy, width: r.width, height: r.height };
+    };
+    var pushCand = function (list, e) {
+      if (!visOk(e)) return;
+      var rc = frameRectOf(e);
+      if (rc.width < 2 || rc.height < 2) return;
+      var lbl = e.getAttribute('data-om-frame-label');
+      if (lbl) rc.label = lbl;
+      list.push(rc);
+    };
+    var cands = [];
+    var marked = el.querySelectorAll('[data-om-frame-export]');
+    if (marked.length) {
+      for (var mk = 0; mk < marked.length; mk++) pushCand(cands, marked[mk]);
+    } else {
+      for (var k = 0; k < el.children.length; k++) {
+        var ch = el.children[k];
+        if (!authoredPx(ch, 'width') || !authoredPx(ch, 'height')) continue;
+        pushCand(cands, ch);
+      }
+    }
+    if (cands.length >= 2) {
+      return { kind: 'multi-frame', source: 'inferred', doc: doc, signals: signals,
+        frames: cands, authored: cands.map(function(){return{width:true,height:true}}) };
+    }
+  }
+
+  if (STAMP) el.setAttribute('data-om-frame', '');
+  return { kind: 'single-canvas', source: 'inferred', doc: doc, signals: signals,
+    frames: [rectOf(el)],
+    authored: [{ width: rootPxW, height: authoredPx(el, 'height') }] };
+})(); } catch (e) {}
+  var frame = null;
+  if (__m && __m.kind === 'single-canvas') {
+    var f = __m.frames && __m.frames[0];
+    if (f && f.width >= 200 && f.height >= 200) {
+      frame = f;
+      var fst = document.createElement('style');
+      fst.textContent = '@media print{@page{size:' + Math.ceil(f.width) + 'px ' +
+        Math.ceil(f.height) + 'px;margin:0}' +
+        'html,body,[data-om-frame-wrap]{padding:0!important;margin:0!important;background:none!important}' +
+        '[data-om-frame]{margin:0!important}}';
+      document.body.appendChild(fst);
+    }
+  }
+  // Relax break-inside on oversized elements. An element taller than a
+  // printable page can't honor break-inside: avoid — browsers either overflow
+  // it or push it whole to the next page, leaving a blank gap, then break it
+  // anyway at an arbitrary point. After the final layout (content revealed,
+  // animations jumped), find elements taller than a page that still compute
+  // break-inside: avoid and reset them to auto, so the browser breaks them at
+  // their children's boundaries instead (children keep their own avoid). PAGE_PX
+  // is a conservative portrait estimate at 96 CSS px/in — Letter/A4 usable
+  // height minus our 0.5in margins — so only clearly-oversized elements are
+  // touched and under-page elements still stay whole. Skipped for decks (slides
+  // are sized to the page) and for fixed-size canvases (frame set, or an author
+  // px-based @page) — runs as before for flowing docs on letter/A4.
+  try {
+    if (!ds && !frame && !(__m && __m.signals && __m.signals.pxPage)) {
+      const PAGE_PX = 1024;
+      // Our print defaults add a real @page margin only when the source has
+      // no @page of its own; computed style can't tell us (it reports screen
+      // media), so read the injected rule directly.
+      const defaults = document.querySelector('style[data-omelette-print-defaults]');
+      const pageInset = /@page\s*\{[^}]*margin/.test(defaults ? defaults.textContent || '' : '');
+      const SEL = 'section,article,figure,table,pre,blockquote,[class~="card" i],[class~="page" i],[class~="sheet" i]';
+      for (const el of document.body.querySelectorAll(SEL)) {
+        if (el instanceof HTMLElement && el.offsetHeight > PAGE_PX) {
+          el.setAttribute('data-om-oversized', '');
+          // Fake-paged docs simulate sheets with over-tall break-after:page
+          // boxes; honoring the break spills half-blank pages and ends a
+          // colored box mid-sheet. Flow them, and (only when we own the page
+          // inset) drop the redundant padding/background via the rule below.
+          const cs = getComputedStyle(el);
+          if (cs.breakAfter === 'page' || cs.pageBreakAfter === 'always') {
+            el.setAttribute('data-om-fakepage', '');
+          }
+        }
+      }
+      const ost = document.createElement('style');
+      ost.textContent = '@media print{' +
+        '[data-om-oversized]{break-inside:auto !important;page-break-inside:auto !important}' +
+        '[data-om-fakepage]{break-after:auto !important;page-break-after:auto !important}' +
+        (pageInset ? '[data-om-fakepage]{padding:0 !important;background:none !important}' : '') +
+        '}';
+      document.head.appendChild(ost);
+    }
+  } catch (e) {}
+  // macOS Preview renders Skia-PDF Luminosity soft-masks as opaque grey boxes;
+  // swap the CSS that triggers them for Preview-safe forms.
+  try {
+    for (const el of document.body.querySelectorAll('*')) {
+      const cs = getComputedStyle(el);
+
+      if (cs.boxShadow !== 'none' && cs.filter === 'none') {
+        const outs = [], kept = [];
+        for (const s of cs.boxShadow.split(/,(?![^(]*[)])/)) {
+          const t = s.trim();
+          const m = t.match(/^(rgba?[(][^)]+[)]) (-?[0-9.]+px) (-?[0-9.]+px) ([0-9.]+px) -?[0-9.]+px$/);
+          if (m && parseFloat(m[4]) > 0) outs.push('drop-shadow(' + m[2] + ' ' + m[3] + ' ' + m[4] + ' ' + m[1] + ')');
+          else kept.push(t);
+        }
+        if (outs.length) {
+          el.style.setProperty('filter', outs.join(' '), 'important');
+          el.style.setProperty('box-shadow', kept.join(', ') || 'none', 'important');
+        }
+      }
+
+      const mask = cs.maskImage && cs.maskImage !== 'none' ? cs.maskImage : cs.webkitMaskImage;
+      if (mask && mask !== 'none' && cs.filter === 'none') el.style.setProperty('filter', 'opacity(1)', 'important');
+    }
+  } catch (e) {}
+  setTimeout(() => { try { window.print(); } catch (e) {} }, 200);
+})();
+</script>
+</body>
+</html>

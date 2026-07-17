@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1350" width="1080" height="1350">
+  <defs>
+    <linearGradient id="fullgrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FF5E1A" />
+      <stop offset="100%" stop-color="#F0247C" />
+    </linearGradient>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Archivo:wght@900&amp;family=Space+Mono:wght@700&amp;display=swap');
+      .bg { fill: url(#fullgrad); }
+      .brand { font-family: 'Archivo', sans-serif; font-size: 32px; font-weight: 900; fill: #160D09; }
+      .title { font-family: 'Archivo', sans-serif; font-size: 96px; font-weight: 900; fill: #160D09; text-transform: uppercase; }
+      .btn-text { font-family: 'Space Mono', monospace; font-size: 28px; font-weight: 700; fill: #F7F1E8; letter-spacing: 3px; }
+    </style>
+  </defs>
+  
+  <rect width="1080" height="1350" class="bg" />
+
+  <!-- Top Brand -->
+  <polyline points="140,160 165,185 215,120" fill="none" stroke="#160D09" stroke-width="12" stroke-linecap="round" stroke-linejoin="round" />
+  <text x="245" y="172" class="brand">RIBEIRO RINALDI</text>
+
+  <!-- Big Title -->
+  <text x="140" y="580" class="title">BORA</text>
+  <text x="140" y="690" class="title">RESOLVER</text>
+  <text x="140" y="800" class="title">SUA VAGA.</text>
+
+  <!-- Black Pill Button -->
+  <rect x="140" y="930" width="760" height="120" rx="60" fill="#160D09" />
+  <text x="195" y="1003" class="btn-text">ANÁLISE DO SEU EDITAL ↑</text>
+</svg>

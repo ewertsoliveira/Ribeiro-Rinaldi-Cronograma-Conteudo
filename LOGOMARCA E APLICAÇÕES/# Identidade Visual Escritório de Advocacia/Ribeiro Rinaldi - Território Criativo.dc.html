@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Manrope:wght@300;400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; background: #150F0B; }
+  ::selection { background: #FF5E1A; color: #150F0B; }
+  a { color: #FF8A5B; text-decoration: none; }
+  a:hover { color: #FF5E1A; }
+  @keyframes rr-blob { 0%,100% { transform: translate(0,0) scale(1); } 33% { transform: translate(6%,-4%) scale(1.12); } 66% { transform: translate(-5%,5%) scale(0.94); } }
+  @keyframes rr-blob2 { 0%,100% { transform: translate(0,0) scale(1); } 50% { transform: translate(-8%,6%) scale(1.15); } }
+  @keyframes rr-marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+  @keyframes rr-float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(10px); } }
+  @keyframes rr-bob { 0%,100% { transform: translateY(0); opacity:0.6; } 50% { transform: translateY(8px); opacity:1; } }
+</style>
+</helmet>
+
+<div style="--bg:#150F0B; --panel:#1E1712; --panel2:#28201A; --line:#3A2E24; --cream:#F7F1E8; --muted:#A79C90; --orange:#FF5E1A; --coral:#FF8A5B; --magenta:#F0247C; --amber:#FFB347; background:var(--bg); color:var(--cream); font-family:'Manrope',system-ui,sans-serif; -webkit-font-smoothing:antialiased; overflow-x:hidden; position:relative;">
+
+  <sc-if value="{{ grain }}" hint-placeholder-val="{{ true }}">
+    <div style="position:fixed; inset:0; pointer-events:none; z-index:9998; opacity:0.045; mix-blend-mode:overlay; background-image:url(&quot;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E&quot;);"></div>
+  </sc-if>
+
+  <!-- TOP BAR -->
+  <header style="max-width:1280px; margin:0 auto; padding:28px 24px; display:flex; justify-content:space-between; align-items:center; position:relative; z-index:5;">
+    <div style="font-family:'Archivo',sans-serif; font-weight:900; font-size:19px; letter-spacing:-0.01em; display:flex; align-items:center; gap:10px;">
+      <span style="width:11px; height:11px; border-radius:50%; background:linear-gradient(135deg,var(--orange),var(--magenta)); display:inline-block;"></span>
+      RIBEIRO RINALDI
+    </div>
+    <div style="font-family:'Space Mono',monospace; font-size:12px; letter-spacing:0.16em; color:var(--muted); text-transform:uppercase;">Território Criativo · 07/2026</div>
+  </header>
+
+  <!-- HERO -->
+  <section style="position:relative; min-height:94vh; display:flex; flex-direction:column; justify-content:center; max-width:1280px; margin:0 auto; padding:40px 24px 80px; z-index:2;">
+    <div style="position:absolute; top:-6%; right:-4%; width:min(52vw,640px); height:min(52vw,640px); border-radius:50%; background:radial-gradient(circle at 30% 30%, var(--orange), transparent 62%); filter:blur(30px); opacity:0.55; animation:rr-blob 18s ease-in-out infinite; animation-play-state:{{ playState }}; z-index:-1;"></div>
+    <div style="position:absolute; bottom:-10%; left:-8%; width:min(46vw,560px); height:min(46vw,560px); border-radius:50%; background:radial-gradient(circle at 60% 40%, var(--magenta), transparent 64%); filter:blur(40px); opacity:0.38; animation:rr-blob2 22s ease-in-out infinite; animation-play-state:{{ playState }}; z-index:-1;"></div>
+
+    <div data-reveal style="opacity:0; transform:translateY(28px); transition:opacity .9s cubic-bezier(.16,1,.3,1), transform .9s cubic-bezier(.16,1,.3,1); display:inline-flex; align-items:center; gap:12px; margin-bottom:34px;">
+      <span style="font-family:'Space Mono',monospace; font-size:13px; letter-spacing:0.24em; color:var(--orange); text-transform:uppercase; border:1px solid var(--line); padding:8px 14px; border-radius:100px;">Conceito 01 — A Virada</span>
+    </div>
+
+    <h1 data-reveal style="opacity:0; transform:translateY(28px); transition:opacity 1s cubic-bezier(.16,1,.3,1) .08s, transform 1s cubic-bezier(.16,1,.3,1) .08s; font-family:'Archivo',sans-serif; font-weight:900; font-size:clamp(52px,9.5vw,158px); line-height:0.92; letter-spacing:-0.03em; margin:0; text-transform:uppercase;">
+      Seu nome<br>merece estar<br><span style="background:linear-gradient(100deg,var(--orange),var(--magenta)); -webkit-background-clip:text; background-clip:text; color:transparent;">naquela lista.</span>
+    </h1>
+
+    <p data-reveal style="opacity:0; transform:translateY(28px); transition:opacity 1s cubic-bezier(.16,1,.3,1) .18s, transform 1s cubic-bezier(.16,1,.3,1) .18s; max-width:620px; margin:40px 0 0; font-size:clamp(17px,1.5vw,21px); line-height:1.55; color:var(--muted);">
+      Território de marca para o escritório que tira o concurseiro da espera e entrega a nomeação. Feito por quem <span style="color:var(--cream); font-weight:600;">já esteve do outro lado da prova.</span>
+    </p>
+
+    <div style="position:absolute; bottom:32px; left:24px; display:flex; align-items:center; gap:12px; font-family:'Space Mono',monospace; font-size:12px; letter-spacing:0.18em; color:var(--muted); text-transform:uppercase;">
+      <span style="display:inline-block; width:1px; height:34px; background:var(--line); position:relative;"><span style="position:absolute; inset:0; background:var(--orange); animation:rr-bob 2s ease-in-out infinite; animation-play-state:{{ playState }};"></span></span>
+      role para explorar
+    </div>
+  </section>
+
+  <!-- MARQUEE -->
+  <div style="border-top:1px solid var(--line); border-bottom:1px solid var(--line); overflow:hidden; padding:22px 0; background:var(--panel);">
+    <div style="display:flex; width:max-content; gap:0; animation:rr-marquee 34s linear infinite; animation-play-state:{{ playState }};">
+      <div style="display:flex; gap:0; font-family:'Archivo',sans-serif; font-weight:800; font-size:26px; text-transform:uppercase; letter-spacing:-0.01em;">
+        <span style="padding:0 28px;">Urgência</span><span style="padding:0 28px; color:var(--orange);">◆</span>
+        <span style="padding:0 28px;">Identidade</span><span style="padding:0 28px; color:var(--orange);">◆</span>
+        <span style="padding:0 28px;">Autoridade</span><span style="padding:0 28px; color:var(--orange);">◆</span>
+        <span style="padding:0 28px;">De igual pra igual</span><span style="padding:0 28px; color:var(--orange);">◆</span>
+        <span style="padding:0 28px;">Sem juridiquês</span><span style="padding:0 28px; color:var(--orange);">◆</span>
+        <span style="padding:0 28px;">Nomeação</span><span style="padding:0 28px; color:var(--orange);">◆</span>
+      </div>
+      <div style="display:flex; gap:0; font-family:'Archivo',sans-serif; font-weight:800; font-size:26px; text-transform:uppercase; letter-spacing:-0.01em;" aria-hidden="true">
+        <span style="padding:0 28px;">Urgência</span><span style="padding:0 28px; color:var(--orange);">◆</span>
+        <span style="padding:0 28px;">Identidade</span><span style="padding:0 28px; color:var(--orange);">◆</span>
+        <span style="padding:0 28px;">Autoridade</span><span style="padding:0 28px; color:var(--orange);">◆</span>
+        <span style="padding:0 28px;">De igual pra igual</span><span style="padding:0 28px; color:var(--orange);">◆</span>
+        <span style="padding:0 28px;">Sem juridiquês</span><span style="padding:0 28px; color:var(--orange);">◆</span>
+        <span style="padding:0 28px;">Nomeação</span><span style="padding:0 28px; color:var(--orange);">◆</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONCEITO -->
+  <section style="max-width:1280px; margin:0 auto; padding:clamp(90px,13vh,160px) 24px;">
+    <div data-reveal style="opacity:0; transform:translateY(24px); transition:opacity .9s cubic-bezier(.16,1,.3,1), transform .9s cubic-bezier(.16,1,.3,1); display:flex; align-items:center; gap:12px; margin-bottom:30px;">
+      <span style="width:32px; height:1px; background:var(--orange);"></span>
+      <span style="font-family:'Space Mono',monospace; font-size:13px; letter-spacing:0.22em; text-transform:uppercase; color:var(--orange);">O Conceito</span>
+    </div>
+    <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(320px,1fr)); gap:clamp(32px,5vw,72px); align-items:start;">
+      <h2 data-reveal style="opacity:0; transform:translateY(24px); transition:opacity .9s cubic-bezier(.16,1,.3,1), transform .9s cubic-bezier(.16,1,.3,1); font-family:'Archivo',sans-serif; font-weight:900; font-size:clamp(44px,6.5vw,104px); line-height:0.94; letter-spacing:-0.03em; margin:0; text-transform:uppercase;">A<br>Virada</h2>
+      <p data-reveal style="opacity:0; transform:translateY(24px); transition:opacity .9s cubic-bezier(.16,1,.3,1) .1s, transform .9s cubic-bezier(.16,1,.3,1) .1s; font-size:clamp(18px,1.6vw,23px); line-height:1.6; color:var(--muted); margin:8px 0 0;">
+        Toda a marca nasce de um único instante: <span style="color:var(--cream); font-weight:600;">a virada.</span> O segundo em que a incerteza vira certeza, o "quase" vira posse, a carteira de trabalho vira estabilidade.
+        <br><br>Ribeiro Rinaldi é a força que provoca essa virada — o estrategista que conhece o sistema por dentro e sabe exatamente onde atacar.
+      </p>
+    </div>
+
+    <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:20px; margin-top:72px;">
+      <div data-reveal style="opacity:0; transform:translateY(24px); transition:opacity .9s cubic-bezier(.16,1,.3,1), transform .9s cubic-bezier(.16,1,.3,1); background:var(--panel); border:1px solid var(--line); border-radius:20px; padding:34px 30px;">
+        <div style="font-family:'Space Mono',monospace; font-size:13px; color:var(--orange); margin-bottom:18px;">01</div>
+        <h3 style="font-family:'Archivo',sans-serif; font-weight:800; font-size:24px; margin:0 0 12px; text-transform:uppercase; letter-spacing:-0.01em;">Do outro lado</h3>
+        <p style="margin:0; font-size:16px; line-height:1.55; color:var(--muted);">Fundado por um Auditor do Estado e ex-concurseiro. Conhece a prova, a banca e o edital por dentro.</p>
+      </div>
+      <div data-reveal style="opacity:0; transform:translateY(24px); transition:opacity .9s cubic-bezier(.16,1,.3,1) .08s, transform .9s cubic-bezier(.16,1,.3,1) .08s; background:var(--panel); border:1px solid var(--line); border-radius:20px; padding:34px 30px;">
+        <div style="font-family:'Space Mono',monospace; font-size:13px; color:var(--orange); margin-bottom:18px;">02</div>
+        <h3 style="font-family:'Archivo',sans-serif; font-weight:800; font-size:24px; margin:0 0 12px; text-transform:uppercase; letter-spacing:-0.01em;">Sem enrolação</h3>
+        <p style="margin:0; font-size:16px; line-height:1.55; color:var(--muted);">Sem juridiquês, sem sumiço. Prazo respeitado, retorno garantido, de igual pra igual com o concurseiro.</p>
+      </div>
+      <div data-reveal style="opacity:0; transform:translateY(24px); transition:opacity .9s cubic-bezier(.16,1,.3,1) .16s, transform .9s cubic-bezier(.16,1,.3,1) .16s; background:linear-gradient(150deg,var(--orange),var(--magenta)); border-radius:20px; padding:34px 30px; color:#160d09;">
+        <div style="font-family:'Space Mono',monospace; font-size:13px; opacity:0.7; margin-bottom:18px;">03</div>
+        <h3 style="font-family:'Archivo',sans-serif; font-weight:800; font-size:24px; margin:0 0 12px; text-transform:uppercase; letter-spacing:-0.01em;">Pra vencer</h3>
+        <p style="margin:0; font-size:16px; line-height:1.55; font-weight:500;">Recurso, verba retroativa, mandado de segurança: a estratégia certa pra sua nomeação sair.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ESSÊNCIA -->
+  <section style="background:var(--panel); border-top:1px solid var(--line); border-bottom:1px solid var(--line);">
+    <div style="max-width:1280px; margin:0 auto; padding:clamp(90px,13vh,160px) 24px;">
+      <div data-reveal style="opacity:0; transform:translateY(24px); transition:opacity .9s cubic-bezier(.16,1,.3,1), transform .9s cubic-bezier(.16,1,.3,1); display:flex; align-items:center; gap:12px; margin-bottom:44px;">
+        <span style="width:32px; height:1px; background:var(--orange);"></span>
+        <span style="font-family:'Space Mono',monospace; font-size:13px; letter-spacing:0.22em; text-transform:uppercase; color:var(--orange);">A Essência</span>
+      </div>
+      <blockquote data-reveal style="opacity:0; transform:translateY(24px); transition:opacity 1s cubic-bezier(.16,1,.3,1), transform 1s cubic-bezier(.16,1,.3,1); margin:0 0 72px; font-family:'Archivo',sans-serif; font-weight:800; font-size:clamp(30px,4.6vw,64px); line-height:1.06; letter-spacing:-0.02em; max-width:16ch;">
+        Quem já esteve do outro lado da mesa sabe <span style="color:var(--orange);">onde atacar.</span>
+      </blockquote>
+
+      <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:48px; align-items:center;">
+        <div data-reveal style="opacity:0; transform:translateY(24px); transition:opacity .9s cubic-bezier(.16,1,.3,1), transform .9s cubic-bezier(.16,1,.3,1);">
+          <div style="font-family:'Space Mono',monospace; font-size:12px; letter-spacing:0.18em; text-transform:uppercase; color:var(--muted); margin-bottom:16px;">Arquétipo</div>
+          <h3 style="font-family:'Archivo',sans-serif; font-weight:900; font-size:clamp(30px,3.6vw,46px); line-height:1; letter-spacing:-0.02em; margin:0 0 22px; text-transform:uppercase;">O Veterano-<br>Estrategista</h3>
+          <p style="margin:0 0 18px; font-size:17px; line-height:1.6; color:var(--muted);">Metade <span style="color:var(--cream); font-weight:600;">veterano</span> — passou pela mesma batalha, entende a pressão, a pressa e o medo de perder a vaga. Metade <span style="color:var(--cream); font-weight:600;">estrategista frio</span> — lê o edital como quem lê um mapa e mira exatamente no ponto fraco da banca.</p>
+          <div style="display:flex; flex-wrap:wrap; gap:8px; margin-top:24px;">
+            <span style="border:1px solid var(--line); border-radius:100px; padding:8px 16px; font-size:13px; font-family:'Space Mono',monospace; color:var(--cream);">Experiência real</span>
+            <span style="border:1px solid var(--line); border-radius:100px; padding:8px 16px; font-size:13px; font-family:'Space Mono',monospace; color:var(--cream);">Cálculo</span>
+            <span style="border:1px solid var(--line); border-radius:100px; padding:8px 16px; font-size:13px; font-family:'Space Mono',monospace; color:var(--cream);">Empatia</span>
+            <span style="border:1px solid var(--line); border-radius:100px; padding:8px 16px; font-size:13px; font-family:'Space Mono',monospace; color:var(--cream);">Lisura</span>
+          </div>
+        </div>
+        <div data-reveal style="opacity:0; transform:translateY(24px); transition:opacity .9s cubic-bezier(.16,1,.3,1) .12s, transform .9s cubic-bezier(.16,1,.3,1) .12s;">
+          <div style="position:relative; aspect-ratio:4/5; border-radius:20px; overflow:hidden; background:repeating-linear-gradient(45deg,#2A211A,#2A211A 11px,#221A14 11px,#221A14 22px); border:1px solid var(--line); display:flex; align-items:flex-end;">
+            <div style="position:absolute; inset:0; background:linear-gradient(to top, rgba(21,15,11,0.9), transparent 55%);"></div>
+            <div style="position:relative; padding:26px;">
+              <div style="font-family:'Space Mono',monospace; font-size:12px; letter-spacing:0.12em; text-transform:uppercase; color:var(--orange); margin-bottom:8px;">[ foto do fundador ]</div>
+              <div style="font-size:14px; line-height:1.5; color:var(--muted); max-width:34ch;">Auditor do Estado · retrato P&B com luz quente lateral · olhar direto na câmera · postura de autoridade acessível.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TOM DE VOZ -->
+  <section style="max-width:1280px; margin:0 auto; padding:clamp(90px,13vh,160px) 24px;">
+    <div data-reveal style="opacity:0; transform:translateY(24px); transition:opacity .9s cubic-bezier(.16,1,.3,1), transform .9s cubic-bezier(.16,1,.3,1); display:flex; align-items:center; gap:12px; margin-bottom:30px;">
+      <span style="width:32px; height:1px; background:var(--orange);"></span>
+      <span style="font-family:'Space Mono',monospace; font-size:13px; letter-spacing:0.22em; text-transform:uppercase; color:var(--orange);">Tom de Voz</span>
+    </div>
+    <h2 data-reveal style="opacity:0; transform:translateY(24px); transition:opacity .9s cubic-bezier(.16,1,.3,1), transform .9s cubic-bezier(.16,1,.3,1); font-family:'Archivo',sans-serif; font-weight:900; font-size:clamp(36px,5.2vw,80px); line-height:0.98; letter-spacing:-0.03em; margin:0 0 56px; text-transform:uppercase;">De igual<br>pra igual.</h2>
+
+    <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:20px;">
+      <div data-reveal style="opacity:0; transform:translateY(24px); transition:opacity .9s cubic-bezier(.16,1,.3,1), transform .9s cubic-bezier(.16,1,.3,1); background:var(--panel); border:1px solid var(--line); border-radius:20px; overflow:hidden;">
+        <div style="padding:24px 28px; border-bottom:1px solid var(--line); opacity:0.55;">
+          <div style="font-family:'Space Mono',monospace; font-size:12px; color:var(--muted); margin-bottom:10px;">✕ Advogado chato</div>
+          <p style="margin:0; font-size:16px; line-height:1.5; text-decoration:line-through; text-decoration-color:var(--magenta); color:var(--muted);">"Impetrar-se-á mandado de segurança visando a tutela do direito líquido e certo do impetrante."</p>
+        </div>
+        <div style="padding:24px 28px;">
+          <div style="font-family:'Space Mono',monospace; font-size:12px; color:var(--orange); margin-bottom:10px;">✓ Ribeiro Rinaldi</div>
+          <p style="margin:0; font-size:17px; line-height:1.5; font-weight:600;">"Sua nota tá errada? A gente entra com a ação certa pra corrigir — e rápido."</p>
+        </div>
+      </div>
+      <div data-reveal style="opacity:0; transform:translateY(24px); transition:opacity .9s cubic-bezier(.16,1,.3,1) .08s, transform .9s cubic-bezier(.16,1,.3,1) .08s; background:var(--panel); border:1px solid var(--line); border-radius:20px; overflow:hidden;">
+        <div style="padding:24px 28px; border-bottom:1px solid var(--line); opacity:0.55;">
+          <div style="font-family:'Space Mono',monospace; font-size:12px; color:var(--muted); margin-bottom:10px;">✕ Advogado chato</div>
+          <p style="margin:0; font-size:16px; line-height:1.5; text-decoration:line-through; text-decoration-color:var(--magenta); color:var(--muted);">"Aguarde o decurso do prazo recursal e o respectivo trânsito em julgado."</p>
+        </div>
+        <div style="padding:24px 28px;">
+          <div style="font-family:'Space Mono',monospace; font-size:12px; color:var(--orange); margin-bottom:10px;">✓ Ribeiro Rinaldi</div>
+          <p style="margin:0; font-size:17px; line-height:1.5; font-weight:600;">"Enquanto tem prazo, tem chance. E aqui a gente não perde prazo."</p>
+        </div>
+      </div>
+      <div data-reveal style="opacity:0; transform:translateY(24px); transition:opacity .9s cubic-bezier(.16,1,.3,1) .16s, transform .9s cubic-bezier(.16,1,.3,1) .16s; background:var(--panel); border:1px solid var(--line); border-radius:20px; overflow:hidden;">
+        <div style="padding:24px 28px; border-bottom:1px solid var(--line); opacity:0.55;">
+          <div style="font-family:'Space Mono',monospace; font-size:12px; color:var(--muted); margin-bottom:10px;">✕ Advogado chato</div>
+          <p style="margin:0; font-size:16px; line-height:1.5; text-decoration:line-through; text-decoration-color:var(--magenta); color:var(--muted);">"A verba retroativa será objeto de liquidação de sentença oportunamente."</p>
+        </div>
+        <div style="padding:24px 28px;">
+          <div style="font-family:'Space Mono',monospace; font-size:12px; color:var(--orange); margin-bottom:10px;">✓ Ribeiro Rinaldi</div>
+          <p style="margin:0; font-size:17px; line-height:1.5; font-weight:600;">"Tomou posse atrasado? Esse dinheiro é seu. A gente vai atrás de cada centavo."</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CROMÁTICO -->
+  <section style="max-width:1280px; margin:0 auto; padding:clamp(70px,10vh,130px) 24px;">
+    <div data-reveal style="opacity:0; transform:translateY(24px); transition:opacity .9s cubic-bezier(.16,1,.3,1), transform .9s cubic-bezier(.16,1,.3,1); display:flex; align-items:center; gap:12px; margin-bottom:30px;">
+      <span style="width:32px; height:1px; background:var(--orange);"></span>
+      <span style="font-family:'Space Mono',monospace; font-size:13px; letter-spacing:0.22em; text-transform:uppercase; color:var(--orange);">Território Cromático</span>
+    </div>
+    <h2 data-reveal style="opacity:0; transform:translateY(24px); transition:opacity .9s cubic-bezier(.16,1,.3,1), transform .9s cubic-bezier(.16,1,.3,1); font-family:'Archivo',sans-serif; font-weight:900; font-size:clamp(32px,4.6vw,68px); line-height:1; letter-spacing:-0.03em; margin:0 0 14px; text-transform:uppercase; max-width:18ch;">Calor que gera urgência.</h2>
+    <p data-reveal style="opacity:0; transform:translateY(24px); transition:opacity .9s cubic-bezier(.16,1,.3,1) .08s, transform .9s cubic-bezier(.16,1,.3,1) .08s; max-width:560px; margin:0 0 52px; font-size:17px; line-height:1.6; color:var(--muted);">Fugimos do azul-marinho jurídico. O laranja e o magenta trazem energia, calor humano e a pressa da nomeação — sobre um preto quente que dá peso e sofisticação premium.</p>
+
+    <div data-reveal style="opacity:0; transform:translateY(24px); transition:opacity .9s cubic-bezier(.16,1,.3,1), transform .9s cubic-bezier(.16,1,.3,1); display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:16px;">
+      <div style="border-radius:18px; overflow:hidden; border:1px solid var(--line);">
+        <div style="height:150px; background:#FF5E1A;"></div>
+        <div style="padding:18px 20px; background:var(--panel);">
+          <div style="font-family:'Archivo',sans-serif; font-weight:800; font-size:17px;">Laranja Ignição</div>
+          <div style="font-family:'Space Mono',monospace; font-size:12px; color:var(--muted); margin-top:6px;">#FF5E1A · principal</div>
+        </div>
+      </div>
+      <div style="border-radius:18px; overflow:hidden; border:1px solid var(--line);">
+        <div style="height:150px; background:#F0247C;"></div>
+        <div style="padding:18px 20px; background:var(--panel);">
+          <div style="font-family:'Archivo',sans-serif; font-weight:800; font-size:17px;">Magenta Ambição</div>
+          <div style="font-family:'Space Mono',monospace; font-size:12px; color:var(--muted); margin-top:6px;">#F0247C · destaque</div>
+        </div>
+      </div>
+      <div style="border-radius:18px; overflow:hidden; border:1px solid var(--line);">
+        <div style="height:150px; background:#FFB347;"></div>
+        <div style="padding:18px 20px; background:var(--panel);">
+          <div style="font-family:'Archivo',sans-serif; font-weight:800; font-size:17px;">Âmbar Conquista</div>
+          <div style="font-family:'Space Mono',monospace; font-size:12px; color:var(--muted); margin-top:6px;">#FFB347 · apoio</div>
+        </div>
+      </div>
+      <div style="border-radius:18px; overflow:hidden; border:1px solid var(--line);">
+        <div style="height:150px; background:#F7F1E8;"></div>
+        <div style="padding:18px 20px; background:var(--panel);">
+          <div style="font-family:'Archivo',sans-serif; font-weight:800; font-size:17px;">Creme Base</div>
+          <div style="font-family:'Space Mono',monospace; font-size:12px; color:var(--muted); margin-top:6px;">#F7F1E8 · fundo claro</div>
+        </div>
+      </div>
+      <div style="border-radius:18px; overflow:hidden; border:1px solid var(--line);">
+        <div style="height:150px; background:#150F0B;"></div>
+        <div style="padding:18px 20px; background:var(--panel);">
+          <div style="font-family:'Archivo',sans-serif; font-weight:800; font-size:17px;">Preto Quente</div>
+          <div style="font-family:'Space Mono',monospace; font-size:12px; color:var(--muted); margin-top:6px;">#150F0B · fundo escuro</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TIPOGRAFIA -->
+  <section style="max-width:1280px; margin:0 auto; padding:clamp(70px,10vh,130px) 24px;">
+    <div data-reveal style="opacity:0; transform:translateY(24px); transition:opacity .9s cubic-bezier(.16,1,.3,1), transform .9s cubic-bezier(.16,1,.3,1); display:flex; align-items:center; gap:12px; margin-bottom:44px;">
+      <span style="width:32px; height:1px; background:var(--orange);"></span>
+      <span style="font-family:'Space Mono',monospace; font-size:13px; letter-spacing:0.22em; text-transform:uppercase; color:var(--orange);">Tipografia</span>
+    </div>
+    <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(320px,1fr)); gap:20px;">
+      <div data-reveal style="opacity:0; transform:translateY(24px); transition:opacity .9s cubic-bezier(.16,1,.3,1), transform .9s cubic-bezier(.16,1,.3,1); background:var(--panel); border:1px solid var(--line); border-radius:20px; padding:40px;">
+        <div style="display:flex; justify-content:space-between; align-items:baseline; margin-bottom:24px;">
+          <div style="font-family:'Space Mono',monospace; font-size:12px; letter-spacing:0.16em; text-transform:uppercase; color:var(--orange);">Display · Impacto</div>
+          <div style="font-family:'Space Mono',monospace; font-size:12px; color:var(--muted);">Archivo</div>
+        </div>
+        <div style="font-family:'Archivo',sans-serif; font-weight:900; font-size:clamp(60px,9vw,120px); line-height:0.9; letter-spacing:-0.03em; margin-bottom:20px;">Aa</div>
+        <div style="font-family:'Archivo',sans-serif; font-weight:900; font-size:26px; text-transform:uppercase; letter-spacing:-0.01em; margin-bottom:6px;">Nomeação garantida</div>
+        <div style="font-family:'Space Mono',monospace; font-size:12px; color:var(--muted);">700 · 800 · 900 — títulos, manchetes, primeira dobra</div>
+      </div>
+      <div data-reveal style="opacity:0; transform:translateY(24px); transition:opacity .9s cubic-bezier(.16,1,.3,1) .1s, transform .9s cubic-bezier(.16,1,.3,1) .1s; background:var(--panel); border:1px solid var(--line); border-radius:20px; padding:40px;">
+        <div style="display:flex; justify-content:space-between; align-items:baseline; margin-bottom:24px;">
+          <div style="font-family:'Space Mono',monospace; font-size:12px; letter-spacing:0.16em; text-transform:uppercase; color:var(--orange);">Texto · Próximo</div>
+          <div style="font-family:'Space Mono',monospace; font-size:12px; color:var(--muted);">Manrope</div>
+        </div>
+        <div style="font-family:'Manrope',sans-serif; font-weight:600; font-size:clamp(60px,9vw,120px); line-height:0.9; letter-spacing:-0.02em; margin-bottom:20px;">Aa</div>
+        <div style="font-family:'Manrope',sans-serif; font-weight:400; font-size:18px; line-height:1.55; color:var(--muted); margin-bottom:6px;">Conversa clara, direta e humana. A gente explica cada passo do seu processo sem juridiquês — do jeito que você entende.</div>
+        <div style="font-family:'Space Mono',monospace; font-size:12px; color:var(--muted); margin-top:12px;">300 · 400 · 600 · 800 — corpo, legendas, interface</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MUNDO VISUAL -->
+  <section style="background:var(--panel); border-top:1px solid var(--line); border-bottom:1px solid var(--line);">
+    <div style="max-width:1280px; margin:0 auto; padding:clamp(90px,13vh,160px) 24px;">
+      <div data-reveal style="opacity:0; transform:translateY(24px); transition:opacity .9s cubic-bezier(.16,1,.3,1), transform .9s cubic-bezier(.16,1,.3,1); display:flex; align-items:center; gap:12px; margin-bottom:30px;">
+        <span style="width:32px; height:1px; background:var(--orange);"></span>
+        <span style="font-family:'Space Mono',monospace; font-size:13px; letter-spacing:0.22em; text-transform:uppercase; color:var(--orange);">Mundo Visual</span>
+      </div>
+      <h2 data-reveal style="opacity:0; transform:translateY(24px); transition:opacity .9s cubic-bezier(.16,1,.3,1), transform .9s cubic-bezier(.16,1,.3,1); font-family:'Archivo',sans-serif; font-weight:900; font-size:clamp(32px,4.6vw,68px); line-height:1; letter-spacing:-0.03em; margin:0 0 14px; text-transform:uppercase; max-width:20ch;">O rosto da autoridade. As imagens da vitória.</h2>
+      <p data-reveal style="opacity:0; transform:translateY(24px); transition:opacity .9s cubic-bezier(.16,1,.3,1) .08s, transform .9s cubic-bezier(.16,1,.3,1) .08s; max-width:600px; margin:0 0 52px; font-size:17px; line-height:1.6; color:var(--muted);">A prova social do fundador é o ativo nº1: explorada em close, com luz quente e realces laranja. Ao lado, metáforas concretas da nomeação — sem troféus, sem clichês.</p>
+
+      <div style="display:grid; grid-template-columns:repeat(6,1fr); gap:16px;">
+        <div data-reveal style="opacity:0; transform:translateY(24px); transition:opacity .9s cubic-bezier(.16,1,.3,1), transform .9s cubic-bezier(.16,1,.3,1); grid-column:span 3; grid-row:span 2; min-height:340px; border-radius:20px; border:1px solid var(--line); background:repeating-linear-gradient(45deg,#2A211A,#2A211A 11px,#221A14 11px,#221A14 22px); position:relative; display:flex; align-items:flex-end; padding:26px; overflow:hidden;">
+          <div style="position:absolute; inset:0; background:linear-gradient(to top, rgba(21,15,11,0.85), transparent 60%);"></div>
+          <div style="position:relative;"><div style="font-family:'Space Mono',monospace; font-size:12px; color:var(--orange); letter-spacing:0.1em; text-transform:uppercase; margin-bottom:6px;">[ o fundador ]</div><div style="font-size:15px; color:var(--muted); max-width:34ch; line-height:1.5;">Retrato de autoridade · P&B + luz quente · olhar firme · a peça-chave de todo o marketing.</div></div>
+        </div>
+        <div data-reveal style="opacity:0; transform:translateY(24px); transition:opacity .9s cubic-bezier(.16,1,.3,1) .06s, transform .9s cubic-bezier(.16,1,.3,1) .06s; grid-column:span 3; min-height:162px; border-radius:20px; border:1px solid var(--line); background:repeating-linear-gradient(45deg,#2A211A,#2A211A 11px,#221A14 11px,#221A14 22px); position:relative; display:flex; align-items:flex-end; padding:22px;">
+          <div><div style="font-family:'Space Mono',monospace; font-size:12px; color:var(--orange); letter-spacing:0.1em; text-transform:uppercase; margin-bottom:6px;">[ a lista ]</div><div style="font-size:14px; color:var(--muted); line-height:1.5;">Nome do aprovado em destaque · realce laranja · zoom emocional.</div></div>
+        </div>
+        <div data-reveal style="opacity:0; transform:translateY(24px); transition:opacity .9s cubic-bezier(.16,1,.3,1) .1s, transform .9s cubic-bezier(.16,1,.3,1) .1s; grid-column:span 3; min-height:162px; border-radius:20px; border:1px solid var(--line); background:repeating-linear-gradient(45deg,#2A211A,#2A211A 11px,#221A14 11px,#221A14 22px); position:relative; display:flex; align-items:flex-end; padding:22px;">
+          <div><div style="font-family:'Space Mono',monospace; font-size:12px; color:var(--orange); letter-spacing:0.1em; text-transform:uppercase; margin-bottom:6px;">[ a posse ]</div><div style="font-size:14px; color:var(--muted); line-height:1.5;">Mão assinando o termo · caneta · o instante decisivo.</div></div>
+        </div>
+        <div data-reveal style="opacity:0; transform:translateY(24px); transition:opacity .9s cubic-bezier(.16,1,.3,1), transform .9s cubic-bezier(.16,1,.3,1); grid-column:span 2; min-height:180px; border-radius:20px; border:1px solid var(--line); background:repeating-linear-gradient(45deg,#2A211A,#2A211A 11px,#221A14 11px,#221A14 22px); position:relative; display:flex; align-items:flex-end; padding:22px;">
+          <div><div style="font-family:'Space Mono',monospace; font-size:12px; color:var(--orange); letter-spacing:0.1em; text-transform:uppercase; margin-bottom:6px;">[ adeus CLT ]</div><div style="font-size:14px; color:var(--muted); line-height:1.5;">O gesto da virada · liberdade.</div></div>
+        </div>
+        <div data-reveal style="opacity:0; transform:translateY(24px); transition:opacity .9s cubic-bezier(.16,1,.3,1) .06s, transform .9s cubic-bezier(.16,1,.3,1) .06s; grid-column:span 2; min-height:180px; border-radius:20px; border:1px solid var(--line); background:repeating-linear-gradient(45deg,#2A211A,#2A211A 11px,#221A14 11px,#221A14 22px); position:relative; display:flex; align-items:flex-end; padding:22px;">
+          <div><div style="font-family:'Space Mono',monospace; font-size:12px; color:var(--orange); letter-spacing:0.1em; text-transform:uppercase; margin-bottom:6px;">[ o portal ]</div><div style="font-size:14px; color:var(--muted); line-height:1.5;">Entrada para a nova vida · luz · perspectiva.</div></div>
+        </div>
+        <div data-reveal style="opacity:0; transform:translateY(24px); transition:opacity .9s cubic-bezier(.16,1,.3,1) .1s, transform .9s cubic-bezier(.16,1,.3,1) .1s; grid-column:span 2; min-height:180px; border-radius:20px; border:1px solid var(--line); background:repeating-linear-gradient(45deg,#2A211A,#2A211A 11px,#221A14 11px,#221A14 22px); position:relative; display:flex; align-items:flex-end; padding:22px;">
+          <div><div style="font-family:'Space Mono',monospace; font-size:12px; color:var(--orange); letter-spacing:0.1em; text-transform:uppercase; margin-bottom:6px;">[ o topo ]</div><div style="font-size:14px; color:var(--muted); line-height:1.5;">Cume da montanha · conquista · horizonte.</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMPORTAMENTO DIGITAL -->
+  <section style="max-width:1280px; margin:0 auto; padding:clamp(90px,13vh,160px) 24px;">
+    <div data-reveal style="opacity:0; transform:translateY(24px); transition:opacity .9s cubic-bezier(.16,1,.3,1), transform .9s cubic-bezier(.16,1,.3,1); display:flex; align-items:center; gap:12px; margin-bottom:30px;">
+      <span style="width:32px; height:1px; background:var(--orange);"></span>
+      <span style="font-family:'Space Mono',monospace; font-size:13px; letter-spacing:0.22em; text-transform:uppercase; color:var(--orange);">Comportamento Digital</span>
+    </div>
+    <h2 data-reveal style="opacity:0; transform:translateY(24px); transition:opacity .9s cubic-bezier(.16,1,.3,1), transform .9s cubic-bezier(.16,1,.3,1); font-family:'Archivo',sans-serif; font-weight:900; font-size:clamp(36px,5.2vw,80px); line-height:0.98; letter-spacing:-0.03em; margin:0 0 20px; text-transform:uppercase;">Uma marca<br>que se move.</h2>
+    <p data-reveal style="opacity:0; transform:translateY(24px); transition:opacity .9s cubic-bezier(.16,1,.3,1) .08s, transform .9s cubic-bezier(.16,1,.3,1) .08s; max-width:600px; margin:0 0 56px; font-size:17px; line-height:1.6; color:var(--muted);">Referência Apple: movimento fluido, poucas palavras, cada elemento com propósito. Um sistema modular que vira posts, anúncios e uma primeira dobra que impacta em 3 segundos.</p>
+
+    <div style="display:grid; grid-template-columns:1.3fr 1fr; gap:20px;">
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px; align-content:start;">
+        <div data-reveal style="opacity:0; transform:translateY(24px); transition:opacity .9s cubic-bezier(.16,1,.3,1), transform .9s cubic-bezier(.16,1,.3,1); background:var(--panel); border:1px solid var(--line); border-radius:18px; padding:28px;">
+          <div style="font-family:'Archivo',sans-serif; font-weight:800; font-size:19px; margin-bottom:10px;">Primeira dobra que explode</div>
+          <p style="margin:0; font-size:15px; line-height:1.5; color:var(--muted);">Manchete gigante + rosto do fundador + uma promessa. Zero rolagem pra entender o valor.</p>
+        </div>
+        <div data-reveal style="opacity:0; transform:translateY(24px); transition:opacity .9s cubic-bezier(.16,1,.3,1) .06s, transform .9s cubic-bezier(.16,1,.3,1) .06s; background:var(--panel); border:1px solid var(--line); border-radius:18px; padding:28px;">
+          <div style="font-family:'Archivo',sans-serif; font-weight:800; font-size:19px; margin-bottom:10px;">Motion estilo Apple</div>
+          <p style="margin:0; font-size:15px; line-height:1.5; color:var(--muted);">Revelações no scroll, transições suaves, texto que entra em cena. Sofisticação sem exagero.</p>
+        </div>
+        <div data-reveal style="opacity:0; transform:translateY(24px); transition:opacity .9s cubic-bezier(.16,1,.3,1) .12s, transform .9s cubic-bezier(.16,1,.3,1) .12s; background:var(--panel); border:1px solid var(--line); border-radius:18px; padding:28px;">
+          <div style="font-family:'Archivo',sans-serif; font-weight:800; font-size:19px; margin-bottom:10px;">Feed modular</div>
+          <p style="margin:0; font-size:15px; line-height:1.5; color:var(--muted);">Grades e blocos que se recombinam — o mesmo sistema gera dezenas de posts consistentes.</p>
+        </div>
+        <div data-reveal style="opacity:0; transform:translateY(24px); transition:opacity .9s cubic-bezier(.16,1,.3,1) .18s, transform .9s cubic-bezier(.16,1,.3,1) .18s; background:linear-gradient(150deg,var(--orange),var(--magenta)); border-radius:18px; padding:28px; color:#160d09;">
+          <div style="font-family:'Archivo',sans-serif; font-weight:800; font-size:19px; margin-bottom:10px;">Anúncios de conversão</div>
+          <p style="margin:0; font-size:15px; line-height:1.5; font-weight:500;">Gancho emocional + prova social + CTA claro. Feitos pra parar o dedo e gerar lead.</p>
+        </div>
+      </div>
+      <div data-reveal style="opacity:0; transform:translateY(24px); transition:opacity .9s cubic-bezier(.16,1,.3,1) .1s, transform .9s cubic-bezier(.16,1,.3,1) .1s; display:flex; gap:16px; justify-content:center;">
+        <div style="flex:0 0 46%; aspect-ratio:1/1; align-self:center; border-radius:16px; border:1px solid var(--line); background:repeating-linear-gradient(45deg,#2A211A,#2A211A 11px,#221A14 11px,#221A14 22px); position:relative; display:flex; align-items:flex-end; padding:16px;">
+          <div style="font-family:'Space Mono',monospace; font-size:11px; color:var(--orange); text-transform:uppercase; letter-spacing:0.08em;">post feed<br>1:1</div>
+        </div>
+        <div style="flex:0 0 34%; aspect-ratio:9/16; border-radius:16px; border:1px solid var(--line); background:repeating-linear-gradient(45deg,#2A211A,#2A211A 11px,#221A14 11px,#221A14 22px); position:relative; display:flex; align-items:flex-end; padding:16px;">
+          <div style="font-family:'Space Mono',monospace; font-size:11px; color:var(--orange); text-transform:uppercase; letter-spacing:0.08em;">story<br>reels<br>9:16</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FECHAMENTO -->
+  <section style="position:relative; overflow:hidden; border-top:1px solid var(--line);">
+    <div style="position:absolute; bottom:-30%; left:50%; transform:translateX(-50%); width:min(90vw,900px); height:min(90vw,900px); border-radius:50%; background:radial-gradient(circle, var(--orange), transparent 60%); filter:blur(60px); opacity:0.22; z-index:0;"></div>
+    <div style="position:relative; z-index:1; max-width:1000px; margin:0 auto; padding:clamp(90px,15vh,180px) 24px; text-align:center;">
+      <div data-reveal style="opacity:0; transform:translateY(24px); transition:opacity .9s cubic-bezier(.16,1,.3,1), transform .9s cubic-bezier(.16,1,.3,1); font-family:'Space Mono',monospace; font-size:13px; letter-spacing:0.24em; text-transform:uppercase; color:var(--orange); margin-bottom:28px;">Aprovou a direção?</div>
+      <h2 data-reveal style="opacity:0; transform:translateY(24px); transition:opacity 1s cubic-bezier(.16,1,.3,1), transform 1s cubic-bezier(.16,1,.3,1); font-family:'Archivo',sans-serif; font-weight:900; font-size:clamp(40px,6.5vw,96px); line-height:0.96; letter-spacing:-0.03em; margin:0 0 32px; text-transform:uppercase;">Agora a gente<br>constrói a marca.</h2>
+      <p data-reveal style="opacity:0; transform:translateY(24px); transition:opacity .9s cubic-bezier(.16,1,.3,1) .1s, transform .9s cubic-bezier(.16,1,.3,1) .1s; max-width:560px; margin:0 auto 44px; font-size:17px; line-height:1.6; color:var(--muted);">Com a direção validada, o próximo passo é desenhar o logotipo e o símbolo, fechar o sistema completo e produzir os primeiros templates de post e a primeira dobra do site.</p>
+      <div data-reveal style="opacity:0; transform:translateY(24px); transition:opacity .9s cubic-bezier(.16,1,.3,1) .18s, transform .9s cubic-bezier(.16,1,.3,1) .18s; display:flex; flex-wrap:wrap; gap:12px; justify-content:center; font-family:'Space Mono',monospace; font-size:13px; text-transform:uppercase; letter-spacing:0.08em;">
+        <span style="border:1px solid var(--line); border-radius:100px; padding:12px 20px; color:var(--cream);">01 · Logotipo & símbolo</span>
+        <span style="border:1px solid var(--line); border-radius:100px; padding:12px 20px; color:var(--cream);">02 · Sistema completo</span>
+        <span style="border:1px solid var(--line); border-radius:100px; padding:12px 20px; color:var(--cream);">03 · Templates & site</span>
+      </div>
+    </div>
+    <div style="position:relative; z-index:1; border-top:1px solid var(--line); padding:26px 24px; text-align:center; font-family:'Space Mono',monospace; font-size:12px; letter-spacing:0.14em; text-transform:uppercase; color:var(--muted);">Ribeiro Rinaldi · Advocacia para concurseiros · Território Criativo</div>
+  </section>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;grain&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Estilo&quot;},&quot;reduceMotion&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Estilo&quot;}}">
+class Component extends DCLogic {
+  componentDidMount() {
+    try {
+      const els = document.querySelectorAll('[data-reveal]');
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) {
+            e.target.style.opacity = '1';
+            e.target.style.transform = 'none';
+            io.unobserve(e.target);
+          }
+        });
+      }, { threshold: 0.12, rootMargin: '0px 0px -6% 0px' });
+      els.forEach((el) => io.observe(el));
+    } catch (err) {}
+  }
+  renderVals() {
+    return {
+      grain: this.props.grain ?? true,
+      playState: (this.props.reduceMotion ? 'paused' : 'running')
+    };
+  }
+}
+</script>
+</body>
+</html>
