@@ -1,0 +1,3976 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ribeiro Rinaldi Advocacia — Dr. Paulo Rinaldi | Advocacia Estratégica</title>
+  <meta name="description" content="Recurso de prova, verba retroativa, mandado de segurança. Feito por quem já esteve do outro lado da prova — e sem juridiquês.">
+  
+  <!-- Google Fonts: Archivo, Manrope, Space Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Manrope:wght@300;400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- Lenis & GSAP CDNs -->
+  <script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+  <style>
+    /* ==========================================================================
+       1. DESIGN TOKENS & RESET (Design System Ribeiro Rinaldi)
+       ========================================================================== */
+    :root {
+      /* Cor de fundo principal calibrada dinamicamente com o fundo da sequência (#0A0A0C) */
+      --rr-bg: #0A0A0C;
+      --rr-bg-light: #F7F1E8;     /* creme — fundo alternativo/claro */
+      --rr-panel: #1E1712;        /* superfície sobre o fundo escuro */
+      --rr-panel-2: #28201A;      /* superfície alternativa */
+      --rr-line: #3A2E24;         /* bordas/divisórias */
+      --rr-text: #F7F1E8;         /* texto sobre fundo escuro */
+      --rr-text-dark: #17110D;    /* texto sobre fundo claro */
+      --rr-muted: #A79C90;        /* texto secundário */
+      --rr-orange: #FF5E1A;       /* cor primária / CTA */
+      --rr-coral: #FF8A5B;        /* tint do laranja, links/hover */
+      --rr-magenta: #F0247C;      /* cor secundária / gradiente */
+      --rr-amber: #FFB347;        /* apoio, realces pontuais */
+      --rr-gradient: linear-gradient(100deg, var(--rr-orange), var(--rr-magenta));
+
+      /* Tipografia */
+      --rr-font-display: 'Archivo', system-ui, sans-serif;
+      --rr-font-body: 'Manrope', system-ui, sans-serif;
+      --rr-font-mono: 'Space Mono', ui-monospace, monospace;
+
+      /* Raio e espaçamento */
+      --rr-radius-sm: 10px;
+      --rr-radius-md: 16px;
+      --rr-radius-lg: 20px;
+      --rr-radius-xl: 28px;
+      --rr-radius-pill: 100px;
+
+      /* Sombras */
+      --rr-shadow-card: 0 20px 50px rgba(0,0,0,0.35);
+      --rr-shadow-lg: 0 30px 80px rgba(0,0,0,0.55);
+
+      /* Motion */
+      --rr-ease: cubic-bezier(0.16, 1, 0.3, 1);
+      --rr-dur-fast: 0.3s;
+      --rr-dur-base: 0.6s;
+      --rr-dur-slow: 0.9s;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html, body {
+      width: 100%;
+      max-width: 100%;
+      overflow-x: hidden;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: initial;
+      background-color: var(--rr-bg);
+      color: var(--rr-text);
+      font-family: var(--rr-font-body);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    body {
+      background-color: var(--rr-bg);
+      color: var(--rr-text);
+      min-height: 100vh;
+      position: relative;
+    }
+
+    @media (min-width: 1025px) {
+      /* 1. Aplica escala global de 75% no desktop (como desejado pelo usuário em zoom 75%) */
+      html {
+        zoom: 0.75;
+      }
+      /* 2. Compensa a redução do zoom nos elementos fixados (ScrollTrigger pin e Film Grain) 
+            para que cubram 100% da largura e altura física da tela e evitem barras pretas/vazias */
+      .film-grain,
+      .pin-spacer,
+      #heroPinArea,
+      .hero-wrapper {
+        width: calc(100vw / 0.75) !important;
+        max-width: none !important;
+      }
+      .film-grain,
+      #heroPinArea,
+      .hero-wrapper {
+        height: calc(100vh / 0.75) !important;
+        min-height: calc(100vh / 0.75) !important;
+      }
+      /* 3. Ajuste preciso e equilibrado da coluna esquerda do Hero para igualar exatamente a imagem de referência */
+      .hero-content-box {
+        max-width: 560px !important;
+        gap: 26px !important;
+      }
+      .eyebrow-pill {
+        padding: 8px 16px !important;
+        font-size: 12px !important;
+      }
+      .hero-headline {
+        font-size: 64px !important;
+        line-height: 0.94 !important;
+      }
+      .hero-subtitle {
+        font-size: 18px !important;
+        line-height: 1.55 !important;
+        max-width: 540px !important;
+      }
+      .btn-primary {
+        padding: 15px 30px !important;
+        font-size: 15px !important;
+      }
+      .hero-actions {
+        gap: 12px !important;
+        margin-top: 6px !important;
+        margin-bottom: 0px !important;
+      }
+      .hero-lawyer-badge {
+        padding: 14px 20px !important;
+        margin-top: 4px !important;
+      }
+      .lawyer-name {
+        font-size: 15px !important;
+      }
+      .lawyer-oab {
+        font-size: 12px !important;
+      }
+      .lawyer-role {
+        font-size: 13px !important;
+      }
+    }
+
+    /* Foco de Acessibilidade */
+    :focus-visible {
+      outline: 2px solid var(--rr-orange);
+      outline-offset: 4px;
+    }
+
+    /* ==========================================================================
+       2. FILM GRAIN & ATMOSFERA
+       ========================================================================== */
+    .film-grain {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      pointer-events: none;
+      z-index: 15;
+      opacity: 0.045;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    }
+
+    /* Grafismo Símbolo Decorativo de Marca */
+    .brand-watermark {
+      position: absolute;
+      right: -6%;
+      bottom: -15%;
+      width: 560px;
+      height: 560px;
+      opacity: 0.08;
+      pointer-events: none;
+      z-index: 3;
+      transform: rotate(-12deg);
+    }
+
+    /* ==========================================================================
+       3. TOP NAVEGAÇÃO
+       ========================================================================== */
+    .navbar {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 20;
+      width: 100%;
+      max-width: 1680px;
+      margin: 0 auto;
+      padding: clamp(20px, 3.5vw, 36px) clamp(32px, 4vw, 64px);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      will-change: opacity, transform;
+    }
+
+    .brand-logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: var(--rr-text);
+      user-select: none;
+    }
+
+    .brand-logo svg {
+      width: 28px;
+      height: 28px;
+      flex-shrink: 0;
+    }
+
+    .brand-wordmark {
+      font-family: var(--rr-font-display);
+      font-weight: 900;
+      font-size: 17px;
+      letter-spacing: -0.01em;
+      text-transform: uppercase;
+      color: var(--rr-text);
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      list-style: none;
+    }
+
+    .nav-link {
+      color: var(--rr-muted);
+      text-decoration: none;
+      font-family: var(--rr-font-body);
+      font-weight: 500;
+      font-size: 14px;
+      transition: color var(--rr-dur-fast) var(--rr-ease);
+    }
+
+    .nav-link:hover {
+      color: var(--rr-text);
+    }
+
+    .nav-cta-sm {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(30, 23, 18, 0.65);
+      backdrop-filter: blur(10px);
+      border: 1px solid var(--rr-line);
+      color: var(--rr-text);
+      font-family: var(--rr-font-body);
+      font-weight: 600;
+      font-size: 13px;
+      padding: 10px 20px;
+      border-radius: var(--rr-radius-pill);
+      text-decoration: none;
+      transition: all var(--rr-dur-fast) var(--rr-ease);
+    }
+
+    .nav-cta-sm:hover {
+      border-color: var(--rr-orange);
+      color: var(--rr-orange);
+      transform: translateY(-1px);
+    }
+
+    /* ==========================================================================
+       4. HERO SECTION COM SEQUÊNCIA DE IMAGENS NO CANVAS (60/120 FPS)
+       ========================================================================== */
+    .hero-wrapper {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    /* CAMADA DE BACKGROUND: CANVAS OCUPANDO 100% DA SEÇÃO HERO SEM OVERLAY ESCURO */
+    .hero-bg-video-container {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      pointer-events: none;
+      overflow: hidden;
+    }
+
+    .hero-bg-canvas {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: 75% center;
+      display: block;
+    }
+
+    /* Overlay de contraste temporário sobre o fundo no mobile */
+    .hero-bg-overlay {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(180deg, rgba(10, 10, 12, 0.85) 0%, rgba(10, 10, 12, 0.68) 50%, rgba(10, 10, 12, 0.88) 100%);
+      z-index: 1;
+      pointer-events: none;
+      opacity: 0;
+    }
+
+    /* Efeito de Brilho difuso de Luz Ambiente removido a pedido do usuário para visual mais limpo */
+    .hero-ambient-glow {
+      display: none;
+    }
+
+    /* CONTEÚDO HERO FLUTUANDO SOBRE A SEQUÊNCIA DE FUNDO */
+    .hero-container {
+      position: relative;
+      z-index: 5;
+      width: 100%;
+      max-width: 1680px;
+      margin: 0 auto;
+      padding: clamp(32px, 5vw, 64px) clamp(32px, 4vw, 64px) clamp(80px, 10vw, 130px);
+    }
+
+    .hero-content-box {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 28px;
+      max-width: 720px;
+      width: 100%;
+      will-change: opacity, transform;
+      transform-origin: left top;
+    }
+
+    .eyebrow-pill {
+      display: inline-flex;
+      align-items: center;
+      align-self: flex-start;
+      width: max-content;
+      max-width: 100%;
+      gap: 8px;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      background: rgba(20, 15, 12, 0.65);
+      backdrop-filter: blur(12px);
+      border-radius: var(--rr-radius-pill);
+      padding: 8px 16px;
+      font-family: var(--rr-font-mono);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--rr-orange);
+    }
+
+
+    .eyebrow-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--rr-orange);
+      box-shadow: 0 0 8px var(--rr-orange);
+    }
+
+    .hero-headline {
+      font-family: var(--rr-font-display);
+      font-weight: 900;
+      font-size: clamp(36px, 5.2vw, 72px);
+      line-height: 0.94;
+      letter-spacing: -0.03em;
+      text-transform: uppercase;
+      color: var(--rr-text);
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      text-shadow: 0 4px 24px rgba(0, 0, 0, 0.6);
+    }
+
+    .headline-line {
+      display: flex;
+      flex-wrap: wrap;
+      column-gap: 0.28em;
+      row-gap: 0.08em;
+    }
+
+    .headline-line.orange-text .word,
+    .headline-line.gradient-text .word {
+      color: var(--rr-orange);
+      background: none;
+      -webkit-background-clip: border-box;
+      -webkit-text-fill-color: var(--rr-orange);
+      text-shadow: none;
+    }
+
+    /* Lettering Animation Words */
+    .word {
+      display: inline-block;
+      opacity: 0;
+      transform: translateY(22px);
+      will-change: opacity, transform;
+    }
+
+    .hero-subtitle {
+      font-family: var(--rr-font-body);
+      font-weight: 400;
+      font-size: clamp(16px, 1.35vw, 20px);
+      line-height: 1.6;
+      color: #E2DBD2;
+      max-width: 560px;
+      text-shadow: 0 2px 12px rgba(0, 0, 0, 0.65);
+    }
+
+    .hero-subtitle strong {
+      color: #FFFFFF;
+      font-weight: 700;
+    }
+
+    /* Botões CTA e Redutor de Atrito */
+    .hero-actions {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 14px;
+      margin-top: 6px;
+    }
+
+
+    /* Redutor de Atrito / Microcopy */
+    .hero-microcopy {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--rr-font-mono);
+      font-size: 12px;
+      color: #C8BFB4;
+      line-height: 1.5;
+      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.65);
+      letter-spacing: 0.02em;
+    }
+
+    @media (max-width: 900px) {
+      .hero-microcopy {
+        font-size: 11px;
+      }
+    }
+
+    /* Botão Primário com Anel de Pulso Animado */
+    .btn-pulse-wrapper {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .btn-pulse-ring {
+      position: absolute;
+      inset: 0;
+      border-radius: var(--rr-radius-pill);
+      border: 1.5px solid var(--rr-orange);
+      pointer-events: none;
+      animation: pulseRing 2.2s cubic-bezier(0.16, 1, 0.3, 1) infinite;
+    }
+
+    @keyframes pulseRing {
+      0% {
+        transform: scale(1);
+        opacity: 0.7;
+      }
+      100% {
+        transform: scale(1.48, 1.6);
+        opacity: 0;
+      }
+    }
+
+    .btn-primary {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: linear-gradient(120deg, #FF5E1A, #F0247C);
+      color: #160D09;
+      font-family: var(--rr-font-body);
+      font-weight: 700;
+      font-size: 15px;
+      padding: 16px 28px;
+      border-radius: var(--rr-radius-pill);
+      text-decoration: none;
+      transition: transform var(--rr-dur-fast) var(--rr-ease), filter var(--rr-dur-fast) var(--rr-ease);
+      box-shadow: 0 8px 24px rgba(255, 94, 26, 0.28);
+    }
+
+    .btn-primary:hover {
+      filter: brightness(1.08);
+      transform: translateY(-2px);
+    }
+
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      background: rgba(20, 15, 12, 0.45);
+      backdrop-filter: blur(10px);
+      color: var(--rr-text);
+      font-family: var(--rr-font-body);
+      font-weight: 600;
+      font-size: 15px;
+      padding: 16px 24px;
+      border-radius: var(--rr-radius-pill);
+      text-decoration: none;
+      transition: all var(--rr-dur-fast) var(--rr-ease);
+    }
+
+    .btn-secondary:hover {
+      border-color: var(--rr-orange);
+      color: var(--rr-orange);
+      background: rgba(255, 94, 26, 0.08);
+    }
+
+    /* Bloco Detalhe Advogado / OAB */
+    .hero-actions {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 14px;
+      margin-top: 6px;
+      margin-bottom: 0px;
+    }
+
+    .hero-lawyer-badge {
+      display: flex;
+      align-items: flex-start;
+      align-self: flex-start;
+      width: max-content;
+      max-width: 100%;
+      gap: 16px;
+      margin-top: 6px;
+      padding: 14px 20px;
+      background: rgba(25, 19, 15, 0.82);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      border-left: 3px solid var(--rr-orange);
+      border-radius: var(--rr-radius-sm);
+      box-shadow: var(--rr-shadow-card);
+    }
+
+    .lawyer-info {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .lawyer-top-row {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .lawyer-name {
+      font-family: var(--rr-font-body);
+      font-weight: 700;
+      font-size: 14px;
+      color: var(--rr-text);
+      letter-spacing: 0.01em;
+    }
+
+    .lawyer-oab {
+      font-family: var(--rr-font-mono);
+      font-size: 11px;
+      color: var(--rr-amber);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .lawyer-role {
+      font-size: 12px;
+      color: rgba(255, 255, 255, 0.78);
+      font-weight: 500;
+      letter-spacing: 0.02em;
+    }
+
+    /* Otimização para telas de altura reduzida (ex: laptops pequenos ou janelas curtas) */
+    @media (max-height: 750px) {
+      .hero-container {
+        padding-top: clamp(24px, 4.5vw, 48px);
+        padding-bottom: clamp(40px, 6vw, 80px);
+      }
+      .hero-content-box {
+        gap: 16px;
+      }
+      .hero-headline {
+        font-size: clamp(32px, 4.8vw, 46px);
+      }
+      .hero-subtitle {
+        font-size: clamp(14px, 1.25vw, 16px);
+        line-height: 1.45;
+      }
+      .hero-actions {
+        gap: 10px;
+        margin-top: 2px;
+        margin-bottom: 0px;
+      }
+      .hero-lawyer-badge {
+        padding: 10px 16px;
+        margin-top: 4px;
+      }
+      .scroll-indicator-wrap {
+        bottom: 12px;
+      }
+    }
+
+    /* Scroll Indicator na Base da Dobra */
+    .scroll-indicator-wrap {
+      position: absolute;
+      bottom: 24px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      opacity: 0.75;
+      pointer-events: none;
+      z-index: 10;
+    }
+
+    .scroll-label {
+      font-family: var(--rr-font-mono);
+      font-size: 10px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: #D2C7BC;
+    }
+
+    .scroll-line-box {
+      width: 1px;
+      height: 38px;
+      background: rgba(255, 255, 255, 0.2);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .scroll-line-runner {
+      position: absolute;
+      top: -100%;
+      left: 0;
+      width: 100%;
+      height: 50%;
+      background: var(--rr-orange);
+      animation: scrollRunner 2s cubic-bezier(0.16, 1, 0.3, 1) infinite;
+    }
+
+    @keyframes scrollRunner {
+      0% {
+        top: -50%;
+      }
+      100% {
+        top: 100%;
+      }
+    }
+
+    /* Espaçador pós-hero / Trust Bar Modelo 4 (Termômetro de Urgência e Prazos) */
+    .post-hero-spacer {
+      position: relative;
+      width: 100%;
+      padding: 26px clamp(20px, 4vw, 40px);
+      border-top: 1px solid rgba(255, 180, 0, 0.45);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      background: linear-gradient(90deg, #1A1105 0%, #220F06 50%, #150803 100%);
+      z-index: 10;
+      box-shadow: 0 -15px 40px rgba(255, 180, 0, 0.12);
+    }
+
+    .urgency-bar-container {
+      max-width: 1320px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .urgency-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255, 180, 0, 0.18);
+      border: 1px solid rgba(255, 180, 0, 0.5);
+      color: #FFB400;
+      padding: 8px 16px;
+      border-radius: var(--rr-radius-full);
+      font-family: var(--rr-font-mono);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      flex-shrink: 0;
+      animation: pulseAlert 2s infinite;
+    }
+
+    @keyframes pulseAlert {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(255, 180, 0, 0.4); }
+      50% { box-shadow: 0 0 0 8px rgba(255, 180, 0, 0); }
+    }
+
+    .urgency-content {
+      flex: 1;
+      min-width: 280px;
+    }
+
+    .urgency-content h4 {
+      font-family: var(--rr-font-display);
+      font-size: clamp(15px, 1.4vw, 17px);
+      font-weight: 800;
+      color: #FFFFFF;
+      line-height: 1.35;
+      margin: 0;
+    }
+
+    .urgency-content h4 span {
+      color: #FFB400;
+    }
+
+    .urgency-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: linear-gradient(135deg, #FFB400 0%, #FF5E1A 100%);
+      color: #120A05;
+      font-family: var(--rr-font-display);
+      font-size: 14px;
+      font-weight: 900;
+      padding: 14px 26px;
+      border-radius: var(--rr-radius-md);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      text-decoration: none;
+      box-shadow: 0 8px 25px rgba(255, 94, 26, 0.3);
+      transition: all var(--rr-dur-fast) var(--rr-ease);
+      flex-shrink: 0;
+    }
+
+    .urgency-btn:hover {
+      transform: translateY(-2px) scale(1.03);
+      box-shadow: 0 12px 30px rgba(255, 94, 26, 0.45);
+    }
+
+    @media (max-width: 768px) {
+      .urgency-bar-container {
+        flex-direction: column;
+        text-align: center;
+        align-items: center;
+      }
+      .urgency-content {
+        text-align: center;
+      }
+      .urgency-btn {
+        width: 100%;
+        justify-content: center;
+      }
+    }
+
+    /* ==========================================================================
+       5. SEÇÃO GENÉRICA SUBSEQUENTE (PARA VISUALIZAR A TRANSIÇÃO E FIM DO PARALLAX)
+       ========================================================================== */
+    .generic-section {
+      position: relative;
+      z-index: 10;
+      width: 100%;
+      background: var(--rr-bg-light);
+      color: var(--rr-text-dark);
+      padding: clamp(80px, 12vw, 160px) clamp(20px, 4vw, 40px);
+      border-top: 1px solid rgba(58, 46, 36, 0.12);
+    }
+
+    .generic-container {
+      width: 100%;
+      max-width: 1320px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: clamp(48px, 6vw, 80px);
+    }
+
+    .generic-header {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 20px;
+      max-width: 760px;
+    }
+
+    .generic-section .eyebrow-pill {
+      background: #FFFFFF;
+      border: 1px solid rgba(58, 46, 36, 0.18);
+      color: var(--rr-orange);
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.04);
+    }
+
+    .generic-title {
+      font-family: var(--rr-font-display);
+      font-weight: 900;
+      font-size: clamp(32px, 4.5vw, 56px);
+      line-height: 0.96;
+      letter-spacing: -0.02em;
+      text-transform: uppercase;
+      color: var(--rr-text-dark);
+    }
+
+    .generic-subtitle {
+      font-family: var(--rr-font-body);
+      font-weight: 400;
+      font-size: clamp(16px, 1.3vw, 19px);
+      line-height: 1.6;
+      color: #5A4E44;
+    }
+
+    .generic-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: clamp(24px, 3vw, 36px);
+    }
+
+    @media (max-width: 880px) {
+      .generic-grid {
+        grid-template-columns: 1fr;
+      }
+      .card-span-2 {
+        grid-column: 1 / -1 !important;
+      }
+    }
+
+    .generic-card {
+      background: #FFFFFF;
+      border: 1px solid rgba(58, 46, 36, 0.14);
+      border-radius: var(--rr-radius-xl);
+      padding: clamp(32px, 4vw, 44px);
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      transition: transform var(--rr-dur-fast) var(--rr-ease), border-color var(--rr-dur-fast) var(--rr-ease), box-shadow var(--rr-dur-fast) var(--rr-ease);
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+    }
+
+    .generic-card:hover {
+      transform: translateY(-6px);
+      border-color: var(--rr-orange);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+      background: linear-gradient(180deg, #FFFFFF 0%, rgba(255, 94, 26, 0.03) 100%);
+    }
+
+    .card-span-2 {
+      grid-column: 1 / -1;
+      background: #150F0B !important;
+      border: 1.5px solid var(--rr-orange) !important;
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.22) !important;
+    }
+
+    .card-span-2 .card-title {
+      color: var(--rr-text) !important;
+    }
+
+    .card-span-2 .card-desc {
+      color: #E2DBD2 !important;
+    }
+
+    .card-span-2 .card-tags {
+      border-top: 1px solid rgba(255, 255, 255, 0.1) !important;
+    }
+
+    .card-span-2 .card-tag {
+      color: #D2C7BC !important;
+      background: rgba(255, 255, 255, 0.08) !important;
+      border-color: rgba(255, 255, 255, 0.15) !important;
+    }
+
+    .card-number {
+      font-family: var(--rr-font-mono);
+      font-size: 13px;
+      color: var(--rr-orange);
+      letter-spacing: 0.15em;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .card-title {
+      font-family: var(--rr-font-display);
+      font-weight: 800;
+      font-size: clamp(20px, 1.6vw, 24px);
+      color: var(--rr-text-dark);
+      letter-spacing: -0.01em;
+      line-height: 1.2;
+    }
+
+    .card-desc {
+      font-family: var(--rr-font-body);
+      font-weight: 400;
+      font-size: 15px;
+      line-height: 1.65;
+      color: #5A4E44;
+    }
+
+    .card-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: auto;
+      padding-top: 12px;
+      border-top: 1px solid rgba(58, 46, 36, 0.08);
+    }
+
+    .card-tag {
+      font-family: var(--rr-font-mono);
+      font-size: 10px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #5A4E44;
+      background: #F2EBE1;
+      padding: 6px 12px;
+      border-radius: var(--rr-radius-sm);
+      border: 1px solid rgba(58, 46, 36, 0.12);
+    }
+
+    /* ==========================================================================
+       SEÇÃO 2: ABORDAGEM 3 (DESKTOP) + ABORDAGEM 2 (MOBILE/TABLET)
+       ========================================================================== */
+    
+    /* DESKTOP VIEW: Command Center Table + Showcase (Abordagem 3) */
+    .command-center-layout {
+      display: grid;
+      grid-template-columns: 1fr 1.15fr;
+      gap: clamp(28px, 4vw, 56px);
+      align-items: center;
+      margin-top: 36px;
+    }
+
+    .command-nav-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .command-nav-item {
+      padding: clamp(18px, 2vw, 24px) clamp(20px, 2.5vw, 28px);
+      border-radius: var(--rr-radius-md);
+      border: 1px solid rgba(58, 46, 36, 0.15);
+      background: #FFFFFF;
+      transition: all var(--rr-dur-fast) var(--rr-ease);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.02);
+    }
+
+    .command-nav-item:hover {
+      border-color: var(--rr-orange);
+      transform: translateX(6px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.06);
+    }
+
+    .command-nav-item.active {
+      background: #150F0B;
+      border-color: var(--rr-orange);
+      transform: translateX(10px);
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.22);
+    }
+
+    .command-nav-left {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .command-num {
+      font-family: var(--rr-font-mono);
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--rr-orange);
+      transition: color var(--rr-dur-fast) var(--rr-ease);
+    }
+
+    .command-nav-item.active .command-num {
+      color: var(--rr-orange);
+    }
+
+    .command-title {
+      font-family: var(--rr-font-display);
+      font-weight: 700;
+      font-size: clamp(16px, 1.3vw, 19px);
+      color: var(--rr-text-dark);
+      transition: color var(--rr-dur-fast) var(--rr-ease);
+      line-height: 1.3;
+    }
+
+    .command-nav-item.active .command-title {
+      color: #FFFFFF;
+    }
+
+    .command-arrow {
+      font-family: var(--rr-font-mono);
+      font-size: 16px;
+      color: var(--rr-muted);
+      transition: transform var(--rr-dur-fast) var(--rr-ease), color var(--rr-dur-fast) var(--rr-ease);
+    }
+
+    .command-nav-item:hover .command-arrow,
+    .command-nav-item.active .command-arrow {
+      transform: translateX(4px);
+      color: var(--rr-orange);
+    }
+
+    .command-showcase-panel {
+      min-height: 560px;
+      border-radius: var(--rr-radius-xl);
+      position: relative;
+      overflow: hidden;
+      border: 1px solid rgba(58, 46, 36, 0.22);
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.18);
+      background: #150F0B;
+      display: flex;
+    }
+
+    .showcase-view {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      opacity: 0;
+      pointer-events: none;
+      transform: scale(0.98);
+      transition: opacity 0.45s cubic-bezier(0.16, 1, 0.3, 1), transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+      z-index: 1;
+    }
+
+    .showcase-view.active {
+      opacity: 1;
+      pointer-events: auto;
+      transform: scale(1);
+      z-index: 2;
+    }
+
+    .showcase-bg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: grayscale(15%) contrast(110%);
+      z-index: 0;
+      transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .showcase-view.active .showcase-bg {
+      transform: scale(1.04);
+    }
+
+    .showcase-overlay {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(180deg, rgba(21, 15, 11, 0.2) 0%, rgba(21, 15, 11, 0.68) 45%, rgba(21, 15, 11, 0.98) 95%);
+      z-index: 1;
+    }
+
+    .showcase-content {
+      position: relative;
+      z-index: 2;
+      padding: clamp(32px, 4vw, 48px);
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .showcase-badge {
+      align-self: flex-start;
+      font-family: var(--rr-font-mono);
+      font-size: 12px;
+      font-weight: 700;
+      color: #FFF;
+      background: var(--rr-orange);
+      padding: 6px 14px;
+      border-radius: var(--rr-radius-sm);
+      letter-spacing: 0.1em;
+      box-shadow: 0 4px 12px rgba(255, 94, 26, 0.35);
+    }
+
+    .showcase-title {
+      font-family: var(--rr-font-display);
+      font-weight: 800;
+      font-size: clamp(24px, 2.2vw, 32px);
+      color: #FFFFFF;
+      letter-spacing: -0.01em;
+      line-height: 1.2;
+      text-shadow: 0 2px 14px rgba(0,0,0,0.7);
+    }
+
+    .showcase-desc {
+      font-family: var(--rr-font-body);
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 1.65;
+      color: #E2DBD2;
+      max-width: 580px;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.6);
+    }
+
+    .showcase-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      padding-top: 16px;
+      border-top: 1px solid rgba(255, 255, 255, 0.14);
+    }
+
+    .showcase-tag {
+      font-family: var(--rr-font-mono);
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #F7F1E8;
+      background: rgba(255, 255, 255, 0.12);
+      backdrop-filter: blur(8px);
+      padding: 6px 14px;
+      border-radius: var(--rr-radius-sm);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    /* MOBILE / TABLET VIEW: Expanding Accordion Panels (Abordagem 2) */
+    .accordion-track {
+      display: none;
+    }
+
+    .accordion-panel {
+      flex: 1;
+      border-radius: var(--rr-radius-xl);
+      position: relative;
+      overflow: hidden;
+      border: 1px solid rgba(58, 46, 36, 0.22);
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+      cursor: pointer;
+      transition: flex 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.5s var(--rr-ease), border-color 0.5s var(--rr-ease), box-shadow 0.5s var(--rr-ease);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .accordion-panel.active {
+      flex: 4.2;
+      border-color: var(--rr-orange);
+      box-shadow: 0 30px 65px rgba(0, 0, 0, 0.35);
+      transform: translateY(-4px);
+    }
+
+    .panel-bg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), filter 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+      z-index: 0;
+      filter: grayscale(40%) contrast(110%);
+    }
+
+    .accordion-panel.active .panel-bg {
+      transform: scale(1.06);
+      filter: grayscale(0%) contrast(115%);
+    }
+
+    .panel-overlay {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(180deg, rgba(21, 15, 11, 0.45) 0%, rgba(21, 15, 11, 0.78) 55%, rgba(21, 15, 11, 0.96) 100%);
+      transition: background 0.6s var(--rr-ease);
+      z-index: 1;
+    }
+
+    .accordion-panel.active .panel-overlay {
+      background: linear-gradient(180deg, rgba(21, 15, 11, 0.2) 0%, rgba(21, 15, 11, 0.65) 45%, rgba(21, 15, 11, 0.94) 92%);
+    }
+
+    .panel-collapsed-view {
+      position: absolute;
+      inset: 0;
+      z-index: 2;
+      padding: 24px 16px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      transition: opacity 0.4s var(--rr-ease);
+      pointer-events: auto;
+    }
+
+    .accordion-panel.active .panel-collapsed-view {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .panel-collapsed-num {
+      font-family: var(--rr-font-mono);
+      font-size: 16px;
+      font-weight: 700;
+      color: #FFF;
+      background: var(--rr-orange);
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 12px rgba(255, 94, 26, 0.35);
+    }
+
+    .panel-collapsed-title {
+      writing-mode: vertical-rl;
+      transform: rotate(180deg);
+      font-family: var(--rr-font-display);
+      font-weight: 800;
+      font-size: 18px;
+      color: #FFFFFF;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      white-space: nowrap;
+      text-shadow: 0 2px 10px rgba(0,0,0,0.8);
+      margin-top: auto;
+    }
+
+    .panel-expanded-view {
+      position: absolute;
+      inset: 0;
+      z-index: 3;
+      padding: clamp(28px, 3vw, 44px);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(18px);
+      transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.1s, transform 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.1s;
+    }
+
+    .accordion-panel.active .panel-expanded-view {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateY(0);
+    }
+
+    .panel-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .panel-num {
+      font-family: var(--rr-font-mono);
+      font-size: 14px;
+      font-weight: 700;
+      color: #FFF;
+      background: var(--rr-orange);
+      padding: 6px 14px;
+      border-radius: var(--rr-radius-sm);
+      letter-spacing: 0.1em;
+      box-shadow: 0 4px 12px rgba(255, 94, 26, 0.35);
+    }
+
+    .panel-title {
+      font-family: var(--rr-font-display);
+      font-weight: 800;
+      font-size: clamp(24px, 2vw, 30px);
+      color: #FFFFFF;
+      letter-spacing: -0.01em;
+      line-height: 1.2;
+      margin-top: auto;
+      margin-bottom: 14px;
+      text-shadow: 0 2px 14px rgba(0,0,0,0.7);
+    }
+
+    .panel-desc {
+      font-family: var(--rr-font-body);
+      font-weight: 400;
+      font-size: 15px;
+      line-height: 1.65;
+      color: #E2DBD2;
+      max-width: 600px;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.6);
+      margin-bottom: 20px;
+    }
+
+    .panel-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      padding-top: 14px;
+      border-top: 1px solid rgba(255, 255, 255, 0.14);
+    }
+
+    .panel-tag {
+      font-family: var(--rr-font-mono);
+      font-size: 10px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #F7F1E8;
+      background: rgba(255, 255, 255, 0.12);
+      backdrop-filter: blur(8px);
+      padding: 6px 12px;
+      border-radius: var(--rr-radius-sm);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    /* SWITCH ABORDAGEM 3 (DESKTOP) vs ABORDAGEM 2 (MOBILE/TABLET) */
+    @media (max-width: 1024px) {
+      .command-center-layout {
+        display: none !important;
+      }
+      .accordion-track {
+        display: flex !important;
+        flex-direction: column;
+        height: auto;
+        gap: 16px;
+        margin-top: 36px;
+      }
+      .accordion-panel {
+        min-height: clamp(140px, 18vw, 160px);
+      }
+      .accordion-panel.active {
+        min-height: 560px;
+      }
+      .panel-collapsed-view {
+        flex-direction: row;
+        padding: 24px 28px;
+      }
+      .panel-collapsed-title {
+        writing-mode: horizontal-tb;
+        transform: none;
+        font-size: 17px;
+        margin-top: 0;
+        margin-left: 16px;
+      }
+    }
+
+    /* ==========================================================================
+       6. RESPONSIVIDADE (< 880px e < 900px conforme solicitações e Design System)
+       ========================================================================== */
+    @media (max-width: 880px) {
+      .navbar {
+        padding: 24px 28px;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .hero-container {
+        padding: 110px 28px 100px;
+        width: 100%;
+        max-width: 100%;
+      }
+
+      .hero-content-box {
+        width: 100%;
+        max-width: 100%;
+        transform-origin: left top;
+      }
+
+      .hero-headline {
+        font-size: clamp(32px, 8vw, 54px);
+        word-break: break-word;
+      }
+
+      .hero-subtitle {
+        max-width: 100%;
+        font-size: 16px;
+      }
+
+      .brand-watermark {
+        width: 280px;
+        height: 280px;
+        right: -10%;
+      }
+
+      .post-hero-spacer {
+        flex-direction: column;
+        gap: 12px;
+        text-align: center;
+      }
+    }
+
+    @media (max-width: 900px) {
+      .hero-bg-canvas {
+        object-position: 66% center;
+        transform: scale(1.15) translateY(-55px);
+      }
+
+      .hero-bg-overlay {
+        opacity: 0.94;
+        background: linear-gradient(180deg, rgba(10, 10, 12, 0.96) 0%, rgba(10, 10, 12, 0.90) 50%, rgba(10, 10, 12, 0.96) 100%);
+      }
+
+      .hero-ambient-glow {
+        width: 460px;
+        height: 460px;
+        top: -10%;
+        left: -15%;
+        background: radial-gradient(circle at center, rgba(255, 94, 26, 0.26) 0%, rgba(240, 36, 124, 0.10) 48%, transparent 72%);
+      }
+    }
+
+    /* ==========================================================================
+       7. ESTILOS SEÇÃO QUEM SOMOS (HÍBRIDO: OPÇÃO 2 DESKTOP / OPÇÃO 1 MOBILE)
+       ========================================================================== */
+    .about-section {
+      position: relative;
+      background: var(--rr-bg);
+      color: var(--rr-text);
+      padding: clamp(80px, 12vw, 160px) clamp(20px, 4vw, 40px);
+      border-top: 1px solid var(--rr-line);
+      border-bottom: 1px solid var(--rr-line);
+      overflow: hidden;
+      z-index: 10;
+    }
+
+    .about-glow {
+      position: absolute;
+      right: -10%;
+      top: 20%;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(255, 94, 26, 0.16) 0%, rgba(240, 36, 124, 0.05) 50%, transparent 70%);
+      filter: blur(80px);
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .about-container {
+      max-width: 1320px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 2;
+    }
+
+    /* Layouts Responsivos Switch */
+    .about-desktop-layout {
+      display: flex;
+      flex-direction: column;
+      gap: clamp(40px, 5vw, 64px);
+    }
+
+    .about-mobile-layout {
+      display: none;
+    }
+
+    @media (max-width: 1024px) {
+      .about-desktop-layout {
+        display: none !important;
+      }
+      .about-mobile-layout {
+        display: grid !important;
+        grid-template-columns: 1fr;
+        gap: clamp(36px, 5vw, 56px);
+      }
+    }
+
+    /* ==========================================================================
+       ESTILOS DESKTOP — OPÇÃO 2: CARD MONUMENTAL
+       ========================================================================== */
+    .monumental-card {
+      background: var(--rr-panel);
+      border: 1px solid var(--rr-line);
+      border-radius: var(--rr-radius-xl);
+      overflow: hidden;
+      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.35);
+      position: relative;
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      min-height: 560px;
+    }
+
+    .monumental-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: var(--rr-gradient);
+      z-index: 5;
+    }
+
+    .monumental-photo {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .monumental-photo-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      filter: contrast(105%) brightness(92%);
+      transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1), filter 0.8s var(--rr-ease);
+    }
+
+    .monumental-card:hover .monumental-photo-img {
+      transform: scale(1.05);
+      filter: contrast(110%) brightness(97%);
+    }
+
+    .monumental-photo-fade {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, transparent 60%, var(--rr-panel) 100%);
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .monumental-content {
+      padding: clamp(36px, 5vw, 56px);
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: center;
+      gap: 24px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .monumental-badge-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      padding-top: 8px;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .credential-badge--name {
+      background: none;
+      border: none;
+      color: #FFFFFF;
+      font-family: var(--rr-font-display);
+      font-weight: 800;
+      font-size: 16px;
+      letter-spacing: -0.01em;
+      text-transform: none;
+      padding: 8px 0;
+    }
+
+    .about-pillars-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+
+    .pillar-card-light {
+      background: var(--rr-panel-2);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: var(--rr-radius-lg);
+      padding: clamp(28px, 3vw, 36px);
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      transition: all var(--rr-dur-fast) var(--rr-ease);
+    }
+
+    .pillar-card-light:hover {
+      border-color: var(--rr-orange);
+      transform: translateY(-6px);
+      box-shadow: 0 20px 45px rgba(0, 0, 0, 0.2);
+    }
+
+    .pillar-card-light h4 {
+      font-family: var(--rr-font-display);
+      font-weight: 800;
+      font-size: 19px;
+      color: var(--rr-text);
+      line-height: 1.25;
+    }
+
+    .pillar-card-light p {
+      font-family: var(--rr-font-body);
+      font-size: 14px;
+      line-height: 1.65;
+      color: var(--rr-muted);
+    }
+
+    .pillar-card-light:hover .banca-badge {
+      color: var(--rr-orange);
+      border-color: rgba(255, 94, 26, 0.3);
+      background: rgba(255, 94, 26, 0.08);
+    }
+
+    /* ==========================================================================
+       ESTILOS MOBILE/TABLET — QUADRO MONUMENTAL (EXATAMENTE A OPÇÃO 2)
+       ========================================================================== */
+    .monumental-card--mobile {
+      grid-template-columns: 1fr;
+      min-height: auto;
+      margin-bottom: clamp(24px, 4vw, 40px);
+    }
+
+    .monumental-content--mobile {
+      padding: clamp(28px, 5vw, 44px);
+      align-items: flex-start;
+      gap: 20px;
+    }
+
+    .monumental-photo--mobile {
+      position: relative;
+      width: 100%;
+      max-height: 440px;
+      margin: 12px 0 8px;
+      border-radius: var(--rr-radius-md);
+      overflow: hidden;
+    }
+
+    .monumental-photo-fade--mobile {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, transparent 45%, var(--rr-panel) 100%);
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    /* Estilos Compartilhados e de Tipografia */
+    .about-title {
+      font-family: var(--rr-font-display);
+      font-weight: 900;
+      font-size: clamp(26px, 3vw, 40px);
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+      text-transform: uppercase;
+      color: var(--rr-text);
+    }
+
+    .about-desc {
+      font-family: var(--rr-font-body);
+      font-weight: 400;
+      font-size: clamp(15px, 1.2vw, 17px);
+      line-height: 1.7;
+      color: #D2C7BC;
+    }
+
+    .about-desc strong {
+      color: #FFFFFF;
+      font-weight: 700;
+    }
+
+    .credential-badge {
+      font-family: var(--rr-font-mono);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 6px 14px;
+      border-radius: var(--rr-radius-sm);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      transition: all var(--rr-dur-fast) var(--rr-ease);
+    }
+
+    .credential-badge--oab {
+      background: rgba(255, 94, 26, 0.25);
+      color: #FFFFFF;
+      border-color: var(--rr-orange);
+    }
+
+    .credential-badge--auditor {
+      background: rgba(255, 255, 255, 0.12);
+      color: #F7F1E8;
+    }
+
+    .about-right-column {
+      display: flex;
+      flex-direction: column;
+      gap: clamp(28px, 4vw, 40px);
+    }
+
+    .about-bio-block {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .about-divider {
+      width: 60px;
+      height: 3px;
+      background: var(--rr-gradient);
+      border-radius: 3px;
+      border: none;
+    }
+
+    .about-pillars {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .pillar-card {
+      background: var(--rr-panel-2);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: var(--rr-radius-lg);
+      padding: 24px 28px;
+      transition: all var(--rr-dur-fast) var(--rr-ease);
+      display: flex;
+      gap: 18px;
+      align-items: flex-start;
+    }
+
+    .pillar-card:hover {
+      border-color: var(--rr-orange);
+      transform: translateX(8px);
+      background: rgba(255, 94, 26, 0.06);
+    }
+
+    .pillar-num {
+      font-family: var(--rr-font-mono);
+      font-size: 14px;
+      color: var(--rr-orange);
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      padding: 6px 10px;
+      background: rgba(255, 94, 26, 0.12);
+      border-radius: var(--rr-radius-sm);
+      flex-shrink: 0;
+    }
+
+    .pillar-card-light .pillar-num {
+      font-size: 28px;
+      padding: 0;
+      background: none;
+      letter-spacing: normal;
+    }
+
+    .pillar-content h4 {
+      font-family: var(--rr-font-display);
+      font-weight: 800;
+      font-size: 18px;
+      color: var(--rr-text);
+      margin-bottom: 6px;
+    }
+
+    .pillar-content p {
+      font-family: var(--rr-font-body);
+      font-size: 14px;
+      line-height: 1.6;
+      color: var(--rr-muted);
+    }
+
+    .pillar-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 10px;
+    }
+
+    .banca-badge {
+      font-family: var(--rr-font-mono);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: #A8998B;
+      background: rgba(255, 255, 255, 0.06);
+      padding: 4px 10px;
+      border-radius: var(--rr-radius-sm);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      transition: all var(--rr-dur-fast) var(--rr-ease);
+    }
+
+    .pillar-card:hover .banca-badge {
+      color: var(--rr-orange);
+      border-color: rgba(255, 94, 26, 0.3);
+      background: rgba(255, 94, 26, 0.08);
+    }
+
+    /* ==========================================================================
+       8. ESTILOS SEÇÃO METODOLOGIA — VERSÃO 3: CONTRASTE INVERTIDO MONUMENTAL
+       ========================================================================== */
+    .method-section {
+      position: relative;
+      background: var(--rr-bg-light); /* #F5EFEB - Fundo claro nobre */
+      color: var(--rr-text-dark); /* #140F0C */
+      padding: clamp(90px, 12vw, 170px) clamp(20px, 4vw, 40px);
+      border-top: 1px solid rgba(58, 46, 36, 0.15);
+      border-bottom: 1px solid rgba(58, 46, 36, 0.15);
+      z-index: 10;
+      overflow: hidden;
+    }
+
+    .method-container {
+      max-width: 1280px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: clamp(64px, 8vw, 100px);
+      position: relative;
+      z-index: 2;
+    }
+
+    /* Container Principal da Linha do Tempo Vertical Alternada */
+    .journey-real-container {
+      position: relative;
+      width: 100%;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 20px 0;
+    }
+
+    /* Linha Central Vertical (PC) / Lateral Esquerda (Mobile) */
+    .journey-line {
+      position: absolute;
+      left: 50%;
+      top: 20px;
+      bottom: 20px;
+      width: 2px;
+      background: rgba(58, 46, 36, 0.2);
+      transform: translateX(-50%);
+      z-index: 1;
+    }
+
+    /* Preenchimento brilhante da linha vertical */
+    .journey-line-fill {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(180deg, var(--rr-orange) 0%, #D9381E 50%, var(--rr-orange) 100%);
+      box-shadow: 0 0 14px rgba(255, 94, 26, 0.4);
+      transform-origin: top center;
+      transform: scaleY(0);
+    }
+
+    .journey-steps-wrapper {
+      display: flex;
+      flex-direction: column;
+      gap: 56px;
+      position: relative;
+      z-index: 2;
+    }
+
+    /* Etapa Esquerda vs Direita no Desktop */
+    .journey-step {
+      position: relative;
+      display: flex;
+      width: 50%;
+    }
+
+    .journey-step-left {
+      justify-content: flex-start;
+      margin-right: auto;
+      padding-right: 56px;
+    }
+
+    .journey-step-right {
+      justify-content: flex-end;
+      margin-left: auto;
+      padding-left: 56px;
+    }
+
+    /* Ponto/Selo na Linha Vertical */
+    .journey-dot {
+      position: absolute;
+      top: 36px;
+      width: 46px;
+      height: 46px;
+      border-radius: 50%;
+      background: var(--rr-panel);
+      border: 2px solid var(--rr-orange);
+      color: var(--rr-orange);
+      font-family: var(--rr-font-display);
+      font-size: 20px;
+      font-weight: 900;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 5;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
+      transition: all 0.4s var(--rr-ease);
+    }
+
+    .journey-step-left .journey-dot {
+      right: -23px;
+    }
+
+    .journey-step-right .journey-dot {
+      left: -23px;
+    }
+
+    .journey-step:hover .journey-dot {
+      transform: scale(1.15) rotate(-6deg);
+      background: var(--rr-orange);
+      color: #000000;
+      box-shadow: 0 0 24px var(--rr-orange);
+    }
+
+    /* Card de Conteúdo do Capítulo/Fase (Escuro flutuando sobre o fundo claro!) */
+    .journey-card {
+      background: var(--rr-panel);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: var(--rr-radius-lg);
+      padding: 36px 32px;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+    }
+
+    .journey-step:hover .journey-card {
+      transform: translateY(-6px);
+      border-color: var(--rr-orange);
+      box-shadow: 0 28px 65px rgba(255, 94, 26, 0.2);
+      background: var(--rr-panel-2);
+    }
+
+    .journey-card-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .journey-meta {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .journey-chapter-tag {
+      font-family: var(--rr-font-mono);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--rr-orange);
+    }
+
+    .journey-card h3 {
+      font-family: var(--rr-font-display);
+      font-weight: 800;
+      font-size: 24px;
+      color: var(--rr-text);
+      line-height: 1.2;
+    }
+
+    .journey-card p {
+      font-family: var(--rr-font-body);
+      font-size: 15px;
+      line-height: 1.65;
+      color: var(--rr-muted);
+    }
+
+    .journey-status-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--rr-font-mono);
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--rr-orange);
+      background: rgba(255, 94, 26, 0.1);
+      padding: 8px 14px;
+      border-radius: var(--rr-radius-sm);
+      border: 1px solid rgba(255, 94, 26, 0.25);
+      align-self: flex-start;
+      margin-top: 6px;
+    }
+
+    /* ==========================================================================
+       RESPONSIVO — LINHA DO TEMPO VERTICAL NO MOBILE / TABLET (<= 960px)
+       ========================================================================== */
+    @media (max-width: 960px) {
+      .journey-line {
+        left: 20px;
+        transform: none;
+      }
+
+      .journey-step,
+      .journey-step-left,
+      .journey-step-right {
+        width: 100%;
+        margin-left: 0;
+        margin-right: 0;
+        padding-left: 56px;
+        padding-right: 0;
+        justify-content: flex-start;
+      }
+
+      .journey-step-left .journey-dot,
+      .journey-step-right .journey-dot {
+        left: -3px;
+        right: auto;
+      }
+    }
+
+    /* ==========================================================================
+       9. ESTILOS SEÇÃO FAQ — PROPOSTA MESCLADA SUPREMA (GLOW + GRID + AURORAS + ÍNDICES)
+       ========================================================================== */
+    .faq-section {
+      position: relative;
+      background: var(--rr-bg);
+      color: var(--rr-text);
+      padding: clamp(90px, 12vw, 170px) clamp(20px, 4vw, 40px);
+      border-top: 1px solid var(--rr-line);
+      z-index: 10;
+      overflow: hidden;
+    }
+
+    /* Esferas de Aurora Glow de Fundo */
+    .faq-aurora-left {
+      position: absolute;
+      top: -100px;
+      left: -10%;
+      width: 550px;
+      height: 550px;
+      background: radial-gradient(circle, rgba(255, 94, 26, 0.14) 0%, rgba(217, 56, 30, 0) 70%);
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .faq-aurora-right {
+      position: absolute;
+      bottom: -100px;
+      right: -10%;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(58, 46, 36, 0.28) 0%, rgba(20, 15, 12, 0) 70%);
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .faq-container {
+      max-width: 1280px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 64px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .faq-grid-wrapper {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 36px;
+      align-items: start;
+    }
+
+    @media (min-width: 1024px) {
+      .faq-grid-wrapper {
+        grid-template-columns: 1.15fr 0.85fr;
+        gap: 40px;
+      }
+    }
+
+    .faq-list {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    .faq-item {
+      background: rgba(30, 23, 18, 0.85);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: var(--rr-radius-lg);
+      overflow: hidden;
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+      backdrop-filter: blur(12px);
+    }
+
+    .faq-item:hover {
+      border-color: rgba(255, 94, 26, 0.45);
+      transform: translateY(-2px);
+    }
+
+    /* Card ativo com Glow Laranja & Borda Neon */
+    .faq-item.active {
+      background: var(--rr-panel-2);
+      border-color: var(--rr-orange);
+      box-shadow: -6px 0 0 var(--rr-orange), 0 0 35px rgba(255, 94, 26, 0.18), 0 20px 50px rgba(0, 0, 0, 0.5);
+    }
+
+    .faq-header {
+      width: 100%;
+      text-align: left;
+      background: none;
+      border: none;
+      padding: 26px 30px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      color: var(--rr-text);
+      font-family: var(--rr-font-display);
+      font-weight: 700;
+      font-size: clamp(16px, 1.3vw, 19px);
+      cursor: pointer;
+      transition: color 0.3s var(--rr-ease);
+    }
+
+    .faq-item.active .faq-header {
+      color: var(--rr-orange);
+    }
+
+    .faq-index-num {
+      font-family: var(--rr-font-mono);
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--rr-muted);
+      letter-spacing: 0.12em;
+      transition: all 0.3s var(--rr-ease);
+    }
+
+    .faq-item.active .faq-index-num,
+    .faq-item:hover .faq-index-num {
+      color: var(--rr-orange);
+      text-shadow: 0 0 12px var(--rr-orange);
+    }
+
+    .faq-icon-box {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--rr-text);
+      font-size: 20px;
+      flex-shrink: 0;
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .faq-item.active .faq-icon-box {
+      background: var(--rr-orange);
+      border-color: var(--rr-orange);
+      color: #000000;
+      transform: rotate(45deg);
+      box-shadow: 0 0 16px var(--rr-orange);
+    }
+
+    .faq-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    /* Conteúdo da sanfona perfeitamente alinhado abaixo da pergunta */
+    .faq-content-inner {
+      padding: 0 30px 32px 75px;
+      color: #D2C7BC;
+      font-size: 15.5px;
+      line-height: 1.8;
+      font-family: var(--rr-font-body);
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+      margin-top: 2px;
+      padding-top: 24px;
+    }
+
+    @media (max-width: 768px) {
+      .faq-header {
+        padding: 22px 20px;
+      }
+      .faq-content-inner {
+        padding: 0 20px 26px 20px;
+        font-size: 14.5px;
+      }
+    }
+
+    /* Painel Plantonista WhatsApp (Sticky na Coluna Direita) - Estética de Luxo */
+    .faq-sidebar-card {
+      position: sticky;
+      top: 120px;
+      background: linear-gradient(150deg, rgba(35, 27, 21, 0.96) 0%, rgba(18, 13, 10, 0.98) 100%);
+      border: 1.5px solid rgba(255, 94, 26, 0.5);
+      border-radius: 24px;
+      padding: 44px 38px;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      box-shadow: 0 24px 70px rgba(0, 0, 0, 0.65), 0 0 45px rgba(255, 94, 26, 0.16);
+      backdrop-filter: blur(16px);
+    }
+
+    .faq-sidebar-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255, 94, 26, 0.15);
+      color: var(--rr-orange);
+      border: 1px solid rgba(255, 94, 26, 0.35);
+      padding: 8px 16px;
+      border-radius: 999px;
+      font-family: var(--rr-font-mono);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      align-self: flex-start;
+    }
+
+    .faq-sidebar-card h3 {
+      font-family: var(--rr-font-display);
+      font-size: 21px;
+      font-weight: 800;
+      color: #FFFFFF;
+      line-height: 1.3;
+      margin: 0;
+    }
+
+    .faq-sidebar-card p {
+      font-size: 14px;
+      color: #C2B6AC;
+      line-height: 1.55;
+      margin: 0;
+    }
+
+    .sidebar-highlight {
+      color: #FFFFFF;
+      font-weight: 600;
+      font-size: 14px;
+      border-left: 3px solid var(--rr-orange);
+      background: rgba(255, 94, 26, 0.06);
+      padding: 12px 14px;
+      border-radius: 0 8px 8px 0;
+      margin: 0;
+    }
+
+    .faq-sidebar-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      background: linear-gradient(135deg, #FF5E1A 0%, #D9381E 100%);
+      color: #000000;
+      font-family: var(--rr-font-display);
+      font-weight: 800;
+      font-size: 14px;
+      padding: 16px 24px;
+      border-radius: 12px;
+      text-decoration: none;
+      transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+      box-shadow: 0 10px 30px rgba(255, 94, 26, 0.4);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      margin-top: 4px;
+    }
+
+    .faq-sidebar-btn:hover {
+      transform: translateY(-3px) scale(1.02);
+      box-shadow: 0 16px 42px rgba(255, 94, 26, 0.6);
+      color: #000000;
+    }
+
+    /* ==========================================================================
+       10. ESTILOS CTA FINAL & RODAPÉ DEFINITIVO
+       ========================================================================== */
+    .cta-final-section {
+      padding: clamp(60px, 8vw, 120px) clamp(20px, 4vw, 40px) clamp(40px, 6vw, 80px);
+      background: var(--rr-bg);
+      position: relative;
+      z-index: 10;
+    }
+
+    /* Seção CTA Final - Opção 1: Cobre Queimado Imperial & Gabarito Óptico */
+    .cta-final-box {
+      max-width: 1320px;
+      margin: 0 auto;
+      background: linear-gradient(145deg, #2D1408 0%, #170903 55%, #0B0401 100%);
+      border: 2px solid rgba(255, 94, 26, 0.65);
+      border-radius: var(--rr-radius-xl);
+      padding: clamp(48px, 8vw, 96px) clamp(32px, 6vw, 72px);
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 32px;
+      box-shadow: 0 35px 100px rgba(0, 0, 0, 0.85), 0 0 75px rgba(255, 94, 26, 0.22), inset 0 1px 3px rgba(255, 255, 255, 0.12);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-final-box::before {
+      content: '';
+      position: absolute;
+      top: -40%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(255, 94, 26, 0.28) 0%, rgba(240, 36, 124, 0.08) 50%, transparent 70%);
+      filter: blur(80px);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .cta-gabarito-graphic {
+      position: absolute !important;
+      top: 0 !important;
+      left: 0 !important;
+      width: 100% !important;
+      height: 100% !important;
+      pointer-events: none !important;
+      z-index: 1 !important;
+      opacity: 0.22;
+      color: #E2DBD2;
+    }
+
+    .eyebrow-pill,
+    .cta-final-title,
+    .cta-final-subtitle,
+    .btn-pulse-wrapper,
+    .cta-guarantee-grid {
+      position: relative;
+      z-index: 2;
+    }
+
+    .cta-final-box .eyebrow-pill {
+      align-self: center;
+    }
+
+    .cta-final-title {
+      font-family: var(--rr-font-display);
+      font-weight: 900;
+      font-size: clamp(30px, 4.2vw, 56px);
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+      text-transform: uppercase;
+      color: var(--rr-text);
+      max-width: 900px;
+    }
+
+    .cta-final-subtitle {
+      font-family: var(--rr-font-body);
+      font-size: clamp(16px, 1.3vw, 19px);
+      line-height: 1.6;
+      color: #E2DBD2;
+      max-width: 640px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .cta-guarantee-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 20px;
+      width: 100%;
+      max-width: 1040px;
+      margin-top: 16px;
+      position: relative;
+      z-index: 2;
+    }
+
+    @media (min-width: 768px) {
+      .cta-guarantee-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 24px;
+      }
+    }
+
+    .cta-guarantee-card {
+      background: rgba(255, 255, 255, 0.035);
+      border: 1px solid rgba(255, 94, 26, 0.3);
+      border-radius: 18px;
+      padding: 28px 22px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 14px;
+      transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
+    }
+
+    .cta-guarantee-card:hover {
+      background: rgba(255, 94, 26, 0.08);
+      border-color: var(--rr-orange);
+      transform: translateY(-4px);
+      box-shadow: 0 20px 45px rgba(255, 94, 26, 0.22);
+    }
+
+    .cta-guarantee-icon {
+      width: 54px;
+      height: 54px;
+      border-radius: 16px;
+      background: linear-gradient(135deg, rgba(255, 94, 26, 0.2) 0%, rgba(240, 36, 124, 0.1) 100%);
+      border: 1px solid rgba(255, 94, 26, 0.4);
+      color: var(--rr-orange);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      box-shadow: 0 8px 20px rgba(255, 94, 26, 0.2);
+    }
+
+    .cta-guarantee-title {
+      font-family: var(--rr-font-display);
+      font-weight: 800;
+      font-size: 17px;
+      color: #FFFFFF;
+      letter-spacing: -0.01em;
+    }
+
+    .cta-guarantee-desc {
+      font-size: 14px;
+      color: #C2B6AC;
+      line-height: 1.55;
+    }
+
+    .main-footer {
+      max-width: 1320px;
+      margin: 0 auto;
+      padding: 48px clamp(20px, 4vw, 40px) 36px;
+      border-top: 1px solid var(--rr-line);
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+      background: var(--rr-bg);
+      position: relative;
+      z-index: 10;
+    }
+
+    .footer-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 24px;
+    }
+
+    .footer-links {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 24px;
+      list-style: none;
+    }
+
+    .footer-link {
+      color: var(--rr-muted);
+      text-decoration: none;
+      font-family: var(--rr-font-body);
+      font-weight: 500;
+      font-size: 14px;
+      transition: color var(--rr-dur-fast) var(--rr-ease);
+    }
+
+    .footer-link:hover {
+      color: var(--rr-orange);
+    }
+
+    .footer-bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+      padding-top: 24px;
+      font-family: var(--rr-font-mono);
+      font-size: 12px;
+      color: var(--rr-muted);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Film Grain global -->
+  <div class="film-grain" aria-hidden="true"></div>
+
+  <!-- Símbolo Grafismo Decorativo sangrando no canto -->
+  <svg class="brand-watermark" viewBox="0 0 120 120" aria-hidden="true">
+    <defs>
+      <linearGradient id="rrGradWatermark" x1="0" y1="1" x2="1" y2="0">
+        <stop offset="0" stop-color="#FF5E1A"/>
+        <stop offset="1" stop-color="#F0247C"/>
+      </linearGradient>
+    </defs>
+    <polyline points="20,66 48,96 104,24" fill="none" stroke="url(#rrGradWatermark)"
+      stroke-width="17" stroke-linecap="round" stroke-linejoin="round"/>
+  </svg>
+
+  <!-- Top Navigation -->
+  <header class="navbar">
+    <a href="#" class="brand-logo" aria-label="Ribeiro Rinaldi Advocacia">
+      <!-- Composição A: Símbolo à ESQUERDA do nome -->
+      <svg viewBox="0 0 120 120" style="overflow:visible;">
+        <defs>
+          <linearGradient id="rrGradLogo" x1="0" y1="1" x2="1" y2="0">
+            <stop offset="0" stop-color="#FF5E1A"/>
+            <stop offset="1" stop-color="#F0247C"/>
+          </linearGradient>
+        </defs>
+        <polyline points="20,66 48,96 104,24" fill="none" stroke="url(#rrGradLogo)"
+          stroke-width="17" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <span class="brand-wordmark">Ribeiro Rinaldi</span>
+    </a>
+
+  </header>
+
+  <!-- Hero Section com SEQUÊNCIA DE IMAGENS NO CANVAS (Pin Target) -->
+  <main class="hero-wrapper" id="heroPinArea">
+    
+    <!-- CANVAS DE FUNDO ULTRA-PERFORMÁTICO (60/120 FPS) -->
+    <div class="hero-bg-video-container" aria-hidden="true">
+      <canvas id="heroCanvas" class="hero-bg-canvas"></canvas>
+      <div class="hero-bg-overlay"></div>
+    </div>
+
+    <!-- Efeito difuso de brilho laranja no canto da página -->
+    <div class="hero-ambient-glow" aria-hidden="true"></div>
+
+    <!-- Conteúdo Hero flutuando sobre o Background -->
+    <section class="hero-container">
+      <div class="hero-content-box">
+        
+        <h1 class="hero-headline" aria-label="Seu nome na lista. Sua vaga na mão.">
+          <span class="headline-line" id="headlineLine1">
+            <span class="word">SEU</span>
+            <span class="word">NOME</span>
+            <span class="word">NA</span>
+          </span>
+          <span class="headline-line" id="headlineLine2">
+            <span class="word">LISTA.</span>
+          </span>
+          <span class="headline-line orange-text" id="headlineLine3">
+            <span class="word">SUA</span>
+            <span class="word">VAGA</span>
+            <span class="word">NA</span>
+          </span>
+          <span class="headline-line orange-text" id="headlineLine4">
+            <span class="word">MÃO.</span>
+          </span>
+        </h1>
+
+        <!-- Parágrafo de Apoio (Foco 100% Concurseiros) -->
+        <p class="hero-subtitle">
+          Recurso de prova, anulação de questões e mandado de segurança para convocações. <strong>Defesa jurídica feita por quem já esteve do outro lado da prova</strong> — sem juridiquês e com tática de bastidor.
+        </p>
+
+        <!-- Ação Única + Redutor de Atrito -->
+        <div class="hero-actions">
+          <div class="btn-pulse-wrapper">
+            <span class="btn-pulse-ring"></span>
+            <a href="https://wa.me/5592994401600" target="_blank" rel="noopener noreferrer" class="btn-primary">
+              <span>Falar no WhatsApp agora</span>
+              <span aria-hidden="true">→</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Detalhe Dr. Paulo Rinaldi + OAB/SC + Denominação -->
+        <div class="hero-lawyer-badge">
+          <div class="lawyer-info">
+            <div class="lawyer-top-row">
+              <span class="lawyer-name">Dr. Paulo Rinaldi</span>
+              <span class="lawyer-oab">— OAB/SC 78.309</span>
+            </div>
+            <span class="lawyer-role">Advogado e Servidor Público</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Indicador de Scroll na Primeira Dobra -->
+    <div class="scroll-indicator-wrap" id="scrollIndicator">
+      <span class="scroll-label">Scroll</span>
+      <div class="scroll-line-box">
+        <div class="scroll-line-runner"></div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Rodapé da Seção Hero / Trust Bar Modelo 4 (Termômetro de Urgência & Prazos) -->
+  <footer class="post-hero-spacer">
+    <div class="urgency-bar-container">
+      <div class="urgency-badge">
+        <span>🚨 ALERTA DE PRAZO</span>
+      </div>
+      <div class="urgency-content">
+        <h4>Em concursos públicos, <span>cada dia conta</span>. Quanto antes analisarmos a sua eliminação ou recurso, maiores são as chances de garantir a sua posse no cargo.</h4>
+      </div>
+      <a href="https://wa.me/5592994401600" target="_blank" rel="noopener noreferrer" class="urgency-btn">
+        <span>Verificar meu prazo agora</span>
+        <span>→</span>
+      </a>
+    </div>
+  </footer>
+
+  <!-- ==========================================================================
+       5. SEÇÃO 2: IDENTIFICAÇÃO DE DORES & AS 5 MACRO-ÁREAS (CONCURSEIROS)
+       ========================================================================== -->
+  <section class="generic-section" id="ajuda">
+    <div class="generic-container">
+      
+      <!-- Cabeçalho da Seção -->
+      <div class="generic-header" style="max-width: 860px;">
+        <div class="eyebrow-pill">
+          <span class="eyebrow-dot"></span>
+          <span>A injustiça não pode vencer o seu esforço</span>
+        </div>
+        <h2 class="generic-title">
+          Anos de estudo não podem ser perdidos por um erro arbitrário da banca.
+        </h2>
+        <p class="generic-subtitle">
+          Você abdicou de fins de semana, investiu tempo, dinheiro e saúde mental para conquistar a aprovação. Quando a vaga finalmente está ao seu alcance, uma decisão abusiva tenta tirar o seu direito. <strong>Selecione ou toque em cada área abaixo para explorar os detalhes técnicos da nossa defesa.</strong>
+        </p>
+      </div>
+
+      <!-- DESKTOP VIEW: Tabela de Comando Interativa + Vitrine da Dor (Abordagem 3) -->
+      <div class="command-center-layout">
+        
+        <!-- Lista de Comando à Esquerda -->
+        <div class="command-nav-list" role="tablist">
+          <div class="command-nav-item active" data-target="showcase-view-1" role="tab" aria-selected="true">
+            <div class="command-nav-left">
+              <span class="command-num">01</span>
+              <span class="command-title">Provas Escritas & Discursivas</span>
+            </div>
+            <span class="command-arrow">→</span>
+          </div>
+
+          <div class="command-nav-item" data-target="showcase-view-2" role="tab" aria-selected="false">
+            <div class="command-nav-left">
+              <span class="command-num">02</span>
+              <span class="command-title">Exames Eliminatórios (TAF/Médico)</span>
+            </div>
+            <span class="command-arrow">→</span>
+          </div>
+
+          <div class="command-nav-item" data-target="showcase-view-3" role="tab" aria-selected="false">
+            <div class="command-nav-left">
+              <span class="command-num">03</span>
+              <span class="command-title">Cotas Raciais, Heteroidentificação & PcD</span>
+            </div>
+            <span class="command-arrow">→</span>
+          </div>
+
+          <div class="command-nav-item" data-target="showcase-view-4" role="tab" aria-selected="false">
+            <div class="command-nav-left">
+              <span class="command-num">04</span>
+              <span class="command-title">Prova de Títulos, Idade & Histórico</span>
+            </div>
+            <span class="command-arrow">→</span>
+          </div>
+
+          <div class="command-nav-item" data-target="showcase-view-5" role="tab" aria-selected="false" style="border: 1px solid var(--rr-orange);">
+            <div class="command-nav-left">
+              <span class="command-num" style="color: #F0247C;">05</span>
+              <span class="command-title">Preterição na Nomeação (Você Passou?)</span>
+            </div>
+            <span class="command-arrow" style="color: var(--rr-orange);">★ →</span>
+          </div>
+        </div>
+
+        <!-- Painel Vitrine à Direita -->
+        <div class="command-showcase-panel">
+          <div class="showcase-view active" id="showcase-view-1">
+            <img src="assets/images/KF_GABARITO_16x9.webp" alt="Gabarito e prova escrita" class="showcase-bg" loading="lazy">
+            <div class="showcase-overlay"></div>
+            <div class="showcase-content">
+              <span class="showcase-badge">PROVAS ESCRITAS & DISCURSIVA</span>
+              <h3 class="showcase-title">Anulação de Questões & Prova Discursiva</h3>
+              <p class="showcase-desc">
+                A banca cobrou conteúdo fora do edital, manteve questões com dupla resposta ou tirou pontos cruciais na sua redação, discursiva ou prova oral ignorando critérios objetivos e o próprio espelho de correção.
+              </p>
+              <div class="showcase-tags">
+                <span class="showcase-tag">Gabarito Errado</span>
+                <span class="showcase-tag">Fora do Edital</span>
+                <span class="showcase-tag">Redação / Discursiva</span>
+                <span class="showcase-tag">Prova Oral</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="showcase-view" id="showcase-view-2">
+            <img src="assets/images/card_taf.webp" alt="Teste de Aptidão Física TAF" class="showcase-bg" style="object-position: center 25%;" loading="lazy">
+            <div class="showcase-overlay"></div>
+            <div class="showcase-content">
+              <span class="showcase-badge">EXAMES ELIMINATÓRIOS</span>
+              <h3 class="showcase-title">TAF, Exame Médico & Psicotécnico</h3>
+              <p class="showcase-desc">
+                Reprovações baseadas em contagem errada no teste físico, laudos médicos genéricos para condições que não impedem o exercício do cargo ou testes psicológicos subjetivos e sem transparência científica.
+              </p>
+              <div class="showcase-tags">
+                <span class="showcase-tag">Teste Físico (TAF)</span>
+                <span class="showcase-tag">Exame Médico</span>
+                <span class="showcase-tag">Psicotécnico</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="showcase-view" id="showcase-view-3">
+            <img src="assets/images/card_cotas.webp" alt="Heteroidentificação e Cotas" class="showcase-bg" style="object-position: center 20%;" loading="lazy">
+            <div class="showcase-overlay"></div>
+            <div class="showcase-content">
+              <span class="showcase-badge">COTAS & RESERVA DE VAGAS</span>
+              <h3 class="showcase-title">Heteroidentificação, Cotas Raciais & PcD</h3>
+              <p class="showcase-desc">
+                Exclusão injusta na banca de heteroidentificação por critérios visuais arbitrários que desconsideram sua autodeclaração, ou desclassificação indevida de candidatos PcD por avaliações biopsicossociais superficiais.
+              </p>
+              <div class="showcase-tags">
+                <span class="showcase-tag">Heteroidentificação</span>
+                <span class="showcase-tag">Cotas Raciais</span>
+                <span class="showcase-tag">Vagas PcD</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="showcase-view" id="showcase-view-4">
+            <img src="assets/images/card_titulos.webp" alt="Diploma e Títulos" class="showcase-bg" style="object-position: center 30%;" loading="lazy">
+            <div class="showcase-overlay"></div>
+            <div class="showcase-content">
+              <span class="showcase-badge">REQUISITOS & HISTÓRICO</span>
+              <h3 class="showcase-title">Prova de Títulos, Idade & Vida Pregressa</h3>
+              <p class="showcase-desc">
+                Pontos de diplomas e certificados ignorados na avaliação de títulos, eliminação na investigação social por fatos irrelevantes da vida privada ou exigências desproporcionais de limite de idade no edital.
+              </p>
+              <div class="showcase-tags">
+                <span class="showcase-tag">Prova de Títulos</span>
+                <span class="showcase-tag">Investigação Social</span>
+                <span class="showcase-tag">Limite de Idade</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="showcase-view" id="showcase-view-5">
+            <img src="assets/images/KF_ASSINADO_16x9.webp" alt="Ato de Nomeação e Mandado de Segurança" class="showcase-bg" loading="lazy">
+            <div class="showcase-overlay" style="background: linear-gradient(180deg, rgba(21, 15, 11, 0.3) 0%, rgba(21, 15, 11, 0.72) 48%, rgba(21, 15, 11, 0.98) 95%);"></div>
+            <div class="showcase-content">
+              <span class="showcase-badge" style="background: #F0247C;">AÇÃO DE DESTAQUE JUDICIAL</span>
+              <h3 class="showcase-title" style="color: var(--rr-orange);">Preterição na Nomeação: Você Passou e Não Foi Chamado?</h3>
+              <p class="showcase-desc">
+                Você foi aprovado dentro das vagas (ou no cadastro reserva com contratação ilegal de temporários no seu lugar) e a administração burla a ordem ou deixa o prazo expirar. Entramos com medida judicial rápida para garantir a sua nomeação.
+              </p>
+              <div class="showcase-tags">
+                <span class="showcase-tag" style="border-color: var(--rr-orange); color: #FFF;">Mandado de Segurança</span>
+                <span class="showcase-tag">Aprovado Dentro das Vagas</span>
+                <span class="showcase-tag">Cadastro Reserva</span>
+                <span class="showcase-tag">Prazo Expirando</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- MOBILE / TABLET VIEW: Sanfona Expansiva Vertical (Abordagem 2) -->
+      <div class="accordion-track" id="cardsAccordionTrack">
+        
+        <!-- Panel 01 -->
+        <div class="accordion-panel active">
+          <img src="assets/images/KF_GABARITO_16x9.webp" alt="Gabarito e prova escrita" class="panel-bg" loading="lazy">
+          <div class="panel-overlay"></div>
+          
+          <div class="panel-collapsed-view">
+            <span class="panel-collapsed-num">01</span>
+            <span class="panel-collapsed-title">Provas Escritas</span>
+          </div>
+
+          <div class="panel-expanded-view">
+            <div class="panel-top">
+              <span class="panel-num">01</span>
+              <span class="panel-tag" style="background: rgba(255, 94, 26, 0.25); border-color: var(--rr-orange);">PROVAS ESCRITAS & DISCURSIVA</span>
+            </div>
+            <div>
+              <h3 class="panel-title">Anulação de Questões & Prova Discursiva</h3>
+              <p class="panel-desc">
+                A banca cobrou conteúdo fora do edital, manteve questões com dupla resposta ou tirou pontos cruciais na sua redação, discursiva ou prova oral ignorando critérios objetivos e o próprio espelho de correção.
+              </p>
+              <div class="panel-tags">
+                <span class="panel-tag">Gabarito Errado</span>
+                <span class="panel-tag">Fora do Edital</span>
+                <span class="panel-tag">Redação / Discursiva</span>
+                <span class="panel-tag">Prova Oral</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Panel 02 -->
+        <div class="accordion-panel">
+          <img src="assets/images/card_taf.webp" alt="Teste de Aptidão Física TAF" class="panel-bg" style="object-position: center 25%;" loading="lazy">
+          <div class="panel-overlay"></div>
+          
+          <div class="panel-collapsed-view">
+            <span class="panel-collapsed-num">02</span>
+            <span class="panel-collapsed-title">Exames Eliminatórios</span>
+          </div>
+
+          <div class="panel-expanded-view">
+            <div class="panel-top">
+              <span class="panel-num">02</span>
+              <span class="panel-tag">EXAMES ELIMINATÓRIOS</span>
+            </div>
+            <div>
+              <h3 class="panel-title">TAF, Exame Médico & Psicotécnico</h3>
+              <p class="panel-desc">
+                Reprovações baseadas em contagem errada no teste físico, laudos médicos genéricos para condições que não impedem o exercício do cargo ou testes psicológicos subjetivos e sem transparência científica.
+              </p>
+              <div class="panel-tags">
+                <span class="panel-tag">Teste Físico (TAF)</span>
+                <span class="panel-tag">Exame Médico</span>
+                <span class="panel-tag">Psicotécnico</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Panel 03 -->
+        <div class="accordion-panel">
+          <img src="assets/images/card_cotas.webp" alt="Heteroidentificação e Cotas" class="panel-bg" style="object-position: center 20%;" loading="lazy">
+          <div class="panel-overlay"></div>
+          
+          <div class="panel-collapsed-view">
+            <span class="panel-collapsed-num">03</span>
+            <span class="panel-collapsed-title">Cotas & PCD</span>
+          </div>
+
+          <div class="panel-expanded-view">
+            <div class="panel-top">
+              <span class="panel-num">03</span>
+              <span class="panel-tag">COTAS & RESERVA DE VAGAS</span>
+            </div>
+            <div>
+              <h3 class="panel-title">Heteroidentificação, Cotas Raciais & PcD</h3>
+              <p class="panel-desc">
+                Exclusão injusta na banca de heteroidentificação por critérios visuais arbitrários que desconsideram sua autodeclaração, ou desclassificação indevida de candidatos PcD por avaliações biopsicossociais superficiais.
+              </p>
+              <div class="panel-tags">
+                <span class="panel-tag">Heteroidentificação</span>
+                <span class="panel-tag">Cotas Raciais</span>
+                <span class="panel-tag">Vagas PcD</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Panel 04 -->
+        <div class="accordion-panel">
+          <img src="assets/images/card_titulos.webp" alt="Diploma e Títulos" class="panel-bg" style="object-position: center 30%;" loading="lazy">
+          <div class="panel-overlay"></div>
+          
+          <div class="panel-collapsed-view">
+            <span class="panel-collapsed-num">04</span>
+            <span class="panel-collapsed-title">Requisitos & Histórico</span>
+          </div>
+
+          <div class="panel-expanded-view">
+            <div class="panel-top">
+              <span class="panel-num">04</span>
+              <span class="panel-tag">REQUISITOS & HISTÓRICO</span>
+            </div>
+            <div>
+              <h3 class="panel-title">Prova de Títulos, Idade & Vida Pregressa</h3>
+              <p class="panel-desc">
+                Pontos de diplomas e certificados ignorados na avaliação de títulos, eliminação na investigação social por fatos irrelevantes da vida privada ou exigências desproporcionais de limite de idade no edital.
+              </p>
+              <div class="panel-tags">
+                <span class="panel-tag">Prova de Títulos</span>
+                <span class="panel-tag">Investigação Social</span>
+                <span class="panel-tag">Limite de Idade</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Panel 05 (Destaque) -->
+        <div class="accordion-panel" style="border: 1.5px solid var(--rr-orange);">
+          <img src="assets/images/KF_ASSINADO_16x9.webp" alt="Ato de Nomeação e Mandado de Segurança" class="panel-bg" loading="lazy">
+          <div class="panel-overlay" style="background: linear-gradient(180deg, rgba(21, 15, 11, 0.4) 0%, rgba(21, 15, 11, 0.75) 50%, rgba(21, 15, 11, 0.98) 100%);"></div>
+          
+          <div class="panel-collapsed-view">
+            <span class="panel-collapsed-num" style="background: #F0247C;">05</span>
+            <span class="panel-collapsed-title" style="color: var(--rr-orange);">Preterição / Nomeação</span>
+          </div>
+
+          <div class="panel-expanded-view">
+            <div class="panel-top">
+              <span class="panel-num" style="background: #F0247C;">05</span>
+              <span class="panel-tag" style="background: var(--rr-orange); color: #160D09; font-weight: 700; border: none;">AÇÃO DE DESTAQUE JUDICIAL</span>
+            </div>
+            <div>
+              <h3 class="panel-title">Preterição na Nomeação: Você Passou e Não Foi Chamado?</h3>
+              <p class="panel-desc">
+                Você foi aprovado dentro das vagas (ou no cadastro reserva com contratação ilegal de temporários no seu lugar) e a administração burla a ordem ou deixa o prazo expirar. Entramos com medida judicial rápida para garantir a sua nomeação.
+              </p>
+              <div class="panel-tags">
+                <span class="panel-tag" style="border-color: var(--rr-orange); color: #FFF;">Mandado de Segurança</span>
+                <span class="panel-tag">Aprovado Dentro das Vagas</span>
+                <span class="panel-tag">Cadastro Reserva</span>
+                <span class="panel-tag">Prazo Expirando</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       6. SEÇÃO 3: AUTORIDADE / QUEM É O DR. PAULO RINALDI (#quem-somos)
+       ========================================================================== -->
+  <section class="about-section" id="quem-somos">
+    <div class="about-glow" aria-hidden="true"></div>
+    <div class="about-container">
+      
+      <!-- DESKTOP VIEW (> 1024px): OPÇÃO 2 — CARD MONUMENTAL -->
+      <div class="about-desktop-layout">
+        
+        <!-- Card Monumental (Foto + Bio Integrados) -->
+        <div class="monumental-card">
+          
+          <!-- Foto Integrada -->
+          <div class="monumental-photo">
+            <img src="assets/images/foto_paulo.webp" alt="Dr. Paulo Rinaldi — Advogado e Servidor Público do Estado de Santa Catarina" class="monumental-photo-img" loading="lazy">
+            <div class="monumental-photo-fade"></div>
+          </div>
+
+          <!-- Conteúdo Textual -->
+          <div class="monumental-content">
+            <div class="eyebrow-pill">
+              <span class="eyebrow-dot"></span>
+              <span>Advogado e Servidor Público</span>
+            </div>
+            <h2 class="about-title">
+              O seu recurso nas mãos de quem já passou na prova e conhece os bastidores.
+            </h2>
+            <p class="about-desc">
+              A maioria dos advogados conhece apenas a teoria jurídica dos livros. O <strong>Dr. Paulo Rinaldi</strong> vivenciou a maratona de estudos e a aprovação em concursos de alta exigência como <strong>Auditor do Estado de Santa Catarina</strong> — e hoje alia esse conhecimento dos bastidores da Administração Pública à advocacia estratégica de alta performance.
+            </p>
+            <p class="about-desc">
+              Sabemos exatamente como as bancas examinadoras raciocinam, onde erram e quais são as vulnerabilidades nos espelhos de correção e laudos eliminatórios. <strong>Sua defesa não é tratada com teses genéricas, mas com precisão técnica e vivência real.</strong>
+            </p>
+            <div class="monumental-badge-row">
+              <span class="credential-badge credential-badge--name">Dr. Paulo Rinaldi</span>
+              <span class="credential-badge credential-badge--oab">OAB/SC 78.309</span>
+              <span class="credential-badge credential-badge--auditor">Servidor Público</span>
+              <span class="credential-badge" style="background: rgba(255, 94, 26, 0.2); color: var(--rr-orange); border: 1px solid var(--rr-orange);">⚡ Atuação Nacional (CNJ)</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Pilares em Grid (Abaixo do Card Monumental) -->
+        <div class="about-pillars-grid">
+          <div class="pillar-card-light">
+            <span class="pillar-num">01</span>
+            <h4>Domínio dos Bastidores da Banca</h4>
+            <p>Atuamos cirurgicamente onde as bancas desrespeitam o edital ou a jurisprudência dos Tribunais Superiores.</p>
+            <div class="pillar-badges">
+              <span class="banca-badge">CEBRASPE</span>
+              <span class="banca-badge">FGV</span>
+              <span class="banca-badge">FCC</span>
+              <span class="banca-badge">VUNESP</span>
+            </div>
+          </div>
+
+          <div class="pillar-card-light">
+            <span class="pillar-num">02</span>
+            <h4>Atendimento Humanizado & Sem Juridiquês</h4>
+            <p>Você fala diretamente com quem entende sua trajetória. Explicamos cada passo em português claro, com transparência total.</p>
+          </div>
+
+          <div class="pillar-card-light">
+            <span class="pillar-num">03</span>
+            <h4>Agilidade & Ação Imediata</h4>
+            <p>Em concursos públicos, prazo não se recupera. Tratamos liminares e mandados de segurança em regime de máxima prioridade judicial.</p>
+          </div>
+
+          <!-- Pilar 04: Quebra de Objeção Atendimento Nacional e Processo Virtual -->
+          <div class="pillar-card-light" style="border-color: rgba(255, 94, 26, 0.45); background: linear-gradient(145deg, var(--rr-panel-2) 0%, rgba(255, 94, 26, 0.08) 100%);">
+            <span class="pillar-num" style="color: var(--rr-orange);">04</span>
+            <h4>Atuação Nacional · Juízo 100% Digital</h4>
+            <p>Atendemos o Brasil inteiro com excelência. 100% dos processos correm de forma eletrônica (PJe, e-Proc, Balcão Virtual CNJ). Protocolamos liminares em minutos e fazemos sustentações orais com juízes e desembargadores de todo o país por videoconferência.</p>
+            <div class="pillar-badges">
+              <span class="banca-badge" style="border-color: var(--rr-orange); color: var(--rr-orange);">PJe / e-Proc</span>
+              <span class="banca-badge">TRFs & STJ/STF</span>
+              <span class="banca-badge">Balcão Virtual CNJ</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- MOBILE/TABLET VIEW (<= 1024px): QUADRO MONUMENTAL EXATAMENTE IGUAL À OPÇÃO 2 -->
+      <div class="about-mobile-layout">
+        
+        <!-- Card / Quadro da Opção 2 no Mobile -->
+        <div class="monumental-card monumental-card--mobile">
+          
+          <!-- Conteúdo Textual e Foto Integrados no Quadro -->
+          <div class="monumental-content monumental-content--mobile">
+            <div class="eyebrow-pill">
+              <span class="eyebrow-dot"></span>
+              <span>Advogado e Servidor Público</span>
+            </div>
+            <h2 class="about-title">
+              O seu recurso nas mãos de quem já passou na prova e conhece os bastidores.
+            </h2>
+
+            <!-- Foto do Dr. Paulo dentro do Quadro da Opção 2, entre Headline e Texto, com fade inferior para var(--rr-panel) -->
+            <div class="monumental-photo monumental-photo--mobile">
+              <img src="assets/images/foto_paulo.webp" alt="Dr. Paulo Rinaldi — Advogado e Servidor Público do Estado de Santa Catarina" class="monumental-photo-img" loading="lazy">
+              <div class="monumental-photo-fade monumental-photo-fade--mobile"></div>
+            </div>
+
+            <p class="about-desc">
+              A maioria dos advogados conhece apenas a teoria jurídica dos livros. O <strong>Dr. Paulo Rinaldi</strong> vivenciou a maratona de estudos e a aprovação em concursos de alta exigência como <strong>Auditor do Estado de Santa Catarina</strong> — e hoje alia esse conhecimento dos bastidores da Administração Pública à advocacia estratégica de alta performance.
+            </p>
+            <p class="about-desc">
+              Sabemos exatamente como as bancas examinadoras raciocinam, onde erram e quais são as vulnerabilidades nos espelhos de correção e laudos eliminatórios. <strong>Sua defesa não é tratada com teses genéricas, mas com precisão técnica e vivência real.</strong>
+            </p>
+            <div class="monumental-badge-row">
+              <span class="credential-badge credential-badge--name">Dr. Paulo Rinaldi</span>
+              <span class="credential-badge credential-badge--oab">OAB/SC 78.309</span>
+              <span class="credential-badge credential-badge--auditor">Servidor Público</span>
+            </div>
+          </div>
+        </div>
+
+          <hr class="about-divider">
+
+          <!-- Pilares de Bastidor com Badges -->
+          <div class="about-pillars">
+            <div class="pillar-card">
+              <span class="pillar-num">01</span>
+              <div class="pillar-content">
+                <h4>Domínio dos Bastidores da Banca</h4>
+                <p>Atuamos cirurgicamente onde as bancas desrespeitam o edital ou a jurisprudência dos Tribunais Superiores.</p>
+                <div class="pillar-badges">
+                  <span class="banca-badge">CEBRASPE</span>
+                  <span class="banca-badge">FGV</span>
+                  <span class="banca-badge">FCC</span>
+                  <span class="banca-badge">VUNESP</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="pillar-card">
+              <span class="pillar-num">02</span>
+              <div class="pillar-content">
+                <h4>Atendimento Humanizado & Sem Juridiquês</h4>
+                <p>Você fala diretamente com quem entende sua trajetória. Explicamos cada passo em português claro, com transparência total.</p>
+              </div>
+            </div>
+
+            <div class="pillar-card">
+              <span class="pillar-num">03</span>
+              <div class="pillar-content">
+                <h4>Agilidade & Ação Imediata</h4>
+                <p>Em concursos públicos, prazo não se recupera. Tratamos liminares e mandados de segurança em regime de máxima prioridade judicial.</p>
+              </div>
+            </div>
+
+            <!-- Pilar 04: Quebra de Objeção Atendimento Nacional e Processo Virtual no Mobile -->
+            <div class="pillar-card" style="border-left: 2px solid var(--rr-orange); padding-left: 12px;">
+              <span class="pillar-num" style="color: var(--rr-orange);">04</span>
+              <div class="pillar-content">
+                <h4 style="color: var(--rr-orange);">Atuação Nacional · Juízo 100% Digital</h4>
+                <p>Atendemos o Brasil inteiro com excelência. 100% dos processos correm virtualmente pelo PJe, e-Proc e Balcão Virtual (CNJ). Protocolamos liminares em minutos e fazemos sustentações orais com juízes e desembargadores de qualquer tribunal do país via videoconferência.</p>
+                <div class="pillar-badges" style="margin-top: 8px;">
+                  <span class="banca-badge" style="border-color: var(--rr-orange); color: var(--rr-orange);">PJe / e-Proc</span>
+                  <span class="banca-badge">TRFs & STJ/STF</span>
+                  <span class="banca-badge">Balcão Virtual CNJ</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       7. SEÇÃO 4: METODOLOGIA / COMO FUNCIONA O ATENDIMENTO (#metodologia)
+       ========================================================================== -->
+  <section class="method-section" id="metodologia">
+    <div class="method-container">
+      
+      <div class="generic-header">
+        <div class="eyebrow-pill" style="border-color: rgba(58, 46, 36, 0.2); background: rgba(58, 46, 36, 0.06);">
+          <span class="eyebrow-dot"></span>
+          <span>DO WHATSAPP ATÉ A MEDIDA JUDICIAL</span>
+        </div>
+        <h2 class="generic-title">
+          Conheça o Protocolo R.E.A.L. — O mapa cirúrgico em 4 fases para blindar a sua vaga.
+        </h2>
+        <p class="generic-subtitle" style="max-width: 780px;">
+          Sem burocracia, sem intermediários e com análise técnica transparente desde o primeiro contato. Você no controle e com a garantia de uma defesa focada em alta performance.
+        </p>
+      </div>
+
+      <div class="journey-real-container">
+        <!-- Linha Vertical Central -->
+        <div class="journey-line" aria-hidden="true">
+          <div class="journey-line-fill"></div>
+        </div>
+
+        <div class="journey-steps-wrapper">
+          
+          <!-- FASE 1: Esquerda no Desktop -->
+          <div class="journey-step journey-step-left">
+            <div class="journey-dot">R</div>
+            <div class="journey-card">
+              <div class="journey-card-header">
+                <div class="journey-meta">
+                  <span class="journey-chapter-tag">Fase 01 · Recepção</span>
+                  <h3>Triagem Direta via WhatsApp</h3>
+                </div>
+              </div>
+              <p>Você nos envia seu edital, espelho de correção ou ato eliminatório no WhatsApp em minutos. Nossa equipe técnica faz a triagem inicial e encaminha seu caso para análise especializada com agilidade.</p>
+              <div class="journey-status-tag">
+                <span>⚡ Atendimento em Minutos</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- FASE 2: Direita no Desktop -->
+          <div class="journey-step journey-step-right">
+            <div class="journey-dot">E</div>
+            <div class="journey-card">
+              <div class="journey-card-header">
+                <div class="journey-meta">
+                  <span class="journey-chapter-tag">Fase 02 · Exame</span>
+                  <h3>Viabilidade Cirúrgica</h3>
+                </div>
+              </div>
+              <p>Colocamos sua prova sob a lente do STF/STJ e da vivência real de Auditor do Estado. Se a tese for sólida, avançamos com força máxima; se não houver, jogamos limpo na hora, sem falsas promessas.</p>
+              <div class="journey-status-tag">
+                <span>🔍 Lente STF/STJ + Auditor</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- FASE 3: Esquerda no Desktop -->
+          <div class="journey-step journey-step-left">
+            <div class="journey-dot">A</div>
+            <div class="journey-card">
+              <div class="journey-card-header">
+                <div class="journey-meta">
+                  <span class="journey-chapter-tag">Fase 03 · Ataque</span>
+                  <h3>Protocolo Sob Medida</h3>
+                </div>
+              </div>
+              <p>Hora da intervenção. Nossos advogados constroem o Mandado de Segurança com pedido de liminar ou o Recurso Administrativo artesanalmente, atacando com precisão onde a banca violou o edital ou a lei.</p>
+              <div class="journey-status-tag">
+                <span>⚖️ Pedido de Liminar Prioritário</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- FASE 4: Direita no Desktop -->
+          <div class="journey-step journey-step-right">
+            <div class="journey-dot">L</div>
+            <div class="journey-card">
+              <div class="journey-card-header">
+                <div class="journey-meta">
+                  <span class="journey-chapter-tag">Fase 04 · Linha Direta</span>
+                  <h3>Acompanhamento Transparente</h3>
+                </div>
+              </div>
+              <p>Monitoramento ágil de cada movimentação do seu processo ou recurso em português claro e humanizado. Avisamos cada despacho do juiz diretamente no seu celular com transparência e paz de espírito.</p>
+              <div class="journey-status-tag">
+                <span>📲 Alertas no Celular sem Juridiquês</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       8. SEÇÃO 5: PERGUNTAS FREQUENTES (#faq)
+       ========================================================================== -->
+  <section class="faq-section" id="faq">
+    <div class="faq-aurora-left"></div>
+    <div class="faq-aurora-right"></div>
+    <div class="faq-container">
+      
+      <div class="generic-header">
+        <div class="eyebrow-pill">
+          <span class="eyebrow-dot"></span>
+          <span>TIRE SUAS DÚVIDAS</span>
+        </div>
+        <h2 class="about-title">
+          O que todo concurseiro precisa saber antes de recorrer.
+        </h2>
+      </div>
+
+      <div class="faq-grid-wrapper">
+        
+        <div class="faq-list" id="faqAccordion">
+          <!-- FAQ 1 -->
+          <div class="faq-item">
+            <button class="faq-header" aria-expanded="false">
+              <div style="display: flex; align-items: center; gap: 16px;">
+                <span class="faq-index-num">Q01</span>
+                <span>Vale mais a pena tentar o Recurso Administrativo ou ir direto para a Justiça?</span>
+              </div>
+              <span class="faq-icon-box">+</span>
+            </button>
+            <div class="faq-content">
+              <div class="faq-content-inner">
+                Depende da fase do certame. Se o prazo para o recurso administrativo ainda estiver aberto, uma peça bem elaborada técnica e juridicamente pode garantir seus pontos sem custos judiciais. Contudo, se a banca examinadora rejeitar arbitrariamente o recurso (o que é comum para manter o padrão do espelho) ou se o prazo já tiver expirado, o Mandado de Segurança com pedido liminar é a via cirúrgica para garantir a sua permanência e nomeação no concurso.
+              </div>
+            </div>
+          </div>
+
+          <!-- FAQ 2 -->
+          <div class="faq-item">
+            <button class="faq-header" aria-expanded="false">
+              <div style="display: flex; align-items: center; gap: 16px;">
+                <span class="faq-index-num">Q02</span>
+                <span>Qual é o prazo máximo para entrar com uma ação na Justiça contra a eliminação?</span>
+              </div>
+              <span class="faq-icon-box">+</span>
+            </button>
+            <div class="faq-content">
+              <div class="faq-content-inner">
+                No caso do Mandado de Segurança, o prazo decadencial rigoroso é de 120 dias corridos a contar da publicação oficial do ato que te eliminou ou preteriu. Em ações ordinárias o prazo é superior, mas em concursos públicos cada dia conta. Quanto mais rápido ingressarmos com o pedido de liminar, maiores são as chances de reverter sua eliminação antes que as próximas etapas do certame aconteçam.
+              </div>
+            </div>
+          </div>
+
+          <!-- FAQ 3 (Quebra Completa de Objeção: Atendimento Nacional & Juízo 100% Digital) -->
+          <div class="faq-item" style="border-color: rgba(255, 94, 26, 0.45); background: linear-gradient(145deg, var(--rr-panel-2) 0%, rgba(255, 94, 26, 0.06) 100%);">
+            <button class="faq-header" aria-expanded="false">
+              <div style="display: flex; align-items: center; gap: 16px;">
+                <span class="faq-index-num" style="color: var(--rr-orange);">Q03</span>
+                <span style="font-weight: 800;">O Dr. Paulo Rinaldi é de Santa Catarina. Como funciona o atendimento em concursos de outros estados ou tribunais federais?</span>
+              </div>
+              <span class="faq-icon-box">+</span>
+            </button>
+            <div class="faq-content">
+              <div class="faq-content-inner">
+                Com excelência, agilidade imediata e sem nenhuma barreira geográfica. Desde a regulamentação do <strong>Juízo 100% Digital</strong> e do <strong>Balcão Virtual</strong> pelo Conselho Nacional de Justiça (CNJ), <strong>100% dos processos judiciais no Brasil correm por meio eletrônico</strong> (PJe, e-Proc, Projudi, Esaj, e-STJ). Isso significa que, independentemente de onde você resida ou de qual estado/órgão seja o concurso (São Paulo, Brasília, Bahia, Pará, TRFs, etc.), protocolamos Mandados de Segurança e pedidos de liminar em minutos diretamente na mesa do juiz competente, além de realizarmos despachos e sustentações orais por videoconferência oficial com juízes, desembargadores e ministros em todo o país. Ter um advogado especialista ex-Auditor cuidando do seu caso no meio digital é muito mais rápido e eficiente do que depender da advocacia presencial tradicional.
+              </div>
+            </div>
+          </div>
+
+          <!-- FAQ 4 -->
+          <div class="faq-item">
+            <button class="faq-header" aria-expanded="false">
+              <div style="display: flex; align-items: center; gap: 16px;">
+                <span class="faq-index-num">Q04</span>
+                <span>Se eu assumir o cargo por força de liminar, corro risco de ser demitido depois?</span>
+              </div>
+              <span class="faq-icon-box">+</span>
+            </button>
+            <div class="faq-content">
+              <div class="faq-content-inner">
+                A liminar é uma decisão judicial provisória concedida para garantir que você não perca o curso de formação ou a posse enquanto o processo final é julgado. Nossa estratégia de atuação foca em fundamentar a ação em jurisprudência pacificada do STF e do STJ, buscando blindar o mérito para que a liminar seja confirmada por sentença definitiva com trânsito em julgado.
+              </div>
+            </div>
+          </div>
+
+          <!-- FAQ 5 -->
+          <div class="faq-item">
+            <button class="faq-header" aria-expanded="false">
+              <div style="display: flex; align-items: center; gap: 16px;">
+                <span class="faq-index-num">Q05</span>
+                <span>Como funciona a consulta inicial e o pagamento dos honorários?</span>
+              </div>
+              <span class="faq-icon-box">+</span>
+            </button>
+            <div class="faq-content">
+              <div class="faq-content-inner">
+                A triagem inicial do seu caso e a análise de viabilidade são realizadas diretamente via WhatsApp de forma rápida e humanizada, sem compromisso inicial. Após analisarmos os documentos do certame, apresentamos uma proposta transparente, sem taxas ocultas ou surpresas, com condições acessíveis pensadas na realidade de quem investe no sonho do serviço público.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Coluna da Direita: Card Sticky WhatsApp -->
+        <div class="faq-sidebar-card">
+          <div class="faq-sidebar-badge">💬 Plantão Jurídico</div>
+          <h3>Não encontrou a resposta para a sua dúvida específica?</h3>
+          <p>Cada eliminação em concurso tem detalhes únicos de edital, banca e fase. Não tome decisões baseadas em suposições gerais da internet.</p>
+          <div class="sidebar-highlight">
+            Converse agora diretamente via WhatsApp com nosso advogado especialista e receba uma triagem preliminar de viabilidade do seu caso.
+          </div>
+          <a href="https://wa.me/5511999999999" class="faq-sidebar-btn" target="_blank">
+            <span>FALAR COM ADVOGADO AGORA</span>
+            <span>➔</span>
+          </a>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       9. SEÇÃO 6: CTA FINAL & CONTATO (#contato) COM GRÁFICOS E GRID DE GARANTIAS
+       ========================================================================== -->
+  <section class="cta-final-section" id="contato">
+    <div class="cta-final-box">
+      <!-- Gráfico Monumental no Background: Gabarito Óptico Vetorial de Concurso (100% Visível em Todo o Card) -->
+      <svg class="cta-gabarito-graphic" viewBox="0 0 1000 1200" preserveAspectRatio="xMidYMid slice" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <!-- Linhas e Colunas do Cartão-Resposta cobrindo de ponta a ponta (Top ao Bottom) -->
+        <g opacity="0.45" font-family="monospace" font-size="15">
+          <!-- Bloco Superior (Linhas 01 a 30) -->
+          <g transform="translate(0, 0)">
+            <text x="30" y="60" fill="currentColor" font-weight="bold">01 (A) (B) (●) (D) (E)</text>
+            <text x="30" y="100" fill="currentColor">02 (●) (B) (C) (D) (E)</text>
+            <text x="30" y="140" fill="currentColor">03 (A) (B) (C) (●) (E)</text>
+            <text x="30" y="180" fill="currentColor" font-weight="bold">04 (A) (●) (C) (D) (E)</text>
+            <text x="30" y="220" fill="currentColor">05 (A) (B) (C) (D) (●)</text>
+            <text x="30" y="260" fill="currentColor">06 (●) (B) (C) (D) (E)</text>
+            <text x="30" y="300" fill="currentColor" font-weight="bold">07 (A) (B) (●) (D) (E)</text>
+            <text x="30" y="340" fill="currentColor">08 (A) (B) (C) (●) (E)</text>
+            <text x="30" y="380" fill="currentColor">09 (A) (●) (C) (D) (E)</text>
+            <text x="30" y="420" fill="currentColor" font-weight="bold">10 (●) (B) (C) (D) (E)</text>
+
+            <text x="280" y="60" fill="currentColor">11 (A) (B) (C) (●) (E)</text>
+            <text x="280" y="100" fill="currentColor" font-weight="bold">12 (●) (B) (C) (D) (E)</text>
+            <text x="280" y="140" fill="currentColor">13 (A) (●) (C) (D) (E)</text>
+            <text x="280" y="180" fill="currentColor">14 (A) (B) (●) (D) (E)</text>
+            <text x="280" y="220" fill="currentColor" font-weight="bold">15 (●) (B) (C) (D) (E)</text>
+            <text x="280" y="260" fill="currentColor">16 (A) (B) (C) (●) (E)</text>
+            <text x="280" y="300" fill="currentColor">17 (A) (●) (C) (D) (E)</text>
+            <text x="280" y="340" fill="currentColor" font-weight="bold">18 (A) (B) (●) (D) (E)</text>
+            <text x="280" y="380" fill="currentColor">19 (●) (B) (C) (D) (E)</text>
+            <text x="280" y="420" fill="currentColor">20 (A) (B) (C) (●) (E)</text>
+
+            <text x="530" y="60" fill="currentColor" font-weight="bold">21 (A) (●) (C) (D) (E)</text>
+            <text x="530" y="100" fill="currentColor">22 (●) (B) (C) (D) (E)</text>
+            <text x="530" y="140" fill="currentColor">23 (A) (B) (●) (D) (E)</text>
+            <text x="530" y="180" fill="currentColor" font-weight="bold">24 (A) (B) (C) (●) (E)</text>
+            <text x="530" y="220" fill="currentColor">25 (●) (B) (C) (D) (E)</text>
+            <text x="530" y="260" fill="currentColor">26 (A) (●) (C) (D) (E)</text>
+            <text x="530" y="300" fill="currentColor" font-weight="bold">27 (A) (B) (●) (D) (E)</text>
+            <text x="530" y="340" fill="currentColor">28 (●) (B) (C) (D) (E)</text>
+            <text x="530" y="380" fill="currentColor">29 (A) (B) (C) (●) (E)</text>
+            <text x="530" y="420" fill="currentColor" font-weight="bold">30 (A) (●) (C) (D) (E)</text>
+
+            <text x="780" y="60" fill="currentColor">31 (A) (B) (C) (D) (●)</text>
+            <text x="780" y="100" fill="currentColor" font-weight="bold">32 (●) (B) (C) (D) (E)</text>
+            <text x="780" y="140" fill="currentColor">33 (A) (●) (C) (D) (E)</text>
+            <text x="780" y="180" fill="currentColor">34 (A) (B) (●) (D) (E)</text>
+            <text x="780" y="220" fill="currentColor" font-weight="bold">35 (●) (B) (C) (D) (E)</text>
+            <text x="780" y="260" fill="currentColor">36 (A) (B) (C) (●) (E)</text>
+            <text x="780" y="300" fill="currentColor">37 (A) (●) (C) (D) (E)</text>
+            <text x="780" y="340" fill="currentColor" font-weight="bold">38 (A) (B) (●) (D) (E)</text>
+            <text x="780" y="380" fill="currentColor">39 (●) (B) (C) (D) (E)</text>
+            <text x="780" y="420" fill="currentColor">40 (A) (B) (C) (●) (E)</text>
+          </g>
+
+          <!-- Bloco Central (Linhas 41 a 80) -->
+          <g transform="translate(0, 400)">
+            <text x="30" y="60" fill="currentColor" font-weight="bold">41 (●) (B) (C) (D) (E)</text>
+            <text x="30" y="100" fill="currentColor">42 (A) (●) (C) (D) (E)</text>
+            <text x="30" y="140" fill="currentColor">43 (A) (B) (●) (D) (E)</text>
+            <text x="30" y="180" fill="currentColor" font-weight="bold">44 (A) (B) (C) (●) (E)</text>
+            <text x="30" y="220" fill="currentColor">45 (●) (B) (C) (D) (E)</text>
+            <text x="30" y="260" fill="currentColor">46 (A) (●) (C) (D) (E)</text>
+            <text x="30" y="300" fill="currentColor" font-weight="bold">47 (A) (B) (●) (D) (E)</text>
+            <text x="30" y="340" fill="currentColor">48 (A) (B) (C) (●) (E)</text>
+            <text x="30" y="380" fill="currentColor">49 (●) (B) (C) (D) (E)</text>
+            <text x="30" y="420" fill="currentColor" font-weight="bold">50 (A) (●) (C) (D) (E)</text>
+
+            <text x="280" y="60" fill="currentColor">51 (A) (B) (●) (D) (E)</text>
+            <text x="280" y="100" fill="currentColor" font-weight="bold">52 (A) (B) (C) (●) (E)</text>
+            <text x="280" y="140" fill="currentColor">53 (●) (B) (C) (D) (E)</text>
+            <text x="280" y="180" fill="currentColor">54 (A) (●) (C) (D) (E)</text>
+            <text x="280" y="220" fill="currentColor" font-weight="bold">55 (A) (B) (●) (D) (E)</text>
+            <text x="280" y="260" fill="currentColor">56 (A) (B) (C) (●) (E)</text>
+            <text x="280" y="300" fill="currentColor">57 (●) (B) (C) (D) (E)</text>
+            <text x="280" y="340" fill="currentColor" font-weight="bold">58 (A) (●) (C) (D) (E)</text>
+            <text x="280" y="380" fill="currentColor">59 (A) (B) (●) (D) (E)</text>
+            <text x="280" y="420" fill="currentColor">60 (A) (B) (C) (●) (E)</text>
+
+            <text x="530" y="60" fill="currentColor" font-weight="bold">61 (●) (B) (C) (D) (E)</text>
+            <text x="530" y="100" fill="currentColor">62 (A) (●) (C) (D) (E)</text>
+            <text x="530" y="140" fill="currentColor">63 (A) (B) (●) (D) (E)</text>
+            <text x="530" y="180" fill="currentColor" font-weight="bold">64 (A) (B) (C) (●) (E)</text>
+            <text x="530" y="220" fill="currentColor">65 (●) (B) (C) (D) (E)</text>
+            <text x="530" y="260" fill="currentColor">66 (A) (●) (C) (D) (E)</text>
+            <text x="530" y="300" fill="currentColor" font-weight="bold">67 (A) (B) (●) (D) (E)</text>
+            <text x="530" y="340" fill="currentColor">68 (A) (B) (C) (●) (E)</text>
+            <text x="530" y="380" fill="currentColor">69 (●) (B) (C) (D) (E)</text>
+            <text x="530" y="420" fill="currentColor" font-weight="bold">70 (A) (●) (C) (D) (E)</text>
+
+            <text x="780" y="60" fill="currentColor">71 (A) (B) (●) (D) (E)</text>
+            <text x="780" y="100" fill="currentColor" font-weight="bold">72 (A) (B) (C) (●) (E)</text>
+            <text x="780" y="140" fill="currentColor">73 (●) (B) (C) (D) (E)</text>
+            <text x="780" y="180" fill="currentColor">74 (A) (●) (C) (D) (E)</text>
+            <text x="780" y="220" fill="currentColor" font-weight="bold">75 (A) (B) (●) (D) (E)</text>
+            <text x="780" y="260" fill="currentColor">76 (A) (B) (C) (●) (E)</text>
+            <text x="780" y="300" fill="currentColor">77 (●) (B) (C) (D) (E)</text>
+            <text x="780" y="340" fill="currentColor" font-weight="bold">78 (A) (●) (C) (D) (E)</text>
+            <text x="780" y="380" fill="currentColor">79 (A) (B) (●) (D) (E)</text>
+            <text x="780" y="420" fill="currentColor">80 (A) (B) (C) (●) (E)</text>
+          </g>
+
+          <!-- Bloco Inferior (Linhas 81 a 120) -->
+          <g transform="translate(0, 800)">
+            <text x="30" y="60" fill="currentColor" font-weight="bold">81 (●) (B) (C) (D) (E)</text>
+            <text x="30" y="100" fill="currentColor">82 (A) (●) (C) (D) (E)</text>
+            <text x="30" y="140" fill="currentColor">83 (A) (B) (●) (D) (E)</text>
+            <text x="30" y="180" fill="currentColor" font-weight="bold">84 (A) (B) (C) (●) (E)</text>
+            <text x="30" y="220" fill="currentColor">85 (●) (B) (C) (D) (E)</text>
+            <text x="30" y="260" fill="currentColor">86 (A) (●) (C) (D) (E)</text>
+            <text x="30" y="300" fill="currentColor" font-weight="bold">87 (A) (B) (●) (D) (E)</text>
+            <text x="30" y="340" fill="currentColor">88 (A) (B) (C) (●) (E)</text>
+            <text x="30" y="380" fill="currentColor">89 (●) (B) (C) (D) (E)</text>
+            <text x="30" y="420" fill="currentColor" font-weight="bold">90 (A) (●) (C) (D) (E)</text>
+
+            <text x="280" y="60" fill="currentColor">91 (A) (B) (●) (D) (E)</text>
+            <text x="280" y="100" fill="currentColor" font-weight="bold">92 (A) (B) (C) (●) (E)</text>
+            <text x="280" y="140" fill="currentColor">93 (●) (B) (C) (D) (E)</text>
+            <text x="280" y="180" fill="currentColor">94 (A) (●) (C) (D) (E)</text>
+            <text x="280" y="220" fill="currentColor" font-weight="bold">95 (A) (B) (●) (D) (E)</text>
+            <text x="280" y="260" fill="currentColor">96 (A) (B) (C) (●) (E)</text>
+            <text x="280" y="300" fill="currentColor">97 (●) (B) (C) (D) (E)</text>
+            <text x="280" y="340" fill="currentColor" font-weight="bold">98 (A) (●) (C) (D) (E)</text>
+            <text x="280" y="380" fill="currentColor">99 (A) (B) (●) (D) (E)</text>
+            <text x="280" y="420" fill="currentColor">100 (A) (B) (C) (●) (E)</text>
+
+            <text x="530" y="60" fill="currentColor" font-weight="bold">101 (●) (B) (C) (D) (E)</text>
+            <text x="530" y="100" fill="currentColor">102 (A) (●) (C) (D) (E)</text>
+            <text x="530" y="140" fill="currentColor">103 (A) (B) (●) (D) (E)</text>
+            <text x="530" y="180" fill="currentColor" font-weight="bold">104 (A) (B) (C) (●) (E)</text>
+            <text x="530" y="220" fill="currentColor">105 (●) (B) (C) (D) (E)</text>
+            <text x="530" y="260" fill="currentColor">106 (A) (●) (C) (D) (E)</text>
+            <text x="530" y="300" fill="currentColor" font-weight="bold">107 (A) (B) (●) (D) (E)</text>
+            <text x="530" y="340" fill="currentColor">108 (A) (B) (C) (●) (E)</text>
+            <text x="530" y="380" fill="currentColor">109 (●) (B) (C) (D) (E)</text>
+            <text x="530" y="420" fill="currentColor" font-weight="bold">110 (A) (●) (C) (D) (E)</text>
+
+            <text x="780" y="60" fill="currentColor">111 (A) (B) (●) (D) (E)</text>
+            <text x="780" y="100" fill="currentColor" font-weight="bold">112 (A) (B) (C) (●) (E)</text>
+            <text x="780" y="140" fill="currentColor">113 (●) (B) (C) (D) (E)</text>
+            <text x="780" y="180" fill="currentColor">114 (A) (●) (C) (D) (E)</text>
+            <text x="780" y="220" fill="currentColor" font-weight="bold">115 (A) (B) (●) (D) (E)</text>
+            <text x="780" y="260" fill="currentColor">116 (A) (B) (C) (●) (E)</text>
+            <text x="780" y="300" fill="currentColor">117 (●) (B) (C) (D) (E)</text>
+            <text x="780" y="340" fill="currentColor" font-weight="bold">118 (A) (●) (C) (D) (E)</text>
+            <text x="780" y="380" fill="currentColor">119 (A) (B) (●) (D) (E)</text>
+            <text x="780" y="420" fill="currentColor">120 (A) (B) (C) (●) (E)</text>
+          </g>
+        </g>
+      </svg>
+
+      <div class="eyebrow-pill">
+        <span class="eyebrow-dot"></span>
+        <span>ATENDIMENTO NACIONAL · 100% DIGITAL</span>
+      </div>
+      
+      <h2 class="cta-final-title">
+        A SUA APROVAÇÃO CUSTOU ANOS DE VIDA. NÃO DEIXE UM ERRO ARBITRÁRIO TIRÁ-LA DE VOCÊ.
+      </h2>
+      
+      <p class="cta-final-subtitle">
+        Concurso público é corrida contra o tempo. Fale agora com o Dr. Paulo Rinaldi e blinde a vaga que você conquistou por direito.
+      </p>
+
+      <div class="btn-pulse-wrapper">
+        <span class="btn-pulse-ring"></span>
+        <a href="https://wa.me/5592994401600" target="_blank" rel="noopener noreferrer" class="btn-primary" style="padding: 18px 36px; font-size: 16px;">
+          <span>Analisar meu caso no WhatsApp agora</span>
+          <span aria-hidden="true">→</span>
+        </a>
+      </div>
+
+      <!-- Grid de 3 Cards Gráficos de Garantia -->
+      <div class="cta-guarantee-grid">
+        <!-- Garantia 1 -->
+        <div class="cta-guarantee-card">
+          <div class="cta-guarantee-icon">⚡</div>
+          <div class="cta-guarantee-title">Resposta Ágil & Imediata</div>
+          <div class="cta-guarantee-desc">Atendimento prioritário para análise de prazos fatais de liminares e recursos.</div>
+        </div>
+
+        <!-- Garantia 2 -->
+        <div class="cta-guarantee-card">
+          <div class="cta-guarantee-icon">🛡️</div>
+          <div class="cta-guarantee-title">Análise Sem Compromisso</div>
+          <div class="cta-guarantee-desc">Avaliação preliminar técnica do seu edital e espelho de prova antes de qualquer contratação.</div>
+        </div>
+
+        <!-- Garantia 3 -->
+        <div class="cta-guarantee-card">
+          <div class="cta-guarantee-icon">⚖️</div>
+          <div class="cta-guarantee-title">Sigilo & Ética Absoluta</div>
+          <div class="cta-guarantee-desc">Atuação conduzida sob rigoroso sigilo profissional e transparência em cada etapa processual.</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       10. RODAPÉ DEFINITIVO DO SITE
+       ========================================================================== -->
+  <footer class="main-footer">
+    <div class="footer-top">
+      <a href="#" class="brand-logo" aria-label="Ribeiro Rinaldi Advocacia">
+        <svg viewBox="0 0 120 120" style="overflow:visible;">
+          <defs>
+            <linearGradient id="rrGradFooter" x1="0" y1="1" x2="1" y2="0">
+              <stop offset="0" stop-color="#FF5E1A"/>
+              <stop offset="1" stop-color="#F0247C"/>
+            </linearGradient>
+          </defs>
+          <polyline points="20,66 48,96 104,24" fill="none" stroke="url(#rrGradFooter)"
+            stroke-width="17" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <span class="brand-wordmark">Ribeiro Rinaldi</span>
+      </a>
+
+    </div>
+
+    <div class="footer-bottom">
+      <div>© 2026 Ribeiro Rinaldi Advocacia · Dr. Paulo Rinaldi — OAB/SC 78.309 · Todos os direitos reservados.</div>
+    </div>
+  </footer>
+
+  <!-- ==========================================================================
+       7. SCRIPTS DE ANIMAÇÃO, LENIS SMOOTH SCROLL & CANVAS IMAGE SEQUENCE SCRUB
+       ========================================================================== -->
+  <script>
+    (function () {
+      gsap.registerPlugin(ScrollTrigger);
+
+      // Configuração essencial para garantir que o Mobile não dê saltos (jump) de layout ao transicionar entre seções pinadas
+      ScrollTrigger.config({ ignoreMobileResize: true });
+      if (window.innerWidth >= 1025) {
+        ScrollTrigger.normalizeScroll(true);
+      }
+
+      /* --------------------------------------------------------------------------
+         A. LENIS SMOOTH SCROLL (Sensação Amanteigada no Desktop & Scroll Nativo Puro no Celular)
+         -------------------------------------------------------------------------- */
+      const lenis = new Lenis({
+        duration: 1.15,
+        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+        smoothWheel: true,
+        wheelMultiplier: 1.0,
+        syncTouch: false, // No Mobile: desativado para liberar o scroll nativo (Apple/Android) a 120Hz/60Hz puros, sem travamentos
+        touchMultiplier: 1.0
+      });
+
+      lenis.on('scroll', ScrollTrigger.update);
+
+      gsap.ticker.add((time) => {
+        lenis.raf(time * 1000);
+      });
+      gsap.ticker.lagSmoothing(0);
+
+      /* --------------------------------------------------------------------------
+         B. REVEAL & LETTERING DE ENTRADA AO CARREGAR
+         -------------------------------------------------------------------------- */
+      const words = document.querySelectorAll('.word');
+      gsap.to(words, {
+        opacity: 1,
+        y: 0,
+        duration: 0.75,
+        ease: 'cubic-bezier(0.16, 1, 0.3, 1)',
+        stagger: 0.09,
+        delay: 0.15
+      });
+
+      gsap.from('.eyebrow-pill', {
+        opacity: 0,
+        y: -14,
+        duration: 0.65,
+        ease: 'cubic-bezier(0.16, 1, 0.3, 1)',
+        delay: 0.1
+      });
+
+      gsap.from('.hero-subtitle', {
+        opacity: 0,
+        y: 18,
+        duration: 0.75,
+        ease: 'cubic-bezier(0.16, 1, 0.3, 1)',
+        delay: 0.55
+      });
+
+      gsap.from('.hero-actions, .hero-lawyer-badge', {
+        opacity: 0,
+        y: 20,
+        duration: 0.75,
+        ease: 'cubic-bezier(0.16, 1, 0.3, 1)',
+        stagger: 0.12,
+        delay: 0.7
+      });
+
+      /* --------------------------------------------------------------------------
+         C. APPLE/AWWWARDS-STYLE: SEQUÊNCIA DE QUADROS NO CANVAS (100 a 195)
+         -------------------------------------------------------------------------- */
+      const canvas = document.getElementById('heroCanvas');
+      const ctx = canvas ? canvas.getContext('2d') : null;
+      const scrollIndicator = document.getElementById('scrollIndicator');
+
+      const frameStart = 100;
+      const frameEnd = 195;
+      const totalFrames = frameEnd - frameStart + 1; // 96 quadros .webp otimizados
+      const images = [];
+      let firstFrameRendered = false;
+
+      // Sincroniza dinamicamente a cor de fundo da página com os pixels do quadro
+      function syncBackgroundColor(img) {
+        try {
+          const tempCanvas = document.createElement('canvas');
+          tempCanvas.width = 16;
+          tempCanvas.height = 16;
+          const tempCtx = tempCanvas.getContext('2d');
+          tempCtx.drawImage(img, 0, 0, 16, 16);
+          const p = tempCtx.getImageData(2, 2, 1, 1).data;
+          if (p[0] !== 0 || p[1] !== 0 || p[2] !== 0) {
+            const exactColor = `rgb(${p[0]}, ${p[1]}, ${p[2]})`;
+            document.documentElement.style.setProperty('--rr-bg', exactColor);
+            document.body.style.backgroundColor = exactColor;
+          }
+        } catch (e) {}
+      }
+
+      // Renderiza um quadro específico mantendo object-fit: cover via CSS na tag <canvas>
+      function renderFrame(index) {
+        if (!canvas || !ctx || !images[index]) return;
+        const img = images[index];
+        if (!img.complete || !img.naturalWidth) return;
+
+        if (canvas.width !== img.naturalWidth || canvas.height !== img.naturalHeight) {
+          canvas.width = img.naturalWidth;
+          canvas.height = img.naturalHeight;
+        }
+
+        ctx.drawImage(img, 0, 0);
+
+        if (!firstFrameRendered && index === 0) {
+          firstFrameRendered = true;
+          syncBackgroundColor(img);
+        }
+      }
+
+      // Pré-carregamento dos 96 quadros WebP em memória (Smart Buffer)
+      for (let i = frameStart; i <= frameEnd; i++) {
+        const img = new Image();
+        const numStr = String(i).padStart(4, '0');
+        img.src = `assets/sequencia-hero/Sequência ${numStr}.webp`;
+        
+        const arrayIndex = i - frameStart;
+        img.onload = () => {
+          // Assim que o primeiro quadro (índice 0) carrega, desenha imediatamente e recalcula posições exatas dos gatilhos
+          if (arrayIndex === 0) {
+            renderFrame(0);
+            ScrollTrigger.refresh();
+          }
+        };
+        images.push(img);
+      }
+
+      // Motor de Limite de Cadência Máxima (Speed-Clamped Progress Engine)
+      let targetHeroProgress = 0;
+      let currentHeroProgress = 0;
+
+      function updateHeroScene(progress) {
+        // 1. Scrub de quadros no canvas — zero delay de decodificação de vídeo
+        if (images.length > 0) {
+          const frameIndex = Math.min(images.length - 1, Math.floor(progress * images.length));
+          renderFrame(frameIndex);
+        }
+
+        // 2. Efeito de sumir os textos e botões
+        // No Desktop: só começam a sumir no quadro onde a caneta toca o papel e assina o Termo de Posse (quadro 160, progress 0.625)
+        // No Mobile: a copy some logo no início da rolagem (progress 0.10 a 0.26) para revelar o documento "Concurso Público" antes da transição para o "Termo de Posse"
+        let fadeProgress = 0;
+        if (window.innerWidth >= 1025) {
+          fadeProgress = progress <= 0.625 ? 0 : Math.min(1, (progress - 0.625) / 0.25);
+        } else {
+          fadeProgress = progress <= 0.10 ? 0 : Math.min(1, (progress - 0.10) / 0.16);
+        }
+        
+        gsap.to('.hero-content-box', {
+          opacity: 1 - fadeProgress,
+          y: -50 * fadeProgress,
+          scale: 1 - 0.03 * fadeProgress,
+          duration: 0.15,
+          overwrite: 'auto'
+        });
+
+        gsap.to('.navbar', {
+          opacity: 1 - fadeProgress * 1.3,
+          y: -25 * fadeProgress,
+          duration: 0.15,
+          overwrite: 'auto'
+        });
+
+        gsap.to('.hero-ambient-glow', {
+          opacity: 1 - fadeProgress,
+          scale: 1 + 0.15 * fadeProgress,
+          duration: 0.15,
+          overwrite: 'auto'
+        });
+
+        // No mobile (<900px), o overlay escuro some em sincronia com o sumiço da copy
+        if (window.innerWidth <= 900) {
+          gsap.to('.hero-bg-overlay', {
+            opacity: 0.94 * (1 - fadeProgress),
+            duration: 0.15,
+            overwrite: 'auto'
+          });
+        } else {
+          gsap.to('.hero-bg-overlay', { opacity: 0, duration: 0.15, overwrite: 'auto' });
+        }
+
+        if (progress > 0.015) {
+          gsap.to(scrollIndicator, { opacity: 0, duration: 0.25, overwrite: 'auto' });
+        } else {
+          gsap.to(scrollIndicator, { opacity: 0.75, duration: 0.25, overwrite: 'auto' });
+        }
+
+        // 3. O container do vídeo permanece perfeitamente estável (y: 0, scale: 1) durante o Hero
+        gsap.set('.hero-bg-video-container', { y: 0, scale: 1, opacity: 1 });
+      }
+
+      gsap.ticker.add((time, deltaTime) => {
+        const dt = Math.min(0.1, deltaTime / 1000);
+        // Limite máximo de avanço: no celular máx 42% por segundo (~2.4s de cadência mínima garantida), no desktop máx 45% (~2.2s)
+        const maxSpeed = window.innerWidth < 1025 ? 0.42 : 0.45;
+        const maxDelta = maxSpeed * dt;
+        
+        const diff = targetHeroProgress - currentHeroProgress;
+        if (Math.abs(diff) > 0.0001) {
+          const step = Math.sign(diff) * Math.min(Math.abs(diff) * (window.innerWidth < 1025 ? 10 * dt : 8 * dt), maxDelta);
+          currentHeroProgress += step;
+          updateHeroScene(currentHeroProgress);
+        }
+      });
+
+      // ScrollTrigger do Hero: Scrubbing ágil com repasse para o Motor de Cadência Máxima e duração nativa no mobile
+      ScrollTrigger.create({
+        trigger: '#heroPinArea',
+        pin: true,
+        start: 'top top',
+        end: window.innerWidth < 1025 ? '+=135%' : '+=190%',
+        scrub: true,
+        onUpdate: (self) => {
+          targetHeroProgress = self.progress;
+        }
+      });
+
+      // Parallax Dinâmico e Contínuo: Sincronizado perfeitamente com o término da Hero
+      ScrollTrigger.create({
+        trigger: '.post-hero-spacer',
+        start: 'top bottom',
+        end: 'bottom top',
+        scrub: window.innerWidth < 1025 ? 0.15 : 0.4,
+        onUpdate: (self) => {
+          gsap.set('.hero-bg-video-container', { y: 0, scale: 1, opacity: 1 });
+        }
+      });
+
+      /* --------------------------------------------------------------------------
+         D. INTERATIVIDADE ACORDEÃO FAQ & REVEAL NO SCROLL (SEÇÕES SUBSEQUENTES)
+         -------------------------------------------------------------------------- */
+      const faqItems = document.querySelectorAll('.faq-item');
+      faqItems.forEach(item => {
+        const header = item.querySelector('.faq-header');
+        const content = item.querySelector('.faq-content');
+        
+        header.addEventListener('click', () => {
+          const isActive = item.classList.contains('active');
+          
+          faqItems.forEach(otherItem => {
+            if (otherItem !== item && otherItem.classList.contains('active')) {
+              otherItem.classList.remove('active');
+              otherItem.querySelector('.faq-header').setAttribute('aria-expanded', 'false');
+              otherItem.querySelector('.faq-content').style.maxHeight = null;
+            }
+          });
+
+          if (isActive) {
+            item.classList.remove('active');
+            header.setAttribute('aria-expanded', 'false');
+            content.style.maxHeight = null;
+          } else {
+            item.classList.add('active');
+            header.setAttribute('aria-expanded', 'true');
+            content.style.maxHeight = content.scrollHeight + 'px';
+          }
+        });
+      });
+
+      // Reveal no Scroll dos cards e painéis via IntersectionObserver (imune a offsets ou compensações duplicadas de pin)
+      const revealTargets = gsap.utils.toArray('.about-bio-card, .pillar-card, .step-card, .faq-item, .cta-final-box, .command-nav-item, .command-showcase-panel, .accordion-panel');
+      revealTargets.forEach(el => {
+        gsap.set(el, { opacity: 0, y: 28 });
+      });
+
+      const revealObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            gsap.to(entry.target, {
+              opacity: 1,
+              y: 0,
+              duration: 0.75,
+              ease: 'cubic-bezier(0.16, 1, 0.3, 1)',
+              overwrite: 'auto'
+            });
+            observer.unobserve(entry.target);
+          }
+        });
+      }, {
+        threshold: 0.05,
+        rootMargin: '0px 0px -20px 0px'
+      });
+
+      revealTargets.forEach(el => revealObserver.observe(el));
+
+      // Recalcula os gatilhos da Hero e Parallax após carregamento completo de fontes e imagens
+      window.addEventListener('load', () => {
+        ScrollTrigger.refresh();
+      });
+      setTimeout(() => {
+        ScrollTrigger.refresh();
+      }, 600);
+
+      // Lógica Desktop: Abordagem 3 (Tabela de Comando)
+      const commandItems = document.querySelectorAll('.command-nav-item');
+      const showcaseViews = document.querySelectorAll('.showcase-view');
+      if (commandItems.length > 0 && showcaseViews.length > 0) {
+        commandItems.forEach(item => {
+          const activateTab = () => {
+            const targetId = item.getAttribute('data-target');
+            commandItems.forEach(i => {
+              i.classList.remove('active');
+              i.setAttribute('aria-selected', 'false');
+            });
+            showcaseViews.forEach(v => v.classList.remove('active'));
+
+            item.classList.add('active');
+            item.setAttribute('aria-selected', 'true');
+            const targetView = document.getElementById(targetId);
+            if (targetView) targetView.classList.add('active');
+          };
+
+          item.addEventListener('mouseenter', () => {
+            if (window.innerWidth > 1024) activateTab();
+          });
+          item.addEventListener('click', () => {
+            activateTab();
+          });
+        });
+      }
+
+      // Lógica Mobile/Tablet: Abordagem 2 (Sanfona Expansiva)
+      const accordionPanels = document.querySelectorAll('.accordion-panel');
+      if (accordionPanels.length > 0) {
+        accordionPanels.forEach(panel => {
+          panel.addEventListener('click', () => {
+            if (window.innerWidth <= 1024) {
+              const wasActive = panel.classList.contains('active');
+              accordionPanels.forEach(p => p.classList.remove('active'));
+              if (!wasActive) panel.classList.add('active');
+            }
+          });
+        });
+      }
+
+      /* --------------------------------------------------------------------------
+         E. ANIMAÇÃO DE SCROLL DA LINHA DO TEMPO VERTICAL R.E.A.L. (SEÇÃO 4)
+         -------------------------------------------------------------------------- */
+      const journeyContainer = document.querySelector('.journey-real-container');
+      if (journeyContainer && typeof gsap !== 'undefined') {
+        // 1. Linha alaranjada central crescendo suavemente conforme o scroll desce
+        gsap.to('.journey-line-fill', {
+          scaleY: 1,
+          ease: 'none',
+          scrollTrigger: {
+            trigger: '.journey-real-container',
+            start: 'top 70%',
+            end: 'bottom 80%',
+            scrub: true
+          }
+        });
+
+        // 2. Aparição sequencial e suave de cada passo (Card + Ponto R.E.A.L.) via IntersectionObserver
+        const journeySteps = gsap.utils.toArray('.journey-step');
+        journeySteps.forEach(step => {
+          gsap.set(step, { opacity: 0, y: 50 });
+          const dot = step.querySelector('.journey-dot');
+          if (dot) gsap.set(dot, { scale: 0.4, backgroundColor: 'var(--rr-panel)' });
+        });
+
+        const journeyObserver = new IntersectionObserver((entries, observer) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              const step = entry.target;
+              const dot = step.querySelector('.journey-dot');
+
+              gsap.to(step, {
+                opacity: 1,
+                y: 0,
+                duration: 0.8,
+                ease: 'cubic-bezier(0.16, 1, 0.3, 1)',
+                overwrite: 'auto'
+              });
+
+              if (dot) {
+                gsap.to(dot, {
+                  scale: 1.2,
+                  backgroundColor: 'var(--rr-orange)',
+                  color: '#000000',
+                  duration: 0.45,
+                  ease: 'back.out(2)',
+                  overwrite: 'auto',
+                  onComplete: () => {
+                    gsap.to(dot, { scale: 1, backgroundColor: 'var(--rr-panel)', color: 'var(--rr-orange)', duration: 0.6, delay: 0.2 });
+                  }
+                });
+              }
+
+              observer.unobserve(step);
+            }
+          });
+        }, {
+          threshold: 0.08,
+          rootMargin: '0px 0px -30px 0px'
+        });
+
+        journeySteps.forEach(step => journeyObserver.observe(step));
+      }
+    })();
+  </script>
+
+</body>
+</html>

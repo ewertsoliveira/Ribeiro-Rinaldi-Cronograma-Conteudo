@@ -1,0 +1,19 @@
+# Ignorar arquivos temporários e de configuração do editor
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Ignorar arquivos originais/pesados (não necessários em produção)
+assets/raw_files/
+
+# Ignorar templates de backup/testes se não forem usados na landing page principal
+templates/
+
+# Sistema
+Thumbs.db
+Desktop.ini
+.DS_Store
