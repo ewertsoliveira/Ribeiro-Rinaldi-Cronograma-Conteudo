@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ribeiro Rinaldi — Manual de Aplicação de Marca & Logos (1:1 e 3:4)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Manrope:wght@400;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-dark: #150F0B;
+      --panel-dark: #1E1611;
+      --card-dark: #281F18;
+      --orange: #FF5E1A;
+      --magenta: #F0247C;
+      --amber: #FFB347;
+      --creme: #F7F1E8;
+      --text-muted: #A89F91;
+      --border-color: rgba(255, 255, 255, 0.08);
+      --gradient-brand: linear-gradient(135deg, #FF5E1A 0%, #F0247C 100%);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background-color: var(--bg-dark);
+      color: var(--creme);
+      font-family: 'Manrope', sans-serif;
+      padding: 2rem;
+      line-height: 1.6;
+    }
+
+    header {
+      max-width: 1400px;
+      margin: 0 auto 3rem auto;
+      border-bottom: 1px solid var(--border-color);
+      padding-bottom: 1.5rem;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+    }
+
+    .brand-title-area {
+      display: flex;
+      align-items: center;
+      gap: 1.2rem;
+    }
+
+    .brand-logo-icon {
+      width: 50px;
+      height: 50px;
+      background: var(--gradient-brand);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Archivo Black', sans-serif;
+      font-size: 1.5rem;
+      color: #fff;
+    }
+
+    h1 {
+      font-family: 'Archivo Black', sans-serif;
+      font-size: 1.6rem;
+      text-transform: uppercase;
+      background: var(--gradient-brand);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      font-weight: 500;
+    }
+
+    .specs-tag {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.8rem;
+      background: rgba(255, 94, 26, 0.15);
+      color: var(--amber);
+      border: 1px solid rgba(255, 94, 26, 0.3);
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+    }
+
+    .main-container {
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .section-title {
+      font-family: 'Archivo Black', sans-serif;
+      font-size: 1.3rem;
+      text-transform: uppercase;
+      margin: 2.5rem 0 1.2rem 0;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      color: var(--creme);
+      border-left: 4px solid var(--orange);
+      padding-left: 0.8rem;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 1.8rem;
+    }
+
+    .logo-card {
+      background: var(--panel-dark);
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: all 0.25s ease;
+    }
+
+    .logo-card:hover {
+      border-color: var(--orange);
+      transform: translateY(-4px);
+      box-shadow: 0 12px 30px rgba(0,0,0,0.5);
+    }
+
+    .preview-box {
+      width: 100%;
+      height: 240px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-size: cover;
+      background-position: center;
+      position: relative;
+    }
+
+    .preview-box img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+    }
+
+    .ratio-badge {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      font-family: 'Space Mono', monospace;
+      font-size: 0.72rem;
+      font-weight: 700;
+      background: rgba(0,0,0,0.7);
+      backdrop-filter: blur(6px);
+      color: var(--amber);
+      padding: 0.25rem 0.6rem;
+      border-radius: 6px;
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .card-info {
+      padding: 1.25rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+      flex: 1;
+      justify-content: space-between;
+    }
+
+    .card-title {
+      font-weight: 800;
+      font-size: 1rem;
+      color: var(--creme);
+    }
+
+    .card-desc {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+    }
+
+    .btn-download {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.4rem;
+      background: var(--card-dark);
+      border: 1px solid var(--border-color);
+      color: var(--creme);
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 0.82rem;
+      padding: 0.6rem 1rem;
+      border-radius: 8px;
+      transition: all 0.2s ease;
+      margin-top: 0.5rem;
+    }
+
+    .btn-download:hover {
+      background: var(--orange);
+      border-color: var(--orange);
+      color: #fff;
+    }
+
+    footer {
+      max-width: 1400px;
+      margin: 4rem auto 0 auto;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      border-top: 1px solid var(--border-color);
+      padding-top: 2rem;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="brand-title-area">
+      <div class="brand-logo-icon">RR</div>
+      <div>
+        <h1>Ribeiro Rinaldi Advocacia</h1>
+        <div class="subtitle">Catálogo Oficial de Aplicações da Marca & Logos (PNG / SVG)</div>
+      </div>
+    </div>
+    <div class="specs-tag">
+      📐 Resoluções: 1:1 (1200x1200) · 3:4 (1200x1600)
+    </div>
+  </header>
+
+  <div class="main-container">
+
+    <div class="section-title">1. Logo Oficial Horizontal (Composição A)</div>
+    <div class="grid">
+      <div class="logo-card">
+        <div class="preview-box">
+          <span class="ratio-badge">1:1 (1200x1200)</span>
+          <img src="logo_oficial_horizontal_fundo_escuro_1x1.png" alt="Logo Horizontal Fundo Escuro 1:1" />
+        </div>
+        <div class="card-info">
+          <div>
+            <div class="card-title">Horizontal — Fundo Escuro (1:1)</div>
+            <div class="card-desc">Uso principal em interfaces escuras, avatares e posts quadrados.</div>
+          </div>
+          <a href="logo_oficial_horizontal_fundo_escuro_1x1.png" download class="btn-download">⬇️ Baixar PNG 1:1</a>
+        </div>
+      </div>
+
+      <div class="logo-card">
+        <div class="preview-box">
+          <span class="ratio-badge">3:4 (1200x1600)</span>
+          <img src="logo_oficial_horizontal_fundo_escuro_3x4.png" alt="Logo Horizontal Fundo Escuro 3:4" />
+        </div>
+        <div class="card-info">
+          <div>
+            <div class="card-title">Horizontal — Fundo Escuro (3:4)</div>
+            <div class="card-desc">Ideal para capas de carrossel Instagram e banners verticais.</div>
+          </div>
+          <a href="logo_oficial_horizontal_fundo_escuro_3x4.png" download class="btn-download">⬇️ Baixar PNG 3:4</a>
+        </div>
+      </div>
+
+      <div class="logo-card">
+        <div class="preview-box" style="background:#F7F1E8;">
+          <span class="ratio-badge">1:1 (1200x1200)</span>
+          <img src="logo_oficial_horizontal_fundo_claro_1x1.png" alt="Logo Horizontal Fundo Claro 1:1" />
+        </div>
+        <div class="card-info">
+          <div>
+            <div class="card-title">Horizontal — Fundo Claro (1:1)</div>
+            <div class="card-desc">Uso em documentos de fundo claro e papelaria digital.</div>
+          </div>
+          <a href="logo_oficial_horizontal_fundo_claro_1x1.png" download class="btn-download">⬇️ Baixar PNG 1:1</a>
+        </div>
+      </div>
+
+      <div class="logo-card">
+        <div class="preview-box" style="background:#F7F1E8;">
+          <span class="ratio-badge">3:4 (1200x1600)</span>
+          <img src="logo_oficial_horizontal_fundo_claro_3x4.png" alt="Logo Horizontal Fundo Claro 3:4" />
+        </div>
+        <div class="card-info">
+          <div>
+            <div class="card-title">Horizontal — Fundo Claro (3:4)</div>
+            <div class="card-desc">Uso em relatórios e documentos impressos em formato retrato.</div>
+          </div>
+          <a href="logo_oficial_horizontal_fundo_claro_3x4.png" download class="btn-download">⬇️ Baixar PNG 3:4</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-title">2. Logo Oficial Empilhada (Vertical)</div>
+    <div class="grid">
+      <div class="logo-card">
+        <div class="preview-box">
+          <span class="ratio-badge">1:1 (1200x1200)</span>
+          <img src="logo_oficial_vertical_fundo_escuro_1x1.png" alt="Logo Vertical Fundo Escuro 1:1" />
+        </div>
+        <div class="card-info">
+          <div>
+            <div class="card-title">Empilhada — Fundo Escuro (1:1)</div>
+            <div class="card-desc">Símbolo acima do nome, ideal para quadros centrais.</div>
+          </div>
+          <a href="logo_oficial_vertical_fundo_escuro_1x1.png" download class="btn-download">⬇️ Baixar PNG 1:1</a>
+        </div>
+      </div>
+
+      <div class="logo-card">
+        <div class="preview-box">
+          <span class="ratio-badge">3:4 (1200x1600)</span>
+          <img src="logo_oficial_vertical_fundo_escuro_3x4.png" alt="Logo Vertical Fundo Escuro 3:4" />
+        </div>
+        <div class="card-info">
+          <div>
+            <div class="card-title">Empilhada — Fundo Escuro (3:4)</div>
+            <div class="card-desc">Ideal para cartazes e Stories/Reels no formato vertical.</div>
+          </div>
+          <a href="logo_oficial_vertical_fundo_escuro_3x4.png" download class="btn-download">⬇️ Baixar PNG 3:4</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-title">3. Símbolo "O Selo da Aprovação" (Ícone / Avatar)</div>
+    <div class="grid">
+      <div class="logo-card">
+        <div class="preview-box">
+          <span class="ratio-badge">1:1 (1200x1200)</span>
+          <img src="simbolo_icone_fundo_escuro_1x1.png" alt="Símbolo Fundo Escuro 1:1" />
+        </div>
+        <div class="card-info">
+          <div>
+            <div class="card-title">Símbolo — Fundo Escuro (1:1)</div>
+            <div class="card-desc">Foto de perfil no Instagram/WhatsApp/LinkedIn.</div>
+          </div>
+          <a href="simbolo_icone_fundo_escuro_1x1.png" download class="btn-download">⬇️ Baixar PNG 1:1</a>
+        </div>
+      </div>
+
+      <div class="logo-card">
+        <div class="preview-box">
+          <span class="ratio-badge">3:4 (1200x1600)</span>
+          <img src="simbolo_icone_fundo_escuro_3x4.png" alt="Símbolo Fundo Escuro 3:4" />
+        </div>
+        <div class="card-info">
+          <div>
+            <div class="card-title">Símbolo — Fundo Escuro (3:4)</div>
+            <div class="card-desc">Formato retrato para tela de abertura de apps/vídeos.</div>
+          </div>
+          <a href="simbolo_icone_fundo_escuro_3x4.png" download class="btn-download">⬇️ Baixar PNG 3:4</a>
+        </div>
+      </div>
+
+      <div class="logo-card">
+        <div class="preview-box">
+          <span class="ratio-badge">1:1 (1200x1200)</span>
+          <img src="logo_selo_badge_gradiente_1x1.png" alt="Selo Badge Gradiente 1:1" />
+        </div>
+        <div class="card-info">
+          <div>
+            <div class="card-title">Badge Gradiente — Brand (1:1)</div>
+            <div class="card-desc">Alta energia para selos de destaque e campanhas.</div>
+          </div>
+          <a href="logo_selo_badge_gradiente_1x1.png" download class="btn-download">⬇️ Baixar PNG 1:1</a>
+        </div>
+      </div>
+
+      <div class="logo-card">
+        <div class="preview-box">
+          <span class="ratio-badge">Vetor SVG</span>
+          <img src="simbolo_selo_aprovacao.svg" alt="Símbolo Vetorial SVG" style="max-width:150px;" />
+        </div>
+        <div class="card-info">
+          <div>
+            <div class="card-title">Símbolo Vetorial SVG (Original)</div>
+            <div class="card-desc">Vetor infinitamente escalável para gráfica e bordados.</div>
+          </div>
+          <a href="simbolo_selo_aprovacao.svg" download class="btn-download">⬇️ Baixar SVG Vetor</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-title">4. Versões Monocromáticas & Grafismos</div>
+    <div class="grid">
+      <div class="logo-card">
+        <div class="preview-box">
+          <span class="ratio-badge">1:1 (1200x1200)</span>
+          <img src="logo_monocromatica_fundo_escuro_1x1.png" alt="Monocromática Fundo Escuro 1:1" />
+        </div>
+        <div class="card-info">
+          <div>
+            <div class="card-title">Monocromática Creme (1:1)</div>
+            <div class="card-desc">Impressão 1 cor sobre fundo escuro.</div>
+          </div>
+          <a href="logo_monocromatica_fundo_escuro_1x1.png" download class="btn-download">⬇️ Baixar PNG 1:1</a>
+        </div>
+      </div>
+
+      <div class="logo-card">
+        <div class="preview-box">
+          <span class="ratio-badge">1:1 (1200x1200)</span>
+          <img src="logo_composicao_grafismo_1x1.png" alt="Composição Grafismo Marca D'água 1:1" />
+        </div>
+        <div class="card-info">
+          <div>
+            <div class="card-title">Grafismo Composição C (1:1)</div>
+            <div class="card-desc">Símbolo expandido de fundo em marca d'água + Assinatura.</div>
+          </div>
+          <a href="logo_composicao_grafismo_1x1.png" download class="btn-download">⬇️ Baixar PNG 1:1</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <footer>
+    Ribeiro Rinaldi Advocacia · Identidade Visual & Aplicações de Marca 2026
+  </footer>
+</body>
+</html>
