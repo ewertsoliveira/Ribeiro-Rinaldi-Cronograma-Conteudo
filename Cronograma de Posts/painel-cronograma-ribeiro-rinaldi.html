@@ -1,0 +1,2875 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ribeiro Rinaldi — Painel Executivo & Cronograma 360º de Conteúdo</title>
+  <!-- Google Fonts: Archivo Black, Manrope, Space Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Manrope:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-dark: #150F0B;
+      --panel-dark: #1E1611;
+      --card-dark: #281F18;
+      --card-hover: #342920;
+      --orange: #FF5E1A;
+      --orange-glow: rgba(255, 94, 26, 0.4);
+      --magenta: #F0247C;
+      --amber: #FFB347;
+      --creme: #F7F1E8;
+      --text-muted: #A89F91;
+      --border-color: rgba(255, 255, 255, 0.08);
+      --border-orange: rgba(255, 94, 26, 0.3);
+      --gradient-brand: linear-gradient(135deg, #FF5E1A 0%, #F0247C 100%);
+      --gradient-card: linear-gradient(145deg, #221A14 0%, #19120D 100%);
+      --shadow-lg: 0 12px 36px rgba(0,0,0,0.6);
+      --transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg-dark);
+      color: var(--creme);
+      font-family: 'Manrope', -apple-system, BlinkMacSystemFont, sans-serif;
+      line-height: 1.6;
+      overflow-x: hidden;
+      min-height: 100vh;
+    }
+
+    /* Scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+      height: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: var(--bg-dark);
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #3E3228;
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: var(--orange);
+    }
+
+    /* Top Banner / Header */
+    header {
+      background: var(--panel-dark);
+      border-bottom: 1px solid var(--border-color);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(12px);
+      padding: 1.25rem 2rem;
+    }
+
+    .header-container {
+      max-width: 1440px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+    }
+
+    .brand-area {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .brand-logo {
+      width: 44px;
+      height: 44px;
+      background: var(--gradient-brand);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Archivo Black', sans-serif;
+      font-size: 1.35rem;
+      color: #fff;
+      box-shadow: 0 4px 15px var(--orange-glow);
+    }
+
+    .brand-titles h1 {
+      font-family: 'Archivo Black', sans-serif;
+      font-size: 1.3rem;
+      letter-spacing: -0.5px;
+      text-transform: uppercase;
+      background: var(--gradient-brand);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 2px;
+    }
+
+    .brand-titles p {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+
+    /* Main Tab Navigation */
+    .tab-switcher {
+      display: flex;
+      background: #140F0C;
+      padding: 0.35rem;
+      border-radius: 12px;
+      border: 1px solid var(--border-color);
+      gap: 0.5rem;
+    }
+
+    .tab-btn {
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      font-family: 'Manrope', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 700;
+      padding: 0.65rem 1.4rem;
+      border-radius: 8px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: var(--transition);
+    }
+
+    .tab-btn:hover {
+      color: var(--creme);
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    .tab-btn.active {
+      background: var(--gradient-brand);
+      color: #fff;
+      box-shadow: 0 4px 14px rgba(255, 94, 26, 0.35);
+    }
+
+    .executive-tag {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.75rem;
+      background: rgba(255, 94, 26, 0.15);
+      color: var(--amber);
+      border: 1px solid var(--border-orange);
+      padding: 0.4rem 0.8rem;
+      border-radius: 6px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    /* Main Content Area */
+    main {
+      max-width: 1440px;
+      margin: 2rem auto;
+      padding: 0 2rem 4rem 2rem;
+    }
+
+    .view-section {
+      display: none;
+      animation: fadeIn 0.35s ease forwards;
+    }
+
+    .view-section.active {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* =========================================
+       VIEW 1: GOOGLE CALENDAR STYLE GRID
+       ========================================= */
+    .calendar-header-controls {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.5rem;
+      background: var(--panel-dark);
+      padding: 1.25rem 1.5rem;
+      border-radius: 14px;
+      border: 1px solid var(--border-color);
+    }
+
+    .calendar-title {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .calendar-title h2 {
+      font-family: 'Archivo Black', sans-serif;
+      font-size: 1.6rem;
+      text-transform: uppercase;
+    }
+
+    .month-selector {
+      display: flex;
+      gap: 0.5rem;
+    }
+
+    .month-btn {
+      background: var(--card-dark);
+      border: 1px solid var(--border-color);
+      color: var(--creme);
+      font-family: 'Manrope', sans-serif;
+      font-weight: 700;
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .month-btn:hover, .month-btn.active {
+      border-color: var(--orange);
+      background: rgba(255, 94, 26, 0.15);
+      color: #fff;
+    }
+
+    .legend-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.2rem;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text-muted);
+    }
+
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .legend-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+    }
+
+    .legend-dot.insta { background: var(--orange); }
+    .legend-dot.yt { background: var(--magenta); }
+    .legend-dot.linkedin { background: #3B82F6; }
+    .legend-dot.blog { background: #10B981; }
+
+    .calendar-grid-container {
+      background: var(--panel-dark);
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: var(--shadow-lg);
+    }
+
+    .weekday-header {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      background: #140F0C;
+      border-bottom: 1px solid var(--border-color);
+      text-align: center;
+      font-family: 'Space Mono', monospace;
+      font-size: 0.8rem;
+      color: var(--amber);
+      font-weight: 700;
+      text-transform: uppercase;
+      padding: 0.8rem 0;
+    }
+
+    .days-grid {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      grid-auto-rows: minmax(130px, auto);
+      gap: 1px;
+      background: var(--border-color);
+    }
+
+    .day-cell {
+      background: var(--panel-dark);
+      padding: 0.6rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+      transition: var(--transition);
+      position: relative;
+    }
+
+    .day-cell:hover {
+      background: #241A13;
+    }
+
+    .day-cell.other-month {
+      background: #16100C;
+      opacity: 0.4;
+    }
+
+    .day-cell.today {
+      background: rgba(255, 94, 26, 0.08);
+      border: 1px solid var(--orange);
+    }
+
+    .day-number {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      align-self: flex-end;
+      margin-bottom: 0.2rem;
+    }
+
+    .day-cell.today .day-number {
+      background: var(--orange);
+      color: #fff;
+      padding: 0.1rem 0.4rem;
+      border-radius: 4px;
+    }
+
+    /* Calendar Event Pills */
+    .event-pill {
+      font-size: 0.76rem;
+      font-weight: 700;
+      padding: 0.35rem 0.55rem;
+      border-radius: 6px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      transition: var(--transition);
+      box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+      border: 1px solid transparent;
+    }
+
+    .event-pill:hover {
+      transform: translateY(-2px);
+      filter: brightness(1.2);
+    }
+
+    .event-pill.insta {
+      background: rgba(255, 94, 26, 0.2);
+      color: #FFA37B;
+      border-color: rgba(255, 94, 26, 0.4);
+    }
+
+    .event-pill.yt {
+      background: rgba(240, 36, 124, 0.2);
+      color: #FF85B8;
+      border-color: rgba(240, 36, 124, 0.4);
+    }
+
+    .event-pill.linkedin {
+      background: rgba(59, 130, 246, 0.2);
+      color: #93C5FD;
+      border-color: rgba(59, 130, 246, 0.4);
+    }
+
+    .event-pill.blog {
+      background: rgba(16, 185, 129, 0.2);
+      color: #6EE7B7;
+      border-color: rgba(16, 185, 129, 0.4);
+    }
+
+    /* =========================================
+       VIEW 2: ACCORDION & SCRIPTS VIEW
+       ========================================= */
+    .filter-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 1.5rem;
+      background: var(--panel-dark);
+      padding: 1rem 1.5rem;
+      border-radius: 14px;
+      border: 1px solid var(--border-color);
+    }
+
+    .week-filters {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .week-btn {
+      background: var(--card-dark);
+      border: 1px solid var(--border-color);
+      color: var(--text-muted);
+      font-family: 'Manrope', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 700;
+      padding: 0.55rem 1rem;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .week-btn:hover, .week-btn.active {
+      background: var(--gradient-brand);
+      color: #fff;
+      border-color: transparent;
+      box-shadow: 0 4px 12px rgba(255, 94, 26, 0.3);
+    }
+
+    .channel-filters {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+    }
+
+    .channel-btn {
+      background: #140F0C;
+      border: 1px solid var(--border-color);
+      color: var(--text-muted);
+      font-size: 0.8rem;
+      font-weight: 600;
+      padding: 0.4rem 0.8rem;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .channel-btn:hover, .channel-btn.active {
+      border-color: var(--amber);
+      color: var(--creme);
+      background: rgba(255, 179, 71, 0.12);
+    }
+
+    .search-box {
+      position: relative;
+      flex: 1;
+      min-width: 250px;
+      max-width: 350px;
+    }
+
+    .search-box input {
+      width: 100%;
+      background: #140F0C;
+      border: 1px solid var(--border-color);
+      color: var(--creme);
+      font-family: 'Manrope', sans-serif;
+      font-size: 0.88rem;
+      padding: 0.55rem 1rem 0.55rem 2.4rem;
+      border-radius: 8px;
+      transition: var(--transition);
+    }
+
+    .search-box input:focus {
+      outline: none;
+      border-color: var(--orange);
+      box-shadow: 0 0 10px rgba(255, 94, 26, 0.2);
+    }
+
+    .search-box span {
+      position: absolute;
+      left: 0.8rem;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--text-muted);
+    }
+
+    /* Accordion List Container */
+    .accordion-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .accordion-card {
+      background: var(--gradient-card);
+      border: 1px solid var(--border-color);
+      border-radius: 14px;
+      overflow: hidden;
+      transition: var(--transition);
+    }
+
+    .accordion-card:hover {
+      border-color: rgba(255, 94, 26, 0.35);
+    }
+
+    .accordion-card.open {
+      border-color: var(--orange);
+      box-shadow: 0 8px 30px rgba(0,0,0,0.5);
+    }
+
+    .accordion-header {
+      padding: 1.25rem 1.5rem;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      cursor: pointer;
+      user-select: none;
+      background: rgba(255, 255, 255, 0.02);
+    }
+
+    .card-meta-left {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .platform-badge {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.72rem;
+      font-weight: 700;
+      padding: 0.35rem 0.7rem;
+      border-radius: 6px;
+      text-transform: uppercase;
+    }
+
+    .platform-badge.insta { background: rgba(255, 94, 26, 0.18); color: #FFA37B; border: 1px solid rgba(255, 94, 26, 0.4); }
+    .platform-badge.yt { background: rgba(240, 36, 124, 0.18); color: #FF85B8; border: 1px solid rgba(240, 36, 124, 0.4); }
+    .platform-badge.linkedin { background: rgba(59, 130, 246, 0.18); color: #93C5FD; border: 1px solid rgba(59, 130, 246, 0.4); }
+    .platform-badge.blog { background: rgba(16, 185, 129, 0.18); color: #6EE7B7; border: 1px solid rgba(16, 185, 129, 0.4); }
+
+    .card-date {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.8rem;
+      color: var(--amber);
+      font-weight: 700;
+    }
+
+    .card-title {
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: var(--creme);
+      margin-top: 0.2rem;
+    }
+
+    .card-meta-right {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .copy-btn {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid var(--border-color);
+      color: var(--creme);
+      font-family: 'Manrope', sans-serif;
+      font-size: 0.82rem;
+      font-weight: 700;
+      padding: 0.5rem 0.9rem;
+      border-radius: 6px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      transition: var(--transition);
+    }
+
+    .copy-btn:hover {
+      background: var(--orange);
+      color: #fff;
+      border-color: var(--orange);
+    }
+
+    .toggle-icon {
+      font-size: 1.2rem;
+      color: var(--text-muted);
+      transition: transform 0.3s ease;
+    }
+
+    .accordion-card.open .toggle-icon {
+      transform: rotate(180deg);
+      color: var(--orange);
+    }
+
+    /* Accordion Body / Script details */
+    .accordion-body {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      border-top: 1px solid transparent;
+      background: #140F0C;
+    }
+
+    .accordion-card.open .accordion-body {
+      max-height: 3500px;
+      border-top-color: var(--border-color);
+      padding: 1.8rem 2rem;
+    }
+
+    .script-section {
+      margin-bottom: 1.5rem;
+    }
+
+    .script-section:last-child {
+      margin-bottom: 0;
+    }
+
+    .section-label {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.78rem;
+      color: var(--amber);
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .script-text {
+      background: var(--panel-dark);
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      padding: 1.2rem 1.4rem;
+      font-size: 0.95rem;
+      line-height: 1.7;
+      color: var(--creme);
+      white-space: pre-wrap;
+    }
+
+    .highlight-box {
+      background: rgba(255, 94, 26, 0.08);
+      border-left: 4px solid var(--orange);
+      padding: 1rem 1.25rem;
+      border-radius: 0 8px 8px 0;
+      margin-top: 0.8rem;
+      font-size: 0.92rem;
+    }
+
+    /* Side Drawer / Modal for Quick Reading from Calendar */
+    .drawer-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.8);
+      backdrop-filter: blur(8px);
+      z-index: 1000;
+      display: flex;
+      justify-content: flex-end;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+
+    .drawer-overlay.open {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .drawer-content {
+      width: 100%;
+      max-width: 650px;
+      background: var(--panel-dark);
+      border-left: 1px solid var(--border-color);
+      height: 100%;
+      overflow-y: auto;
+      padding: 2rem;
+      transform: translateX(100%);
+      transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+      display: flex;
+      flex-direction: column;
+      box-shadow: -10px 0 40px rgba(0,0,0,0.8);
+    }
+
+    .drawer-overlay.open .drawer-content {
+      transform: translateX(0);
+    }
+
+    .drawer-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--border-color);
+      padding-bottom: 1.25rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .close-drawer-btn {
+      background: rgba(255, 255, 255, 0.08);
+      border: none;
+      color: var(--creme);
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      font-size: 1.2rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: var(--transition);
+    }
+
+    .close-drawer-btn:hover {
+      background: var(--magenta);
+      color: #fff;
+    }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .header-container {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .weekday-header, .days-grid {
+        grid-template-columns: repeat(7, minmax(60px, 1fr));
+      }
+      .day-cell {
+        padding: 0.35rem;
+        min-height: 90px;
+      }
+      .event-pill {
+        font-size: 0.68rem;
+        padding: 0.2rem 0.35rem;
+      }
+      .accordion-header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .card-meta-right {
+        width: 100%;
+        justify-content: space-between;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Executive Header -->
+  <header>
+    <div class="header-container">
+      <div class="brand-area">
+        <div class="brand-logo">RR</div>
+        <div class="brand-titles">
+          <h1>Ribeiro Rinaldi Advocacia</h1>
+          <p>Plano Executivo 360º — Julho & Agosto 2026 (Tom 80/100 de igual pra igual)</p>
+        </div>
+      </div>
+
+      <!-- Tab Switchers -->
+      <div class="tab-switcher">
+        <button class="tab-btn active" onclick="switchTab('calendar-view', this)">
+          <span>🗓️</span> Visão de Calendário (Estilo Google)
+        </button>
+        <button class="tab-btn" onclick="switchTab('accordion-view', this)">
+          <span>📑</span> Roteiros & Conteúdos (Sanfona Interativa)
+        </button>
+      </div>
+
+      <div class="executive-tag">
+        ⭐ Aprovação Dr. Paulo Rinaldi
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content Area -->
+  <main>
+    <!-- =========================================
+         TAB 1: GOOGLE CALENDAR STYLE VIEW
+         ========================================= -->
+    <section id="calendar-view" class="view-section active">
+      <div class="calendar-header-controls">
+        <div class="calendar-title">
+          <h2 id="current-month-label">Julho 2026</h2>
+          <div class="month-selector">
+            <button class="month-btn active" id="btn-julho" onclick="changeMonth('julho')">Julho 2026</button>
+            <button class="month-btn" id="btn-agosto" onclick="changeMonth('agosto')">Agosto 2026</button>
+          </div>
+        </div>
+
+        <div class="legend-bar">
+          <div class="legend-item"><span class="legend-dot insta"></span> Instagram (Reels / Carrossel / Post)</div>
+          <div class="legend-item"><span class="legend-dot yt"></span> YouTube Longo (Pilar)</div>
+          <div class="legend-item"><span class="legend-dot linkedin"></span> LinkedIn Artigo / Post</div>
+          <div class="legend-item"><span class="legend-dot blog"></span> Blog SEO (Artigo Raiz)</div>
+        </div>
+      </div>
+
+      <!-- Calendar Grid -->
+      <div class="calendar-grid-container">
+        <div class="weekday-header">
+          <div>Dom</div>
+          <div>Seg</div>
+          <div>Ter</div>
+          <div>Qua</div>
+          <div>Qui</div>
+          <div>Sex</div>
+          <div>Sáb</div>
+        </div>
+        <div class="days-grid" id="calendar-grid-cells">
+          <!-- Populated dynamically via JS -->
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================
+         TAB 2: ACCORDION & SCRIPTS VIEW
+         ========================================= -->
+    <section id="accordion-view" class="view-section">
+      <!-- Filter and Search Bar -->
+      <div class="filter-bar">
+        <div class="week-filters" id="week-filter-buttons">
+          <button class="week-btn active" onclick="filterByWeek('all', this)">⚡ Todas (39 Peças)</button>
+          <button class="week-btn" onclick="filterByWeek('Semana 0', this)">📌 Fixos de Largada (3)</button>
+          <button class="week-btn" onclick="filterByWeek('Semana 1', this)">📅 Sem 1: Psicotécnico/TAF (9)</button>
+          <button class="week-btn" onclick="filterByWeek('Semana 2', this)">📅 Sem 2: Preterição (9)</button>
+          <button class="week-btn" onclick="filterByWeek('Semana 3', this)">📅 Sem 3: Retroativos (9)</button>
+          <button class="week-btn" onclick="filterByWeek('Semana 4', this)">📅 Sem 4: Erros em Prova (9)</button>
+        </div>
+
+        <div style="display: flex; gap: 1rem; flex-wrap: wrap; align-items: center; width: 100%; justify-content: space-between; margin-top: 0.8rem; border-top: 1px solid var(--border-color); padding-top: 0.8rem;">
+          <div class="channel-filters">
+            <button class="channel-btn active" onclick="filterByChannel('all', this)">Todos os Canais</button>
+            <button class="channel-btn" onclick="filterByChannel('insta', this)">📱 Instagram</button>
+            <button class="channel-btn" onclick="filterByChannel('yt', this)">📺 YouTube</button>
+            <button class="channel-btn" onclick="filterByChannel('linkedin', this)">👔 LinkedIn</button>
+            <button class="channel-btn" onclick="filterByChannel('blog', this)">🌐 Blog SEO</button>
+          </div>
+
+          <div class="search-box">
+            <span>🔍</span>
+            <input type="text" id="search-input" placeholder="Buscar por palavra-chave (ex: Súmula, liminar, TAF)..." oninput="handleSearch()" />
+          </div>
+        </div>
+      </div>
+
+      <!-- Accordion Cards List -->
+      <div class="accordion-list" id="accordion-container">
+        <!-- Populated dynamically via JS -->
+      </div>
+    </section>
+  </main>
+
+  <!-- Side Drawer for Quick Reading from Calendar -->
+  <div class="drawer-overlay" id="drawer-overlay" onclick="closeDrawerOutside(event)">
+    <div class="drawer-content" id="drawer-content">
+      <!-- Populated dynamically via JS -->
+    </div>
+  </div>
+
+  <script>
+    /* =========================================================================
+       COMPLETE DATASET: 39 PIECES across 4 Weeks + Pinned Start
+       ========================================================================= */
+    const CONTENTS = [
+      /* --- SEMANA 0: LARGADA FIXOS (18 e 19/07) --- */
+      {
+        id: "fixo-1",
+        week: "Semana 0",
+        date: "2026-07-18",
+        dateLabel: "18/07 (Sáb) • Largada",
+        platform: "insta",
+        platformLabel: "Instagram Carrossel Manifesto (4:5)",
+        graphicUrl: "midias-graficas/post-fixado-01/index.html",
+        title: "📌 FIXO 1: A Trajetória de Autoridade do Dr. Paulo Rinaldi (\"De Concurseiro a Auditor de Estado\")",
+        hook: "Gerar máxima autoridade mostrando a trajetória do Dr. Paulo Rinaldi: Técnico Legislativo em Roraima, Assistente Judiciário no TJ do Amazonas e hoje Auditor do Estado de Santa Catarina.",
+        script: `[ESTRUTURA DE CARROSSEL MANIFESTO & LINHA DO TEMPO 4:5 - 6 SLIDES]
+
+SLIDE 01 (CAPA - IDENTIFICAÇÃO & AUTORIDADE):
+• Headline (Archivo Black): QUEM DEFENDE A SUA APROVAÇÃO E A SUA CARREIRA PÚBLICA JÁ VIVEU CADA DEGRAU DESSE CAMINHO.
+• Subtítulo: Conheça a trajetória do Dr. Paulo Rinaldi — de concurseiro a Auditor de Estado.
+
+SLIDE 02 (A LINHA DO TEMPO REAL DO DR. PAULO RINALDI):
+• Headline: DE CONCURSEIRO A AUDITOR DE ESTADO
+• Marco 1: Técnico Legislativo (Estado de Roraima) — A vivência inicial na estrutura legislativa estadual.
+• Marco 2: Assistente Judiciário (TJ do Amazonas) — O profundo conhecimento interno da engrenagem do Judiciário.
+• Marco 3: Auditor do Estado (Santa Catarina) — A atuação em cargo de alto escalão no controle e fiscalização pública.
+
+SLIDE 03 (O DIFERENCIAL DE QUEM CONHECE O SISTEMA POR DENTRO — FUNDO CREME CONTRASTE):
+• Headline: NÃO FALAMOS DA TEORIA. NÓS CONHECEMOS O SISTEMA POR DENTRO.
+• Texto: "A maioria enxerga o concurso apenas pelos livros. O Dr. Paulo Rinaldi sabe como a banca opera, como o Estado processa atos administrativos e o sacrifício real por trás de cada aprovação."
+
+SLIDE 04 (VIVÊNCIA PRÁTICA + FORÇA NOS TRIBUNAIS):
+• Texto: Unimos a vivência de quem foi aprovado em certames de alta concorrência ao rigor técnico das teses consolidadas no STF e STJ.
+
+SLIDE 05 (NOSSO PROPÓSITO — "A VIRADA"):
+• Texto: Por termos vivido cada etapa, não aceitamos que meses ou anos de dedicação sejam anulados por caprichos de bancas examinadoras ou arbitrariedades em PADs.
+
+SLIDE 06 (CTA FECHAMENTO GRADIENTE):
+• Texto: Quem já trilhou o seu caminho sabe como proteger a sua conquista. Conheça nossas soluções no próximo post ou clique no link da bio agora.`,
+        caption: `Por trás de cada ação judicial bem-sucedida contra bancas examinadoras e órgãos públicos, existe um segredo: conhecer a engrenagem por dentro. 🏛️ ⚖️
+
+O Dr. Paulo Rinaldi, fundador do nosso escritório, não construiu sua carreira apenas na teoria dos livros. Ele viveu na pele o que você está passando. Virou noites estudando, disputou vagas concorridíssimas, assumiu cargos no Judiciário, no Legislativo e, hoje, atua como Auditor do Estado.
+
+É por isso que aqui não falamos juridiquês para parecer superiores. Falamos de igual para igual com quem sabe exatamente o valor de cada ponto em um edital e o sacrifício por trás de uma aprovação.
+
+👉 Deslize este post para conhecer nossa história e acesse o link da bio para falar diretamente com nossa equipe técnica.
+
+#concursopublico #servidorpublico #direitoafavor #auditor #direitoadministrativo #advogadojuridico #posse #ribeirorinaldi`,
+        tips: `Carrossel Manifesto de 6 slides (Proporção 4:5, Padrão Visual Fase 02). Usar foto editorial real do Dr. Paulo Rinaldi ("De Concurseiro a Auditor de Estado") no primeiro card e escala de cinza com destaques em Laranja Ignição (#FF5E1A).`
+      },
+      {
+        id: "fixo-2",
+        week: "Semana 0",
+        date: "2026-07-18",
+        dateLabel: "18/07 (Sáb) • Largada",
+        platform: "insta",
+        platformLabel: "Instagram Carrossel Guia Didático (4:5)",
+        graphicUrl: "midias-graficas/post-fixado-02/index.html",
+        title: "📌 FIXO 2: O Catálogo Completo de Soluções — Nossas 6 Frentes de Atuação em Direito Público",
+        hook: "Apresentar claramente todas as especialidades do escritório sem juridiquês, permitindo que o seguidor identifique o próprio problema na hora.",
+        script: `[ESTRUTURA DE CARROSSEL GUIA DIDÁTICO 4:5 - 7 SLIDES]
+
+SLIDE 01 (CAPA SOLUÇÕES):
+• Headline (Archivo Black): NOSSAS 6 FRENTES DE ATUAÇÃO EM DIREITO PÚBLICO
+• Subtítulo: Saiba como protegemos a sua aprovação no concurso e a sua carreira no serviço público.
+
+SLIDE 02 (FRENTE 1: PSICOTÉCNICO & TAF):
+• Título: 1. Eliminações no Psicotécnico e TAF
+• Descrição: Anulação judicial de reprovações sem critérios científicos (Súmula 44 STF), falta de laudo, alterações surpresas em testes físicos e desrespeito a gestantes ou condições climáticas.
+
+SLIDE 03 (FRENTE 2: PROVA DE TÍTULOS, COTAS & HETEROIDENTIFICAÇÃO):
+• Título: 2. Bancas Examinadoras, Cotas e Títulos
+• Descrição: Defesa contra recusa indevida de diplomas/certificados, falhas na pontuação e arbitrariedades em comissões de heteroidentificação racial ou PCD.
+
+SLIDE 04 (FRENTE 3: NOMEAÇÃO E PRETERIÇÃO DE APROVADOS):
+• Título: 3. Direito à Nomeação e Posse
+• Descrição: Ações judiciais para garantir a convocação de candidatos aprovados dentro das vagas ou preteridos pela contratação irregular de temporários/terceirizados.
+
+SLIDE 05 (FRENTE 4: PROCESSOS ADMINISTRATIVOS DISCIPLINARES - PAD):
+• Título: 4. Defesa do Servidor em PAD e Sindicâncias
+• Descrição: Defesa técnica especializada para servidores concursados que respondem a processos administrativos, evitando punições injustas ou demissões ilegais.
+
+SLIDE 06 (FRENTE 5: REMUNERAÇÃO, ENQUADRAMENTO E APOSENTADORIA):
+• Título: 5. Carreira, Adicionais e Previdência Pública
+• Descrição: Correção de reenquadramento funcional, cobrança de adicionais negados, progressões atrasadas e defesa previdenciária de servidores.
+
+SLIDE 07 (CTA SOLUÇÕES):
+• Texto: Identificou a sua situação? Deslize para o nosso 3º post fixado para ver como funciona o atendimento ou clique no link da bio agora.`,
+        caption: `Concursos Públicos & Servidores: em quais situações a Justiça protege e garante o seu direito? 📋 🏛️
+
+Seja na luta para conquistar a nomeação em um concurso onde houve eliminação abusiva ou preterição, seja na defesa dos direitos de quem já está no cargo e enfrenta sindicâncias, PADs ou perdas salariais ilegais — o nosso escritório possui estrutura jurídica especializada em Direito Público.
+
+Confira no carrossel as nossas 6 grandes áreas de atuação e saiba exatamente onde podemos te ajudar a reverter injustiças perante o Poder Judiciário.
+
+👉 Identificou a sua situação em algum dos cards? Clique no link da bio e envie o seu caso para a nossa triagem de viabilidade documental.
+
+#direitopublico #concursopublico #servidorpublico #taf #psicotecnico #cotas #pad #aposentadoria #posse #ribeirorinaldi`,
+        tips: `Carrossel Guia Didático de 7 Slides (Proporção 4:5, alternando cards escuros com cards Creme Base para máximo contraste). Foco na legibilidade e clareza das 6 frentes de atuação.`
+      },
+      {
+        id: "fixo-3",
+        week: "Semana 0",
+        date: "2026-07-19",
+        dateLabel: "19/07 (Dom) • Largada",
+        platform: "insta",
+        platformLabel: "Instagram Carrossel Passo a Passo (4:5)",
+        graphicUrl: "midias-graficas/post-fixado-03/index.html",
+        title: "📌 FIXO 3: Guia do Cliente — Como Funciona a Nossa Defesa do Início ao Fim",
+        hook: "Remover qualquer atrito ou receio de entrar em contato, explicando a facilidade, a agilidade e a transparência do fluxo de atendimento.",
+        script: `[ESTRUTURA DE CARROSSEL PRÁTICO "PASSO A PASSO" 4:5 - 5 SLIDES]
+
+SLIDE 01 (CAPA GUIA PRÁTICO):
+• Headline (Archivo Black): COMO FUNCIONA A NOSSA DEFESA DO INÍCIO AO FIM
+• Subtítulo: 4 passos simples para você proteger a sua vaga ou a sua carreira com segurança e agilidade.
+
+SLIDE 02 (PASSO 1 — ENVIO DO EDITAL OU LAUDO):
+• Título: Passo 1: Envio Documental pelo Link da Bio
+• Descrição: Você clica no nosso link oficial e envia o seu edital, laudo de reprovação ou ato administrativo via WhatsApp ou formulário seguro.
+
+SLIDE 03 (PASSO 2 — TRIAGEM PRELIMINAR TÉCNICA):
+• Título: Passo 2: Diagnóstico Jurídico (Sem Juridiquês)
+• Descrição: Nossa equipe analisa o seu caso com lupa e emite um parecer claro sobre as reais chances de êxito na Justiça, com total honestidade.
+
+SLIDE 04 (PASSO 3 — INGRESSO ÁGIL DA MEDIDA JUDICIAL):
+• Título: Passo 3: Ação Rápida e Pedido de Liminar
+• Descrição: Sendo viável, preparamos a ação com pedido de urgência (Liminar) para reintegrar você ao certame antes do término das fases.
+
+SLIDE 05 (CTA DE CONVERSÃO MÁXIMA):
+• Título: NÃO DEIXE O SEU PRAZO EXPIRAR
+• Descrição: Em concursos públicos, o tempo é o fator mais decisivo.
+• Botão: 👉 Toque no link da bio para enviar seus documentos e iniciar a nossa triagem de viabilidade em até 24h.`,
+        caption: `Teve um direito violado no concurso ou no cargo público e está em dúvida sobre como funciona contratar um escritório especializado? ⚡ 📲
+
+Muitos candidatos e servidores perdem prazos preciosos por medo do juridiquês complicado ou por achar que o processo de atendimento é burocrático e lento. Aqui na Ribeiro Rinaldi, nós desenhamos um fluxo ágil, digital e humanizado.
+
+Do primeiro contato via WhatsApp até o protocolo do seu pedido de liminar na Justiça, cada etapa é conduzida com transparência, rapidez e com a experiência de quem já foi Auditor e conhece a máquina pública por dentro.
+
+👉 Deslize e veja como funcionam os 4 passos do nosso atendimento. Clica no link da bio e envie o seu caso agora para nossa triagem de viabilidade documental em 24 horas!
+
+#atendimentojuridico #direitoadministrativo #concurseiro #liminar #advocaciaespecializada #ribeirorinaldi #passoapasso #triagemtecnica`,
+        tips: `Carrossel Prático "Passo a Passo" de 5 Slides (Proporção 4:5). Design limpo, focado em transmitir confiança, agilidade no WhatsApp e remoção de barreiras. Total conformidade com as normas da OAB (sem promessas ou menções à gratuidade).`
+      },
+
+      /* --- SEMANA 1: PSICOTÉCNICO E TAF (20 a 26/07) --- */
+      {
+        id: "sem1-yt",
+        week: "Semana 1",
+        date: "2026-07-20",
+        dateLabel: "20/07 (Seg) • Pilar Raiz",
+        platform: "yt",
+        platformLabel: "YouTube Longo (Pilar)",
+        title: "Reprovado no Psicotécnico ou TAF do Concurso? Como Reverter na Justiça (Roteiro Completo 8m)",
+        hook: "Se você passou na objetiva e discursiva e foi cortado no psicotécnico ou TAF, não engula calado.",
+        script: `[ROTEIRO DE VÍDEO LONGO PARA YOUTUBE - DURAÇÃO 8 A 10 MINUTOS]
+[TEMA PILAR DA SEMANA 1 - BASE DO MATERIAL REPURPOSED]
+
+[00:00 - 00:45] INTRODUÇÃO & HOOK:
+"Se você estuda para concurso, você sabe o sacrifício que é. Meses abrindo mão do final de semana, virando noites com edital na mão, gastando o que tem e o que não tem. Aí você vai lá, arrebenta na prova objetiva, passa na discursiva... e do nada é cortado no psicotécnico ou no teste físico. A sensação que dá é que tiraram o seu sonho com a mão. Mas hoje eu estou aqui pra te falar uma coisa muito clara: não engula essa reprovação calado. A banca erra, comete abusos o tempo todo, e a Justiça anula centenas dessas eliminações todos os anos. Eu vou te mostrar agora, passo a passo, o que fazer para recuperar o seu lugar no concurso."
+
+[00:55 - 03:15] CAPÍTULO 1: OS 3 REQUISITOS OBRIGATÓRIOS DO PSICOTÉCNICO (SÚMULA 44 DO STF):
+"O STF tem uma regra obrigatória pra qualquer concurso, a famosa Súmula Vinculante 44. Ela diz o seguinte: para o psicotécnico valer de verdade, a banca é obrigada a cumprir três coisas ao mesmo tempo:
+1) Tem que estar na lei da carreira: Não adianta a banca inventar o teste só nas linhas do edital. Tem que existir uma lei daquele cargo autorizando o exame.
+2) Os critérios têm que ser 100% claros e científicos: A banca não pode te reprovar porque achou o seu 'perfil incompatível' ou porque usou um teste secreto. Tudo precisa ser objetivo e aprovado pelo Conselho Federal de Psicologia.
+3) Você tem que receber o laudo completo: A banca tem que te entregar a cópia de tudo que você fez, mostrando exatamente onde você teria errado, para você poder se defender.
+Se faltar qualquer um desses três pontos, a sua eliminação é irregular e o juiz anula a reprovação."
+
+[03:25 - 05:40] CAPÍTULO 2: OS ABUSOS NO TAF (TESTE DE APTIDÃO FÍSICA):
+"O teste físico existe para ver se você tem saúde para exercer a profissão. Só isso. Mas na prática, o que a gente vê nas provas? Fiscais mudando a forma de contar a flexão ou a barra na hora do teste; turmas correndo debaixo de sol de 40 graus ou de tempestade sem nenhuma estrutura; ou então candidatas grávidas sendo impedidas de remarcar a prova, mesmo com a Justiça já garantindo esse direito há muito tempo. Se o fiscal mudou a regra no meio do jogo ou te avaliou de forma injusta, isso não é eliminação legal: é abuso."
+
+[05:50 - 07:45] CAPÍTULO 3: COMO A LIMINAR COLOCA VOCÊ DE VOLTA NO CONCURSO:
+"Quando a banca te elimina de forma injusta, o caminho mais rápido na Justiça é pedir uma decisão liminar. A liminar é uma ordem de urgência que o juiz dá logo no começo do processo. Com ela, você volta imediatamente para o concurso e garante a sua vaga nas próximas etapas — inclusive no Curso de Formação e na posse — enquanto o processo principal vai sendo julgado. Para conseguir essa ordem, nós juntamos o edital, o resultado da banca e montamos uma análise técnica mostrando exatamente onde eles violaram as regras."
+
+[07:55 - 08:45] ENCERRAMENTO & CTA ÚNICO:
+"Direito tem prazo. Quanto mais rápido você agir depois da publicação do resultado, maior é a chance de reverter a eliminação a tempo. Se você ou alguém da sua família foi reprovado no psicotécnico ou no TAF recentemente, toca no link da descrição. Você vai mandar o seu edital para a nossa equipe fazer uma triagem preliminar de viabilidade do seu caso. Inscreva-se no canal para não deixar a banca levar a sua aprovação."`,
+        caption: `Vídeo completo disponível no nosso canal do YouTube. Inscreva-se e assista agora! 🎥⚖️`,
+        tips: `Publicar na segunda-feira pela manhã no YouTube com thumbnail em preto, laranja e o rosto do Dr. Paulo Rinaldi em destaque.`
+      },
+      {
+        id: "sem1-blog",
+        week: "Semana 1",
+        date: "2026-07-20",
+        dateLabel: "20/07 (Seg) • SEO",
+        platform: "blog",
+        platformLabel: "Blog SEO (Artigo Raiz)",
+        title: "Guia Definitivo do Psicotécnico em Concursos: O que diz a Súmula 44 do STF e quando cabe liminar",
+        hook: "Artigo estruturado para ranquear no Google nas buscas por 'reprovado no psicotécnico o que fazer'.",
+        script: `[ARTIGO COMPLETO PARA BLOG / PORTAL SEO - 1.450 PALAVRAS]
+
+# Reprovado no Psicotécnico do Concurso? Saiba Como Reverter na Justiça com Base na Súmula 44 do STF
+
+**META DESCRIPTION:** Foi eliminado no exame psicológico ou TAF do concurso? Entenda os 3 requisitos da Súmula 44 do STF, como funciona a liminar para o Curso de Formação e como garantir sua vaga.
+**PALAVRAS-CHAVE ALVO:** reprovado no psicotecnico concurso, sumula 44 stf psicotecnico, anular taf justiça, liminar curso de formação, advogado para concurso publico.
+
+---
+
+A reprovação em exames psicológicos e testes de aptidão física (TAF) representa, hoje, uma das maiores causas de indignação e injustiça nos concursos públicos em todo o país. Depois de investir anos de preparação, abdicar de finais de semana e superar concorrências na casa de milhares de candidatos nas provas objetivas e discursivas, dezenas de milhares de candidatos são sumariamente eliminados por avaliações psicológicas obscuras ou por rigores físicos aplicados de forma arbitrária pela banca examinadora.
+
+Muitos candidatos, por desconhecimento técnico ou pelo receio de enfrentar a máquina administrativa, acabam aceitando a eliminação como se fosse um veredito definitivo. No entanto, a realidade jurídica brasileira é categórica: **a palavra da banca não é intocável.** Quando o exame desrespeita a Constituição e os entendimentos consolidados pelo Supremo Tribunal Federal (STF), o Poder Judiciário tem o dever de intervir para anular a ilegalidade e garantir a posse de quem conquistou a vaga no mérito.
+
+Neste artigo definitivo, vamos detalhar exatamente quais são os limites legais do exame psicotécnico, o papel fundamental da Súmula Vinculante nº 44 do STF, os abusos mais comuns no TAF e como funciona a ação judicial com pedido de liminar para recolocar você no Curso de Formação junto com a sua turma original.
+
+---
+
+## 1. Por que o Exame Psicotécnico é o que Mais Elimina Injustamente nos Concursos?
+
+O exame psicotécnico possui, em tese, uma finalidade legítima: aferir se o candidato possui estabilidade emocional e traços de personalidade compatíveis com o exercício de funções de alta pressão, como carreiras policiais, judiciárias, fiscais e de auditoria.
+
+Entretanto, na prática, muitas bancas examinadoras transformam essa etapa em um verdadeiro "filtro de conveniência" ou em uma caixa-preta sem transparência. É comum nos depararmos com laudos que utilizam termos vagos como "inadequação de controle dos impulsos" ou "nível de ansiedade ligeiramente superior à média", sem qualquer demonstração técnica de como isso impediria o candidato de exercer o cargo.
+
+A falta de objetividade transforma o teste psicológico em um julgamento puramente subjetivo do avaliador contratado pela banca, violando o princípio básico do concurso público: a **impessoalidade** e a **igualdade de condições** entre todos os concorrentes.
+
+---
+
+## 2. O que diz a Súmula Vinculante nº 44 do Supremo Tribunal Federal (STF)?
+
+Para conter a onda de arbitrariedades cometidas pelas comissões organizadoras, o Supremo Tribunal Federal editou a **Súmula Vinculante nº 44**, que possui força de lei sobre toda a Administração Pública (federal, estadual e municipal) e sobre todas as bancas do país. O texto determina:
+
+> *"Só por lei se pode sujeitar a exame psicotécnico a habilitação de candidato a cargo público."*
+
+A partir dessa súmula e da pacificação da jurisprudência nos tribunais superiores (STF e STJ), consolidou-se que a validade de qualquer reprovação em psicotécnico depende do cumprimento rigoroso e cumulativo de **três requisitos essenciais**:
+
+### 2.1. Previsão Expressa na Lei da Carreira (e não apenas no Edital)
+Este é o primeiro grande erro das bancas. O edital do concurso **não é lei** em sentido formal; ele é apenas um ato administrativo. Para que o psicotécnico possa ser exigido de um candidato, a **Lei Orgânica ou o Estatuto da Carreira** aprovado pelo Poder Legislativo (Congresso Nacional, Assembleia Legislativa ou Câmara Municipal) deve prever expressamente a obrigatoriedade do exame para aquele cargo específico. Se a exigência estiver apenas no edital, a eliminação é **100% nula e ilegal**.
+
+### 2.2. Critérios Objetivos, Científicos e Sem Sigilo
+O teste aplicado precisa basear-se em métodos científicos reconhecidos pelo Conselho Federal de Psicologia (CFP) e possuir parâmetros claros de pontuação fixados previamente no edital. A banca está rigorosamente proibida de realizar avaliações secretas, entrevistas de "perfil oculto" ou utilizar critérios de aferição que não possam ser auditados e reproduzidos posteriormente por outros profissionais em uma perícia judicial.
+
+### 2.3. Direito de Acesso Integral ao Laudo e Recurso Administrativo
+Todo candidato reprovado tem o direito inalienável de receber a **cópia integral e detalhada do seu laudo psicológico, dos testes aplicados e das folhas de resposta**, além de ter garantido um prazo razoável para a contratação de um psicólogo assistente técnico que formule o seu recurso administrativo. Quando a banca nega a cópia do laudo ou apresenta respostas genéricas ("recurso indeferido por manutenção do parecer inicial"), ela viola o direito ao contraditório e à ampla defesa, tornando o ato de eliminação passível de anulação judicial imediata.
+
+---
+
+## 3. Reprovação no TAF (Teste de Aptidão Física): Quais Abusos Podem Ser Anulados pelo Juiz?
+
+Assim como no psicotécnico, o Teste de Aptidão Física (TAF) frequentemente é palco de graves ilegalidades administrativas. Embora o Judiciário não substitua o cronômetro ou a contagem do fiscal, os juízes anulam eliminações sempre que há **quebra das regras do edital ou violação à isonomia**. Os três maiores motivos de reversão judicial no TAF são:
+
+* **Mudança nas regras de contagem durante a execução:** É extremamente frequente o fiscal de prova invalidar repetições na barra fixa, flexão ou abdominal exigindo uma inclinação, ângulo ou pausa que **não estavam descritos expressamente no edital**. Se o edital não exigiu extensão total do cotovelo com travamento de 2 segundos, o fiscal não pode exigir isso na hora da prova. A gravação em vídeo oficial ou feita por familiares é a principal prova para desmascarar esse abuso.
+* **Condições climáticas extremas e falta de igualdade entre turmas:** A banca tem o dever de garantir condições equivalentes para todos os concorrentes. Aplicar a corrida de 2.400 metros para uma turma às 07h00 da manhã sob temperatura amena de 20°C, e obrigar outra turma a correr às 14h00 sob calor desumano de 38°C ou tempestade torrencial sem estrutura de pista adequada viola frontalmente o princípio da isonomia e da razoabilidade.
+* **Direito de remarcação para candidatas gestantes (Tema 973 do STF):** O Supremo Tribunal Federal já pacificou em repercussão geral que a candidata gestante tem direito subjetivo à **remarcação do TAF para data posterior ao parto**, independentemente de haver previsão expressa no edital. Qualquer eliminação de candidata grávida por não comparecer ou não realizar o teste físico é inconstitucional.
+
+---
+
+## 4. Como Funciona a Ação Judicial com Pedido de Liminar para o Curso de Formação?
+
+Quando o recurso administrativo é rejeitado pela banca, a ferramenta correta e eficaz para proteger o candidato é o ajuizamento de uma **Ação Judicial (Rito Ordinário ou Mandado de Segurança) com Pedido de Tutela de Urgência (Liminar)**.
+
+A liminar é uma ordem judicial provisória emitida pelo juiz logo no início do processo, antes mesmo da sentença final. Para que o juiz conceda essa ordem, demonstrar dois elementos técnicos:
+1. **A probabilidade do direito (*Fumus Boni Iuris*):** Provamos documentalmente que a banca descumpriu a Súmula 44, violou o edital ou cometeu erro arbitrário na avaliação;
+2. **O perigo da demora (*Periculum in Mora*):** Demonstramos que o Curso de Formação ou a posse definitiva está para começar, e se o candidato não for reintegrado imediatamente, sofrerá prejuízo irreparável em sua carreira.
+
+Ao deferir a liminar, o juiz determina que a banca examinadora e o Estado **reintegrem o candidato imediatamente ao certame**, garantindo a sua matrícula, frequência e avaliação no Curso de Formação junto com a sua turma original, bem como a reserva da sua vaga até o julgamento final da ação.
+
+---
+
+## 5. Qual é o Prazo Máximo para Entrar com Ação Judicial após a Reprovação?
+
+O fator tempo é crítico no direito autoral de concursos. Existem dois prazos principais que todo candidato deve dominar:
+* **Para Mandado de Segurança:** O prazo decadencial é de exatamente **120 dias corridos** contados a partir da publicação do ato ilegal no Diário Oficial (ou seja, da publicação da lista definitiva de eliminados após o recurso administrativo).
+* **Para Ação Ordinária:** O prazo prescricional geral contra a Fazenda Pública é de **5 anos** (Prescrição Quinquenal). No entanto, em termos práticos e estratégicos, esperar meses ou anos para ingressar com a ação reduz drasticamente a chance de concessão de liminar, pois o concurso pode expirar ou as vagas podem ser totalmente preenchidas e homologadas.
+
+**A regra de ouro do nosso escritório é clara:** quanto antes você ingressar judicialmente, maior é a probabilidade de garantir a sua matrícula no Curso de Formação sem atrasos na sua carreira.
+
+---
+
+## 6. Triagem de Viabilidade Técnica: Como Enviar o Seu Caso para a Ribeiro Rinaldi Advocacia
+
+O escritório **Ribeiro Rinaldi Advocacia** foi fundado por quem já esteve do outro lado da trincheira: o Dr. Paulo Rinaldi, ex-concurseiro, Auditor do Estado e especialista na defesa técnica e estratégica de candidatos contra abusos das bancas examinadoras.
+
+Se você foi eliminado no exame psicotécnico, no TAF ou teve seu recurso desconsiderado pela comissão organizadora, não abra mão do sonho que você construiu com tanto sacrifício. Nossa equipe realiza um **estudo técnico preliminar de viabilidade do seu edital, do laudo da banca e do seu vídeo de prova em até 24 horas**.
+
+📲 **Clique agora no botão abaixo ou no link de nossa página de contato, envie a documentação do seu concurso pelo WhatsApp e fale de igual para igual com advogados especialistas que sabem exatamente onde atacar para reverter a sua eliminação.**`,
+        caption: `Artigo completo publicado no portal Ribeiro Rinaldi. Acesse para ler a fundamentação jurídica completa!`,
+        tips: `Inserir links internos no blog apontando para a página de contato do WhatsApp.`
+      },
+      {
+        id: "sem1-reels1",
+        week: "Semana 1",
+        date: "2026-07-21",
+        dateLabel: "21/07 (Ter) • Reels 01",
+        platform: "insta",
+        platformLabel: "Instagram Reels (1:45m)",
+        title: "📱 REELS 01: A Mentira sobre o Psicotécnico (Súmula 44 STF)",
+        hook: "Se te disseram que a palavra da banca no psicotécnico é lei e não tem o que fazer, mentiram pra você.",
+        script: `[00:00 - 00:15] GANCHO:
+Áudio: "Se você foi reprovado no psicotécnico do concurso e te disseram que a palavra da banca é lei e não tem o que fazer, presta atenção: mentiram pra você. A banca não pode fazer o que bem entende com a sua nota."
+Legenda na tela (Archivo caixa-alta): A BANCA NÃO FAZ O QUE QUER NO PSICOTÉCNICO!
+
+[00:15 - 00:55] DESENVOLVIMENTO (Os 3 Direitos):
+Áudio: "O Supremo Tribunal Federal criou uma regra chamada Súmula 44 justamente para acabar com reprovações secretas e injustas. Pra sua eliminação valer, a banca tem que cumprir 3 coisas ao mesmo tempo: 1) O teste tem que estar previsto na lei da carreira, não só no edital; 2) Os critérios têm que ser totalmente objetivos e científicos — nada de te reprovar por 'perfil incompatível' sem explicação clara; e 3) Você tem o direito de receber a cópia inteira do seu laudo pra saber onde errou e poder se defender."
+Legenda na tela: Súmula 44 STF: 1) Lei 2) Critério Claro 3) Cópia do Laudo!
+
+[00:55 - 01:30] O ABUSO NA PRÁTICA:
+Áudio: "O que mais acontece é a banca esconder como corrigiu o teste ou usar avaliações vagas que ninguém entende. Quando isso acontece, o juiz anula a reprovação porque a banca não cumpriu a lei."
+Legenda na tela: Teste secreto ou sem laudo = ELIMINAÇÃO ANULADA!
+
+[01:30 - 01:50] CTA DE CONVERSÃO:
+Áudio: "Se você foi eliminado no exame psicológico recentemente, não deixa o prazo passar. Clica no link da bio agora e manda o seu edital pra gente fazer uma triagem de viabilidade."
+Legenda na tela: Clica no link da bio • Triagem Técnica ↑`,
+        caption: `A palavra da banca no psicotécnico NÃO é intocável. ❌🧠
+
+Pela Súmula 44 do STF, se o teste não tiver critérios científicos 100% objetivos ou se negarem a cópia completa do seu laudo, a eliminação é ilegal e pode ser anulada na Justiça com pedido de liminar.
+
+👉 Foi reprovado no exame psicológico de forma injusta? Clica no link da nossa bio e envie o seu caso para uma avaliação técnica preliminar pela nossa equipe.
+
+#psicotecnico #sumula44 #concursopublico #liminar #direitoadministrativo #ribeirorinaldi #advogado`,
+        tips: `Corte direto do vídeo longo ou gravação em pé (9:16) com dinamismo e legendas amarelas/laranjas bem vivas.`
+      },
+      {
+        id: "sem1-insta-mot",
+        week: "Semana 1",
+        date: "2026-07-22",
+        dateLabel: "22/07 (Qua) • Conexão",
+        platform: "insta",
+        platformLabel: "Instagram Post Conexão",
+        title: "📱 POST MOTIVACIONAL: A banca não é a dona do seu sonho (Mérito & Justiça)",
+        hook: "Conexão emocional com quem está abrindo mão de tudo para passar no concurso.",
+        script: `[ESTRUTURA DE POST ÚNICO / DEPOIMENTO OU CONEXÃO 4:5]
+
+• Eyebrow: O MÉRITO É SEU
+• Manchete Archivo Black: "O SÁBADO À NOITE ESTUDANDO ENQUANTO TODO MUNDO SAI SÓ VALE A PENA SE NINGUÉM ROUBAR A SUA VAGA NO FINAL."
+• Subtítulo Manrope: A aprovação na prova objetiva é o resultado do seu sacrifício. Garantir que a banca te respeite até a posse é a nossa missão.
+• Assinatura: Símbolo + Ribeiro Rinaldi.
+
+[LEGENDA COMPLEMENTAR]:
+Quem olha o nome no Diário Oficial não imagina o peso que o concurseiro carregou: os finais de semana trancado no quarto, a ansiedade com a concorrência, o dinheiro contadinho para pagar a inscrição e o cursinho.
+
+Quando você finalmente vence a prova técnica e chega nas etapas finais, a banca examinadora tem o dever moral e legal de te avaliar com lisura total.
+
+Não permita que critérios secretos no psicotécnico ou avaliações arbitrárias no TAF joguem no lixo os anos da sua vida que você dedicou aos estudos.
+
+Se você conquistou a nota no mérito, a sua vaga tem que ser respeitada. E se a banca errar, a Justiça está aí para corrigir. 👊⚖️
+
+🔗 Salve essa mensagem e compartilhe com o seu parceiro de estudos que não desiste nunca!`,
+        caption: `O sacrifício dos seus estudos tem valor sagrado. Não permita que abusos da banca tirem o que você conquistou no mérito. 👊🔥 #concurseiro #avirada #merito #estudoparaconcurso #posse #ribeirorinaldi`,
+        tips: `Fundo escuro premium (#150F0B), tipografia em branco e laranja forte (#FF5E1A), sem fotos genéricas de autoajuda.`
+      },
+      {
+        id: "sem1-in1",
+        week: "Semana 1",
+        date: "2026-07-22",
+        dateLabel: "22/07 (Qua) • LinkedIn",
+        platform: "linkedin",
+        platformLabel: "LinkedIn Artigo Executivo",
+        title: "👔 LINKEDIN 01: Reprovação no Psicotécnico: Por que critérios secretos não se sustentam na Justiça",
+        hook: "Linguagem analítica e executiva voltada para servidores, candidatos e comunidade jurídica.",
+        script: `Título: Reprovação no Psicotécnico de Concursos: Por que critérios secretos não se sustentam na Justiça
+
+Quem acompanha ou participa de concursos públicos sabe que a avaliação psicológica se tornou um dos maiores pontos de conflito entre candidatos e bancas examinadoras.
+
+Durante muito tempo, existiu a ideia de que a decisão da banca no exame psicotécnico seria intocável. No entanto, o entendimento do Supremo Tribunal Federal (STF) e dos tribunais superiores mudou esse cenário por completo.
+
+A Súmula Vinculante nº 44 do STF deixou claro que nenhum candidato pode ser submetido a teste psicológico sem que exista uma lei específica da carreira autorizando essa etapa. Mas a proteção ao candidato não para por aí.
+
+Para que uma reprovação no psicotécnico seja considerada válida pela Justiça, a banca precisa respeitar três regras fundamentais:
+
+1. Previsão em Lei: Não basta estar escrito apenas no edital do concurso. A lei que criou o cargo precisa autorizar o exame.
+2. Critérios Objetivos e Científicos: A banca não pode eliminar um candidato com base em conceitos subjetivos ou "perfis secretos". Os testes precisam ser claros, científicos e reconhecidos pelo Conselho Federal de Psicologia.
+3. Acesso Completo ao Laudo e Direito de Defesa: O candidato tem o direito de receber a cópia integral da sua avaliação para entender exatamente onde supostamente falhou e poder apresentar recurso.
+
+Quando a banca nega acesso ao laudo ou reprova com justificativas genéricas, o Judiciário intervém para corrigir o abuso. Através de decisões rápidas (liminares), os juízes têm garantido que candidatos prejudicados voltem ao concurso e participem normalmente do Curso de Formação e das etapas seguintes.
+
+O concurso público é o caminho da meritocracia. Transparência e respeito às regras claras são deveres de qualquer banca examinadora.
+
+---
+Você já presenciou eliminações sem critérios claros em editais recentes? Deixe sua opinião nos comentários.`,
+        caption: `Artigo executivo publicado no LinkedIn de Dr. Paulo Rinaldi / Ribeiro Rinaldi.`,
+        tips: `Ideal para gerar autoridade institucional com linguagem madura e sóbria.`
+      },
+      {
+        id: "sem1-reels2",
+        week: "Semana 1",
+        date: "2026-07-23",
+        dateLabel: "23/07 (Qui) • Reels 02",
+        platform: "insta",
+        platformLabel: "Instagram Reels (1:45m)",
+        title: "📱 REELS 02: Reprovado no TAF por Mudança de Regra ou Clima Desumano?",
+        hook: "O fiscal mudou a contagem na hora da barra ou te colocaram pra correr no sol de 40 graus?",
+        script: `[00:00 - 00:14] GANCHO:
+Áudio: "Você treinou meses pra prova física do concurso, mas no dia do TAF o fiscal mudou a regra na hora ou te colocaram pra correr debaixo de uma tempestade? Saiba que a Justiça pode reverter essa reprovação."
+Legenda na tela: REPROVADO NO TAF? A Justiça pode reverter!
+
+[00:14 - 00:58] DESENVOLVIMENTO (O que anula o TAF):
+Áudio: "O teste físico serve apenas pra ver se você tem saúde pra trabalhar no cargo. Só que as bancas cometem três erros graves: Primeiro, mudam a forma de contar o exercício na hora da prova sem aviso no edital; Segundo, tratam os candidatos de forma diferente — uma turma faz em condição boa e outra em condição desumana sem estrutura; Terceiro, impedem candidatas grávidas de remarcar o teste, um direito que a Justiça já garante há anos."
+Legenda na tela: Fiscal mudar a regra na hora ANULA o teste!
+
+[00:58 - 01:28] COMO PROVAR:
+Áudio: "Se você tem o vídeo da sua prova mostrando que fez o movimento certo ou que a banca cobrou algo fora do edital, o juiz costuma anular a eliminação e mandar fazer um novo teste ou te reintegrar no concurso."
+Legenda na tela: O vídeo da sua prova é a sua maior garantia!
+
+[01:28 - 01:48] CTA DE CONVERSÃO:
+Áudio: "Sentiu que foi prejudicado no seu TAF? Guarda o vídeo da prova e toca no link da bio pra nossa equipe avaliar o seu caso."
+Legenda na tela: Fale com nossa equipe • Link na bio ↑`,
+        caption: `O TAF existe para avaliar sua aptidão física, não para ser uma armadilha arbitrária da banca. 🏃‍♂️⚖️
+
+Se o avaliador mudou o padrão de execução no meio da prova ou se você foi submetido a condições climáticas desumanas sem estrutura mínima, essa eliminação pode ser revertida judicialmente.
+
+👉 Tem o vídeo do seu teste físico e sente que foi prejudicado? Clica no link da nossa bio agora e mande para a nossa triagem jurídica técnica.
+
+#taf #testefisico #concursopublico #advogadojuridico #liminar #ribeirorinaldi #policiacivil #pm #pf`,
+        tips: `Dar ênfase na importância do candidato gravar ou exigir a gravação em vídeo de todos os exercícios da prova física.`
+      },
+      {
+        id: "sem1-insta-carr",
+        week: "Semana 1",
+        date: "2026-07-24",
+        dateLabel: "24/07 (Sex) • Carrossel",
+        platform: "insta",
+        platformLabel: "Instagram Carrossel (4:5)",
+        title: "📱 CARROSSEL RESUMO: 3 Motivos Matemáticos que Anulam Reprovações no Psicotécnico e TAF",
+        hook: "Resumo didático, altamente salvável, organizando os pontos chave dos 3 vídeos da semana.",
+        script: `[ESTRUTURA DO CARROSSEL 4:5 - 5 CARDS]
+
+CARD 01 (CAPA):
+• Eyebrow: GUIA TÉCNICO DE ANULAÇÃO
+• Manchete Archivo Black: 3 MOTIVOS MATEMÁTICOS QUE ANULAM REPROVAÇÕES NO PSICOTÉCNICO E NO TAF NA JUSTIÇA
+• Subtítulo Manrope: A lei tem critérios exatos. Se a banca desrespeitou 1 deles, sua eliminação cai. Arraste ➡️
+
+CARD 02 (MOTIVO 1 - TESTE SEM LAUDO OU CRITÉRIO SECRETO):
+• Título: 1. A banca recusou entregar o laudo completo ou usou "critério secreto" no Psicotécnico
+• Explicação: Pela Súmula 44 do STF, todo teste psicológico precisa ser 100% objetivo, científico e o candidato tem o direito inegociável de receber a cópia integral para se defender. Falta de transparência = Anulação.
+
+CARD 03 (MOTIVO 2 - MUDANÇA DE REGRA DURANTE A EXECUÇÃO DO TAF):
+• Título: 2. O fiscal mudou a contagem ou exigiu movimento fora do edital na hora do TAF
+• Explicação: Se o edital pede flexão na barra com pegada livre, o fiscal não pode exigir pegada pronada no dia da prova. O vídeo da sua execução comprova o abuso perante o juiz.
+
+CARD 04 (MOTIVO 3 - QUEBRA DE ISONOMIA E CONDIÇÕES EXTREMAS):
+• Título: 3. Turmas avaliadas em condições climáticas ou estruturais desiguais
+• Explicação: Se uma turma correu às 8h em pista seca e outra às 14h debaixo de tempestade sem marcação ou sob calor insalubre sem hidratação/atendimento médico, há violação do princípio constitucional da isonomia.
+
+CARD 05 (CTA FINAL):
+• Fundo Gradiente Laranja → Magenta
+• Manchete: NÃO PERCA A VAGA POR FALTA DE INFORMAÇÃO.
+• Texto: O prazo para entrar com ação judicial contra eliminação corre rápido.
+• Botão: Toca no link da bio e envie o seu edital para uma triagem de viabilidade em 24h.`,
+        caption: `Salve este carrossel: estes são os 3 fundamentos jurídicos mais sólidos para anular eliminações abusivas em etapas físicas e psicológicas de concursos públicos. 📌⚖️
+
+A banca não tem poder soberano para inventar regras na hora do teste. Conheça seus direitos e não abra mão da sua nomeação!
+
+👉 Clica no link da bio e fale direto com o nosso time pelo WhatsApp.
+
+#concurseiro #direitoconstitucional #psicotecnico #taf #advocaciaparaconcurso #ribeirorinaldi`,
+        tips: `Card com design limpo, números 1, 2 e 3 em Archivo Black gigante cor Laranja Ignição #FF5E1A.`
+      },
+      {
+        id: "sem1-in2",
+        week: "Semana 1",
+        date: "2026-07-24",
+        dateLabel: "24/07 (Sex) • LinkedIn Post",
+        platform: "linkedin",
+        platformLabel: "LinkedIn Post Curto",
+        title: "👔 LINKEDIN 02: A falta de transparência nos exames de aptidão física (TAF) em concursos",
+        hook: "Reflexão executiva sobre segurança jurídica nas etapas de aptidão física.",
+        script: `A falta de transparência e a subjetividade na condução dos Testes de Aptidão Física (TAF) em concursos públicos ainda representam um grave gargalo para a segurança jurídica e para a meritocracia no Brasil.
+
+Em editais recentes de carreiras policiais e fiscais, temos observado um aumento expressivo no número de ações judiciais motivadas por três fatores recorrentes:
+1️⃣ Alteração dos critérios de contagem de repetições pelos avaliadores no momento da prova, em desconformidade com o edital;
+2️⃣ Ausência de gravação em vídeo oficial disponibilizada pela banca para permitir o exercício do contraditório;
+3️⃣ Desigualdade brutal de condições climáticas e estruturais entre diferentes turmas de candidatos do mesmo certame.
+
+O Teste de Aptidão Física possui uma finalidade técnica estrita: aferir se o candidato possui capacidade laborativa básica para o exercício das atribuições do cargo. Ele não pode, em hipótese alguma, ser transformado em um instrumento de filtro arbitrário.
+
+O Judiciário tem se mostrado cada vez mais firme na anulação de atos desprovidos de razoabilidade e proporcionalidade nessas etapas. Garantir que a regra do jogo seja cumprida do início ao fim é o mínimo que se espera de uma Administração Pública republicana.
+
+#ConcursoPublico #DireitoAdministrativo #SegurancaJuridica #Advocacia #TAF #RibeiroRinaldi`,
+        caption: `Post analítico para o perfil profissional do LinkedIn.`,
+        tips: `Estimula o debate técnico e o posicionamento do Dr. Paulo Rinaldi como referência no setor.`
+      },
+      {
+        id: "sem1-reels3",
+        week: "Semana 1",
+        date: "2026-07-25",
+        dateLabel: "25/07 (Sáb) • Reels 03",
+        platform: "insta",
+        platformLabel: "Instagram Reels (1:45m)",
+        title: "📱 REELS 03: Recurso Negado na Banca? Como Funciona a Liminar para o Curso de Formação",
+        hook: "O indeferido da banca não é o fim da linha. A liminar coloca você de volta no curso junto com sua turma.",
+        script: `[00:00 - 00:14] GANCHO:
+Áudio: "Você entrou com recurso contra a reprovação no concurso e a banca respondeu com aquele texto padrão dizendo 'indeferido'? Calma, porque a resposta da banca quase nunca é o fim da linha."
+Legenda na tela: RECURSO NEGADO NA BANCA? Não é o fim do concurso!
+
+[00:14 - 00:56] DESENVOLVIMENTO (A Liminar):
+Áudio: "A banca dificilmente assume que errou no recurso administrativo. Por isso, quem realmente quer buscar a vaga vai pra Justiça pedir uma decisão liminar. A liminar é uma ordem rápida que o juiz dá no começo do processo. Quando a gente mostra que a banca desrespeitou o edital ou a lei, o juiz manda o concurso te aceitar de volta na mesma hora para as próximas fases."
+Legenda na tela: LIMINAR coloca você de volta na mesma hora!
+
+[00:56 - 01:28] O CURSO DE FORMAÇÃO:
+Áudio: "O mais importante da liminar é que ela garante o seu lugar no Curso de Formação. Você entra, estuda, se forma junto com a sua turma original e não fica anos esperando o processo acabar pra só então ser chamado."
+Legenda na tela: Faça o Curso de Formação com a sua turma original!
+
+[01:28 - 01:50] CTA DE CONVERSÃO:
+Áudio: "Mas olha só: existe prazo curto pra entrar com essa ação. Quanto antes você agir, melhor. Clica no link da bio agora e fala direto com os nossos advogados."
+Legenda na tela: Não perca o prazo! Toca no link da bio ↑`,
+        caption: `O "indeferido" da banca não é a palavra final sobre o seu futuro profissional. 👊🔥
+
+A via administrativa costuma rejeitar recursos com respostas padronizadas. No entanto, quando entramos com pedido judicial de liminar demonstrando a ilegalidade, o juiz determina a sua reintegração imediata para que você faça o Curso de Formação com a sua turma original.
+
+👉 Seu recurso foi negado pela banca? Clica no link da bio e envie o seu caso agora para nossa triagem técnica preliminar em 24h.
+
+#recursojuridico #bancaexaminadora #cursodeformacao #liminar #advogado #concurseiro #ribeirorinaldi`,
+        tips: `Foco total em urgência ("Direito tem prazo") para fechar a primeira semana com pico de conversão no WhatsApp.`
+      },
+
+      /* --- SEMANA 2: PRETERIÇÃO NA CONVOCAÇÃO (27/07 a 02/08) --- */
+      {
+        id: "sem2-yt",
+        week: "Semana 2",
+        date: "2026-07-27",
+        dateLabel: "27/07 (Seg) • Pilar Raiz",
+        platform: "yt",
+        platformLabel: "YouTube Longo (Pilar)",
+        title: "Passou no Concurso e Não Foi Chamado? O Que Configura Preterição e Como Garantir Sua Posse",
+        hook: "Vídeo aprofundado explicando como provar preterição quando há temporários no lugar do concursado.",
+        script: `[ROTEIRO DE VÍDEO LONGO PARA YOUTUBE - DURAÇÃO 8 A 10 MINUTOS]
+[TEMA PILAR DA SEMANA 2 - PRETERIÇÃO NA CONVOCAÇÃO E CADASTRO DE RESERVA]
+
+[00:00 - 00:50] INTRODUÇÃO & HOOK:
+"Imagine a seguinte cena: você estuda por anos, passa no concurso, vê o seu nome no Diário Oficial dentro do cadastro de reserva ou até próximo das vagas. Você fica naquela expectativa diária, atualizando o site do órgão todos os dias... e os meses vão passando. Até que um dia você descobre que o órgão abriu um processo seletivo simplificado para contratar temporários, ou encheu a secretaria de cargos em comissão e terceirizados fazendo exatamente o trabalho para o qual você prestou concurso. Ou pior: chamaram uma pessoa que estava classificada atrás de você na lista! Isso se chama PRETERIÇÃO. E a lei brasileira é categórica: quando há preterição, a sua mera expectativa de direito se transforma em DIREITO LÍQUIDO E CERTO à nomeação imediata. Hoje eu vou te ensinar como identificar e comprovar essa ilegalidade para buscar a sua posse."
+
+[00:50 - 03:20] CAPÍTULO 1: O QUE A JURISPRUDÊNCIA DO STF (TEMA 784) GARANTE AO CADASTRO DE RESERVA:
+"Muitos candidatos acham que estar no cadastro de reserva é estar à mercê da boa vontade do governador ou do prefeito. Não é bem assim. O Supremo Tribunal Federal, no julgamento do Tema 784, estabeleceu que o candidato do cadastro de reserva ganha o direito imediato à nomeação em 3 situações clássicas:
+1) Quando o concurso expira e havia vagas abertas no edital não preenchidas sem justificativa legal;
+2) Quando há quebra da ordem classificatória (chamaram o 15º e pularam o 14º sem razão razoável);
+3) Quando surgem novas vagas na vigência do concurso E o órgão demonstra a necessidade de pessoal contratando precários (temporários, terceirizados ou comissionados) para exercer aquela mesma função."
+
+[03:20 - 06:10] CAPÍTULO 2: COMO PROVAR QUE O ÓRGÃO CONTRATOU TEMPORÁRIO NA SUA VAGA:
+"O segredo para vencer uma ação de preterição é a produção da prova documental. A nossa equipe técnica faz uma varredura completa nos portais de transparência e diários oficiais. Nós cruzamos 3 dados fundamentais:
+- O número de vagas puras ou que surgiram por aposentadorias/exonerações na carreira;
+- A quantidade de contratos temporários vigentes ou renovados ilegalmente durante o prazo do concurso;
+- E a correlação de atribuições: provamos para o juiz que o temporário contratado sem concurso está sentando na cadeira e fazendo as exatas tarefas que o edital do seu cargo prevê.
+Com essa triangulação documental em mãos, o juiz não tem outra saída senão reconhecer a burla ao concurso público."
+
+[06:10 - 08:00] CAPÍTULO 3: O RISCO DO PRAZO DE VALIDADE DO CONCURSO EXPIRAR:
+"Aqui está o maior perigo: o tempo. Se o prazo de validade do seu concurso (os 2 anos prorrogáveis por mais 2) expirar e você não tiver entrado com a ação judicial a tempo, ou se demorar demais para questionar, você perde a janela de ouro. A ação de obrigação de fazer com pedido liminar deve ser impetrada preferencialmente enquanto o concurso ainda está vigente ou imediatamente ao término do prazo."
+
+[08:00 - 08:50] ENCERRAMENTO & CTA:
+"Você não prestou concurso para assistir terceirizado ou temporário ocupar a sua cadeira no serviço público. Se você desconfia que o seu concurso está pulando a sua vez ou contratando precários, clica no link da descrição. Envie a sua classificação e o nome do órgão para a nossa equipe fazer um estudo inicial de viabilidade do seu cenário."`,
+        caption: `Vídeo completo no YouTube: saiba como transformar o seu cadastro de reserva em posse e nomeação! 🏛️ ⚖️`,
+        tips: `Gravação com tom firme, transmitindo autoridade e segurança sobre jurisprudência do STF.`
+      },
+      {
+        id: "sem2-blog",
+        week: "Semana 2",
+        date: "2026-07-27",
+        dateLabel: "27/07 (Seg) • SEO",
+        platform: "blog",
+        platformLabel: "Blog SEO (Artigo Raiz)",
+        title: "Preterição em Concurso Público: Quando o Cadastro de Reserva vira Direito à Nomeação",
+        hook: "Artigo completo para buscas orgânicas de 'passei no concurso e chamaram temporario'.",
+        script: `[ARTIGO COMPLETO PARA BLOG / PORTAL SEO - 1.550 PALAVRAS]
+
+# Preterição em Concurso Público: Como Transformar o Cadastro de Reserva em Direito Líquido e Certo à Posse
+
+**META DESCRIPTION:** Aprovado no concurso não foi chamado? Veja quando a contratação de temporários ou quebra de ordem gera direito à nomeação com base no Tema 784 do STF.
+**PALAVRAS-CHAVE ALVO:** preterição concurso publico, cadastro de reserva direito a nomeacao, contratação temporario concurso vigente, tema 784 stf pretericao, mandado de seguranca concurso.
+
+---
+
+Estar aprovado em um concurso público dentro do cadastro de reserva é uma das situações de maior ansiedade na vida de qualquer profissional. Você cumpriu todas as etapas, alcançou a nota de corte, viu o seu nome no Diário Oficial e agora passa os dias atualizando o site da instituição na expectativa da tão sonhada convocação.
+
+No entanto, o que deveria ser um período de espera legítima muitas vezes se transforma em frustração quando o candidato percebe que o órgão público está contratando servidores temporários, terceirizados ou comissionados para exercer exatamente as funções do seu cargo. Ou pior: quando descobre que a convocação pulou a sua classificação ou que o prazo de validade do concurso está prestes a expirar sem que vagas abertas no edital tenham sido preenchidas.
+
+Essa burla à ordem e à meritocracia se chama **Preterição**. E a jurisprudência pacífica do Supremo Tribunal Federal (STF) garante que, diante da preterição comprobatória, aquilo que era apenas uma "expectativa de direito" se converte em **Direito Líquido e Certo à nomeação imediata**.
+
+Neste artigo raiz completo, vamos dissecar o entendimento do Tema 784 do STF, explicar as três formas mais comuns de preterição arbitrária, ensinar como produzir provas no Portal da Transparência e mostrar qual é a medida judicial ideal para garantir a sua cadeira no serviço público.
+
+---
+
+## 1. O que é Preterição em Concurso Público segundo a Lei e o STF?
+
+O termo "preterição" significa preterir, deixar de lado, passar na frente ou desprezar. No Direito Administrativo, a preterição ocorre sempre que a Administração Pública (seja um Ministério, uma Secretaria Estadual, Tribunal, Prefeitura ou Autarquia) ignora a ordem de classificação do concurso ou preenche cargos vagos de forma precária e ilegal enquanto existem candidatos aprovados devidamente habilitados aguardando convocação.
+
+O artigo 37, incisos II e IV, da Constituição Federal estabelece que a investidura em cargo ou emprego público depende de aprovação prévia em concurso público, e que durante o prazo improrrogável previsto no edital, o aprovado será convocado com prioridade sobre novos concursados.
+
+Quando o gestor público decide contratar temporários sem concurso para exercer atividades rotineiras da carreira, ou quando pula o candidato classificado em 15º lugar para convocar o 16º, ele comete um desvio de finalidade e atenta contra o princípio constitucional da moralidade administrativa.
+
+---
+
+## 2. Entendendo o Tema 784 de Repercussão Geral do Supremo Tribunal Federal
+
+Para acabar com a insegurança jurídica sobre quando o cadastro de reserva tem ou não direito a exigir a convocação, o Plenário do Supremo Tribunal Federal julgou o célebre **Tema 784 da Repercussão Geral (RE 837.311/PI)**, fixando a seguinte tese vinculante para todos os juízes e tribunais do Brasil:
+
+O surgimento de novas vagas ou a abertura de novo concurso para o mesmo cargo, durante o prazo de validade do certame anterior, não gera automaticamente o direito à nomeação dos candidatos aprovados fora das vagas originais, **RANGENDO-SE ESSE DIREITO (ou seja, garantindo a posse obrigatória) nas seguintes hipóteses excepcionais:**
+
+1. **Quando a aprovação ocorrer dentro do número de vagas previsto no edital:** O candidato tem direito líquido e certo à posse dentro do prazo de validade;
+2. **Quando houver preterição na convocação por inobservância da ordem de classificação:** Chamar candidatos posicionados atrás de você sem justificativa;
+3. **Quando surgirem novas vagas, ou for aberto novo concurso durante a validade do certame anterior, E ocorrer preterição de forma arbitrária e imotivada por parte da Administração:** Contratação de temporários, terceirizados ou comissionados demonstrando a necessidade inequívoca de pessoal.
+
+---
+
+## 3. As 3 Formas Mais Comuns de Preterição que Garantem a Sua Nomeação
+
+Vamos analisar em detalhes como ocorrem na prática as três situações que transformam o seu cadastro de reserva em posse judicial obrigatória:
+
+### 3.1. Quebra da Ordem Classificatória (Preterição Direta)
+É a forma mais clássica e agressiva de ilegalidade. Acontece quando o órgão publica portaria de convocação chamando candidatos com classificação inferior à sua sem que você tenha sido convocado previamente, sem que tenha assinado termo formal de desistência ou sem que tenha sido desclassificado por ato devidamente notificado. A **Súmula 15 do STF** é taxativa ao garantir o direito do preterido nesses casos.
+
+### 3.2. Contratação de Temporários, Terceirizados ou Comissionados (Preterição Indireta)
+Esta é a ilegalidade mais frequente no Brasil moderno. O órgão abre concurso para Cadastro de Reserva de "Analista", "Auditor", "Enfermeiro" ou "Professor". Meses depois, em vez de convocar os aprovados que estudaram e passaram, o órgão abre um Processo Seletivo Simplificado (PSS) para contratar temporários, ou contrata uma empresa terceirizada para alocar funcionários fazendo rigorosamente as mesmas funções técnicas.
+
+Para a Justiça, a contratação de temporário durante a vigência do concurso **prova duas coisas fundamentais**:
+* Que existe **vaga em aberto** ou necessidade permanente do serviço naquela localidade;
+* Que existe **orçamento disponível** para pagar aquele profissional.
+
+Logo, se há necessidade de trabalho e há dinheiro em caixa, o Estado tem a obrigação constitucional de convocar o candidato aprovado em concurso público, e não manter contratos precários por indicações políticas.
+
+### 3.3. Abertura de Novo Concurso com Certame Anterior Ainda Vigente
+Se a Administração lança um novo edital para o mesmo cargo enquanto o concurso em que você foi aprovado ainda está no seu prazo de validade (ou não prorrogou sem justificativa), e existem aprovados aguardando na fila, ocorre preterição arbitrária. Os aprovados do concurso anterior têm prioridade absoluta sobre qualquer nomeação do novo certame.
+
+---
+
+## 4. Como Recolher Provas no Portal da Transparência para Fundamentar a Ação Judicial?
+
+Muitos candidatos perguntam ao nosso escritório: *"Doutor, como eu provo pro juiz que o órgão está contratando temporário na minha vaga?"* A resposta está na produção da **prova documental em três camadas**:
+
+1. **Consulta ao Portal da Transparência do Órgão:** Acessamos o portal de recursos humanos do Estado/Município e levantamos a relação completa de servidores ativos naquele cargo, identificando quantos estão classificados com vínculo "Temporário", "Comissionado" ou "PSS".
+2. **Quadro de Vagas da Carreira (Vacâncias):** Solicitamos via Lei de Acesso à Informação (ou extraímos dos diários oficiais) a lista atualizada de cargos vagos decorrentes de aposentadorias, demissões, exonerações ou falecimentos ocorridos após a homologação do seu concurso.
+3. **Comparação de Atribuições:** Anexamos o edital do Processo Seletivo Temporário ao lado do edital do seu concurso para demonstrar ao magistrado que as tarefas descritas para o temporário são idênticas às atribuições legais do cargo para o qual você foi aprovado.
+
+Com esse dossiê probatório robusto em mãos, a probabilidade de concessão de liminar para determinar a nomeação imediata aumenta exponencialmente.
+
+---
+
+## 5. Qual a Diferença entre Mandado de Segurança e Ação Ordinária nos Casos de Preterição?
+
+A escolha da via processual correta é uma das decisões estratégicas mais importantes do advogado especialista em concursos:
+
+* **Mandado de Segurança (MS):** É uma ação célere, que não admite produção de provas periciais ou testemunhais no decorrer do processo. Exige **prova pré-constituída** (ou seja, todo o dossiê de temporários, diários oficiais e classificação já deve estar 100% comprovado e anexado na petição inicial). O prazo para entrar com MS é de **120 dias** contados da ciência do ato ilegal (ex: data em que o temporário foi contratado no diário oficial ou data de expiração do concurso).
+* **Ação Ordinária com Pedido de Tutela Antecipada (Liminar):** É a via mais ampla e segura quando o prazo de 120 dias do Mandado de Segurança já transcorreu, ou quando precisamos que o juiz determine a notificação do órgão para exibir documentos de vacância que o candidato não conseguiu obter sozinho. O prazo prescricional da Ação Ordinária é de **5 anos** contra a Fazenda Pública.
+
+---
+
+## 6. O Concurso Venceu: Ainda Posso Entrar na Justiça para Garantir a Minha Vaga?
+
+**SIM!** A expiração do prazo de validade do concurso (seja o prazo inicial de 2 anos ou o prorrogado por mais 2) não apaga o crime administrativo se a preterição ou a contratação ilegal de temporários **ocorreu enquanto o concurso ainda estava válido**.
+
+Segundo a jurisprudência consolidada do Superior Tribunal de Justiça (STJ) e do STF, se o candidato demonstra que durante o período de vigência do edital o Estado manteve temporários em número suficiente para alcançar a sua colocação na lista de aprovados, o direito de ação permanece intacto dentro do prazo prescricional de 5 anos contados a partir da data de encerramento do concurso.
+
+Contudo, para evitar disputas processuais prolongadas e garantir que você assuma o cargo o quanto antes, nossa orientação firme é que a ação seja distribuída **preferencialmente antes do término do prazo de validade**, ou imediatamente nas semanas seguintes ao vencimento.
+
+---
+
+## 7. Triagem de Viabilidade em 24h: Como Consultar a Situação da Sua Nomeação com a Ribeiro Rinaldi Advocacia
+
+Você não enfrentou meses de isolamento, sacrifício financeiro e estresse em uma prova de concurso público para ver a sua vaga ocupada por apadrinhados políticos, temporários ou terceirizados. Se você está no cadastro de reserva e desconfia que o seu direito está sendo violado pela Administração Pública, é hora de agir com respaldo jurídico de alto nível.
+
+A **Ribeiro Rinaldi Advocacia**, sob a liderança do Dr. Paulo Rinaldi — ex-concurseiro e Auditor do Estado —, coloca à sua disposição uma estrutura jurídica especializada em Direito Administrativo e Direito de Concursos Públicos.
+
+📲 **Clique no botão de contato ao final da página ou acesse o nosso link do WhatsApp agora mesmo. Envie o seu edital, a sua colocação e o nome do órgão para que nossa equipe técnica realize uma triagem preliminar de viabilidade documental do seu caso em até 24 horas.**`,
+        caption: `Artigo detalhado no nosso blog. Compartilhe com os colegas que estão no cadastro de reserva!`,
+        tips: `Colocar exemplos reais de carreiras (auditores, professores, policiais, enfermeiros, analistas judiciários).`
+      },
+      {
+        id: "sem2-reels1",
+        week: "Semana 2",
+        date: "2026-07-28",
+        dateLabel: "28/07 (Ter) • Reels 01",
+        platform: "insta",
+        platformLabel: "Instagram Reels (1:45m)",
+        title: "📱 REELS 01: Chamaram quem passou atrás de você na lista de classificação?",
+        hook: "A preterição direta por quebra de ordem classificatória é ilegal e garante posse imediata.",
+        script: `[00:00 - 00:15] GANCHO:
+Áudio: "Você passou no concurso em 20º lugar, o órgão chamou o 19º, e depois do nada convocou o 21º por 'decisão administrativa' ou por um critério obscuro? Cuidado: isso se chama quebra de ordem e te dá direito imediato à posse na Justiça."
+Legenda na tela: CHAMARAM QUEM FICOU ATRÁS DE VOCÊ NA LISTA?
+
+[00:15 - 00:55] DESENVOLVIMENTO (A Preterição Direta):
+Áudio: "O concurso público funciona como uma fila sagrada por mérito. Se a Administração Pública pula a sua colocação sem que você tenha assinado termo de desistência formal ou sido desclassificado legalmente, ocorre o que chamamos de preterição arbitrária. A Súmula 15 do STF é claríssima: dentro do prazo de validade do concurso, o candidato tem direito à nomeação se o cargo for preenchido sem observância da classificação."
+Legenda na tela: Súmula 15 STF: Pular a sua colocação é CRIME contra o seu direito!
+
+[00:55 - 01:25] O QUE O JUIZ FAZ:
+Áudio: "Quando demonstramos essa quebra de ordem no processo com pedido liminar, o juiz determina que o órgão publique a sua portaria de nomeação imediatamente sob pena de multa diária ao gestor."
+Legenda na tela: Liminar determina a sua NOMEAÇÃO IMEDIATA!
+
+[01:25 - 01:45] CTA DE CONVERSÃO:
+Áudio: "Foi pulado na lista de convocação ou viu movimentação estranha no seu concurso? Clica no link da bio e envie o diário oficial para a nossa triagem de viabilidade em 24h."
+Legenda na tela: Clica no link da bio • Triagem em 24h ↑`,
+        caption: `A fila da classificação de um concurso público é inegociável. ⚖️ 📋
+
+Se o órgão convocar candidatos posicionados abaixo de você na tabela sem uma justificativa legal irrefutável (ou sem que você tenha formalizado desistência), a preterição está configurada e o seu direito de posse torna-se imediato pela Súmula 15 do STF.
+
+👉 Desconfia que pulou a sua vez no edital? Clica no link da nossa bio e mande a lista para a nossa equipe avaliar.
+
+#pretericao #convocacao #concursopublico #diariooficial #posse #advocaciajuridica #ribeirorinaldi`,
+        tips: `Usar tom de alerta e urgência máxima.`
+      },
+      {
+        id: "sem2-insta-mot",
+        week: "Semana 2",
+        date: "2026-07-29",
+        dateLabel: "29/07 (Qua) • Mito vs Verdade",
+        platform: "insta",
+        platformLabel: "Instagram Post Mito vs Verdade",
+        title: "📱 POST MITO VS VERDADE: Cadastro de Reserva vs Contratação de Temporários",
+        hook: "Quebrando a crença passiva de que estar em cadastro de reserva é apenas 'contar com a sorte'.",
+        script: `[ESTRUTURA MITO VS VERDADE 4:5 - DESIGN SYSTEM RIBEIRO RINALDI]
+
+• Eyebrow (Space Mono): MITO VS. VERDADE
+• Bloco MITO (Fundo neutro escuro #221A14, aspas em cinza claro):
+  "Passei no cadastro de reserva, então agora é só sentar, rezar e esperar o órgão querer me chamar até o concurso vencer."
+• Bloco VERDADE (Fundo Gradiente Laranja #FF5E1A → Magenta #F0247C, texto branco brilhante, urgência):
+  "Se o órgão tem vaga aberta e contratou temporários, terceirizados ou comissionados para fazer o seu trabalho enquanto o concurso está válido, o seu cadastro de reserva vira DIREITO LÍQUIDO E CERTO à nomeação imediata na Justiça."
+• Assinatura: Símbolo + Ribeiro Rinaldi Advocacia.
+
+[LEGENDA COMPLEMENTAR]:
+O maior erro do concurseiro aprovado em Cadastro de Reserva é a passividade. 🛑
+
+A lei diz que o cadastro de reserva é uma expectativa de direito, SIM. MAS essa expectativa muda completamente de figura a partir do momento em que a Administração Pública demonstra que precisa de funcionários e prefere fazer "contratinhos" precários e temporários sem concurso para economizar ou acomodar indicações políticas.
+
+O Supremo Tribunal Federal já pacificou esse tema: se há vaga, se há necessidade comprovada pela contratação de temporário e se existe candidato concursado esperando na fila, o Estado é OBRIGADO a convocar quem passou na prova.
+
+Não fique sentado esperando o prazo de 4 anos do seu edital expirar. Quem fiscaliza o Diário Oficial e busca o seu direito, toma posse. 👊🏛️
+
+🔗 Compartilhe esse alerta nos grupos de cadastro de reserva do seu concurso!`,
+        caption: `Cadastro de reserva não é sala de espera infinita quando o órgão contrata temporário na sua frente. 👊⚖️ #cadastrodereserva #concursopublico #pretericao #stf #posse #advogado #ribeirorinaldi`,
+        tips: `Contraste visual forte entre a crença errada (passiva) e a verdade jurídica (ativa e potente em laranja).`
+      },
+      {
+        id: "sem2-in1",
+        week: "Semana 2",
+        date: "2026-07-29",
+        dateLabel: "29/07 (Qua) • LinkedIn Artigo",
+        platform: "linkedin",
+        platformLabel: "LinkedIn Artigo Executivo",
+        title: "👔 LINKEDIN 01: A contratação irregular de terceirizados em preterição a concursados aprovados",
+        hook: "Análise profunda sobre o desvio de finalidade nas contratações precárias no serviço público.",
+        script: `Título: A contratação irregular de terceirizados e temporários em preterição a concursados aprovados
+
+Um dos fenômenos mais nocivos à gestão pública eficiente e ao princípio da impessoalidade é a substituição sistemática de servidores efetivos por mão de obra terceirizada ou por contratos temporários precários, exatamente durante o período de vigência de concursos públicos com candidatos devidamente aprovados em cadastro de reserva.
+
+A Constituição Federal de 1988 estabelece, em seu artigo 37, inciso II, que a investidura em cargo ou emprego público depende de aprovação prévia em concurso público. As contratações temporárias (inciso IX) são exceções estritas, voltadas a atender "necessidade temporária de excepcional interesse público".
+
+No entanto, o que presenciamos na prática diária de diversos entes federativos é a burla a esse comando constitucional: órgãos mantêm editais com centenas de candidatos no cadastro de reserva enquanto realizam pregões de terceirização ou processos seletivos simplificados para funções permanentes, como áreas administrativas, de apoio tributário, saúde e segurança.
+
+A jurisprudência do Supremo Tribunal Federal (Tema 784 de Repercussão Geral) e do Superior Tribunal de Justiça é uníssona ao reconhecer que tal prática configura desvio de finalidade e preterição arbitrária. A demonstração inequívoca de que o ente público possui cargos vagos, dispõe de previsão orçamentária e opta por preencher a necessidade permanente por meio de precários converte a mera expectativa do concursado em direito subjetivo à nomeação.
+
+O papel do Judiciário nessa seara tem sido vital para frear o loteamento administrativo e restabelecer o respeito ao mérito daqueles que se submeteram ao rigoroso crivo das provas públicas.
+
+#GestaoPublica #DireitoAdministrativo #ConcursoPublico #STF #Pretericao #RibeiroRinaldi`,
+        caption: `Artigo publicado para reflexão institucional e jurídica no LinkedIn.`,
+        tips: `Excelente para atrair interações de procuradores, analistas e servidores de alto escalão.`
+      },
+      {
+        id: "sem2-reels2",
+        week: "Semana 2",
+        date: "2026-07-30",
+        dateLabel: "30/07 (Qui) • Reels 02",
+        platform: "insta",
+        platformLabel: "Instagram Reels (1:45m)",
+        title: "📱 REELS 02: Contrataram temporário ou terceirizado na sua vaga do concurso?",
+        hook: "Como provar para o juiz que o temporário está fazendo o seu trabalho e garantir a sua nomeação.",
+        script: `[00:00 - 00:15] GANCHO:
+Áudio: "Você passou no concurso e está no cadastro de reserva, mas descobriu que a prefeitura ou o estado contratou um monte de temporário ou terceirizado pra fazer exatamente o seu serviço? Saiba como a Justiça te coloca lá dentro no lugar deles."
+Legenda na tela: TEMPORÁRIO NA SUA VAGA? A vaga é sua por direito!
+
+[00:15 - 00:55] DESENVOLVIMENTO (A Prova da Preterição):
+Áudio: "A lei permite contratar temporário só para emergências, como desastres ou campanhas pontuais de vacinação. Mas quando o órgão abre processo seletivo simplificado ou contrata terceirizado pra trabalho de rotina diária enquanto tem concursado esperando na lista, o STF entende que houve preterição ilícita. E o que a gente precisa pra reverter isso? Três documentos do Portal da Transparência: o edital do temporário mostrando a mesma função, o número de contratos ativos e as vagas abertas na lei da carreira."
+Legenda na tela: Portal da Transparência + Vaga Aberta = NOMEAÇÃO!
+
+[00:55 - 01:25] A DECISÃO JUDICIAL:
+Áudio: "Com essas provas na mão, entramos com a ação judicial. O juiz reconhece que a necessidade do serviço existe e manda o órgão dispensar o contrato precário para convocar você, que passou no concurso de verdade."
+Legenda na tela: O Juiz manda convocar o concursado aprovado!
+
+[01:25 - 01:45] CTA DE CONVERSÃO:
+Áudio: "Tem temporário trabalhando no cargo que você passou no edital? Clica no link da bio e manda os dados do seu concurso pra nossa equipe checar agora."
+Legenda na tela: Fale com nossos especialistas • Link na bio ↑`,
+        caption: `Contrato temporário não pode ser atalho para burlar a convocação de quem passou no concurso público de verdade. 🏛️ ⚖️
+
+Se o seu edital está dentro da validade e você identifica que o órgão está contratando precários para realizar as exatas atribuições do seu cargo, o Judiciário te garante o direito de posse.
+
+👉 Quer saber se o seu caso tem provas suficientes para liminar? Clica no link da nossa bio e mande para a nossa triagem jurídica preliminar.
+
+#temporarios #cadastrodereserva #concursopublico #stf #nomeacao #advogado #ribeirorinaldi`,
+        tips: `Explicar com clareza a importância do Portal da Transparência como arma do concurseiro.`
+      },
+      {
+        id: "sem2-insta-carr",
+        week: "Semana 2",
+        date: "2026-07-31",
+        dateLabel: "31/07 (Sex) • Carrossel",
+        platform: "insta",
+        platformLabel: "Instagram Carrossel (4:5)",
+        title: "📱 CARROSSEL RESUMO: 5 Sinais Claros de que o Concurso Está Pulando a Sua Vez",
+        hook: "Checklist prático e didático para o candidato identificar se está sofrendo preterição e como agir.",
+        script: `[ESTRUTURA DO CARROSSEL 4:5 - 6 CARDS]
+
+CARD 01 (CAPA):
+• Eyebrow: CHECKLIST DA NOMEAÇÃO
+• Manchete Archivo Black: 5 SINAIS CLAROS DE QUE O CONCURSO ESTÁ PULANDO A SUA VEZ (E COMO GARANTIR SUA POSSE)
+• Subtítulo Manrope: Não espere o edital vencer em silêncio. Identifique os sinais de preterição no Diário Oficial. Arraste ➡️
+
+CARD 02 (SINAL 1 - QUEBRA DE ORDEM):
+• Título: 1. Convocação de candidato em colocação posterior à sua
+• Texto: Se você é o 30º e publicaram portaria chamando o 31º ou 32º sem que você tenha sido convocado ou desclassificado formalmente, há preterição direta imediata.
+
+CARD 03 (SINAL 2 - CONTRATAÇÃO DE TEMPORÁRIOS / PSS):
+• Título: 2. Abertura de Processo Seletivo Simplificado (PSS) para o mesmo cargo
+• Texto: O órgão abre PSS alegando "urgência" mas destina os contratados para cobrir o trabalho permanente rotineiro que deveria ser feito pelos aprovados que estão no cadastro de reserva.
+
+CARD 04 (SINAL 3 - TERCEIRIZAÇÃO DE ATRIBUIDADES FIM):
+• Título: 3. Terceirizados ou estagiários exercendo a função do concursado
+• Texto: Quando a secretaria substitui a convocação de analistas, técnicos ou assistentes por contratos com empresas de terceirização, burlando a regra do concurso público.
+
+CARD 05 (SINAL 4 - APOSENTADORIAS SEM REPOSIÇÃO COM CONCURSO VIGENTE):
+• Título: 4. Abertura de vagas por aposentadoria, morte ou exoneração durante a validade
+• Texto: Se um servidor titular da carreira se aposenta durante o prazo do seu concurso, aquela vaga fica aberta e gera direito de convocação para o próximo da lista.
+
+CARD 06 (CTA FINAL):
+• Fundo Gradiente Laranja → Magenta
+• Manchete: IDENTIFICOU ALGUM DESSES 5 SINAIS?
+• Texto: O tempo joga contra quem espera o edital expirar. A hora de buscar a sua posse é agora.
+• Botão: Toca no link da bio e mande os dados do seu concurso para nossa equipe fazer a avaliação inicial de viabilidade.`,
+        caption: `Você já conferiu se algum desses 5 sinais está acontecendo no seu concurso hoje? 🔍 📋
+
+A Administração Pública deixa rastros no Diário Oficial e no Portal da Transparência. Quando conseguimos comprovar qualquer um desses cenários perante o juiz, a sua convocação deixa de ser expectativa e vira ordem judicial.
+
+👉 Clica no link da bio e converse com o nosso time técnico.
+
+#pretericao #concursopublico #diariooficial #portalda transparencia #posse #advocaciaparaconcurso #ribeirorinaldi`,
+        tips: `Card visual extremamente escaneável com checklists e ícones de alerta.`
+      },
+      {
+        id: "sem2-in2",
+        week: "Semana 2",
+        date: "2026-07-31",
+        dateLabel: "31/07 (Sex) • LinkedIn Post",
+        platform: "linkedin",
+        platformLabel: "LinkedIn Post Curto",
+        title: "👔 LINKEDIN 02: A contagem regressiva da validade dos concursos e a inércia administrativa",
+        hook: "Reflexão sobre os riscos de deixar a tutela judicial para os últimos dias de validade do certame.",
+        script: `O prazo de validade de um concurso público (em regra, 2 anos prorrogáveis por mais 2) é o marco temporal crítico que separa o direito viável do perecimento da pretensão jurídica do candidato.
+
+Na prática da advocacia especializada em servidores públicos, observamos um fenômeno preocupante: milhares de candidatos aprovados em cadastro de reserva assistem, passivamente, ao cometimento de ilegalidades — como contratações precárias em massa e cessões irregulares de pessoal — na esperança de que a Administração "se sensibilize" e realize convocações nos últimos meses antes da expiração do edital.
+
+Quando o prazo final se aproxima e o edital vence sem as convocações devidas, o ajuizamento de ações tardias enfrenta barreiras processuais muito mais severas perante os tribunais.
+
+A provocação tempestiva do Judiciário, enquanto o certame ainda se encontra em plena vigência e com a produção de provas robustas extraídas dos portais de transparência, é a estratégia mais lúcida para salvaguardar a eficácia do mandado de segurança ou da ação de obrigação de fazer.
+
+A meritocracia exige vigilância constante sobre os atos de gestão de pessoal da Administração Pública.
+
+#ConcursoPublico #PrazoDeValidade #DireitoAdministrativo #AdvocaciaEstrategica #RibeiroRinaldi`,
+        caption: `Post analítico curto para o feed do LinkedIn.`,
+        tips: `Mantém a linha executiva focada no fator tempo e planejamento processual.`
+      },
+      {
+        id: "sem2-reels3",
+        week: "Semana 2",
+        date: "2026-08-01",
+        dateLabel: "01/08 (Sáb) • Reels 03",
+        platform: "insta",
+        platformLabel: "Instagram Reels (1:45m)",
+        title: "📱 REELS 03: O concurso vai vencer em 30 dias e você não foi chamado: o que fazer",
+        hook: "Alerta máximo de urgência para quem está com o prazo de validade do edital expirando.",
+        script: `[00:00 - 00:15] GANCHO:
+Áudio: "Faltam 30, 60 ou 90 dias pro prazo de validade do seu concurso vencer e você ainda está no cadastro de reserva esperando ser chamado? Se você não fizer nada agora, a sua aprovação vai virar pó no dia seguinte."
+Legenda na tela: SEU CONCURSO VAI VENCER EM BREVE? Alerta máximo!
+
+[00:15 - 00:55] DESENVOLVIMENTO (A Janela de Ouro):
+Áudio: "Depois que o concurso expira e perde a validade, fica infinitamente mais difícil obrigar o órgão a te chamar, mesmo que tenha havido irregularidade no passado. Por isso, as últimas semanas antes do vencimento são a janela de ouro para entrar com a ação judicial com pedido de liminar. Se a gente demonstrar pro juiz que durante esses anos todos o órgão manteve vagas abertas ou contratou temporários no seu lugar, a liminar congela o prazo de validade pro seu caso e garante o seu direito de posse."
+Legenda na tela: A Liminar CONGELA o prazo de validade e garante a vaga!
+
+[00:55 - 01:25] O ERRO DO CONCURSEIRO:
+Áudio: "Não cometa o erro de ficar esperando o último dia do Diário Oficial na esperança de um milagre da prefeitura ou do estado. Quem fiscaliza e entra na Justiça a tempo, garante a nomeação antes do edital fechar."
+Legenda na tela: Não espere o último dia pra buscar seu direito!
+
+[01:25 - 01:45] CTA DE CONVERSÃO:
+Áudio: "O prazo do seu concurso tá acabando? Clica no link da bio agora e manda o edital pra nossa equipe analisar em 24h antes que seja tarde."
+Legenda na tela: Não deixe o prazo expirar • Link na bio ↑`,
+        caption: `O relógio é o maior inimigo do concurseiro no cadastro de reserva quando o edital se aproxima do fim da validade. ⏰ 🚨
+
+Se você aguardar o concurso expirar sem questionar judicialmente as preterições e contratações precárias ocorridas no período, a chance de reverter o cenário cai drasticamente. A hora de interpor a medida liminar para resguardar sua posse é AGORA.
+
+👉 Seu edital vence nos próximos meses? Clica no link da nossa bio e envie seu caso para análise urgente em 24h.
+
+#prazodevalidade #concursopublico #cadastrodereserva #liminar #posse #advogadojuridico #ribeirorinaldi`,
+        tips: `Vídeo com ritmo acelerado, despertando o senso de urgência real em quem tem concurso expirando em 2026.`
+      },
+
+      /* --- SEMANA 3: POSSE ATRASADA E VERBAS RETROATIVAS (03/08 a 09/08) --- */
+      {
+        id: "sem3-yt",
+        week: "Semana 3",
+        date: "2026-08-03",
+        dateLabel: "03/08 (Seg) • Pilar Raiz",
+        platform: "yt",
+        platformLabel: "YouTube Longo (Pilar)",
+        title: "Posse Atrasada pela Justiça ou Demora do Estado? Você Tem Direito a Receber os Salários Retroativos",
+        hook: "Vídeo pilar para servidores que entraram por liminar ou sofreram atraso abusivo na convocação.",
+        script: `[ROTEIRO DE VÍDEO LONGO PARA YOUTUBE - DURAÇÃO 8 A 10 MINUTOS]
+[TEMA PILAR DA SEMANA 3 - POSSE ATRASADA E COBRANÇA DE VERBAS RETROATIVAS]
+
+[00:00 - 00:50] INTRODUÇÃO & HOOK:
+"Se você é servidor público hoje e precisou lutar na Justiça com uma liminar porque foi reprovado injustamente no psicotécnico, no TAF ou pulado na preterição... você finalmente conquistou a sua posse e está trabalhando. Parabéns! Mas agora me responde uma coisa: quanto tempo demorou entre a data em que você DEVERIA ter sido nomeado junto com a sua turma original e o dia em que você realmente tomou posse por força da ordem judicial? 1 ano? 2 anos? 3 anos? Você sabia que a demora ilegal da banca e do Estado causou um prejuízo financeiro gigantesco no patrimônio da sua família, e que a Justiça garante o direito de cobrar todos os salários e vantagens desse período retroativo? Hoje eu vou te mostrar como funciona a indenização por posse atrasada e como você pode buscar cada centavo que é seu sem arriscar o seu cargo."
+
+[00:50 - 03:30] CAPÍTULO 1: O QUE DIZ A JURISPRUDÊNCIA RECENTE DO STF E DO STJ SOBRE INDENIZAÇÃO RETROATIVA:
+"Durante muito tempo houve uma discussão jurídica se o servidor que tomou posse atrasada por decisão judicial teria ou não direito a receber os salários do período em que não trabalhou. O Supremo Tribunal Federal (Tema 671) pacificou a regra: em situações normais de demora processual, não há pagamento retroativo automático se não houve trabalho prestado. MAS... existe uma exceção poderosíssima que os tribunais aplicam diariamente: quando fica comprovada a ARBITRAREIDADE FLAGRANTE, o erro grosseiro da banca ou quando o Estado comete preterição ilícita contratando temporários enquanto o candidato estava bloqueado ilegalmente, o Judiciário condena a Fazenda Pública a indenizar 100% dos salários, férias, 13º e contagem de tempo de serviço do período de atraso!"
+
+[03:30 - 06:10] CAPÍTULO 2: COMO CALCULAR O VALOR DA SUA INDENIZAÇÃO RETROATIVA:
+"Vamos fazer um cálculo prático para você entender o tamanho desse direito. Imagine um cargo policial ou de auditoria com remuneração inicial de R$ 12.000,00 mensais. Se a banca te reprovou de forma ilegal no psicotécnico e o seu processo demorou 24 meses até o trânsito em julgado e a sua posse definitiva... nós estamos falando de 24 salários de R$ 12.000, mais dois 13º salários, mais duas férias com terço constitucional, somados a juros e correção monetária. O valor da indenização retroativa supera facilmente a casa dos R$ 350.000,00 a R$ 400.000,00! É o dinheiro para quitar a sua casa própria ou garantir o futuro dos seus filhos que o Estado te tirou por erro administrativo."
+
+[06:10 - 08:00] CAPÍTULO 3: O MEDO DO SERVIDOR DE COBRAR O ESTADO E SOFRER RETALIAÇÃO NO CARGO:
+"O maior receio que eu ouço dos servidores é: 'Doutor Paulo, se eu processar o Estado pedindo meus retroativos, eu vou sofrer perseguição do meu chefe ou perder meu cargo no estágio probatório?'. A resposta clara é: NÃO. A ação de cobrança de verbas indenizatórias corre na Vara da Fazenda Pública contra o Estado (a pessoa jurídica), e não contra o seu gestor imediato ou sua delegacia/secretaria. A sua estabilidade e o seu estágio probatório são protegidos por lei e não têm nenhuma relação com a cobrança patrimonial de um erro cometido pela banca anos atrás."
+
+[08:00 - 08:50] ENCERRAMENTO & CTA:
+"A demora deles não pode custar o patrimônio da sua vida. Se você tomou posse com atraso por decisão judicial ou preterição, você tem prazo de 5 anos a contar do trânsito em julgado para entrar com essa cobrança. Clica no link da descrição, envie a sua portaria de nomeação para a nossa equipe fazer o cálculo e a triagem técnica do seu retroativo."`,
+        caption: `Vídeo completo no YouTube: veja como cobrar a indenização pelos anos em que sua posse foi atrasada! 💰 ⚖️`,
+        tips: `Vídeo com apelo financeiro forte, ideal para servidores públicos de carreiras de alto salário (polícias, fiscais, analistas).`
+      },
+      {
+        id: "sem3-blog",
+        week: "Semana 3",
+        date: "2026-08-03",
+        dateLabel: "03/08 (Seg) • SEO",
+        platform: "blog",
+        platformLabel: "Blog SEO (Artigo Raiz)",
+        title: "Verbas Retroativas em Concurso Público: Como Funciona a Indenização pelo Atraso na Posse",
+        hook: "Artigo estruturado para ranquear nas buscas sobre 'indenizacao posse atrasada liminar concurso'.",
+        script: `[ARTIGO COMPLETO PARA BLOG / PORTAL SEO - 1.500 PALAVRAS]
+
+# Posse Atrasada em Concurso por Decisão Judicial: Quando Você Tem Direito a Indenização e Salários Retroativos
+
+**META DESCRIPTION:** Tomou posse com atraso após vencer a banca na Justiça? Entenda quando o STF e STJ garantem o pagamento de salários retroativos, férias e 13º.
+**PALAVRAS-CHAVE ALVO:** verbas retroativas concurso publico, indenizacao posse atrasada, tema 671 stf excecoes, salários retroativos liminar concurso, cobrar estado posse atrasada.
+
+---
+
+Quando um candidato é injustamente eliminado em um concurso público — seja por uma avaliação psicotécnica sem laudo, por reprovação ilegal no Teste de Aptidão Física (TAF) ou por preterição arbitrária na convocação —, o caminho natural para a defesa do seu sonho é o ingresso no Judiciário com uma ação com pedido liminar.
+
+Após anos de tramitação processual, o Judiciário finalmente faz justiça, declara a nulidade do ato da banca e determina a posse definitiva do candidato. Você assume o cargo, começa a exercer as suas funções e vê o seu nome honrado. No entanto, fica uma pergunta dolorosa e inevitável: **e os dois, três ou quatro anos em que você ficou impedido de trabalhar, recebendo salários e construindo a sua carreira junto com a sua turma original?**
+
+Quem deve pagar pelo prejuízo financeiro e patrimonial imenso causado pela demora ilegal da Administração Pública e da banca examinadora?
+
+A resposta da jurisprudência brasileira — consolidada pelo Supremo Tribunal Federal (STF) e pelo Superior Tribunal de Justiça (STJ) — é clara: **quando comprovada a arbitrariedade flagrante na eliminação ou a preterição ilícita pelo Estado, o servidor que tomou posse tardiamente por ordem judicial tem direito à indenização por todos os salários retroativos do período de atraso.**
+
+Neste guia patrimonial completo, vamos explicar como funciona a indenização por posse atrasada, analisar as exceções salvadoras do Tema 671 do STF, mostrar o que entra no cálculo financeiro e eliminar o medo da cobrança durante o estágio probatório.
+
+---
+
+## 1. O que é a Indenização por Atraso na Nomeação e Posse em Concurso Público?
+
+A indenização por atraso na posse (ou cobrança de verbas retroativas) é uma ação cível reparatória movida contra a Fazenda Pública (Estado, União ou Município). Seu objetivo é recompor o patrimônio do servidor público que foi ilegalmente impedido de assumir as suas funções na data em que a sua turma original foi convocada e empossada.
+
+Pense na seguinte cronologia real:
+* **Janeiro de 2022:** A turma de 100 aprovados do concurso é convocada para tomar posse. Você, classificado em 40º lugar, é cortado no psicotécnico de forma ilegal.
+* **Fevereiro de 2022:** Você entra com ação judicial pedindo a anulação da reprovação.
+* **Janeiro de 2025:** O processo transita em julgado com vitória integral. O juiz declara a eliminação nula e você toma posse definitiva.
+
+Durante esses **36 meses exatos de atraso**, os seus colegas de turma receberam salários, progrediram na carreira, tiraram férias e receberam 13º. A ação de cobrança de retroativos visa condenar o Estado a pagar exatamente essa quantia financeira em dinheiro, como forma de reparar o erro administrativo que privou você de sua renda alimentar.
+
+---
+
+## 2. A Regra Geral do STF (Tema 671) e as Exceções que Garantem o Pagamento Retroativo
+
+Para compreender como vencer essa ação com máxima segurança, precisamos dominar o que o Supremo Tribunal Federal decidiu no **Tema 671 de Repercussão Geral (RE 724.347/DF)**. Na ocasião, o STF fixou a tese geral de que:
+
+> *"Na hipótese de posse em cargo público determinada por decisão judicial, o servidor não faz jus a indenização, sob o fundamento de que deveria ter sido investido em momento anterior, salvo situação de arbitrariedade flagrante."*
+
+Ou seja, a regra geral para atrasos processuais comuns em que há dúvida jurídica razoável é de que não há pagamento retroativo se não houve trabalho efetivamente prestado. **NO ENTANTO, A PARTE FINAL DA TESE É A NOSSA CHAVE DE OURO: *"SALVO SITUAÇÃO DE ARBITRAREIDADE FLAGRANTE".***
+
+Os tribunais de todo o Brasil (STJ, Tribunais de Justiça Estaduais e TRFs) aplicam essa exceção diariamente para condenar o Estado a pagar 100% dos retroativos em **três cenários clássicos de ilegalidade manifesta**:
+
+### 2.1. Arbitrariedade Flagrante e Erro Grosseiro da Banca Examinadora
+Quando a eliminação original do candidato não se deu por uma simples interpretação complexa do edital, mas sim por um **abuso frontal contra a lei ou contra súmula do STF**. Exemplos:
+* Reprovação em psicotécnico em carreira onde a lei não previa o exame (violação da Súmula 44);
+* Negativa de entrega da cópia do laudo ao candidato na fase administrativa;
+* Eliminação em TAF por aplicação de regras de contagem de repetições não previstas no edital;
+* Erro matemático grosseiro na soma das notas da prova discursiva ou objetiva.
+
+Quando o juiz reconhece que a banca agiu com ilegalidade patente, arbitrária e inescusável, nasce o dever de indenizar todos os meses perdidos.
+
+### 2.2. Preterição Comprovada pela Contratação de Temporários ou Quebra de Ordem
+Se o motivo que levou você à Justiça e atrasou a sua posse foi o fato de o órgão **ter contratado temporários, terceirizados ou comissionados para exercer a sua função**, ou ter pulado a sua colocação na lista de convocação, o direito ao pagamento retroativo é **pacífico e indiscutível no Superior Tribunal de Justiça (STJ)**.
+
+Nesse caso, a preterição é considerada o grau máximo de arbitrariedade administrativa. Se o Estado pagou salários para um temporário ilegal ocupar a sua cadeira durante 3 anos, o Estado tem a obrigação jurídica de pagar essa mesma quantia para você, que era o titular legítimo da vaga por mérito de aprovação.
+
+### 2.3. Descumprimento de Ordem Liminar pelo Ente Público
+Se durante o seu processo original o juiz concedeu uma liminar ordenando a sua matrícula imediata no Curso de Formação ou a sua posse provisória em 15 dias, e o Governador, Prefeito ou Secretário **descumpriu a ordem judicial ou atrasou meses para cumprir por pura recalcitrância**, todo o período de atraso decorrente desse descumprimento gera indenização retroativa automática e juros pesados contra a Fazenda Pública.
+
+---
+
+## 3. O que Entra no Cálculo da Indenização Retroativa?
+
+Quando a ação de cobrança é julgada procedente perante a Vara da Fazenda Pública, o montante da indenização não se limita apenas ao salário base seco. A condenação patrimonial engloba a totalidade da remuneração e vantagens da carreira:
+
+* **Salários Base Mensais + Gratificações de Atividade:** Multiplicação da remuneração bruta mensal da classe inicial do cargo pelo número exato de meses compreendidos entre a posse da turma original e a sua posse efetiva.
+* **13º Salário Integral e Proporcional:** Contagem de todos os abonos natalinos que foram perdidos no período.
+* **Férias Acrescidas do Terço Constitucional (1/3):** Indenização pecuniária de todos os períodos aquisitivos de férias que o servidor teria desfrutado se estivesse trabalhando desde o primeiro dia da convocação.
+* **Correção Monetária e Juros de Mora:** Todos os valores mensais são corrigidos desde a data em que cada salário deveria ter sido depositado na sua conta, utilizando os índices oficiais (SELIC / IPCA-E), além de juros moratórios contra a Fazenda Pública.
+* **Reflexos no Tempo de Serviço e Antiguidade:** Além do dinheiro, a decisão judicial determina a averbação de todo o período de atraso na ficha funcional do servidor para fins de **antiguidade na carreira, progressão funcional de letras/classes e contagem para aposentadoria** no regime próprio.
+
+---
+
+## 4. Existe Risco de Perseguição Funcional ao Cobrar Verbas Retroativas no Estágio Probatório?
+
+Esta é, sem dúvida, a maior dúvida e o maior obstáculo psicológico que impede servidores públicos recém-empossados de buscarem centenas de milhares de reais que lhes pertencem por direito. A pergunta recorrente é: *"Doutor, se eu processar o Estado pedindo meus retroativos agora que estou no Estágio Probatório, meu chefe ou a corregedoria vão me perseguir e me demitir?"*
+
+A resposta jurídica e prática é taxativa: **NÃO EXISTE ESSE RISCO, E A SUA ESTABILIDADE ESTÁ BLINDADA POR LEI.**
+
+Por três motivos fundamentais:
+1. **Pessoa Jurídica vs. Chefe Imediato:** A ação de indenização por posse atrasada corre na Justiça Cível (Vara da Fazenda Pública) contra a pessoa jurídica do Estado (ex: Estado de São Paulo, União Federal, Município). O seu chefe imediato, o delegado titular, o diretor da escola ou o secretário do órgão **sequer são citados ou participam do processo**. Eles muitas vezes nem tomam conhecimento da ação patrimonial que corre na Procuradoria Geral do Estado.
+2. **Critérios Objetivos de Avaliação:** A avaliação de desempenho no Estágio Probatório é regida por critérios estritamente objetivos estabelecidos em lei (assiduidade, pontualidade, disciplina, capacidade de iniciativa e produtividade). Qualquer tentativa de nota baixa motivada pelo exercício regular do direito de ação constitucional é desvio de finalidade e crime de abuso de autoridade, prontamente anulado pela Justiça.
+3. **Direito Constitucional de Petição:** O artigo 5º, inciso XXXV, da Constituição Federal garante que nenhuma lesão ou ameaça a direito será excluída da apreciação do Poder Judiciário. Exercer o seu direito de cobrar uma dívida do Estado é um ato de cidadania e de dignidade profissional.
+
+---
+
+## 5. Qual é o Prazo Prescricional para Entrar com a Ação de Indenização?
+
+O direito de cobrar os salários retroativos não dura para sempre. Por se tratar de dívida contra a Fazenda Pública, aplica-se o prazo da **Prescrição Quinquenal (Decreto nº 20.910/1932)**.
+
+O servidor público possui exatamente **5 (cinco) anos** para ingressar com a ação cível de cobrança. **Atenção ao termo inicial:** a contagem desses 5 anos começa a correr a partir da **data do trânsito em julgado (ou da posse definitiva)** do processo principal anterior onde foi declarada a nulidade da eliminação ou a preterição.
+
+Se o prazo de 5 anos transcorrer sem o ajuizamento da demanda, o direito patrimonial prescreve e o dinheiro fica definitivamente nos cofres do Estado.
+
+---
+
+## 6. Triagem Patrimonial Especializada: Como Calcular o Valor do Seu Crédito com a Ribeiro Rinaldi Advocacia
+
+Você já travou a batalha mais difícil: venceu a prova, venceu o abuso da banca examinadora na Justiça e conquistou a sua nomeação e posse. Agora, não deixe para trás o patrimônio financeiro que o Estado reteve ilegalmente da sua família durante os anos em que sua vida profissional ficou em compasso de espera.
+
+A **Ribeiro Rinaldi Advocacia**, liderada pelo Dr. Paulo Rinaldi — ex-concurseiro e Auditor do Estado —, possui expertise consolidada no cálculo, ajuizamento e execução de ações de indenização por posse atrasada em concursos públicos de todo o Brasil.
+
+📲 **Clique agora no botão de contato do WhatsApp ou no link ao final da página. Envie para nossa equipe a sua Portaria de Nomeação, a data de posse da sua turma original e o número do processo em que você venceu a banca. Faremos um estudo patrimonial preliminar e uma triagem técnica das suas verbas retroativas em até 24 horas.**`,
+        caption: `Artigo completo no blog da Ribeiro Rinaldi. Compartilhe com os colegas de turma que entraram por liminar!`,
+        tips: `Colocar tabelas simulando cálculos de indenização para gerar alto engajamento no blog.`
+      },
+      {
+        id: "sem3-reels1",
+        week: "Semana 3",
+        date: "2026-08-04",
+        dateLabel: "04/08 (Ter) • Reels 01",
+        platform: "insta",
+        platformLabel: "Instagram Reels (1:45m)",
+        title: "📱 REELS 01: Sua posse demorou por culpa da banca? Esse dinheiro retroativo é seu.",
+        hook: "Explicação simples e direta sobre o direito de receber os salários do período em que ficou impedido de trabalhar.",
+        script: `[00:00 - 00:15] GANCHO:
+Áudio: "Você passou no concurso, mas a banca te cortou de forma injusta e você teve que ficar 2 ou 3 anos brigando na Justiça até conseguir tomar posse? Sabia que o Estado pode ser condenado a te pagar todos os salários que você deixou de receber nesse período de atraso?"
+Legenda na tela: POSSE DEMOROU PELA JUSTIÇA? Você pode receber retroativo!
+
+[00:15 - 00:55] DESENVOLVIMENTO (A Indenização):
+Áudio: "Quando o juiz reconhece no final do processo que a reprovação da banca foi arbitrária e abusiva — como nos casos de psicotécnico sem laudo ou preterição por temporários —, a Justiça entende que o erro não foi seu, foi do Estado. E se o erro foi deles, você tem o direito de cobrar uma indenização financeira equivalente a todos os salários, 13º e férias somados desde o dia em que a sua turma original tomou posse até o dia em que você finalmente entrou."
+Legenda na tela: Indenização = 100% dos salários + 13º + Férias de todo o atraso!
+
+[00:55 - 01:25] O VALOR DO DIREITO:
+Áudio: "Em carreiras policiais, tribunais ou fiscais, esses valores retroativos chegam facilmente a centenas de milhares de reais com juros e correção. É o patrimônio da sua família que foi retido."
+Legenda na tela: Valores retroativos com juros e correção monetária!
+
+[01:25 - 01:45] CTA DE CONVERSÃO:
+Áudio: "Tomou posse com atraso na Justiça e quer saber quanto o Estado te deve? Clica no link da bio e manda a sua portaria pra gente fazer o cálculo."
+Legenda na tela: Calcule seu retroativo • Link na bio ↑`,
+        caption: `Se a sua nomeação foi impedida por anos por causa de uma ilegalidade cometida pela banca ou pelo Estado, você não precisa ficar apenas no prejuízo financeiro. 💰 ⚖️
+
+A jurisprudência garante o pagamento de verbas indenizatórias (retroativos de salários, 13º e férias) quando comprovada a arbitrariedade na eliminação original que gerou o atraso na posse.
+
+👉 Tomou posse por decisão judicial? Clica no link da bio e mande a sua portaria de nomeação para o nosso estudo preliminar em 24h.
+
+#verbasretroativas #posseatrasada #servidorpublico #liminar #advocaciajuridica #ribeirorinaldi #concurso`,
+        tips: `Gancho visual forte chamando atenção dos servidores já nomeados.`
+      },
+      {
+        id: "sem3-insta-mot",
+        week: "Semana 3",
+        date: "2026-08-05",
+        dateLabel: "05/08 (Qua) • Conexão",
+        platform: "insta",
+        platformLabel: "Instagram Post Conexão",
+        title: "📱 POST CONEXÃO: A demora deles não pode custar o patrimônio da sua família",
+        hook: "Metáfora visual de vitória com mensagem forte de justiça patrimonial e respeito ao esforço.",
+        script: `[ESTRUTURA DE POST CONEXÃO / METÁFORA VISUAL 4:5]
+
+• Eyebrow: JUSTIÇA PATRIMONIAL
+• Manchete Archivo Black: "A DEMORA IRRESPONSÁVEL DELES NÃO PODE CUSTAR O PATRIMÔNIO DA SUA FAMÍLIA. CADA MÊS DE ATRASO NA SUA POSSE TEM VALOR LEGAL."
+• Subtítulo Manrope: Você não lutou na Justiça apenas por um crachá. Você lutou por estabilidade financeira e por tudo o que deixou de ganhar enquanto estava impedido de trabalhar.
+• Assinatura: Símbolo + Ribeiro Rinaldi Advocacia.
+
+[LEGENDA COMPLEMENTAR]:
+Quando um candidato é cortado injustamente de um concurso e passa 2, 3 ou 4 anos aguardando a decisão judicial para tomar posse, o prejuízo não é apenas emocional. É um prejuízo financeiro devastador.
+
+São anos sem o salário de servidor que você conquistou na prova. Anos pagando aluguel apertado, adiando a compra do imóvel, segurando os gastos com os filhos enquanto a sua cadeira lá no órgão estava vazia ou ocupada por um temporário.
+
+Quando a Justiça decreta a sua vitória final e você assina o termo de posse, essa conta precisa ser fechada. O Estado não pode cometer um erro grave e sair ileso do estrago financeiro que causou na sua vida.
+
+Cobrar as verbas retroativas do período de atraso na posse é exercer o seu direito patrimonial legítimo e garantir o futuro de quem esteve ao seu lado durante toda a batalha. 👊💰
+
+🔗 Salve esse post e mande para o colega de servidor que entrou no cargo por liminar!`,
+        caption: `O salário que você deixou de receber durante os anos de processo judicial por eliminação ilegal pertence à sua família. 👊💰 #verbasretroativas #posse #servidorpublico #direito #advogado #ribeirorinaldi`,
+        tips: `Foto editorial de close na assinatura de um termo de posse ou carteira de trabalho sendo arquivada (tons quentes #FF5E1A em fundo #150F0B).`
+      },
+      {
+        id: "sem3-in1",
+        week: "Semana 3",
+        date: "2026-08-05",
+        dateLabel: "05/08 (Qua) • LinkedIn Artigo",
+        platform: "linkedin",
+        platformLabel: "LinkedIn Artigo Executivo",
+        title: "👔 LINKEDIN 01: Responsabilidade civil do Estado no atraso injustificado de nomeação de servidores",
+        hook: "Abordagem doutrinária e analítica sobre a indenização por atos arbitrários em certames públicos.",
+        script: `Título: Responsabilidade civil do Estado no atraso injustificado de nomeação de servidores públicos
+
+A responsabilidade patrimonial da Administração Pública decorrente da tardia nomeação de candidatos em concursos públicos por força de decisão judicial tem sido objeto de evoluções significativas na jurisprudência dos tribunais superiores brasileirios.
+
+Embora o Supremo Tribunal Federal tenha firmado a tese, no Tema 671 da Repercussão Geral, de que "na hipótese de posse em cargo público determinada por decisão judicial, o servidor não faz jus a indenização, sob fundamento de que deveria ter sido investido em momento anterior, salvo situação de arbitrariedade flagrante", é precisamente no conceito de "arbitrariedade flagrante" que reside o ponto nodal da tutela reparatória.
+
+A prática forense demonstra que a esmagadora maioria das eliminações revertidas judicialmente não decorrem de meras divergências interpretativas razoáveis, mas sim de violações manifestas à legalidade, tais como:
+- Exclusão em exames psicológicos desprovidos de critérios científicos ou sem disponibilização de laudo (ofensa direta à Súmula 44 do STF);
+- Preterição arbitrária por contratação precária contínua de temporários em detrimento de concursados aguardando nomeação;
+- Descumprimento reiterado de ordens judiciais liminares pela autoridade coatora.
+
+Nesses cenários de ilegalidade qualificada e abuso de poder administrativo, o Superior Tribunal de Justiça e diversos Tribunais de Justiça estaduais reconhecem o dever de indenizar o servidor mediante o pagamento de todas as verbas remuneratórias (vencimentos, 13º salário e férias) relativas ao interregno entre a data em que o candidato deveria ter sido nomeado na ordem de classificação e a data da efetiva investidura no cargo.
+
+A reparação patrimonial, nesses casos, transcende o interesse individual do servidor: atua como mecanismo pedagógico e de controle de legalidade, desestimulando a perpetuação de atos arbitrários por parte das comissões e bancas examinadoras.
+
+#ResponsabilidadeCivil #DireitoAdministrativo #ServidorPublico #VerbasRetroativas #STF #STJ #RibeiroRinaldi`,
+        caption: `Artigo executivo no LinkedIn explorando o conceito de arbitrariedade flagrante no Tema 671.`,
+        tips: `Gera altíssima credibilidade técnica entre magistrados e advogados públicos no LinkedIn.`
+      },
+      {
+        id: "sem3-reels2",
+        week: "Semana 3",
+        date: "2026-08-06",
+        dateLabel: "06/08 (Qui) • Reels 02",
+        platform: "insta",
+        platformLabel: "Instagram Reels (1:45m)",
+        title: "📱 REELS 02: Entrei por liminar na Justiça: quando posso cobrar os salários retroativos?",
+        hook: "O momento processual exato para ajuizar a cobrança patrimonial sem riscos.",
+        script: `[00:00 - 00:15] GANCHO:
+Áudio: "Doutor Paulo, eu estou trabalhando no concurso por causa de uma liminar. Eu já posso entrar com ação pedindo os meus salários retroativos agora ou tenho que esperar o processo principal acabar?"
+Legenda na tela: ENTREI POR LIMINAR: Quando cobro meu retroativo?
+
+[00:15 - 00:55] DESENVOLVIMENTO (O Momento Certo):
+Áudio: "Essa é uma das perguntas mais importantes. A liminar é uma decisão provisória de urgência que garante o seu cargo e o seu salário atual mês a mês. MAS para cobrar a bolada da indenização dos salários retroativos do passado, a estratégia jurídica mais segura e inteligente é aguardar o trânsito em julgado — que é quando o processo principal termina definitivamente e a sua posse se torna 100% definitiva e intocável."
+Legenda na tela: A estratégia mais segura é aguardar o TRÂNSITO EM JULGADO!
+
+[00:55 - 01:25] O PRAZO DE 5 ANOS:
+Áudio: "A partir do dia em que sai a decisão final definitiva do seu processo de anulação, começa a correr o prazo de 5 anos para a gente entrar com a ação de cobrança na Vara da Fazenda Pública e receber todo o dinheiro acumulado."
+Legenda na tela: Você tem 5 ANOS após o fim do processo para cobrar!
+
+[01:25 - 01:45] CTA DE CONVERSÃO:
+Áudio: "Seu processo judicial de concurso já acabou e você tomou posse definitiva? Clica no link da bio agora e manda o número da ação pra gente calcular o seu crédito."
+Legenda na tela: Calcule seu crédito retroativo • Link na bio ↑`,
+        caption: `A estratégia certa no momento certo: saiba quando ajuizar a cobrança dos seus salários retroativos com segurança total. ⏱️ ⚖️
+
+A ação indenizatória possui prazo prescricional de 5 (cinco) anos contados a partir do trânsito em julgado da ação que reconheceu a ilegalidade da eliminação e garantiu a investidura definitiva no cargo.
+
+👉 Seu processo de concurso já teve decisão final favorável? Clica no link da nossa bio e mande os dados para a nossa triagem patrimonial.
+
+#retroativos #transitomjulgado #posse #servidorpublico #direitoadministrativo #ribeirorinaldi #advogado`,
+        tips: `Esclarece uma dúvida prática crucial e qualifica muito o lead que entra em contato no WhatsApp.`
+      },
+      {
+        id: "sem3-insta-carr",
+        week: "Semana 3",
+        date: "2026-08-07",
+        dateLabel: "07/08 (Sex) • Carrossel",
+        platform: "insta",
+        platformLabel: "Instagram Carrossel (4:5)",
+        title: "📱 CARROSSEL RESUMO: Como Calcular Quanto o Estado Te Deve se a Sua Posse Foi Atrasada",
+        hook: "Guia prático e ilustrativo mostrando a matemática do retroativo (salários + 13º + férias + juros).",
+        script: `[ESTRUTURA DO CARROSSEL 4:5 - 6 CARDS]
+
+CARD 01 (CAPA):
+• Eyebrow: GUIA DE INDENIZAÇÃO RETROATIVA
+• Manchete Archivo Black: COMO CALCULAR QUANTO O ESTADO TE DEVE SE A SUA POSSE FOI ATRASADA INJUSTAMENTE
+• Subtítulo Manrope: A demora ilegal na sua convocação gerou um crédito patrimonial na Justiça. Veja a matemática do seu direito ➡️
+
+CARD 02 (O QUE ENTRA NA SOMA DO RETROATIVO):
+• Título: 1. 100% dos salários base do período de atraso
+• Texto: Multiplica-se a remuneração mensal bruta do cargo pelo número exato de meses entre a data em que você deveria ter sido nomeado com sua classificação e a data da posse real.
+
+CARD 03 (13º SALÁRIO E FÉRIAS COM TERÇO CONSTITUCIONAL):
+• Título: 2. 13º Salários e Férias completas
+• Texto: Além dos salários mensais, a condenação abrange todos os 13º salários e as férias acrescidas de 1/3 que você teria recebido se estivesse em exercício no período.
+
+CARD 04 (JUROS E CORREÇÃO MONETÁRIA):
+• Título: 3. Juros moratórios e correção monetária pela taxa SELIC
+• Texto: O valor acumulado não é pago em valor histórico seco. Ele recebe atualização monetária e juros compostos desde cada mês em que o salário deveria ter sido depositado na sua conta.
+
+CARD 05 (SIMULAÇÃO REAL DE CARREIRA):
+• Título: Exemplo Prático: 24 meses de atraso (Cargo R$ 10.000/mês)
+• Tabela/Dados:
+  - Salários (24 x R$ 10.000) = R$ 240.000
+  - Dois 13º Salários = R$ 20.000
+  - Duas Férias + 1/3 = R$ 26.666
+  - Total com Juros/SELIC = Estimativa superior a R$ 330.000,00!
+
+CARD 06 (CTA FINAL):
+• Fundo Gradiente Laranja → Magenta
+• Manchete: VOCÊ TEM CRÉDITO RETROATIVO A RECEBER?
+• Texto: O prazo prescricional para cobrar esse patrimônio é de 5 anos após a decisão final.
+• Botão: Toca no link da bio e mande sua portaria de posse para nossa equipe fazer o cálculo preliminar grátis.`,
+        caption: `Já parou para somar quanto o Estado te deve pelos meses ou anos em que você ficou impedido de trabalhar por erro da banca? 💰 📊
+
+O cálculo da indenização retroativa engloba a totalidade das verbas remuneratórias regulares devidas ao servidor, com atualização monetária plena pela taxa SELIC.
+
+👉 Quer uma estimativa do valor do seu retroativo? Clica no link da bio e converse com nossa equipe técnica pelo WhatsApp.
+
+#verbasretroativas #calculojuridico #servidorpublico #posseatrasada #advogado #ribeirorinaldi #indenizacao`,
+        tips: `O card 5 com o exemplo numérico (R$ 330.000+) é o que mais gera salvamentos e compartilhamentos do carrossel.`
+      },
+      {
+        id: "sem3-in2",
+        week: "Semana 3",
+        date: "2026-08-07",
+        dateLabel: "07/08 (Sex) • LinkedIn Post",
+        platform: "linkedin",
+        platformLabel: "LinkedIn Post Curto",
+        title: "👔 LINKEDIN 02: A segurança jurídica na cobrança de retroativos sem risco de retaliação funcional",
+        hook: "Desmistificando o receio de retaliação no Estágio Probatório em ações contra a Fazenda Pública.",
+        script: `Um dos maiores mitos que cercam a rotina dos novos servidores públicos que ingressaram na carreira por via judicial é o receio de que o ajuizamento de ação autônoma de cobrança de verbas retroativas possa acarretar algum tipo de "retaliação" durante a avaliação do Estágio Probatório.
+
+É imperioso desmistificar esse receio com absoluta precisão técnica:
+
+1️⃣ A Ação de Cobrança de Indenização por Posse Atrasada é proposta exclusivamente em face da Pessoa Jurídica de Direito Público (Estado, Município ou União) perante as Varas da Fazenda Pública. Ela não é direcionada à chefia imediata, ao diretor da secretaria ou à comissão de avaliação funcional do servidor;
+
+2️⃣ O Estágio Probatório possui critérios de aferição estritamente vinculados à assiduidade, disciplina, capacidade de iniciativa, produtividade e responsabilidade no exercício do cargo (Art. 20 da Lei 8.112/90 e estatutos estaduais). Qualquer reprovação ou glosa motivada por exercício regular de direito constitucional de petição judicial é nula de pleno direito e enseja responsabilidade penal e cível da chefia por abuso de autoridade;
+
+3️⃣ O exercício de prerrogativa patrimonial perante o Judiciário é um ato de cidadania e de restabelecimento da legalidade financeira que em absolutamente nada interfere na trajetória funcional ou nas promoções do servidor.
+
+#EstagioProbatorio #ServidorPublico #SegurancaJuridica #VerbasRetroativas #DireitoAdministrativo #RibeiroRinaldi`,
+        caption: `Post executivo no LinkedIn trazendo tranquilidade jurídica para servidores recém-empossados.`,
+        tips: `Remove a barreira psicológica do medo que impede muitos servidores de contratarem o escritório.`
+      },
+      {
+        id: "sem3-reels3",
+        week: "Semana 3",
+        date: "2026-08-08",
+        dateLabel: "08/08 (Sáb) • Reels 03",
+        platform: "insta",
+        platformLabel: "Instagram Reels (1:45m)",
+        title: "📱 REELS 03: O passo a passo seguro para cobrar verbas retroativas sem arriscar o seu cargo",
+        hook: "Resumo em vídeo de 3 passos para o servidor entrar com a ação indenizatória com tranquilidade.",
+        script: `[00:00 - 00:15] GANCHO:
+Áudio: "Se você tem medo de processar o Estado pedindo seus salários retroativos da posse atrasada por achar que o seu chefe vai te perseguir no estágio probatório, presta muita atenção nesse vídeo para perder esse medo de vez."
+Legenda na tela: MEDO DE COBRAR RETROATIVO NO ESTÁGIO PROBATÓRIO?
+
+[00:15 - 00:55] DESENVOLVIMENTO (Por que é 100% seguro):
+Áudio: "Primeiro: você não está processando o seu chefe ou a sua delegacia. A ação de retroativo corre na Vara da Fazenda Pública contra o Estado ou o Município. O seu diretor nem fica sabendo do processo. Segundo: a lei do estágio probatório tem critérios fechados de produtividade e assiduidade. Qualquer retaliação de chefia por causa de processo patrimonial é crime de abuso de autoridade. E terceiro: o nosso escritório entra com essa cobrança de forma 100% digital e técnica, sem nenhum desgaste na sua repartição."
+Legenda na tela: Processo é contra o Estado, não contra seu chefe! Segurança total na lei!
+
+[00:55 - 01:25] O PRAZO ESTÁ CORRENDO:
+Áudio: "Não deixe o Estado ficar com centenas de milhares de reais que pertencem à sua família por um medo que não tem fundamento jurídico."
+Legenda na tela: Não deixe seu patrimônio com o Estado por medo!
+
+[01:25 - 01:45] CTA DE CONVERSÃO:
+Áudio: "Tomou posse por liminar ou atraso e quer cobrar seus retroativos em segurança? Clica no link da bio agora e fala com os nossos advogados."
+Legenda na tela: Fale com nossos advogados • Link na bio ↑`,
+        caption: `Cobrar o que é seu por direito não coloca o seu cargo em risco. 🛡️ 💰
+
+A cobrança de verbas retroativas corre contra a Fazenda Pública perante o Judiciário e não possui nenhuma relação ou interferência com a sua avaliação de desempenho no Estágio Probatório.
+
+👉 Quer entender os passos para entrar com essa ação de forma segura e discreta? Clica no link da nossa bio e fale com a equipe da Ribeiro Rinaldi.
+
+#estagioprobatorio #verbasretroativas #posseatrasada #servidorpublico #advogado #concursopublico #ribeirorinaldi`,
+        tips: `Fechar a semana de retroativos quebrando a principal objeção de venda (o medo da retaliação no trabalho).`
+      },
+
+      /* --- SEMANA 4: ERROS EM PROVAS E RECURSOS (10/08 a 16/08) --- */
+      {
+        id: "sem4-yt",
+        week: "Semana 4",
+        date: "2026-08-10",
+        dateLabel: "10/08 (Seg) • Pilar Raiz",
+        platform: "yt",
+        platformLabel: "YouTube Longo (Pilar)",
+        title: "Anulação de Questões de Concurso na Justiça: Quando o Juiz Pode Intervir Contra Erros da Banca",
+        hook: "Vídeo definitivo sobre o Tema 485 do STF, questões fora do edital e erros no espelho discursivo.",
+        script: `[ROTEIRO DE VÍDEO LONGO PARA YOUTUBE - DURAÇÃO 8 A 10 MINUTOS]
+[TEMA PILAR DA SEMANA 4 - ANULAÇÃO DE QUESTÕES E RECURSOS EM PROVAS OBJETIVAS E DISCURSIVAS]
+
+[00:00 - 00:50] INTRODUÇÃO & HOOK:
+"Você sai da sala de prova exausto depois de 5 horas respondendo questões objetivas e fazendo a redação. Quando sai o gabarito preliminar ou a nota da discursiva, você toma um susto: está por 1 ou 2 pontos de entrar nas vagas ou de ir para a próxima fase. E ao analisar a prova com calma, você descobre o motivo do corte: a banca cobrou uma questão sobre uma lei ou matéria que NÃO estava no edital, ou então o corretor da sua prova discursiva deu nota zero em um parágrafo onde você escreveu exatamente a resposta que estava no espelho oficial da banca! E aí você entra com recurso administrativo... e eles negam com aquela resposta genérica de uma linha. Será que o juiz pode anular essa questão e te dar esse ponto de ouro? A resposta é: SIM, nas situações certas. Hoje eu vou te mostrar quando a Justiça anula questões e como buscar esse ponto da sua aprovação."
+
+[00:50 - 03:30] CAPÍTULO 1: O QUE DIZ O TEMA 485 DO STF SOBRE O LIMITE DE ATUAÇÃO DO JUIZ EM PROVAS:
+"Para a gente não perder tempo nem gastar dinheiro à toa, precisamos entender a regra do jogo fixada pelo Supremo Tribunal Federal no Tema 485. O STF decidiu que o Poder Judiciário NÃO PODE substituir a banca examinadora para reavaliar o critério de correção ou dizer se a alternativa A ou B é a mais bonita. MAS... o próprio STF estabeleceu duas exceções sagradas onde o juiz tem a OBRIGAÇÃO de intervir e anular a questão:
+1) Quando há ilegalidade manifesta por cobrança de matéria estranha ao edital (questão fora do conteúdo programático);
+2) Quando há erro material grosseiro e teratológico na formulação da questão ou na correção da prova discursiva que qualquer especialista percebe de olho nu, sem precisar de debate de opinião."
+
+[03:30 - 06:00] CAPÍTULO 2: COMO ANULAR UMA QUESTÃO FORA DO EDITAL OU COM ERRO NO ESPELHO DISCURSIVO:
+"Como nós montamos essa ação na prática? Nós não chegamos pro juiz chorando que a prova estava difícil. Nós fazemos uma perícia técnica comparativa lado a lado:
+- Em questões objetivas fora do edital: pegamos o item da questão e colocamos ao lado do quadro de disciplinas do edital, provando matemáticamente que aquela lei ou tópico nunca foi exigido no edital original;
+- Em provas discursivas/redações: nós colocamos na coluna da esquerda o espelho de correção da banca (o que eles queriam que o candidato respondesse) e na coluna da direita a cópia digitalizada da sua folha de resposta, grifando linha por linha para mostrar pro juiz: 'Olha aqui Excelência, o candidato escreveu exatamente o conceito que a banca pediu, e o corretor por distração ou negligência deu nota zero ou cortou os pontos'."
+
+[06:00 - 08:00] CAPÍTULO 3: POR QUE NÃO DEVEMOS ACEITAR RESPOSTAS GENÉRICAS DA BANCA NO RECURSO:
+"As bancas examinadoras se tornaram linhas de montagem industriais que corrigem dezenas de milhares de redações às presas e rejeitam 98% dos recursos administrativos com textos automáticos copiados e colados. O recurso administrativo na banca é uma etapa necessária, mas quem realmente disputa aprovação em alto nível sabe que a correção técnica e individualizada de verdade acontece perante a imparcialidade do Judiciário."
+
+[08:00 - 08:50] ENCERRAMENTO & CTA:
+"Não deixe que 1 questão ilegal ou a preguiça de um corretor joguem no lixo os seus meses de estudo. Se você está por poucos pontos e identificou questão fora do edital ou erro no espelho discursivo, clica no link da descrição. Envie a sua prova e o espelho para a nossa triagem pericial preliminar em 24h."`,
+        caption: `Vídeo novo no canal: saiba como anular questões fora do edital e recuperar pontos na prova discursiva! 📝 ⚖️`,
+        tips: `Publicação na segunda-feira pré ou pós fins de semana com grandes provas de concurso no país.`
+      },
+      {
+        id: "sem4-blog",
+        week: "Semana 4",
+        date: "2026-08-10",
+        dateLabel: "10/08 (Seg) • SEO",
+        platform: "blog",
+        platformLabel: "Blog SEO (Artigo Raiz)",
+        title: "Anulação de Questão Fora do Edital e Erro Material na Discursiva: O Limite da Atuação do Judiciário",
+        hook: "Artigo técnico focado em capturar tráfego de candidatos que pesquisam 'como anular questão concurso justiça'.",
+        script: `[ARTIGO COMPLETO PARA BLOG / PORTAL SEO - 1.550 PALAVRAS]
+
+# Anulação de Questões de Concurso e Correção Discursiva na Justiça: O que Diz o Tema 485 do STF
+
+**META DESCRIPTION:** Ficou por 1 ponto na prova objetiva ou discursiva do concurso? Saiba quando o juiz pode anular questões fora do edital e erros de correção da banca.
+**PALAVRAS-CHAVE ALVO:** anular questao concurso justiça, tema 485 stf questoes concurso, recurso prova discursiva judicial, questao fora do edital anulação, erro espelho discursiva liminar.
+
+---
+
+Passar meses ou anos estudando para um concurso público de alto nível e ficar fora das vagas ou da próxima fase por apenas **um ou dois pontos** é uma das experiências mais frustrantes na jornada do concurseiro. A angústia aumenta de forma exponencial quando o candidato, ao analisar a prova com calma após a divulgação do gabarito ou da nota da discursiva, constata um erro absurdo: **a banca cobrou uma questão sobre matéria que sequer estava no edital, ou o corretor deu nota zero em um parágrafo da redação que estava perfeitamente idêntico ao espelho oficial de correção.**
+
+Diante desse cenário, o candidato protocola o recurso administrativo com esperança, fundamentando cada ponto técnica e bibliograficamente. E qual é a resposta da comissão organizadora? Um indeferimento padronizado de uma linha: *"Recurso indeferido. Mantido o gabarito/nota por seus próprios fundamentos"*.
+
+Muitos desistem nesse momento por acreditarem no mito de que "a Justiça nunca se intromete em correção de prova de concurso". **Esse mito é falso.**
+
+Embora o Poder Judiciário realmente não atue como uma "segunda banca examinadora" para discutir opiniões doutrinárias, o **Supremo Tribunal Federal (STF)** fixou diretrizes claras sobre quando o juiz tem a **obrigação de intervir para anular questões ilegais ou corrigir erros materiais grosseiros na correção discursiva.**
+
+Neste artigo definitivo, vamos desmistificar o Tema 485 do STF, explicar as hipóteses exatas em que você pode recuperar pontos na Justiça, mostrar a diferença entre anulação para todos vs. anulação individual e ensinar como montar o dossiê pericial perfeito de sua prova.
+
+---
+
+## 1. O Poder Judiciário Pode Anular Questões de Concurso Público?
+
+**SIM, PODE.** A Constituição Federal estabelece em seu artigo 5º, inciso XXXV, o princípio da inafastabilidade do controle jurisdicional: nenhuma lesão ou ameaça a direito pode ser excluída da apreciação do Judiciário.
+
+No entanto, em matéria de concursos públicos, a intervenção do juiz não se dá por "discordância de gabarito". O magistrado é um operador do Direito, e não um professor de Física Quântica, Medicina, Informática ou Engenharia Nuclear. Por essa razão, a atuação judicial em provas é balizada por uma linha divisória rigorosa: **a separação entre o MÉRITO ADMINISTRATIVO e a LEGALIDADE DO ATO.**
+
+* **O que o juiz NÃO PODE fazer (Mérito):** O juiz não pode substituir a banca para reavaliar se a resposta "A" é mais adequada que a "B" em uma questão com divergência doutrinária razoável, nem reavaliar se a sua redação merecia nota 8,0 ou 8,5 no critério de estilo de escrita.
+* **O que o juiz DEVE fazer (Legalidade):** O juiz tem o poder e o dever de anular a questão quando a banca **violou as regras do próprio edital** (cobrando assunto não previsto) ou quando cometeu **erro teratológico e grosseiro** (ausência de resposta certa, duplicidade de gabarito ou desconsideração de resposta discursiva que bate palavra por palavra com o espelho).
+
+---
+
+## 2. Entendendo o Tema 485 da Repercussão Geral do STF: O Limite entre o Mérito e a Legalidade
+
+Para padronizar os julgamentos em todo o país, o Plenário do Supremo Tribunal Federal julgou o **Tema 485 de Repercussão Geral (RE 632.853/CE)**, fixando a seguinte tese que rege 100% das ações judiciais sobre provas no Brasil:
+
+> *"Não compete ao Poder Judiciário, no controle de legalidade, substituir banca examinadora para avaliar as respostas dadas pelos candidatos e as notas a elas atribuídas, **salvo excepcional juízo de compatibilidade do conteúdo das questões com o edital do certame**."*
+
+Observe com atenção a exceção consagrada pelo Supremo: ***"SALVO EXCEPCIONAL JUÍZO DE COMPATIBILIDADE DO CONTEÚDO DAS QUESTÕES COM O EDITAL DO CERTAME"***.
+
+Isso significa que sempre que conseguirmos demonstrar ao juiz de forma objetiva e visual que o conteúdo cobrado no enunciado da questão objetiva ou na proposta da redação extravasou as fronteiras do conteúdo programático publicado no edital, a anulação judicial não é um favor do juiz — é uma imposição de cumprimento obrigatório da tese do STF.
+
+---
+
+## 3. Questões Objetivas: As 2 Hipóteses Clássicas de Anulação Judicial
+
+Na prática forense dos tribunais federais e estaduais, existem duas situações consolidadas que levam à decretação liminar ou definitiva da nulidade de questões de múltipla escolha ou Certo/Errado:
+
+### 3.1. Cobrança de Conteúdo Programático Não Previsto no Edital (Matéria Estranha)
+O edital é a lei interna do concurso e vincula estritamente tanto o candidato quanto a instituição organizadora. Se o anexo de conteúdos programáticos de "Direito Administrativo" exigiu apenas *Licitações (Lei 14.133/21)* e *Atos Administrativos*, e a banca formula uma questão exigindo o conhecimento sobre *Parcerias Público-Privadas (Lei 11.079/04)* ou *Improbidade Administrativa*, essa questão é **ilegal por vício de competência e excesso de exigência**.
+
+O nosso trabalho técnico nesse caso consiste em elaborar um **Quadro Comparativo Pericial**: na coluna da esquerda transcrevemos o enunciado da questão cobrada; na coluna da direita transcrevemos o rol taxativo de matérias do edital, demonstrando matematicamente ao juiz que aquele tema nunca constou na lista oficial de estudos do candidato.
+
+### 3.2. Erro Material Grosseiro, Duplicidade ou Ausência de Alternativa Correta
+Além da matéria estranha ao edital, a jurisprudência do Superior Tribunal de Justiça (STJ) admite a intervenção judicial quando a questão apresenta um erro técnico tão absurdo e evidente que pode ser percebido de plano sem necessidade de debate científico aprofundado (o chamado "erro teratológico"). Exemplos:
+* Questão de matemática onde nenhuma das 5 opções (A, B, C, D, E) contém o resultado real do cálculo;
+* Enunciado que contém duas alternativas rigorosamente idênticas e corretas;
+* Cobrança de lei que já estava revogada há anos antes da publicação do edital, induzindo o candidato ao erro irrecuperável.
+
+---
+
+## 4. Provas Discursivas e Peças Práticas: Como Provar Erro na Correção da Banca Examinadora?
+
+A correção de provas discursivas, redações e peças prático-profissionais (como em concursos jurídicos, fiscais ou de engenharia) é onde ocorrem as maiores injustiças por negligência das bancas. Com milhões de textos para corrigir em prazos curtos, corretores terceirizados frequentemente deixam de ler parágrafos inteiros das folhas de resposta.
+
+O Tema 485 do STF também protege o candidato na prova discursiva quando ocorre o **Erro Material de Correção ou Contradição com o Espelho Oficial**.
+
+Para reverter pontos na discursiva na Justiça, não podemos argumentar que "a redação está bem escrita". Nós utilizamos o método da **Confrontação Analítica Lado a Lado**:
+1. **Pegamos o Espelho Oficial de Correção da Banca:** Identificamos o item (ex: *"Quesito 2.1: O candidato explicou o conceito de responsabilidade civil objetiva do Estado com base no art. 37, §6º da CF — Vale 1,50 ponto"*).
+2. **Pegamos a Cópia Digitalizada da sua Folha de Resposta:** Localizamos exatamente em qual linha e parágrafo você escreveu a resposta (ex: *"Linhas 14 a 18 da folha 2: Conforme disposto no art. 37, §6º da CF, a responsabilidade civil do Estado é objetiva..."*).
+3. **Demonstramos o Erro do Corretor:** Provamos para o magistrado que você escreveu literalmente o que a banca pediu no espelho, mas a grade de pontuação lhe atribuiu nota "0,00" ou "0,50" por puro equívoco ou desatenção do avaliador.
+
+Quando provamos esse erro material factual (e não de opinião), o juiz determina a retificação da nota e a soma dos pontos roubados à sua média final.
+
+---
+
+## 5. Se o Juiz Anular a Questão, os Pontos Vão Apenas para Quem Entrou com a Ação?
+
+Esta é uma das questões processuais mais importantes para o candidato que está em dúvida se vale a pena ingressar judicialmente:
+
+Quando uma questão é anulada na via administrativa (pela própria banca), a pontuação é distribuída para todos os candidatos do concurso. **NO ENTANTO, QUANDO A ANULAÇÃO OCORRE NA VIA JUDICIAL (em Mandado de Segurança ou Ação Ordinária individual), O PONTO DA QUESTÃO ANULADA É ATRIBUÍDO EXCLUSIVAMENTE AO CANDIDATO QUE ENTROU COM A AÇÃO.**
+
+O juiz de um processo individual não tem competência para anular a questão para todo o Brasil ou para recalcular a nota de milhares de concorrentes que não fazem parte do processo. A decisão judicial produz efeitos apenas *inter partes* (entre o candidato autor da ação e o órgão público).
+
+Isso significa que, se você errou uma questão ilegal fora do edital, entrar na Justiça garante que **apenas a sua nota suba**, proporcionando um salto gigantesco na sua classificação geral em relação aos concorrentes que permaneceram inertes.
+
+---
+
+## 6. Qual o Momento Processual Adequado para Entrar com Mandado de Segurança ou Ação Ordinária?
+
+O momento exato do ajuizamento é fundamental para não perder as etapas seguintes do certame:
+
+* **Após o Resultado do Recurso Administrativo:** Você deve obrigatoriamente interpor o recurso na via administrativa no prazo do edital. Assim que a banca publicar o indeferimento e divulgar a nota definitiva ou a lista de convocação para a próxima fase (ex: TAF ou Prova Oral), nasce o interesse de agir para a ação judicial.
+* **Ação com Pedido Liminar Urgente:** Se você ficou fora da nota de corte para a próxima etapa por causa daquela questão ilegal, a ação judicial deve ser interposta **imediatamente, no prazo de dias ou semanas após o resultado definitivo**, acompanhada de pedido liminar urgente para que o juiz ordene a soma cautelar dos pontos e garanta a sua participação na etapa seguinte junto com os demais aprovados.
+* **Prazo do Mandado de Segurança:** Máximo de 120 dias corridos contados da publicação da nota definitiva que indeferiu o seu recurso administrativo.
+
+---
+
+## 7. Análise Técnica da Sua Prova: Como Enviar o Espelho e o Recurso para a Ribeiro Rinaldi Advocacia
+
+Você não pode permitir que a sua aprovação e o futuro da sua carreira sejam decididos por uma questão elaborada fora do edital ou pela pressa de um corretor que não leu a sua prova discursiva com a atenção que ela merecia.
+
+A **Ribeiro Rinaldi Advocacia**, sob a liderança do Dr. Paulo Rinaldi — ex-concurseiro e Auditor do Estado —, possui corpo técnico altamente capacitado para realizar a **análise pericial comparativa de provas objetivas e discursivas** à luz da jurisprudência do STF (Tema 485).
+
+📲 **Clique agora no botão abaixo ou acesse nosso link do WhatsApp. Envie para nossa equipe o PDF da sua prova, o espelho de correção da banca e o recurso que foi negado. Realizaremos uma triagem técnica preliminar de viabilidade da sua pontuação em até 24 horas, falando de igual para igual com quem sabe exatamente o valor de cada ponto em um concurso público.**`,
+        caption: `Artigo completo no blog da Ribeiro Rinaldi. Confira a fundamentação para salvar os pontos da sua prova!`,
+        tips: `Incluir links para modelos explicativos de como comparar espelho com folha de resposta.`
+      },
+      {
+        id: "sem4-reels1",
+        week: "Semana 4",
+        date: "2026-08-11",
+        dateLabel: "11/08 (Ter) • Reels 01",
+        platform: "insta",
+        platformLabel: "Instagram Reels (1:45m)",
+        title: "📱 REELS 01: Cobraram matéria que não estava no edital? O juiz anula e te dá o ponto.",
+        hook: "A cobrança de tópico ou lei estranha ao edital é ilegalidade manifesta que garante ponto na Justiça.",
+        script: `[00:00 - 00:15] GANCHO:
+Áudio: "Você fez a prova do concurso, errou uma questão que te custou a classificação, mas quando foi conferir o edital... aquela lei ou aquele assunto nem estava cobrado nas matérias! Saiba que o juiz anula essa questão e te devolve o ponto."
+Legenda na tela: QUESTÃO FORA DO EDITAL? O Juiz anula e te dá o ponto!
+
+[00:15 - 00:55] DESENVOLVIMENTO (A Regra do STF):
+Áudio: "O Supremo Tribunal Federal, lá no Tema 485, deixou muito claro: o juiz não pode se intrometer no critério de correção da banca pra dizer qual alternativa é melhor. PORÉM, quando a banca comete a ilegalidade de cobrar uma matéria que não estava prevista no edital, o juiz tem a obrigação constitucional de intervir. A nossa equipe faz o comparativo lado a lado da questão com o edital pra provar a ilegalidade manifesta."
+Legenda na tela: Tema 485 STF: Cobrar matéria fora do edital é ILEGALIDADE MANIFESTA!
+
+[00:55 - 01:25] O EFEITO NA SUA NOTA:
+Áudio: "Quando conseguimos a anulação judicial daquela questão que você havia errado, a pontuação é somada na sua nota final, te empurrando pra dentro das vagas ou da próxima fase."
+Legenda na tela: O ponto é somado na sua nota e sobe sua classificação!
+
+[01:25 - 01:45] CTA DE CONVERSÃO:
+Áudio: "Ficou por 1 ou 2 pontos por causa de questão fora do edital? Clica no link da bio e manda a sua prova pra nossa equipe analisar."
+Legenda na tela: Triagem pericial de questões • Link na bio ↑`,
+        caption: `O edital é a lei do concurso — tanto para o candidato quanto para a banca examinadora. ⚖️ 📖
+
+Se a comissão elaboradora cobrou uma disciplina ou legislação que não constava expressamente no conteúdo programático publicado, ocorre violação direta ao princípio da legalidade. Pelo Tema 485 do STF, a anulação judicial dessa questão é plenamente cabível.
+
+👉 Está por poucos pontos da aprovação e viu questão fora do edital? Clica no link da bio e envie para análise.
+
+#questõesdeconcurso #anulação #edital #stf #concursopublico #advocadojuridico #ribeirorinaldi`,
+        tips: `Gancho perfeito para candidatos recém-saídos de provas grandes que estão conferindo gabaritos.`
+      },
+      {
+        id: "sem4-insta-mot",
+        week: "Semana 4",
+        date: "2026-08-12",
+        dateLabel: "12/08 (Qua) • Conexão",
+        platform: "insta",
+        platformLabel: "Instagram Post Conexão",
+        title: "📱 POST CONEXÃO: Por 1 ponto você está fora. Por 1 questão ilegal, você está dentro.",
+        hook: "A linha tênue da aprovação e a importância de não desistir quando há erro na correção.",
+        script: `[ESTRUTURA DE POST CONEXÃO / ALERTA DE MÉRITO 4:5]
+
+• Eyebrow: A LINHA DA APROVAÇÃO
+• Manchete Archivo Black: "POR 1 PONTO VOCÊ ESTÁ FORA DO EDITAL. POR 1 QUESTÃO ILEGAL ANULADA, VOCÊ ESTÁ DENTRO DA CONVOCAÇÃO. NÃO DESISTA NA MARGEM."
+• Subtítulo Manrope: Quando a diferença entre o sonho da nomeação e mais um ano de cursinho depende de um erro material cometido pela banca, a Justiça é o seu caminho de vitória.
+• Assinatura: Símbolo + Ribeiro Rinaldi Advocacia.
+
+[LEGENDA COMPLEMENTAR]:
+Nos concursos públicos mais disputados do Brasil, a diferença entre o 10º colocado e o 150º colocado muitas vezes se resume a 1 ou 2 pontos na folha de resposta.
+
+É justamente nessa margem estreita que acontecem as maiores injustiças:
+❌ Uma questão objetiva com duas alternativas corretas que a banca se recusa a anular no recurso;
+❌ Uma questão cobrando tópico que não existia no edital;
+❌ Um corretor de prova discursiva que, na pressa de corrigir milhares de redações, simplesmente não leu o parágrafo onde você respondeu o que estava no espelho.
+
+Você não passou centenas de horas na frente dos livros para aceitar que um erro mecânico ou distração de um corretor encerre a sua jornada.
+
+Se o ponto é seu por direito técnico, nós vamos buscar até a última instância. 👊⚖️
+
+🔗 Salve esse post e mande para quem está esperando resultado de recurso ou discursiva!`,
+        caption: `Cada ponto da sua prova custou noites em claro. Se a banca cortou sua nota por erro ilegal na correção, lute pelo seu lugar no edital! 👊🔥 #recursojuridico #discursiva #concurseiro #aprovação #posse #advogado #ribeirorinaldi`,
+        tips: `Post com fundo escuro e tipografia gigante em Laranja e Creme para gerar impacto visual no feed.`
+      },
+      {
+        id: "sem4-in1",
+        week: "Semana 4",
+        date: "2026-08-12",
+        dateLabel: "12/08 (Qua) • LinkedIn Artigo",
+        platform: "linkedin",
+        platformLabel: "LinkedIn Artigo Executivo",
+        title: "👔 LINKEDIN 01: Controle judicial de atos de bancas examinadoras: superando o mito do 'mérito'",
+        hook: "Artigo aprofundado sobre a sindicabilidade judicial perante ilegalidades e erros grosseiros em provas.",
+        script: `Título: Controle judicial dos atos administrativos de bancas examinadoras: superando o mito do 'mérito administrativo'
+
+Na doutrina e jurisprudência tradicionais do Direito Administrativo brasileiro, cristalizou-se por muito tempo o dogma de que os critérios de formulação de questões e de correção de provas de concursos públicos integrariam o chamado "mérito administrativo", sendo absolutamente imunes ao controle de legalidade por parte do Poder Judiciário.
+
+A consolidação do Tema 485 da Repercussão Geral do Supremo Tribunal Federal (RE 632.853) veio para traçar balizas muito mais equilibradas e republicanas sobre essa temática.
+
+O STF reafirmou, como regra geral, que não compete ao Judiciário substituir a banca examinadora para reexaminar o conteúdo das questões ou os critérios de correção. Entretanto, a mesma Suprema Corte cravou com clareza cristalina que essa vedação não se aplica em duas hipóteses excepcionais:
+1. Juízo de compatibilidade entre o conteúdo da questão e o programa do edital (anulação de questão por matéria estranha ao edital);
+2. Erro material grosseiro, flagrante e teratológico na elaboração do quesito ou na correção da prova discursiva.
+
+No cenário atual dos grandes certames públicos, onde bancas examinadoras operam em escala industrial sob prazos exíguos, a incidência de erros materiais grosseiros na aplicação de espelhos discursivos tem se mostrado alarmante. Identificar corretores que atribuem nota zero a respostas candidatas que reproduzem ipsis litteris o espelho de correção oficial não é, infelizmente, exceção.
+
+A intervenção pontual e cirúrgica do Judiciário nesses casos teratológicos não representa usurpação de competência administrativa, mas sim a mais legítima salvaguarda da isonomia, da legalidade e da vinculação ao instrumento convocatório.
+
+#DireitoAdministrativo #ConcursoPublico #STF #Tema485 #SegurancaJuridica #BancasExaminadoras #RibeiroRinaldi`,
+        caption: `Artigo executivo de alto nível publicado no perfil do LinkedIn.`,
+        tips: `Posiciona o escritório como vanguarda no debate doutrinário de controle judicial de bancas.`
+      },
+      {
+        id: "sem4-reels2",
+        week: "Semana 4",
+        date: "2026-08-13",
+        dateLabel: "13/08 (Qui) • Reels 02",
+        platform: "insta",
+        platformLabel: "Instagram Reels (1:45m)",
+        title: "📱 REELS 02: O corretor da prova discursiva ignorou a sua resposta certa?",
+        hook: "Como provar erro material na correção da redação ou peça técnica perante o juiz.",
+        script: `[00:00 - 00:15] GANCHO:
+Áudio: "Você fez a prova discursiva do concurso, escreveu exatamente a resposta que a banca pediu no espelho de correção, mas o corretor simplesmente te deu zero naquele item? Saiba como reverter esse erro na Justiça e recuperar seus pontos."
+Legenda na tela: CORRETOR IGNOROU SUA RESPOSTA NA DISCURSIVA?
+
+[00:15 - 00:55] DESENVOLVIMENTO (A Prova do Erro Material):
+Áudio: "O STF diz que o juiz não pode discutir se a sua redação está bonita ou feia. PORÉM, quando a gente coloca o espelho oficial da banca do lado da sua folha de resposta digitalizada e mostra que na linha 14 você citou exatamente o artigo ou o conceito que o espelho exigia para dar 2 pontos, isso não é discussão de opinião: é ERRO MATERIAL GROSSEIRO. E erro material grosseiro da banca o juiz tem obrigação de anular e mandar somar a nota."
+Legenda na tela: Erro material de correção da banca = PONTOS DEVOLVIDOS NA JUSTIÇA!
+
+[00:55 - 01:25] O SALTO NA CLASSIFICAÇÃO:
+Áudio: "Em provas discursivas, recuperar 1,5 ou 2 pontos que o corretor comeu por distração é suficiente para te fazer saltar 200 posições e entrar direto nas vagas."
+Legenda na tela: 2 pontos recuperados podem te colocar dentro das vagas!
+
+[01:25 - 01:45] CTA DE CONVERSÃO:
+Áudio: "Sua nota da discursiva veio injusta e o recurso na banca foi negado? Clica no link da bio agora e manda sua folha e o espelho pra gente avaliar em 24h."
+Legenda na tela: Análise do espelho discursivo • Link na bio ↑`,
+        caption: `O corretor da banca não pode ignorar o próprio espelho de correção na hora de avaliar a sua prova discursiva. 📝 ❌
+
+Quando demonstrado por meio de comparativo analítico (Espelho Oficial vs. Folha de Resposta) que o candidato apresentou o conteúdo técnico exigido e teve a pontuação suprimida por erro material ou negligência na correção, o Poder Judiciário intervém para determinar a recontagem justa dos pontos.
+
+👉 Teve pontos cortados injustamente na redação ou peça técnica? Clica no link da nossa bio e mande os documentos para análise.
+
+#provadiscursiva #redacaoconcurso #espelhodecorrecao #recursojuridico #stf #concurseiro #ribeirorinaldi`,
+        tips: `Mostrar na tela (de forma ilustrativa no Reels) o comparativo de duas colunas com grifa-texto laranja.`
+      },
+      {
+        id: "sem4-insta-carr",
+        week: "Semana 4",
+        date: "2026-08-14",
+        dateLabel: "14/08 (Sex) • Carrossel",
+        platform: "insta",
+        platformLabel: "Instagram Carrossel (4:5)",
+        title: "📱 CARROSSEL RESUMO: Quando Vale a Pena Entrar na Justiça por 1 Questão de Prova?",
+        hook: "O checklist da anulação segura para o candidato avaliar antes de entrar com processo judicial.",
+        script: `[ESTRUTURA DO CARROSSEL 4:5 - 6 CARDS]
+
+CARD 01 (CAPA):
+• Eyebrow: CHECKLIST DA ANULAÇÃO
+• Manchete Archivo Black: QUANDO VALE A PENA ENTRAR NA JUSTIÇA POR 1 QUESTÃO DE PROVA? (O CHECKLIST DA ANULAÇÃO SEGURA)
+• Subtítulo Manrope: Nem todo erro dá processo, mas quando os 3 requisitos abaixo são cumpridos, a chance de vitória é altíssima. Arraste ➡️
+
+CARD 02 (REQUISITO 1 - A QUESTÃO MUDA SEU DESTINO NO CONCURSO):
+• Título: 1. A pontuação recuperada te coloca dentro das vagas ou da próxima fase
+• Texto: Só faz sentido acionar o Judiciário se a soma daquele ponto for matemática e decisiva para te tirar da lista de eliminados e te colocar no Curso de Formação ou dentro das vagas de convocação.
+
+CARD 03 (REQUISITO 2 - VIOLAÇÃO OBJETIVA E COMPROVADA DO EDITAL):
+• Título: 2. A questão cobró matéria estranha ao edital ou tem erro grosseiro inegável
+• Texto: O fundamento precisa ser cirúrgico: cobrança de lei não listada no edital, questão com duas alternativas exatas no gabarito, ou corretor da discursiva que deu zero a uma resposta idêntica ao espelho.
+
+CARD 04 (REQUISITO 3 - NÃO DEPENDE DE "OPINIÃO DE AUTOR"):
+• Título: 3. O erro não depende de discussão subjetiva sobre qual autor tem razão
+• Texto: O juiz não entra em debates teóricos universitários. Se a anulação depender de provar que o autor X é melhor que o autor Y adotado pela banca, o Judiciário não intervém (Tema 485 STF).
+
+CARD 05 (O EFEITO DA LIMINAR EM ANULAÇÃO DE QUESTÃO):
+• Título: Como a Liminar atua no seu caso:
+• Texto: Quando o juiz concede a liminar reconhecendo a ilegalidade da questão pro seu processo, a comissão do concurso é obrigada a recalcular a sua nota individual e te convocar para as fases seguintes imediatamente.
+
+CARD 06 (CTA FINAL):
+• Fundo Gradiente Laranja → Magenta
+• Manchete: ESTÁ POR 1 OU 2 PONTOS DA SUA APROVAÇÃO?
+• Texto: Nossos especialistas analisam o seu espelho de prova e o edital em até 24 horas.
+• Botão: Toca no link da bio e envie a sua prova agora para triagem preliminar de pontuação.`,
+        caption: `Você está por 1 ou 2 pontos da aprovação e está na dúvida se vale a pena recorrer ao Judiciário? 📋 ⚖️
+
+Confira no carrossel o nosso checklist prático para identificar se a sua prova se encaixa nas hipóteses excepcionais em que o Supremo Tribunal Federal (Tema 485) autoriza a anulação judicial de questões ou espelhos discursivos.
+
+👉 Clica no link da bio e mande a sua prova para a nossa equipe técnica analisar.
+
+#anulacaodequestao #provadiscursiva #recursojudicial #concurseiro #advogado #ribeirorinaldi #stf`,
+        tips: `Carrossel com alto poder didático, orientando o concurseiro com total honestidade e transparência.`
+      },
+      {
+        id: "sem4-in2",
+        week: "Semana 4",
+        date: "2026-08-14",
+        dateLabel: "14/08 (Sex) • LinkedIn Post",
+        platform: "linkedin",
+        platformLabel: "LinkedIn Post Curto",
+        title: "👔 LINKEDIN 02: A imprevisibilidade nos espelhos de correção discursiva e a isonomia",
+        hook: "Post executivo sobre a padronização e objetividade nas etapas discursivas de certames.",
+        script: `A correção de provas discursivas em concursos públicos de alto rendimento no Brasil tem enfrentado um desafio crítico de padronização e isonomia entre diferentes examinadores de uma mesma banca organizadora.
+
+Quando analisamos dezenas de espelhos de correção de um mesmo certame, é frequente constatar que enquanto o Corretor "A" atribui pontuação integral a uma fundamentação jurídica resumida, o Corretor "B" zera a exata mesma resposta alegando "ausência de clareza ou omissão de termo específico".
+
+Essa disparidade na aplicação do espelho de correção fere frontalmente o princípio da impessoalidade e da isonomia que regem a Administração Pública.
+
+O Poder Judiciário, ao ser instado a analisar esses casos, tem firmado o entendimento de que quando o candidato demonstra, mediante prova documental comparativa, que atendeu à essência do espelho analítico divulgado pela banca, a supressão de pontos por critérios ultra-subjetivos do corretor individual configura erro material passível de correção judicial.
+
+A objetividade na avaliação não é favor ao candidato; é imperativo constitucional de justiça no concurso público.
+
+#ConcursoPublico #ProvaDiscursiva #Isonomia #DireitoAdministrativo #BancasExaminadoras #RibeiroRinaldi`,
+        caption: `Post executivo no LinkedIn encerrando o ciclo temático da Semana 4.`,
+        tips: `Consolida a autoridade técnica da marca em recursos complexos de provas.`
+      },
+      {
+        id: "sem4-reels3",
+        week: "Semana 4",
+        date: "2026-08-15",
+        dateLabel: "15/08 (Sáb) • Reels 03",
+        platform: "insta",
+        platformLabel: "Instagram Reels (1:45m)",
+        title: "📱 REELS 03: Recurso Administrativo vs Ação Judicial: Por que a Justiça não aceita erro grosseiro",
+        hook: "Fechamento do ciclo explicativo comparando a resposta mecânica da banca com a análise imparcial do Juiz.",
+        script: `[00:00 - 00:15] GANCHO:
+Áudio: "Você gastou dias escrevendo um recurso administrativo perfeito pra banca, mostrando o erro na questão, e eles te responderam com 'Recurso Indeferido. Mantido o gabarito'? Saiba por que a resposta da banca quase nunca é o fim da linha."
+Legenda na tela: RECURSO NEGADO NA BANCA? Por que a Justiça é diferente?
+
+[00:15 - 00:55] DESENVOLVIMENTO (Banca vs Justiça):
+Áudio: "A banca examinadora quase nunca assume que errou na formulação da questão porque anular questão gera custo, reclassificação e vergonha institucional pra eles. Já o juiz na Vara da Fazenda Pública é totalmente imparcial e não tem nenhum compromisso com a vaidade da banca. Quando a gente chega pro juiz com a prova técnica mostrando que a questão cobrou matéria fora do edital ou que o corretor errou a conta dos seus pontos na discursiva, o juiz aplica a lei e determina a correção imediata da sua nota."
+Legenda na tela: O Juiz é imparcial e não aceita vaidade de banca examinadora!
+
+[00:55 - 01:25] O SEU LUGAR NAS VAGAS:
+Áudio: "Não deixe a resposta automática de um sistema de banca tirar o seu direito de fazer o curso de formação e tomar posse no cargo que você estudou pra conquistar."
+Legenda na tela: Não deixe uma resposta automática tirar a sua posse!
+
+[01:25 - 01:45] CTA DE CONVERSÃO:
+Áudio: "Seu recurso da prova foi negado injustamente? Clica no link da bio agora e fala com os nossos especialistas em concurso público."
+Legenda na tela: Fale direto com nossos advogados • Link na bio ↑`,
+        caption: `O indeferimento administrativo de um recurso pela banca examinadora não encerra o seu direito de buscar a correção na Justiça. 👊🔥
+
+As bancas operam sob lógica de produção em massa e raramente reconsideram erros materiais em suas respostas padronizadas. O Poder Judiciário, por outro lado, atua com imparcialidade para garantir a estrita legalidade e o cumprimento do edital.
+
+👉 Seu recurso foi rejeitado e você tem certeza do erro da banca? Clica no link da bio e envie o seu caso para a nossa triagem de viabilidade em 24h.
+
+#recursojudicial #bancaexaminadora #anulaçãodequestão #concursopublico #advocadojuridico #ribeirorinaldi #avirada`,
+        tips: `Encerra o planejamento de 4 semanas com altíssima energia e chamada à ação para conversão no WhatsApp.`
+      }
+    ];
+
+    /* =========================================================================
+       CALENDAR RENDERER (JULY & AUGUST 2026)
+       ========================================================================= */
+    let currentMonthView = 'julho'; // 'julho' or 'agosto'
+
+    const MONTHS_CONFIG = {
+      julho: {
+        title: "Julho 2026",
+        year: 2026,
+        monthIndex: 6, // 0-based (6 = July)
+        daysInMonth: 31,
+        firstDayOfWeek: 3, // Wednesday (Jul 1, 2026 is Wed -> index 3)
+        prevMonthDays: 30 // June has 30 days
+      },
+      agosto: {
+        title: "Agosto 2026",
+        year: 2026,
+        monthIndex: 7, // 0-based (7 = August)
+        daysInMonth: 31,
+        firstDayOfWeek: 6, // Saturday (Aug 1, 2026 is Sat -> index 6)
+        prevMonthDays: 31 // July has 31 days
+      }
+    };
+
+    function changeMonth(monthKey) {
+      currentMonthView = monthKey;
+      document.getElementById('current-month-label').innerText = MONTHS_CONFIG[monthKey].title;
+      document.getElementById('btn-julho').classList.toggle('active', monthKey === 'julho');
+      document.getElementById('btn-agosto').classList.toggle('active', monthKey === 'agosto');
+      renderCalendar();
+    }
+
+    function renderCalendar() {
+      const grid = document.getElementById('calendar-grid-cells');
+      grid.innerHTML = '';
+      const config = MONTHS_CONFIG[currentMonthView];
+
+      // 1. Previous month filler days
+      for (let i = config.firstDayOfWeek - 1; i >= 0; i--) {
+        const dayNum = config.prevMonthDays - i;
+        const cell = document.createElement('div');
+        cell.className = 'day-cell other-month';
+        cell.innerHTML = `<span class="day-number">${dayNum}</span>`;
+        grid.appendChild(cell);
+      }
+
+      // 2. Current month days
+      for (let day = 1; day <= config.daysInMonth; day++) {
+        const dateStr = `2026-${String(config.monthIndex + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
+        const cell = document.createElement('div');
+        cell.className = 'day-cell';
+        
+        // Highlight launch weekend or key start
+        if (dateStr === '2026-07-18' || dateStr === '2026-07-19') {
+          cell.classList.add('today');
+        }
+
+        cell.innerHTML = `<span class="day-number">${day}</span>`;
+
+        // Find events for this day
+        const dayEvents = CONTENTS.filter(item => item.date === dateStr);
+        dayEvents.forEach(ev => {
+          const pill = document.createElement('div');
+          pill.className = `event-pill ${ev.platform}`;
+          pill.title = ev.title;
+          
+          let icon = '📱';
+          if (ev.platform === 'yt') icon = '📺';
+          if (ev.platform === 'linkedin') icon = '👔';
+          if (ev.platform === 'blog') icon = '🌐';
+          if (ev.id.includes('fixo')) icon = '📌';
+
+          pill.innerHTML = `<span>${icon}</span> <span>${ev.platformLabel.split(' ')[1] || ev.platformLabel}</span> ${ev.graphicUrl ? '<span style="color: var(--amber); font-weight: bold; margin-left: 3px;" title="Arte Pronta Sincronizada">🎨</span>' : ''}`;
+          pill.onclick = (e) => {
+            e.stopPropagation();
+            openDrawer(ev.id);
+          };
+          cell.appendChild(pill);
+        });
+
+        grid.appendChild(cell);
+      }
+
+      // 3. Next month filler days to complete 42-cell grid (6 rows) or 35 cells (5 rows)
+      const totalCellsFilled = config.firstDayOfWeek + config.daysInMonth;
+      const targetGridCells = totalCellsFilled > 35 ? 42 : 35;
+      const remainingCells = targetGridCells - totalCellsFilled;
+
+      for (let i = 1; i <= remainingCells; i++) {
+        const cell = document.createElement('div');
+        cell.className = 'day-cell other-month';
+        cell.innerHTML = `<span class="day-number">${i}</span>`;
+        grid.appendChild(cell);
+      }
+    }
+
+    /* =========================================================================
+       ACCORDION RENDERER & FILTERS
+       ========================================================================= */
+    let currentWeekFilter = 'all';
+    let currentChannelFilter = 'all';
+    let searchQuery = '';
+
+    function filterByWeek(weekKey, btn) {
+      currentWeekFilter = weekKey;
+      document.querySelectorAll('.week-btn').forEach(b => b.classList.remove('active'));
+      if (btn) btn.classList.add('active');
+      renderAccordion();
+    }
+
+    function filterByChannel(channelKey, btn) {
+      currentChannelFilter = channelKey;
+      document.querySelectorAll('.channel-btn').forEach(b => b.classList.remove('active'));
+      if (btn) btn.classList.add('active');
+      renderAccordion();
+    }
+
+    function handleSearch() {
+      searchQuery = document.getElementById('search-input').value.toLowerCase().trim();
+      renderAccordion();
+    }
+
+    function renderAccordion() {
+      const container = document.getElementById('accordion-container');
+      container.innerHTML = '';
+
+      const filtered = CONTENTS.filter(item => {
+        const matchWeek = currentWeekFilter === 'all' || item.week === currentWeekFilter;
+        const matchChannel = currentChannelFilter === 'all' || item.platform === currentChannelFilter;
+        const matchSearch = searchQuery === '' || 
+          item.title.toLowerCase().includes(searchQuery) || 
+          item.hook.toLowerCase().includes(searchQuery) || 
+          item.script.toLowerCase().includes(searchQuery) ||
+          item.caption.toLowerCase().includes(searchQuery);
+
+        return matchWeek && matchChannel && matchSearch;
+      });
+
+      if (filtered.length === 0) {
+        container.innerHTML = `
+          <div style="text-align: center; padding: 4rem 2rem; background: var(--panel-dark); border-radius: 14px; border: 1px dashed var(--border-color); color: var(--text-muted);">
+            <p style="font-size: 1.2rem; font-weight: 700; color: var(--amber); margin-bottom: 0.5rem;">Nenhum roteiro encontrado</p>
+            <p>Tente ajustar os filtros de semana, canal ou limpar a barra de busca.</p>
+          </div>
+        `;
+        return;
+      }
+
+      filtered.forEach(item => {
+        const card = document.createElement('div');
+        card.className = 'accordion-card';
+        card.id = `card-${item.id}`;
+
+        card.innerHTML = `
+          <div class="accordion-header" onclick="toggleAccordion('${item.id}')">
+            <div class="card-meta-left">
+              <span class="platform-badge ${item.platform}">${item.platformLabel}</span>
+              ${item.graphicUrl ? `<span style="background: rgba(255, 94, 26, 0.2); border: 1px solid var(--amber); color: var(--amber); font-size: 0.72rem; padding: 0.2rem 0.6rem; border-radius: 4px; font-weight: 700; display: inline-flex; align-items: center; gap: 0.35rem; box-shadow: 0 0 10px rgba(255,94,26,0.2);">🎨 ARTE PRONTA</span>` : ''}
+              <span class="card-date">🗓️ ${item.dateLabel}</span>
+              <div style="width: 100%;">
+                <div class="card-title">${item.title}</div>
+                <div style="font-size: 0.88rem; color: var(--text-muted); margin-top: 0.25rem;">💡 <strong>Gancho:</strong> ${item.hook}</div>
+              </div>
+            </div>
+
+            <div class="card-meta-right">
+              <button class="copy-btn" onclick="copyScript(event, '${item.id}')">
+                <span>📋</span> Copiar Roteiro
+              </button>
+              <span class="toggle-icon">▼</span>
+            </div>
+          </div>
+
+          <div class="accordion-body">
+            ${item.graphicUrl ? `
+            <div style="margin-bottom: 1.8rem; padding: 1.25rem; background: rgba(255, 94, 26, 0.08); border: 1px solid var(--amber); border-radius: 12px; box-shadow: inset 0 0 20px rgba(255,94,26,0.05);">
+              <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.8rem; margin-bottom: 1.2rem;">
+                <div>
+                  <span style="font-family: 'Space Mono', monospace; font-size: 0.78rem; text-transform: uppercase; color: var(--amber); font-weight: 700; letter-spacing: 1px;">🎨 ARTE / CRIATIVO FINALIZADO E PRONTO</span>
+                  <div style="font-size: 0.95rem; font-weight: 600; color: #fff; margin-top: 0.2rem;">Este conteúdo já possui peça gráfica interativa desenvolvida e sincronizada!</div>
+                </div>
+                <a href="${item.graphicUrl}" target="_blank" style="background: var(--amber); color: #000; font-family: 'Space Mono', monospace; font-weight: 700; font-size: 0.85rem; padding: 0.7rem 1.3rem; border-radius: 8px; text-decoration: none; display: inline-flex; align-items: center; gap: 0.5rem; transition: transform 0.2s; box-shadow: 0 4px 15px rgba(255,94,26,0.3);">
+                  <span>👁️ ABRIR ARTE NA TELA CHEIA</span>
+                  <span>➔</span>
+                </a>
+              </div>
+              <div style="width: 100%; height: 560px; border-radius: 10px; overflow: hidden; border: 1px solid rgba(255,255,255,0.15); background: #0b0705;">
+                <iframe src="${item.graphicUrl}" style="width: 100%; height: 100%; border: none;"></iframe>
+              </div>
+            </div>
+            ` : ''}
+            <div class="script-section">
+              <div class="section-label">🎬 Roteiro Textual / Direção de Cena Bloco a Bloco</div>
+              <div class="script-text">${item.script}</div>
+            </div>
+
+            <div class="script-section" style="margin-top: 1.5rem;">
+              <div class="section-label">💬 Legenda & Hashtags Acompanhantes (Pronto para Postar)</div>
+              <div class="script-text" style="background: #19120D; border-color: rgba(255,179,71,0.2);">${item.caption}</div>
+            </div>
+
+            ${item.tips ? `
+            <div class="highlight-box">
+              <strong>⭐ Direção de Arte / Observação de Produção:</strong> ${item.tips}
+            </div>
+            ` : ''}
+          </div>
+        `;
+
+        container.appendChild(card);
+      });
+    }
+
+    function toggleAccordion(id) {
+      const card = document.getElementById(`card-${id}`);
+      if (card) {
+        card.classList.toggle('open');
+      }
+    }
+
+    function universalCopy(text, onSuccess) {
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(() => {
+          if (onSuccess) onSuccess();
+        }).catch(err => {
+          fallbackCopy(text, onSuccess);
+        });
+      } else {
+        fallbackCopy(text, onSuccess);
+      }
+    }
+
+    function fallbackCopy(text, onSuccess) {
+      try {
+        const textarea = document.createElement('textarea');
+        textarea.value = text;
+        textarea.style.position = 'fixed';
+        textarea.style.top = '0';
+        textarea.style.left = '0';
+        textarea.style.opacity = '0';
+        document.body.appendChild(textarea);
+        textarea.focus();
+        textarea.select();
+        const successful = document.execCommand('copy');
+        document.body.removeChild(textarea);
+        if (successful && onSuccess) {
+          onSuccess();
+        } else {
+          alert("Por favor, selecione o texto do roteiro e pressione Ctrl+C / Cmd+C para copiar.");
+        }
+      } catch (err) {
+        alert("Por favor, selecione o texto do roteiro e pressione Ctrl+C / Cmd+C para copiar.");
+      }
+    }
+
+    function copyScript(event, id) {
+      event.stopPropagation();
+      const item = CONTENTS.find(x => x.id === id);
+      if (!item) return;
+
+      const fullText = `=== ${item.title.toUpperCase()} ===\n[PLATAFORMA: ${item.platformLabel} - DATA: ${item.dateLabel}]\n\n💡 GANCHO/OBJETIVO:\n${item.hook}\n\n🎬 ROTEIRO COMPLETO:\n${item.script}\n\n💬 LEGENDA & HASHTAGS:\n${item.caption}\n\n⭐ OBSERVAÇÃO DE ARTE: ${item.tips || 'Seguir Design System'}`;
+
+      const btn = event.currentTarget;
+      const originalHTML = btn.innerHTML;
+
+      universalCopy(fullText, () => {
+        btn.innerHTML = `<span>✅</span> Copiado!`;
+        btn.style.background = '#10B981';
+        btn.style.borderColor = '#10B981';
+        setTimeout(() => {
+          btn.innerHTML = originalHTML;
+          btn.style.background = '';
+          btn.style.borderColor = '';
+        }, 2000);
+      });
+    }
+
+    /* =========================================================================
+       SIDE DRAWER (CLICK FROM CALENDAR)
+       ========================================================================= */
+    function openDrawer(id) {
+      const item = CONTENTS.find(x => x.id === id);
+      if (!item) return;
+
+      const drawer = document.getElementById('drawer-content');
+      drawer.innerHTML = `
+        <div class="drawer-header">
+          <div>
+            <span class="platform-badge ${item.platform}">${item.platformLabel}</span>
+            <span style="font-family: 'Space Mono', monospace; font-size: 0.82rem; color: var(--amber); margin-left: 0.8rem;">🗓️ ${item.dateLabel}</span>
+          </div>
+          <button class="close-drawer-btn" onclick="closeDrawer()">✕</button>
+        </div>
+
+        <h3 style="font-family: 'Archivo Black', sans-serif; font-size: 1.35rem; color: #fff; margin-bottom: 0.5rem; line-height: 1.3;">${item.title}</h3>
+        <p style="font-size: 0.92rem; color: var(--text-muted); margin-bottom: 1.5rem; padding-bottom: 1rem; border-bottom: 1px solid var(--border-color);">💡 <strong>Gancho:</strong> ${item.hook}</p>
+
+        ${item.graphicUrl ? `
+        <div style="margin-bottom: 1.8rem; padding: 1.25rem; background: rgba(255, 94, 26, 0.08); border: 1px solid var(--amber); border-radius: 12px; box-shadow: inset 0 0 20px rgba(255,94,26,0.05);">
+          <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.8rem; margin-bottom: 1.2rem;">
+            <div>
+              <span style="font-family: 'Space Mono', monospace; font-size: 0.78rem; text-transform: uppercase; color: var(--amber); font-weight: 700; letter-spacing: 1px;">🎨 ARTE / CRIATIVO FINALIZADO E PRONTO</span>
+              <div style="font-size: 0.95rem; font-weight: 600; color: #fff; margin-top: 0.2rem;">Este conteúdo já possui peça gráfica interativa sincronizada!</div>
+            </div>
+            <a href="${item.graphicUrl}" target="_blank" style="background: var(--amber); color: #000; font-family: 'Space Mono', monospace; font-weight: 700; font-size: 0.85rem; padding: 0.7rem 1.3rem; border-radius: 8px; text-decoration: none; display: inline-flex; align-items: center; gap: 0.5rem; transition: transform 0.2s; box-shadow: 0 4px 15px rgba(255,94,26,0.3);">
+              <span>👁️ ABRIR ARTE NA TELA CHEIA</span>
+              <span>➔</span>
+            </a>
+          </div>
+          <div style="width: 100%; height: 520px; border-radius: 10px; overflow: hidden; border: 1px solid rgba(255,255,255,0.15); background: #0b0705;">
+            <iframe src="${item.graphicUrl}" style="width: 100%; height: 100%; border: none;"></iframe>
+          </div>
+        </div>
+        ` : ''}
+
+        <div style="margin-bottom: 1.5rem;">
+          <div class="section-label">🎬 Roteiro Textual Completo</div>
+          <div class="script-text" style="font-size: 0.92rem;">${item.script}</div>
+        </div>
+
+        <div style="margin-bottom: 1.5rem;">
+          <div class="section-label">💬 Legenda Pronta + Hashtags</div>
+          <div class="script-text" style="font-size: 0.9rem; background: #19120D;">${item.caption}</div>
+        </div>
+
+        ${item.tips ? `
+        <div class="highlight-box" style="margin-bottom: 2rem;">
+          <strong>⭐ Direção de Arte / Produção:</strong> ${item.tips}
+        </div>
+        ` : ''}
+
+        <button class="copy-btn" style="width: 100%; justify-content: center; padding: 1rem; font-size: 0.95rem; background: var(--gradient-brand); border: none;" onclick="copyScriptFromDrawer(this, '${item.id}')">
+          <span>📋</span> Copiar Todo o Conteúdo (Roteiro + Legenda)
+        </button>
+      `;
+
+      document.getElementById('drawer-overlay').classList.add('open');
+    }
+
+    function closeDrawer() {
+      document.getElementById('drawer-overlay').classList.remove('open');
+    }
+
+    function closeDrawerOutside(event) {
+      if (event.target.id === 'drawer-overlay') {
+        closeDrawer();
+      }
+    }
+
+    function copyScriptFromDrawer(btn, id) {
+      const item = CONTENTS.find(x => x.id === id);
+      if (!item) return;
+
+      const fullText = `=== ${item.title.toUpperCase()} ===\n[PLATAFORMA: ${item.platformLabel} - DATA: ${item.dateLabel}]\n\n💡 GANCHO/OBJETIVO:\n${item.hook}\n\n🎬 ROTEIRO COMPLETO:\n${item.script}\n\n💬 LEGENDA & HASHTAGS:\n${item.caption}\n\n⭐ OBSERVAÇÃO DE ARTE: ${item.tips || 'Seguir Design System'}`;
+
+      const originalHTML = btn.innerHTML;
+
+      universalCopy(fullText, () => {
+        btn.innerHTML = `<span>✅</span> Copiado com Sucesso!`;
+        btn.style.background = '#10B981';
+        setTimeout(() => {
+          btn.innerHTML = originalHTML;
+          btn.style.background = 'var(--gradient-brand)';
+        }, 2000);
+      });
+    }
+
+    /* =========================================================================
+       TAB SWITCHING
+       ========================================================================= */
+    function switchTab(viewId, btn) {
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      if (btn) btn.classList.add('active');
+
+      document.querySelectorAll('.view-section').forEach(sec => sec.classList.remove('active'));
+      document.getElementById(viewId).classList.add('active');
+    }
+
+    /* =========================================================================
+       INITIALIZATION
+       ========================================================================= */
+    window.addEventListener('DOMContentLoaded', () => {
+      renderCalendar();
+      renderAccordion();
+    });
+  </script>
+</body>
+</html>
