@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Apresentação de Negócio - Ribeiro Rinaldi</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;700;900&family=Manrope:wght@400;600;800&family=Space+Mono:wght@700&display=swap" rel="stylesheet">
+  
+  <style>
+    /* DESIGN TOKENS */
+    :root {
+      --rr-bg: #0A0A0C;
+      --rr-bg-light: #F7F1E8;
+      --rr-panel: #1E1712;
+      --rr-panel-2: #28201A;
+      --rr-panel-light: #EBE4D8;
+      --rr-text: #F7F1E8;
+      --rr-text-dark: #17110D;
+      --rr-orange: #FF5E1A;
+      --rr-magenta: #F0247C;
+      --rr-amber: #FFB347;
+      --rr-line: #3A2E24;
+      --rr-line-light: #D4C9BC;
+      --rr-gradient: linear-gradient(100deg, var(--rr-orange), var(--rr-magenta));
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    
+    body {
+      background-color: #000;
+      display: flex; flex-direction: column; align-items: center; gap: 40px; padding: 40px 0;
+      font-family: 'Manrope', sans-serif;
+    }
+
+    /* CONTAINER DO SLIDE */
+    .slide {
+      width: 1920px; height: 1080px;
+      background-color: var(--rr-bg);
+      color: var(--rr-text);
+      position: relative; overflow: hidden;
+      padding: 80px 140px; 
+      display: flex; flex-direction: column; justify-content: center;
+      box-shadow: 0 0 50px rgba(255, 94, 26, 0.1);
+      transform: scale(0.7); transform-origin: top center; margin-bottom: -324px;
+    }
+
+    /* TEMA CLARO (CREME) */
+    .slide-light {
+      background-color: var(--rr-bg-light);
+      color: var(--rr-text-dark);
+    }
+    .slide-light h2 { color: var(--rr-text-dark); }
+    .slide-light p, .slide-light li { color: #33261C; }
+    .slide-light .card {
+      background: var(--rr-panel-light);
+      border-color: var(--rr-line-light);
+    }
+    .slide-light .logo-footer-text { color: var(--rr-text-dark); }
+    .slide-light .slide-number {
+      color: var(--rr-text-dark);
+      opacity: 0.3;
+    }
+
+    h1, h2, h3 {
+      font-family: 'Archivo', sans-serif;
+      text-transform: uppercase;
+      letter-spacing: -0.03em;
+      line-height: 0.95;
+    }
+
+    .tagline {
+      font-family: 'Space Mono', monospace; color: var(--rr-orange); font-size: 24px;
+      letter-spacing: 0.15em; margin-bottom: 20px;
+    }
+
+    h1 { font-size: 100px; font-weight: 900; margin-bottom: 30px; }
+    h2 { font-size: 64px; font-weight: 800; margin-bottom: 30px; color: var(--rr-text); }
+    p, li { font-size: 32px; line-height: 1.5; margin-bottom: 20px; color: #D1C9C0; }
+    ul { margin-left: 40px; }
+    li { margin-bottom: 15px; }
+
+    .highlight { background: var(--rr-gradient); -webkit-background-clip: text; color: transparent; }
+    .text-orange { color: var(--rr-orange); }
+
+    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: center; }
+    .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; }
+
+    .card { background: var(--rr-panel); border: 2px solid var(--rr-line); border-radius: 24px; padding: 40px; height: 100%; }
+    .card p { font-size: 28px; }
+    .card-gradient { background: var(--rr-panel); border: 3px solid transparent; border-radius: 24px; padding: 40px; background-image: linear-gradient(var(--rr-panel), var(--rr-panel)), var(--rr-gradient); background-origin: border-box; background-clip: padding-box, border-box; }
+    
+    /* Previne que o texto do card escuro fique preto se estiver em um slide claro */
+    .card-gradient h3 { color: var(--rr-text) !important; }
+    .card-gradient p { font-size: 28px; color: #D1C9C0 !important; }
+    .card-gradient .text-orange { color: var(--rr-orange) !important; }
+
+    .number-huge { font-family: 'Archivo', sans-serif; font-size: 100px; font-weight: 900; color: var(--rr-orange); line-height: 1; margin-bottom: 20px; }
+    .badge { display: inline-block; padding: 12px 24px; border: 2px solid var(--rr-orange); border-radius: 100px; font-family: 'Space Mono', monospace; font-size: 18px; color: var(--rr-orange); margin-bottom: 20px; }
+
+    .brand-watermark { position: absolute; right: -10%; bottom: -15%; width: 900px; height: 900px; opacity: 0.05; pointer-events: none; transform: rotate(-12deg); }
+    .slide-light .brand-watermark { opacity: 0.03; filter: invert(1); } 
+    
+    .film-grain { position: absolute; top: 0; left: 0; right: 0; bottom: 0; opacity: 0.04; pointer-events: none; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E"); }
+    
+    .logo-footer { position: absolute; bottom: 50px; left: 140px; display: flex; align-items: center; gap: 15px; font-family: 'Archivo', sans-serif; font-weight: 900; font-size: 28px; letter-spacing: -0.03em; z-index: 10; opacity: 1; }
+    .logo-footer svg { width: 36px; height: 36px; }
+    .logo-footer-text { color: var(--rr-text); }
+    
+    .slide-number { position: absolute; bottom: 50px; right: 140px; font-family: 'Space Mono', monospace; font-size: 20px; opacity: 0.4; }
+
+    @media print {
+      @page { size: 1920px 1080px; margin: 0; }
+      body { padding: 0; gap: 0; background-color: var(--rr-bg); }
+      .slide { transform: scale(1) !important; margin-bottom: 0 !important; page-break-after: always; break-after: page; box-shadow: none; }
+      ::-webkit-scrollbar { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <svg width="0" height="0" style="position: absolute; width: 0; height: 0; overflow: hidden;" aria-hidden="true">
+    <defs>
+      <linearGradient id="rr" x1="0" y1="1" x2="1" y2="0">
+        <stop offset="0" stop-color="#FF5E1A"/>
+        <stop offset="1" stop-color="#F0247C"/>
+      </linearGradient>
+    </defs>
+    <symbol id="simbolo-rr" viewBox="0 0 120 120">
+      <polyline points="20,66 48,96 104,24" fill="none" stroke="url(#rr)" stroke-width="17" stroke-linecap="round" stroke-linejoin="round"/>
+    </symbol>
+  </svg>
+
+  <!-- SLIDE 1: CAPA (Dark) -->
+  <div class="slide">
+    <div class="film-grain"></div>
+    <svg class="brand-watermark" style="width: 1400px; height: 1400px; right: -15%; bottom: -20%; opacity: 0.15;"><use href="#simbolo-rr"/></svg>
+    <div style="max-width: 1400px; z-index: 2;">
+      <div class="tagline">PROPOSTA DE SOCIEDADE E ESCALA</div>
+      <h1>A VIRADA: OPORTUNIDADE DE NEGÓCIO NO SETOR JURÍDICO</h1>
+      <p style="font-size: 38px; color: var(--rr-text); max-width: 1200px;">
+        Uma parceria estruturada para transformar uma demanda urgente e reprimida em lucro sólido, operando lado a lado com uma autoridade jurídica inquestionável.
+      </p>
+    </div>
+    <div class="logo-footer">
+      <svg><use href="#simbolo-rr"/></svg>
+      <span class="logo-footer-text">RIBEIRO RINALDI ADVOCACIA</span>
+    </div>
+  </div>
+
+  <!-- SLIDE 2: O Prestígio (Light) -->
+  <div class="slide slide-light">
+    <div class="film-grain"></div>
+    <svg class="brand-watermark"><use href="#simbolo-rr"/></svg>
+    <div class="logo-footer">
+      <svg><use href="#simbolo-rr"/></svg>
+      <span class="logo-footer-text">RIBEIRO RINALDI ADVOCACIA</span>
+    </div>
+    <div class="slide-number">02</div>
+
+    <h2>Operando ao lado de uma <span class="highlight">Autoridade</span></h2>
+    <div class="grid-2" style="height: 600px;">
+      <div class="card-gradient" style="display: flex; flex-direction: column; justify-content: center; height: 100%;">
+        <div class="badge" style="width: fit-content;">PRESTÍGIO & CONFIANÇA TOTAL</div>
+        <h3 style="font-size: 50px; margin-bottom: 20px;">DR. PAULO RINALDI</h3>
+        <p style="font-size: 34px;"><strong class="text-orange">Ex-concurseiro e atual Auditor do Estado.</strong></p>
+        <p>A maioria dos advogados não passa segurança. O Dr. Paulo Rinaldi é Auditor. Ele já esteve sentado onde o cliente está.</p>
+        <p style="margin-top: 20px;">É raro ter a oportunidade de investir e lucrar em um escritório liderado por alguém com este renome.</p>
+      </div>
+      <div style="border-radius: 24px; overflow: hidden; border: 2px solid var(--rr-line); height: 100%;">
+        <img src="LANDINGPAGE/assets/images/foto_paulo.webp" style="width: 100%; height: 100%; object-fit: cover; object-position: center top;" alt="Dr Paulo Rinaldi">
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 3: A Força da Sociedade (Dark) -->
+  <div class="slide">
+    <div class="film-grain"></div>
+    <svg class="brand-watermark"><use href="#simbolo-rr"/></svg>
+    <div class="logo-footer">
+      <svg><use href="#simbolo-rr"/></svg>
+      <span class="logo-footer-text">RIBEIRO RINALDI ADVOCACIA</span>
+    </div>
+    <div class="slide-number">03</div>
+
+    <h2>A Força Desta <span class="highlight">Sociedade</span></h2>
+    <div class="grid-2">
+      <div class="card">
+        <h3 style="font-size: 40px; margin-bottom: 10px;">DR. PAULO RINALDI</h3>
+        <p class="tagline" style="font-size: 16px; margin-bottom: 20px;">A AUTORIDADE JURÍDICA</p>
+        <p>O cérebro técnico da operação. Ele é o rosto que garante a seriedade e o respeito do negócio perante os clientes e os juízes. A entrega do serviço é impecável.</p>
+      </div>
+      <div class="card-gradient">
+        <h3 style="font-size: 40px; margin-bottom: 10px;">EWERTON OLIVEIRA</h3>
+        <p class="tagline" style="font-size: 16px; margin-bottom: 20px;">O DIRETOR COMERCIAL & ESTRATÉGICO</p>
+        <p>Eu conheço o caminho prático. Desde 2022, já estruturei e escalei a captação de clientes para mais de 20 escritórios de advocacia no Brasil.</p>
+        <p>Minha função é organizar todo o setor de anúncios e vendas, garantindo que a nossa máquina traga novos contratos e gere lucro todos os meses com previsibilidade total.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 4: Oportunidade Segura (Light) -->
+  <div class="slide slide-light">
+    <div class="film-grain"></div>
+    <div class="logo-footer">
+      <svg><use href="#simbolo-rr"/></svg>
+      <span class="logo-footer-text">RIBEIRO RINALDI ADVOCACIA</span>
+    </div>
+    <div class="slide-number">04</div>
+    
+    <h2>Uma Demanda Urgente e <span class="highlight">Altamente Lucrativa</span></h2>
+    <div class="grid-3">
+      <div class="card">
+        <h3 style="font-size: 28px; margin-bottom: 20px;">O CLIENTE DESESPERADO</h3>
+        <p style="font-size: 24px;">O mercado de concursos tem milhares de candidatos sofrendo injustiças graves. É um cliente com pressa para assumir seu cargo, medo de perder a vaga e que depende emocionalmente de uma solução rápida.</p>
+      </div>
+      <div class="card">
+        <h3 style="font-size: 28px; margin-bottom: 20px; color: var(--rr-orange);">A DEMANDA COMPROVADA</h3>
+        <p style="font-size: 24px;">Com uma média de <strong>40.000 novas vagas abertas ao ano</strong> no país, litígios são constantes. No Google, ocorrem mais de 1.000 buscas mensais ativas por especialistas na área. Eles procuram, nós aparecemos.</p>
+      </div>
+      <div class="card">
+        <h3 style="font-size: 28px; margin-bottom: 20px;">SEGURANÇA & ESCALA</h3>
+        <p style="font-size: 22px;">Atendemos causas de "Direito Líquido e Certo". As vitórias são quase matemáticas e as <strong>peças processuais são padronizadas</strong>. O Dr. Paulo consegue absorver dezenas de clientes sem perder qualidade, permitindo escala real do negócio.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 5: A Captação (Dark) -->
+  <div class="slide">
+    <div class="film-grain"></div>
+    <div class="logo-footer">
+      <svg><use href="#simbolo-rr"/></svg>
+      <span class="logo-footer-text">RIBEIRO RINALDI ADVOCACIA</span>
+    </div>
+    <div class="slide-number">05</div>
+
+    <h2>A Nossa Estrutura de <span class="highlight">Atração de Clientes</span></h2>
+    <p style="max-width: 1200px; margin-bottom: 40px;">Nós não dependemos de boca a boca. Construímos uma linha de montagem previsível de novos contratos todos os dias.</p>
+    
+    <div class="grid-3">
+      <div class="card">
+        <div class="number-huge" style="font-size: 70px;">1. ANÚNCIOS</div>
+        <p>Publicidade focada. Nós aparecemos no celular de quem precisa de um advogado hoje.</p>
+      </div>
+      <div class="card">
+        <div class="number-huge" style="font-size: 70px;">2. PÁGINAS</div>
+        <p>Páginas desenhadas para mostrar nossa autoridade e fazer o cliente nos chamar imediatamente.</p>
+      </div>
+      <div class="card">
+        <div class="number-huge" style="font-size: 70px;">3. ATENDIMENTO</div>
+        <p>Um processo ágil. O ciclo entre o cliente nos conhecer e assinar o contrato é de <strong>no máximo 2 semanas</strong>.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 6: A Matemática (Light) -->
+  <div class="slide slide-light">
+    <div class="film-grain"></div>
+    <div class="logo-footer">
+      <svg><use href="#simbolo-rr"/></svg>
+      <span class="logo-footer-text">RIBEIRO RINALDI ADVOCACIA</span>
+    </div>
+    <div class="slide-number">06</div>
+
+    <h2>A Matemática da <span class="highlight">Lucratividade Segura</span></h2>
+    <p style="margin-bottom: 40px;">Nossas métricas já são validadas. Não há espaço para aventuras. É matemática simples.</p>
+    
+    <div class="grid-2">
+      <div>
+        <div class="card" style="margin-bottom: 30px; padding: 40px;">
+          <h3 style="font-size: 28px; color: var(--rr-text-dark); opacity: 0.7;">VALOR MÉDIO DO CONTRATO</h3>
+          <div class="number-huge" style="font-size: 90px;">R$ 3.000</div>
+        </div>
+      </div>
+      <div class="card" style="display: flex; flex-direction: column; justify-content: center;">
+        <h3 style="font-size: 28px; color: var(--rr-text-dark); opacity: 0.7;">CUSTO PARA TRAZER 1 CLIENTE</h3>
+        <div class="number-huge" style="font-size: 100px;">R$ 300</div>
+        <p style="font-size: 26px; margin-top: 10px;">
+          Com base na minha experiência, precisaremos gastar no máximo R$ 300 em anúncios por contrato.
+        </p>
+        <p style="font-size: 26px;">
+          Isso significa <strong>investir R$ 300 para gerar R$ 3.000 em dinheiro</strong>. A margem de segurança financeira do escritório é gigantesca.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 7: Projeção (Dark) -->
+  <div class="slide">
+    <div class="film-grain"></div>
+    <div class="logo-footer">
+      <svg><use href="#simbolo-rr"/></svg>
+      <span class="logo-footer-text">RIBEIRO RINALDI ADVOCACIA</span>
+    </div>
+    <div class="slide-number">07</div>
+
+    <h2>O Plano Consolidado dos <span class="highlight">Próximos Semestres</span></h2>
+    <p style="margin-bottom: 40px;">Esta é a progressão mínima esperada enquanto estabilizamos as campanhas com segurança financeira:</p>
+    
+    <div style="display: flex; justify-content: space-between; align-items: flex-end; height: 350px; padding-bottom: 30px; border-bottom: 2px solid var(--rr-line);">
+      <div style="text-align: center; width: 14%;">
+        <div style="background: var(--rr-panel-2); height: 60px; border-radius: 12px 12px 0 0; margin-bottom: 15px;"></div>
+        <h3 style="font-size: 36px;">3</h3><p style="font-size: 18px; margin:0;">MÊS 1</p>
+      </div>
+      <div style="text-align: center; width: 14%;">
+        <div style="background: var(--rr-panel-2); height: 100px; border-radius: 12px 12px 0 0; margin-bottom: 15px;"></div>
+        <h3 style="font-size: 36px;">5</h3><p style="font-size: 18px; margin:0;">MÊS 2</p>
+      </div>
+      <div style="text-align: center; width: 14%;">
+        <div style="background: var(--rr-orange); height: 140px; border-radius: 12px 12px 0 0; margin-bottom: 15px;"></div>
+        <h3 style="font-size: 36px; color: var(--rr-orange);">7</h3><p style="font-size: 18px; margin:0;">MÊS 3</p>
+      </div>
+      <div style="text-align: center; width: 14%;">
+        <div style="background: var(--rr-orange); height: 200px; border-radius: 12px 12px 0 0; margin-bottom: 15px;"></div>
+        <h3 style="font-size: 36px; color: var(--rr-orange);">10</h3><p style="font-size: 18px; margin:0;">MÊS 4</p>
+      </div>
+      <div style="text-align: center; width: 14%;">
+        <div style="background: var(--rr-gradient); height: 240px; border-radius: 12px 12px 0 0; margin-bottom: 15px;"></div>
+        <h3 style="font-size: 36px; color: var(--rr-text);">12</h3><p style="font-size: 18px; margin:0;">MÊS 5</p>
+      </div>
+      <div style="text-align: center; width: 14%;">
+        <div style="background: var(--rr-gradient); height: 300px; border-radius: 12px 12px 0 0; margin-bottom: 15px;"></div>
+        <h3 style="font-size: 36px; color: var(--rr-text);">15</h3><p style="font-size: 18px; margin:0;">MÊS 6</p>
+      </div>
+    </div>
+    
+    <div style="text-align: right; margin-top: 30px;">
+      <h3 style="font-size: 44px;">PROJEÇÃO TOTAL EM 6 MESES: <span class="highlight">52 CONTRATOS ASSINADOS</span></h3>
+    </div>
+  </div>
+
+  <!-- SLIDE 8: A Proposta (Light) -->
+  <div class="slide slide-light">
+    <div class="film-grain"></div>
+    <svg class="brand-watermark"><use href="#simbolo-rr"/></svg>
+    <div class="logo-footer">
+      <svg><use href="#simbolo-rr"/></svg>
+      <span class="logo-footer-text">RIBEIRO RINALDI ADVOCACIA</span>
+    </div>
+    <div class="slide-number">08</div>
+
+    <h2>O Investimento Inicial e a <span class="highlight">Certeza de Ganho</span></h2>
+    
+    <div class="grid-2">
+      <div class="card">
+        <h3 style="font-size: 36px; margin-bottom: 20px;">A PROPOSTA DE INVESTIMENTO</h3>
+        <div class="number-huge" style="font-size: 80px;">R$ 30.000</div>
+        <ul style="margin-top: 30px;">
+          <li><strong>R$ 20.000:</strong> Focado unicamente no pagamento dos anúncios (Google/Meta).</li>
+          <li><strong>R$ 10.000:</strong> Construção técnica, sistemas comerciais e minha atuação.</li>
+        </ul>
+      </div>
+      <div class="card" style="border: 3px solid var(--rr-orange);">
+        <h3 style="font-size: 36px; margin-bottom: 20px;">O RESULTADO DA PARCERIA</h3>
+        <div class="number-huge" style="font-size: 90px;">R$ 156.000</div>
+        <p style="margin-top: 10px; font-size: 26px;">Dinheiro novo em 6 meses <em>(52 clientes × R$ 3.000)</em>.</p>
+        <div class="badge" style="margin-top: 20px;">MULTIPLICAÇÃO DO APORTE EM 5 VEZES</div>
+        <p style="font-size: 20px; margin-top: 10px; opacity: 0.8;">
+          *Gastaremos apenas 15 mil reais para alcançar esse ganho. Os outros 5 mil ficam como fundo de proteção extra e gordura em caixa.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 9: Fechamento (Dark) -->
+  <div class="slide">
+    <div class="film-grain"></div>
+    <div class="logo-footer">
+      <svg><use href="#simbolo-rr"/></svg>
+      <span class="logo-footer-text">RIBEIRO RINALDI ADVOCACIA</span>
+    </div>
+    <div class="slide-number">09</div>
+    
+    <div style="text-align: center; max-width: 1400px; margin: 0 auto;">
+      <h2 style="font-size: 72px; margin-bottom: 50px;">Tudo Está <span class="highlight">Pronto para Iniciar</span></h2>
+      <p style="font-size: 36px; margin-bottom: 50px;">
+        O negócio já tem a autoridade, a demanda do mercado e todo o direcionamento comercial montado.<br><strong>Precisamos apenas do combustível financeiro para extrair esse lucro.</strong>
+      </p>
+      
+      <div class="grid-3" style="text-align: left;">
+        <div class="card" style="padding: 30px;">
+          <h3 style="font-size: 26px; margin-bottom: 10px;">PRÓXIMO PASSO</h3>
+          <p style="font-size: 22px;">Acertamos os últimos detalhes e a formalização do nosso acordo.</p>
+        </div>
+        <div class="card" style="padding: 30px;">
+          <h3 style="font-size: 26px; margin-bottom: 10px;">MÁQUINA NO AR</h3>
+          <p style="font-size: 22px;">Configuro todas as páginas e coloco nossos anúncios para funcionar na mesma semana.</p>
+        </div>
+        <div class="card-gradient" style="padding: 30px;">
+          <h3 style="font-size: 26px; margin-bottom: 10px;">O RETORNO RÁPIDO</h3>
+          <p style="font-size: 22px;">Como nosso ciclo é curto, os primeiros contratos e o dinheiro já entram no primeiro mês.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>
