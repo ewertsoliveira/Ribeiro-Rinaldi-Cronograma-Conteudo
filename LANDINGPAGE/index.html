@@ -3970,26 +3970,22 @@
     </script>
     <script>
       /* FIX PARA O BUG DE ESPAÇO EXTRA DO ZOOM NO CHROME */
-      function fixZoomScrollBug() {
-        if (window.innerWidth >= 1025) {
-          document.body.style.marginBottom = '0px';
-          // Force layout recalc
-          void document.body.offsetHeight;
-          const unzoomedHeight = document.body.offsetHeight;
-          // O zoom é 0.75, então o espaço extra que o Chrome deixa é 25% da altura real
-          document.body.style.marginBottom = `-${unzoomedHeight * 0.25}px`;
-        } else {
-          document.body.style.marginBottom = '0px';
-        }
-      }
-      window.addEventListener('load', () => {
-        fixZoomScrollBug();
-        setTimeout(fixZoomScrollBug, 500); // Garante que rode após GSAP e fontes
-      });
-      window.addEventListener('resize', fixZoomScrollBug);
-      // Hook no GSAP ScrollTrigger para recalcular caso a página mude de tamanho
-      if (typeof ScrollTrigger !== 'undefined') {
-        ScrollTrigger.addEventListener('refresh', fixZoomScrollBug);
+      if (window.innerWidth >= 1025) {
+        // Oculta a barra nativa para impedir que o usuário arraste além do limite permitido
+        const style = document.createElement('style');
+        style.innerHTML = '::-webkit-scrollbar { display: none; }';
+        document.head.appendChild(style);
+
+        // Intercepta a leitura da altura total do documento (scrollHeight).
+        // Como o Chrome calcula isso ignorando o zoom, nós aplicamos o fator de 0.75
+        // para que o Lenis e o GSAP saibam exatamente onde o rodapé real termina.
+        const originalScrollHeight = Object.getOwnPropertyDescriptor(Element.prototype, 'scrollHeight').get;
+        Object.defineProperty(document.documentElement, 'scrollHeight', {
+          get: function() {
+            const val = originalScrollHeight.call(this);
+            return val * 0.75; // Subtrai os 25% de buraco negro
+          }
+        });
       }
     </script>
 </body>
