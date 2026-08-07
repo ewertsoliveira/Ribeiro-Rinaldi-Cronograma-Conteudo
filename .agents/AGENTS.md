@@ -16,3 +16,12 @@
 
 3. **Arquivos de ConfiguraÃ§Ã£o da Raiz (ExceÃ§Ãµes):**
    - Apenas arquivos essenciais da infraestrutura da raiz (como `.nojekyll`, `.gitignore` e `index.html` de redirecionamento do GitHub Pages) podem residir na raiz.
+
+## Regras OAB
+
+- NUNCA utilize termos como 'análise grátis', 'avaliação gratuita', 'grátis' ou qualquer expressão que indique serviço jurídico sem custo. O Código de Ética da OAB veda a mercantilização e a captação indevida de clientela. Sempre substitua por termos neutros como 'análise preliminar', 'avaliação de viabilidade', 'estudo inicial do caso' ou 'análise sem compromisso'.
+
+## Regras de Imagem e Cargo (Paulo Rinaldi)
+
+- NUNCA inicie uma publicacao, bio ou capa de post chamando Paulo de 'Auditor do Estado' ou 'Auditor Fiscal'. Para evitar problemas com a OAB (carteirada), use sempre 'Advogado e Servidor Publico' nessas posicoes de destaque. A informacao de que ele e Auditor pode aparecer do segundo slide em diante ou no meio do texto, com sutileza.
+- NAO use o pronome de tratamento 'Dr.' (Doutor) antes do nome dele (ex: prefira 'Paulo Rinaldi' em vez de 'Dr. Paulo Rinaldi'), para gerar mais aproximacao e conexao com o publico.

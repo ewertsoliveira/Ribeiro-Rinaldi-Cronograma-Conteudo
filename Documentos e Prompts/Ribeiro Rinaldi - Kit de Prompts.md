@@ -181,7 +181,7 @@ Escreva o conteúdo da primeira dobra do site (impacto em 3s, estilo Apple) para
 - Eyebrow: "Advogado · Auditor do Estado"
 - Manchete Archivo gigante (com uma parte no gradiente laranja→magenta)
 - Subtítulo Manrope (1–2 linhas, sem juridiquês)
-- CTA primário ("Analisar meu caso grátis →") + microcopy ("resposta em 24h")
+- CTA primário ("Analisar viabilidade do meu caso →") + microcopy ("resposta em 24h")
 - Itens de nav enxutos
 Descreva também os efeitos disruptivos (manchete que monta, blob que respira,
 grafismo do check revelando no scroll).
