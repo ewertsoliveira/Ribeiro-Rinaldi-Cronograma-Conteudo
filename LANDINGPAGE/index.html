@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ribeiro Rinaldi Advocacia â€” Paulo Rinaldi | Advocacia EstratÃ©gica</title>
-  <meta name="description" content="Recurso de prova, verba retroativa, mandado de seguranÃ§a. Feito por quem jÃ¡ esteve do outro lado da prova â€” e sem juridiquÃªs.">
+  <title>Ribeiro Rinaldi Advocacia — Paulo Rinaldi | Advocacia Estratégica</title>
+  <meta name="description" content="Recurso de prova, verba retroativa, mandado de segurança. Feito por quem já esteve do outro lado da prova — e sem juridiquês.">
   
   <!-- Google Fonts: Archivo, Manrope, Space Mono -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -21,18 +21,18 @@
        1. DESIGN TOKENS & RESET (Design System Ribeiro Rinaldi)
        ========================================================================== */
     :root {
-      /* Cor de fundo principal calibrada dinamicamente com o fundo da sequÃªncia (#0A0A0C) */
+      /* Cor de fundo principal calibrada dinamicamente com o fundo da sequência (#0A0A0C) */
       --rr-bg: #0A0A0C;
-      --rr-bg-light: #F7F1E8;     /* creme â€” fundo alternativo/claro */
-      --rr-panel: #1E1712;        /* superfÃ­cie sobre o fundo escuro */
-      --rr-panel-2: #28201A;      /* superfÃ­cie alternativa */
-      --rr-line: #3A2E24;         /* bordas/divisÃ³rias */
+      --rr-bg-light: #F7F1E8;     /* creme — fundo alternativo/claro */
+      --rr-panel: #1E1712;        /* superfície sobre o fundo escuro */
+      --rr-panel-2: #28201A;      /* superfície alternativa */
+      --rr-line: #3A2E24;         /* bordas/divisórias */
       --rr-text: #F7F1E8;         /* texto sobre fundo escuro */
       --rr-text-dark: #17110D;    /* texto sobre fundo claro */
-      --rr-muted: #A79C90;        /* texto secundÃ¡rio */
-      --rr-orange: #FF5E1A;       /* cor primÃ¡ria / CTA */
+      --rr-muted: #A79C90;        /* texto secundário */
+      --rr-orange: #FF5E1A;       /* cor primária / CTA */
       --rr-coral: #FF8A5B;        /* tint do laranja, links/hover */
-      --rr-magenta: #F0247C;      /* cor secundÃ¡ria / gradiente */
+      --rr-magenta: #F0247C;      /* cor secundária / gradiente */
       --rr-amber: #FFB347;        /* apoio, realces pontuais */
       --rr-gradient: linear-gradient(100deg, var(--rr-orange), var(--rr-magenta));
 
@@ -41,7 +41,7 @@
       --rr-font-body: 'Manrope', system-ui, sans-serif;
       --rr-font-mono: 'Space Mono', ui-monospace, monospace;
 
-      /* Raio e espaÃ§amento */
+      /* Raio e espaçamento */
       --rr-radius-sm: 10px;
       --rr-radius-md: 16px;
       --rr-radius-lg: 20px;
@@ -87,12 +87,12 @@
     }
 
     @media (min-width: 1025px) {
-      /* 1. Aplica escala global de 75% no desktop (como desejado pelo usuÃ¡rio em zoom 75%) */
+      /* 1. Aplica escala global de 75% no desktop (como desejado pelo usuário em zoom 75%) */
       html {
         zoom: 0.75;
       }
-      /* 2. Compensa a reduÃ§Ã£o do zoom nos elementos fixados (ScrollTrigger pin e Film Grain) 
-            para que cubram 100% da largura e altura fÃ­sica da tela e evitem barras pretas/vazias */
+      /* 2. Compensa a redução do zoom nos elementos fixados (ScrollTrigger pin e Film Grain) 
+            para que cubram 100% da largura e altura física da tela e evitem barras pretas/vazias */
       .film-grain,
       .pin-spacer,
       #heroPinArea,
@@ -106,7 +106,7 @@
         height: calc(100vh / 0.75) !important;
         min-height: calc(100vh / 0.75) !important;
       }
-      /* 3. Ajuste preciso e equilibrado da coluna esquerda do Hero para igualar exatamente a imagem de referÃªncia */
+      /* 3. Ajuste preciso e equilibrado da coluna esquerda do Hero para igualar exatamente a imagem de referência */
       .hero-content-box {
         max-width: 560px !important;
         gap: 26px !important;
@@ -169,7 +169,7 @@
       background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
     }
 
-    /* Grafismo SÃ­mbolo Decorativo de Marca */
+    /* Grafismo Símbolo Decorativo de Marca */
     .brand-watermark {
       position: absolute;
       right: -6%;
@@ -183,7 +183,7 @@
     }
 
     /* ==========================================================================
-       3. TOP NAVEGAÃ‡ÃƒO
+       3. TOP NAVEGAÇÃO
        ========================================================================== */
     .navbar {
       position: absolute;
@@ -275,7 +275,7 @@
     }
 
     /* ==========================================================================
-       4. HERO SECTION COM SEQUÃŠNCIA DE IMAGENS NO CANVAS (60/120 FPS)
+       4. HERO SECTION COM SEQUÊNCIA DE IMAGENS NO CANVAS (60/120 FPS)
        ========================================================================== */
     .hero-wrapper {
       position: relative;
@@ -288,7 +288,7 @@
       overflow: hidden;
     }
 
-    /* CAMADA DE BACKGROUND: CANVAS OCUPANDO 100% DA SEÃ‡ÃƒO HERO SEM OVERLAY ESCURO */
+    /* CAMADA DE BACKGROUND: CANVAS OCUPANDO 100% DA SEÇÃO HERO SEM OVERLAY ESCURO */
     .hero-bg-video-container {
       position: absolute;
       top: 0;
@@ -308,7 +308,7 @@
       display: block;
     }
 
-    /* Overlay de contraste temporÃ¡rio sobre o fundo no mobile */
+    /* Overlay de contraste temporário sobre o fundo no mobile */
     .hero-bg-overlay {
       position: absolute;
       inset: 0;
@@ -320,12 +320,12 @@
       opacity: 0;
     }
 
-    /* Efeito de Brilho difuso de Luz Ambiente removido a pedido do usuÃ¡rio para visual mais limpo */
+    /* Efeito de Brilho difuso de Luz Ambiente removido a pedido do usuário para visual mais limpo */
     .hero-ambient-glow {
       display: none;
     }
 
-    /* CONTEÃšDO HERO FLUTUANDO SOBRE A SEQUÃŠNCIA DE FUNDO */
+    /* CONTEÚDO HERO FLUTUANDO SOBRE A SEQUÊNCIA DE FUNDO */
     .hero-container {
       position: relative;
       z-index: 5;
@@ -428,7 +428,7 @@
       font-weight: 700;
     }
 
-    /* BotÃµes CTA e Redutor de Atrito */
+    /* Botões CTA e Redutor de Atrito */
     .hero-actions {
       display: flex;
       flex-direction: column;
@@ -457,7 +457,7 @@
       }
     }
 
-    /* BotÃ£o PrimÃ¡rio com Anel de Pulso Animado */
+    /* Botão Primário com Anel de Pulso Animado */
     .btn-pulse-wrapper {
       position: relative;
       display: inline-flex;
@@ -594,7 +594,7 @@
       letter-spacing: 0.02em;
     }
 
-    /* OtimizaÃ§Ã£o para telas de altura reduzida (ex: laptops pequenos ou janelas curtas) */
+    /* Otimização para telas de altura reduzida (ex: laptops pequenos ou janelas curtas) */
     @media (max-height: 750px) {
       .hero-container {
         padding-top: clamp(24px, 4.5vw, 48px);
@@ -674,7 +674,7 @@
       }
     }
 
-    /* EspaÃ§ador pÃ³s-hero / Trust Bar Modelo 4 (TermÃ´metro de UrgÃªncia e Prazos) */
+    /* Espaçador pós-hero / Trust Bar Modelo 4 (Termômetro de Urgência e Prazos) */
     .post-hero-spacer {
       position: relative;
       width: 100%;
@@ -777,7 +777,7 @@
     }
 
     /* ==========================================================================
-       5. SEÃ‡ÃƒO GENÃ‰RICA SUBSEQUENTE (PARA VISUALIZAR A TRANSIÃ‡ÃƒO E FIM DO PARALLAX)
+       5. SEÇÃO GENÉRICA SUBSEQUENTE (PARA VISUALIZAR A TRANSIÇÃO E FIM DO PARALLAX)
        ========================================================================== */
     .generic-section {
       position: relative;
@@ -942,7 +942,7 @@
     }
 
     /* ==========================================================================
-       SEÃ‡ÃƒO 2: ABORDAGEM 3 (DESKTOP) + ABORDAGEM 2 (MOBILE/TABLET)
+       SEÇÃO 2: ABORDAGEM 3 (DESKTOP) + ABORDAGEM 2 (MOBILE/TABLET)
        ========================================================================== */
     
     /* DESKTOP VIEW: Command Center Table + Showcase (Abordagem 3) */
@@ -1368,7 +1368,7 @@
     }
 
     /* ==========================================================================
-       6. RESPONSIVIDADE (< 880px e < 900px conforme solicitaÃ§Ãµes e Design System)
+       6. RESPONSIVIDADE (< 880px e < 900px conforme solicitações e Design System)
        ========================================================================== */
     @media (max-width: 880px) {
       .navbar {
@@ -1435,7 +1435,7 @@
     }
 
     /* ==========================================================================
-       7. ESTILOS SEÃ‡ÃƒO QUEM SOMOS (HÃBRIDO: OPÃ‡ÃƒO 2 DESKTOP / OPÃ‡ÃƒO 1 MOBILE)
+       7. ESTILOS SEÇÃO QUEM SOMOS (HÍBRIDO: OPÇÃO 2 DESKTOP / OPÇÃO 1 MOBILE)
        ========================================================================== */
     .about-section {
       position: relative;
@@ -1490,7 +1490,7 @@
     }
 
     /* ==========================================================================
-       ESTILOS DESKTOP â€” OPÃ‡ÃƒO 2: CARD MONUMENTAL
+       ESTILOS DESKTOP — OPÇÃO 2: CARD MONUMENTAL
        ========================================================================== */
     .monumental-card {
       background: var(--rr-panel);
@@ -1618,7 +1618,7 @@
     }
 
     /* ==========================================================================
-       ESTILOS MOBILE/TABLET â€” QUADRO MONUMENTAL (EXATAMENTE A OPÃ‡ÃƒO 2)
+       ESTILOS MOBILE/TABLET — QUADRO MONUMENTAL (EXATAMENTE A OPÇÃO 2)
        ========================================================================== */
     .monumental-card--mobile {
       grid-template-columns: 1fr;
@@ -1802,7 +1802,7 @@
     }
 
     /* ==========================================================================
-       8. ESTILOS SEÃ‡ÃƒO METODOLOGIA â€” VERSÃƒO 3: CONTRASTE INVERTIDO MONUMENTAL
+       8. ESTILOS SEÇÃO METODOLOGIA — VERSÃO 3: CONTRASTE INVERTIDO MONUMENTAL
        ========================================================================== */
     .method-section {
       position: relative;
@@ -1922,7 +1922,7 @@
       box-shadow: 0 0 24px var(--rr-orange);
     }
 
-    /* Card de ConteÃºdo do CapÃ­tulo/Fase (Escuro flutuando sobre o fundo claro!) */
+    /* Card de Conteúdo do Capítulo/Fase (Escuro flutuando sobre o fundo claro!) */
     .journey-card {
       background: var(--rr-panel);
       border: 1px solid rgba(255, 255, 255, 0.12);
@@ -1997,7 +1997,7 @@
     }
 
     /* ==========================================================================
-       RESPONSIVO â€” LINHA DO TEMPO VERTICAL NO MOBILE / TABLET (<= 960px)
+       RESPONSIVO — LINHA DO TEMPO VERTICAL NO MOBILE / TABLET (<= 960px)
        ========================================================================== */
     @media (max-width: 960px) {
       .journey-line {
@@ -2024,7 +2024,7 @@
     }
 
     /* ==========================================================================
-       9. ESTILOS SEÃ‡ÃƒO FAQ â€” PROPOSTA MESCLADA SUPREMA (GLOW + GRID + AURORAS + ÃNDICES)
+       9. ESTILOS SEÇÃO FAQ — PROPOSTA MESCLADA SUPREMA (GLOW + GRID + AURORAS + ÍNDICES)
        ========================================================================== */
     .faq-section {
       position: relative;
@@ -2177,7 +2177,7 @@
       transition: max-height 0.45s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
-    /* ConteÃºdo da sanfona perfeitamente alinhado abaixo da pergunta */
+    /* Conteúdo da sanfona perfeitamente alinhado abaixo da pergunta */
     .faq-content-inner {
       padding: 0 30px 32px 75px;
       color: #D2C7BC;
@@ -2199,7 +2199,7 @@
       }
     }
 
-    /* Painel Plantonista WhatsApp (Sticky na Coluna Direita) - EstÃ©tica de Luxo */
+    /* Painel Plantonista WhatsApp (Sticky na Coluna Direita) - Estética de Luxo */
     .faq-sidebar-card {
       position: sticky;
       top: 120px;
@@ -2285,7 +2285,7 @@
     }
 
     /* ==========================================================================
-       10. ESTILOS CTA FINAL & RODAPÃ‰ DEFINITIVO
+       10. ESTILOS CTA FINAL & RODAPÉ DEFINITIVO
        ========================================================================== */
     .cta-final-section {
       padding: clamp(60px, 8vw, 120px) clamp(20px, 4vw, 40px) clamp(40px, 6vw, 80px);
@@ -2294,7 +2294,7 @@
       z-index: 10;
     }
 
-    /* SeÃ§Ã£o CTA Final - OpÃ§Ã£o 1: Cobre Queimado Imperial & Gabarito Ã“ptico */
+    /* Seção CTA Final - Opção 1: Cobre Queimado Imperial & Gabarito Óptico */
     .cta-final-box {
       max-width: 1320px;
       margin: 0 auto;
@@ -2501,7 +2501,7 @@
   <!-- Film Grain global -->
   <div class="film-grain" aria-hidden="true"></div>
 
-  <!-- SÃ­mbolo Grafismo Decorativo sangrando no canto -->
+  <!-- Símbolo Grafismo Decorativo sangrando no canto -->
   <svg class="brand-watermark" viewBox="0 0 120 120" aria-hidden="true">
     <defs>
       <linearGradient id="rrGradWatermark" x1="0" y1="1" x2="1" y2="0">
@@ -2516,7 +2516,7 @@
   <!-- Top Navigation -->
   <header class="navbar">
     <a href="#" class="brand-logo" aria-label="Ribeiro Rinaldi Advocacia">
-      <!-- ComposiÃ§Ã£o A: SÃ­mbolo Ã  ESQUERDA do nome -->
+      <!-- Composição A: Símbolo à ESQUERDA do nome -->
       <svg viewBox="0 0 120 120" style="overflow:visible;">
         <defs>
           <linearGradient id="rrGradLogo" x1="0" y1="1" x2="1" y2="0">
@@ -2532,23 +2532,23 @@
 
   </header>
 
-  <!-- Hero Section com SEQUÃŠNCIA DE IMAGENS NO CANVAS (Pin Target) -->
+  <!-- Hero Section com SEQUÊNCIA DE IMAGENS NO CANVAS (Pin Target) -->
   <main class="hero-wrapper" id="heroPinArea">
     
-    <!-- CANVAS DE FUNDO ULTRA-PERFORMÃTICO (60/120 FPS) -->
+    <!-- CANVAS DE FUNDO ULTRA-PERFORMÁTICO (60/120 FPS) -->
     <div class="hero-bg-video-container" aria-hidden="true">
       <canvas id="heroCanvas" class="hero-bg-canvas"></canvas>
       <div class="hero-bg-overlay"></div>
     </div>
 
-    <!-- Efeito difuso de brilho laranja no canto da pÃ¡gina -->
+    <!-- Efeito difuso de brilho laranja no canto da página -->
     <div class="hero-ambient-glow" aria-hidden="true"></div>
 
-    <!-- ConteÃºdo Hero flutuando sobre o Background -->
+    <!-- Conteúdo Hero flutuando sobre o Background -->
     <section class="hero-container">
       <div class="hero-content-box">
         
-        <h1 class="hero-headline" aria-label="Seu nome na lista. Sua vaga na mÃ£o.">
+        <h1 class="hero-headline" aria-label="Seu nome na lista. Sua vaga na mão.">
           <span class="headline-line" id="headlineLine1">
             <span class="word">SEU</span>
             <span class="word">NOME</span>
@@ -2563,34 +2563,34 @@
             <span class="word">NA</span>
           </span>
           <span class="headline-line orange-text" id="headlineLine4">
-            <span class="word">MÃƒO.</span>
+            <span class="word">MÃO.</span>
           </span>
         </h1>
 
-        <!-- ParÃ¡grafo de Apoio (Foco 100% Concurseiros) -->
+        <!-- Parágrafo de Apoio (Foco 100% Concurseiros) -->
         <p class="hero-subtitle">
-          Recurso de prova, anulaÃ§Ã£o de questÃµes e mandado de seguranÃ§a para convocaÃ§Ãµes. <strong>Defesa jurÃ­dica feita por quem jÃ¡ esteve do outro lado da prova</strong> â€” sem juridiquÃªs e com tÃ¡tica de bastidor.
+          Recurso de prova, anulação de questões e mandado de segurança para convocações. <strong>Defesa jurídica feita por quem já esteve do outro lado da prova</strong> — sem juridiquês e com tática de bastidor.
         </p>
 
-        <!-- AÃ§Ã£o Ãšnica + Redutor de Atrito -->
+        <!-- Ação Única + Redutor de Atrito -->
         <div class="hero-actions">
           <div class="btn-pulse-wrapper">
             <span class="btn-pulse-ring"></span>
             <a href="https://wa.me/5592994401600" target="_blank" rel="noopener noreferrer" class="btn-primary">
               <span>Falar no WhatsApp agora</span>
-              <span aria-hidden="true">â†’</span>
+              <span aria-hidden="true">→</span>
             </a>
           </div>
         </div>
 
-        <!-- Detalhe Paulo Rinaldi + OAB/SC + DenominaÃ§Ã£o -->
+        <!-- Detalhe Paulo Rinaldi + OAB/SC + Denominação -->
         <div class="hero-lawyer-badge">
           <div class="lawyer-info">
             <div class="lawyer-top-row">
               <span class="lawyer-name">Paulo Rinaldi</span>
-              <span class="lawyer-oab">â€” OAB/SC 78.309</span>
+              <span class="lawyer-oab">— OAB/SC 78.309</span>
             </div>
-            <span class="lawyer-role">Advogado e Servidor PÃºblico</span>
+            <span class="lawyer-role">Advogado e Servidor Público</span>
           </div>
         </div>
 
@@ -2606,136 +2606,136 @@
     </div>
   </main>
 
-  <!-- RodapÃ© da SeÃ§Ã£o Hero / Trust Bar Modelo 4 (TermÃ´metro de UrgÃªncia & Prazos) -->
+  <!-- Rodapé da Seção Hero / Trust Bar Modelo 4 (Termômetro de Urgência & Prazos) -->
   <footer class="post-hero-spacer">
     <div class="urgency-bar-container">
       <div class="urgency-badge">
-        <span>ðŸš¨ ALERTA DE PRAZO</span>
+        <span>🚨 ALERTA DE PRAZO</span>
       </div>
       <div class="urgency-content">
-        <h4>Em concursos pÃºblicos, <span>cada dia conta</span>. Quanto antes analisarmos a sua eliminaÃ§Ã£o ou recurso, maiores sÃ£o as chances de garantir a sua posse no cargo.</h4>
+        <h4>Em concursos públicos, <span>cada dia conta</span>. Quanto antes analisarmos a sua eliminação ou recurso, maiores são as chances de garantir a sua posse no cargo.</h4>
       </div>
       <a href="https://wa.me/5592994401600" target="_blank" rel="noopener noreferrer" class="urgency-btn">
         <span>Verificar meu prazo agora</span>
-        <span>â†’</span>
+        <span>→</span>
       </a>
     </div>
   </footer>
 
   <!-- ==========================================================================
-       5. SEÃ‡ÃƒO 2: IDENTIFICAÃ‡ÃƒO DE DORES & AS 5 MACRO-ÃREAS (CONCURSEIROS)
+       5. SEÇÃO 2: IDENTIFICAÇÃO DE DORES & AS 5 MACRO-ÁREAS (CONCURSEIROS)
        ========================================================================== -->
   <section class="generic-section" id="ajuda">
     <div class="generic-container">
       
-      <!-- CabeÃ§alho da SeÃ§Ã£o -->
+      <!-- Cabeçalho da Seção -->
       <div class="generic-header" style="max-width: 860px;">
         <div class="eyebrow-pill">
           <span class="eyebrow-dot"></span>
-          <span>A injustiÃ§a nÃ£o pode vencer o seu esforÃ§o</span>
+          <span>A injustiça não pode vencer o seu esforço</span>
         </div>
         <h2 class="generic-title">
-          Anos de estudo nÃ£o podem ser perdidos por um erro arbitrÃ¡rio da banca.
+          Anos de estudo não podem ser perdidos por um erro arbitrário da banca.
         </h2>
         <p class="generic-subtitle">
-          VocÃª abdicou de fins de semana, investiu tempo, dinheiro e saÃºde mental para conquistar a aprovaÃ§Ã£o. Quando a vaga finalmente estÃ¡ ao seu alcance, uma decisÃ£o abusiva tenta tirar o seu direito. <strong>Selecione ou toque em cada Ã¡rea abaixo para explorar os detalhes tÃ©cnicos da nossa defesa.</strong>
+          Você abdicou de fins de semana, investiu tempo, dinheiro e saúde mental para conquistar a aprovação. Quando a vaga finalmente está ao seu alcance, uma decisão abusiva tenta tirar o seu direito. <strong>Selecione ou toque em cada área abaixo para explorar os detalhes técnicos da nossa defesa.</strong>
         </p>
       </div>
 
       <!-- DESKTOP VIEW: Tabela de Comando Interativa + Vitrine da Dor (Abordagem 3) -->
       <div class="command-center-layout">
         
-        <!-- Lista de Comando Ã  Esquerda -->
+        <!-- Lista de Comando à Esquerda -->
         <div class="command-nav-list" role="tablist">
           <div class="command-nav-item active" data-target="showcase-view-1" role="tab" aria-selected="true">
             <div class="command-nav-left">
               <span class="command-num">01</span>
               <span class="command-title">Provas Escritas & Discursivas</span>
             </div>
-            <span class="command-arrow">â†’</span>
+            <span class="command-arrow">→</span>
           </div>
 
           <div class="command-nav-item" data-target="showcase-view-2" role="tab" aria-selected="false">
             <div class="command-nav-left">
               <span class="command-num">02</span>
-              <span class="command-title">Exames EliminatÃ³rios (TAF/MÃ©dico)</span>
+              <span class="command-title">Exames Eliminatórios (TAF/Médico)</span>
             </div>
-            <span class="command-arrow">â†’</span>
+            <span class="command-arrow">→</span>
           </div>
 
           <div class="command-nav-item" data-target="showcase-view-3" role="tab" aria-selected="false">
             <div class="command-nav-left">
               <span class="command-num">03</span>
-              <span class="command-title">Cotas Raciais, HeteroidentificaÃ§Ã£o & PcD</span>
+              <span class="command-title">Cotas Raciais, Heteroidentificação & PcD</span>
             </div>
-            <span class="command-arrow">â†’</span>
+            <span class="command-arrow">→</span>
           </div>
 
           <div class="command-nav-item" data-target="showcase-view-4" role="tab" aria-selected="false">
             <div class="command-nav-left">
               <span class="command-num">04</span>
-              <span class="command-title">Prova de TÃ­tulos, Idade & HistÃ³rico</span>
+              <span class="command-title">Prova de Títulos, Idade & Histórico</span>
             </div>
-            <span class="command-arrow">â†’</span>
+            <span class="command-arrow">→</span>
           </div>
 
           <div class="command-nav-item" data-target="showcase-view-5" role="tab" aria-selected="false" style="border: 1px solid var(--rr-orange);">
             <div class="command-nav-left">
               <span class="command-num" style="color: #F0247C;">05</span>
-              <span class="command-title">PreteriÃ§Ã£o na NomeaÃ§Ã£o (VocÃª Passou?)</span>
+              <span class="command-title">Preterição na Nomeação (Você Passou?)</span>
             </div>
-            <span class="command-arrow" style="color: var(--rr-orange);">â˜… â†’</span>
+            <span class="command-arrow" style="color: var(--rr-orange);">★ →</span>
           </div>
         </div>
 
-        <!-- Painel Vitrine Ã  Direita -->
+        <!-- Painel Vitrine à Direita -->
         <div class="command-showcase-panel">
           <div class="showcase-view active" id="showcase-view-1">
             <img src="assets/images/KF_GABARITO_16x9.webp" alt="Gabarito e prova escrita" class="showcase-bg" loading="lazy">
             <div class="showcase-overlay"></div>
             <div class="showcase-content">
               <span class="showcase-badge">PROVAS ESCRITAS & DISCURSIVA</span>
-              <h3 class="showcase-title">AnulaÃ§Ã£o de QuestÃµes & Prova Discursiva</h3>
+              <h3 class="showcase-title">Anulação de Questões & Prova Discursiva</h3>
               <p class="showcase-desc">
-                A banca cobrou conteÃºdo fora do edital, manteve questÃµes com dupla resposta ou tirou pontos cruciais na sua redaÃ§Ã£o, discursiva ou prova oral ignorando critÃ©rios objetivos e o prÃ³prio espelho de correÃ§Ã£o.
+                A banca cobrou conteúdo fora do edital, manteve questões com dupla resposta ou tirou pontos cruciais na sua redação, discursiva ou prova oral ignorando critérios objetivos e o próprio espelho de correção.
               </p>
               <div class="showcase-tags">
                 <span class="showcase-tag">Gabarito Errado</span>
                 <span class="showcase-tag">Fora do Edital</span>
-                <span class="showcase-tag">RedaÃ§Ã£o / Discursiva</span>
+                <span class="showcase-tag">Redação / Discursiva</span>
                 <span class="showcase-tag">Prova Oral</span>
               </div>
             </div>
           </div>
 
           <div class="showcase-view" id="showcase-view-2">
-            <img src="assets/images/card_taf.webp" alt="Teste de AptidÃ£o FÃ­sica TAF" class="showcase-bg" style="object-position: center 25%;" loading="lazy">
+            <img src="assets/images/card_taf.webp" alt="Teste de Aptidão Física TAF" class="showcase-bg" style="object-position: center 25%;" loading="lazy">
             <div class="showcase-overlay"></div>
             <div class="showcase-content">
-              <span class="showcase-badge">EXAMES ELIMINATÃ“RIOS</span>
-              <h3 class="showcase-title">TAF, Exame MÃ©dico & PsicotÃ©cnico</h3>
+              <span class="showcase-badge">EXAMES ELIMINATÓRIOS</span>
+              <h3 class="showcase-title">TAF, Exame Médico & Psicotécnico</h3>
               <p class="showcase-desc">
-                ReprovaÃ§Ãµes baseadas em contagem errada no teste fÃ­sico, laudos mÃ©dicos genÃ©ricos para condiÃ§Ãµes que nÃ£o impedem o exercÃ­cio do cargo ou testes psicolÃ³gicos subjetivos e sem transparÃªncia cientÃ­fica.
+                Reprovações baseadas em contagem errada no teste físico, laudos médicos genéricos para condições que não impedem o exercício do cargo ou testes psicológicos subjetivos e sem transparência científica.
               </p>
               <div class="showcase-tags">
-                <span class="showcase-tag">Teste FÃ­sico (TAF)</span>
-                <span class="showcase-tag">Exame MÃ©dico</span>
-                <span class="showcase-tag">PsicotÃ©cnico</span>
+                <span class="showcase-tag">Teste Físico (TAF)</span>
+                <span class="showcase-tag">Exame Médico</span>
+                <span class="showcase-tag">Psicotécnico</span>
               </div>
             </div>
           </div>
 
           <div class="showcase-view" id="showcase-view-3">
-            <img src="assets/images/card_cotas.webp" alt="HeteroidentificaÃ§Ã£o e Cotas" class="showcase-bg" style="object-position: center 20%;" loading="lazy">
+            <img src="assets/images/card_cotas.webp" alt="Heteroidentificação e Cotas" class="showcase-bg" style="object-position: center 20%;" loading="lazy">
             <div class="showcase-overlay"></div>
             <div class="showcase-content">
               <span class="showcase-badge">COTAS & RESERVA DE VAGAS</span>
-              <h3 class="showcase-title">HeteroidentificaÃ§Ã£o, Cotas Raciais & PcD</h3>
+              <h3 class="showcase-title">Heteroidentificação, Cotas Raciais & PcD</h3>
               <p class="showcase-desc">
-                ExclusÃ£o injusta na banca de heteroidentificaÃ§Ã£o por critÃ©rios visuais arbitrÃ¡rios que desconsideram sua autodeclaraÃ§Ã£o, ou desclassificaÃ§Ã£o indevida de candidatos PcD por avaliaÃ§Ãµes biopsicossociais superficiais.
+                Exclusão injusta na banca de heteroidentificação por critérios visuais arbitrários que desconsideram sua autodeclaração, ou desclassificação indevida de candidatos PcD por avaliações biopsicossociais superficiais.
               </p>
               <div class="showcase-tags">
-                <span class="showcase-tag">HeteroidentificaÃ§Ã£o</span>
+                <span class="showcase-tag">Heteroidentificação</span>
                 <span class="showcase-tag">Cotas Raciais</span>
                 <span class="showcase-tag">Vagas PcD</span>
               </div>
@@ -2743,33 +2743,33 @@
           </div>
 
           <div class="showcase-view" id="showcase-view-4">
-            <img src="assets/images/card_titulos.webp" alt="Diploma e TÃ­tulos" class="showcase-bg" style="object-position: center 30%;" loading="lazy">
+            <img src="assets/images/card_titulos.webp" alt="Diploma e Títulos" class="showcase-bg" style="object-position: center 30%;" loading="lazy">
             <div class="showcase-overlay"></div>
             <div class="showcase-content">
-              <span class="showcase-badge">REQUISITOS & HISTÃ“RICO</span>
-              <h3 class="showcase-title">Prova de TÃ­tulos, Idade & Vida Pregressa</h3>
+              <span class="showcase-badge">REQUISITOS & HISTÓRICO</span>
+              <h3 class="showcase-title">Prova de Títulos, Idade & Vida Pregressa</h3>
               <p class="showcase-desc">
-                Pontos de diplomas e certificados ignorados na avaliaÃ§Ã£o de tÃ­tulos, eliminaÃ§Ã£o na investigaÃ§Ã£o social por fatos irrelevantes da vida privada ou exigÃªncias desproporcionais de limite de idade no edital.
+                Pontos de diplomas e certificados ignorados na avaliação de títulos, eliminação na investigação social por fatos irrelevantes da vida privada ou exigências desproporcionais de limite de idade no edital.
               </p>
               <div class="showcase-tags">
-                <span class="showcase-tag">Prova de TÃ­tulos</span>
-                <span class="showcase-tag">InvestigaÃ§Ã£o Social</span>
+                <span class="showcase-tag">Prova de Títulos</span>
+                <span class="showcase-tag">Investigação Social</span>
                 <span class="showcase-tag">Limite de Idade</span>
               </div>
             </div>
           </div>
 
           <div class="showcase-view" id="showcase-view-5">
-            <img src="assets/images/KF_ASSINADO_16x9.webp" alt="Ato de NomeaÃ§Ã£o e Mandado de SeguranÃ§a" class="showcase-bg" loading="lazy">
+            <img src="assets/images/KF_ASSINADO_16x9.webp" alt="Ato de Nomeação e Mandado de Segurança" class="showcase-bg" loading="lazy">
             <div class="showcase-overlay" style="background: linear-gradient(180deg, rgba(21, 15, 11, 0.3) 0%, rgba(21, 15, 11, 0.72) 48%, rgba(21, 15, 11, 0.98) 95%);"></div>
             <div class="showcase-content">
-              <span class="showcase-badge" style="background: #F0247C;">AÃ‡ÃƒO DE DESTAQUE JUDICIAL</span>
-              <h3 class="showcase-title" style="color: var(--rr-orange);">PreteriÃ§Ã£o na NomeaÃ§Ã£o: VocÃª Passou e NÃ£o Foi Chamado?</h3>
+              <span class="showcase-badge" style="background: #F0247C;">AÇÃO DE DESTAQUE JUDICIAL</span>
+              <h3 class="showcase-title" style="color: var(--rr-orange);">Preterição na Nomeação: Você Passou e Não Foi Chamado?</h3>
               <p class="showcase-desc">
-                VocÃª foi aprovado dentro das vagas (ou no cadastro reserva com contrataÃ§Ã£o ilegal de temporÃ¡rios no seu lugar) e a administraÃ§Ã£o burla a ordem ou deixa o prazo expirar. Entramos com medida judicial rÃ¡pida para garantir a sua nomeaÃ§Ã£o.
+                Você foi aprovado dentro das vagas (ou no cadastro reserva com contratação ilegal de temporários no seu lugar) e a administração burla a ordem ou deixa o prazo expirar. Entramos com medida judicial rápida para garantir a sua nomeação.
               </p>
               <div class="showcase-tags">
-                <span class="showcase-tag" style="border-color: var(--rr-orange); color: #FFF;">Mandado de SeguranÃ§a</span>
+                <span class="showcase-tag" style="border-color: var(--rr-orange); color: #FFF;">Mandado de Segurança</span>
                 <span class="showcase-tag">Aprovado Dentro das Vagas</span>
                 <span class="showcase-tag">Cadastro Reserva</span>
                 <span class="showcase-tag">Prazo Expirando</span>
@@ -2799,14 +2799,14 @@
               <span class="panel-tag" style="background: rgba(255, 94, 26, 0.25); border-color: var(--rr-orange);">PROVAS ESCRITAS & DISCURSIVA</span>
             </div>
             <div>
-              <h3 class="panel-title">AnulaÃ§Ã£o de QuestÃµes & Prova Discursiva</h3>
+              <h3 class="panel-title">Anulação de Questões & Prova Discursiva</h3>
               <p class="panel-desc">
-                A banca cobrou conteÃºdo fora do edital, manteve questÃµes com dupla resposta ou tirou pontos cruciais na sua redaÃ§Ã£o, discursiva ou prova oral ignorando critÃ©rios objetivos e o prÃ³prio espelho de correÃ§Ã£o.
+                A banca cobrou conteúdo fora do edital, manteve questões com dupla resposta ou tirou pontos cruciais na sua redação, discursiva ou prova oral ignorando critérios objetivos e o próprio espelho de correção.
               </p>
               <div class="panel-tags">
                 <span class="panel-tag">Gabarito Errado</span>
                 <span class="panel-tag">Fora do Edital</span>
-                <span class="panel-tag">RedaÃ§Ã£o / Discursiva</span>
+                <span class="panel-tag">Redação / Discursiva</span>
                 <span class="panel-tag">Prova Oral</span>
               </div>
             </div>
@@ -2815,28 +2815,28 @@
 
         <!-- Panel 02 -->
         <div class="accordion-panel">
-          <img src="assets/images/card_taf.webp" alt="Teste de AptidÃ£o FÃ­sica TAF" class="panel-bg" style="object-position: center 25%;" loading="lazy">
+          <img src="assets/images/card_taf.webp" alt="Teste de Aptidão Física TAF" class="panel-bg" style="object-position: center 25%;" loading="lazy">
           <div class="panel-overlay"></div>
           
           <div class="panel-collapsed-view">
             <span class="panel-collapsed-num">02</span>
-            <span class="panel-collapsed-title">Exames EliminatÃ³rios</span>
+            <span class="panel-collapsed-title">Exames Eliminatórios</span>
           </div>
 
           <div class="panel-expanded-view">
             <div class="panel-top">
               <span class="panel-num">02</span>
-              <span class="panel-tag">EXAMES ELIMINATÃ“RIOS</span>
+              <span class="panel-tag">EXAMES ELIMINATÓRIOS</span>
             </div>
             <div>
-              <h3 class="panel-title">TAF, Exame MÃ©dico & PsicotÃ©cnico</h3>
+              <h3 class="panel-title">TAF, Exame Médico & Psicotécnico</h3>
               <p class="panel-desc">
-                ReprovaÃ§Ãµes baseadas em contagem errada no teste fÃ­sico, laudos mÃ©dicos genÃ©ricos para condiÃ§Ãµes que nÃ£o impedem o exercÃ­cio do cargo ou testes psicolÃ³gicos subjetivos e sem transparÃªncia cientÃ­fica.
+                Reprovações baseadas em contagem errada no teste físico, laudos médicos genéricos para condições que não impedem o exercício do cargo ou testes psicológicos subjetivos e sem transparência científica.
               </p>
               <div class="panel-tags">
-                <span class="panel-tag">Teste FÃ­sico (TAF)</span>
-                <span class="panel-tag">Exame MÃ©dico</span>
-                <span class="panel-tag">PsicotÃ©cnico</span>
+                <span class="panel-tag">Teste Físico (TAF)</span>
+                <span class="panel-tag">Exame Médico</span>
+                <span class="panel-tag">Psicotécnico</span>
               </div>
             </div>
           </div>
@@ -2844,7 +2844,7 @@
 
         <!-- Panel 03 -->
         <div class="accordion-panel">
-          <img src="assets/images/card_cotas.webp" alt="HeteroidentificaÃ§Ã£o e Cotas" class="panel-bg" style="object-position: center 20%;" loading="lazy">
+          <img src="assets/images/card_cotas.webp" alt="Heteroidentificação e Cotas" class="panel-bg" style="object-position: center 20%;" loading="lazy">
           <div class="panel-overlay"></div>
           
           <div class="panel-collapsed-view">
@@ -2858,12 +2858,12 @@
               <span class="panel-tag">COTAS & RESERVA DE VAGAS</span>
             </div>
             <div>
-              <h3 class="panel-title">HeteroidentificaÃ§Ã£o, Cotas Raciais & PcD</h3>
+              <h3 class="panel-title">Heteroidentificação, Cotas Raciais & PcD</h3>
               <p class="panel-desc">
-                ExclusÃ£o injusta na banca de heteroidentificaÃ§Ã£o por critÃ©rios visuais arbitrÃ¡rios que desconsideram sua autodeclaraÃ§Ã£o, ou desclassificaÃ§Ã£o indevida de candidatos PcD por avaliaÃ§Ãµes biopsicossociais superficiais.
+                Exclusão injusta na banca de heteroidentificação por critérios visuais arbitrários que desconsideram sua autodeclaração, ou desclassificação indevida de candidatos PcD por avaliações biopsicossociais superficiais.
               </p>
               <div class="panel-tags">
-                <span class="panel-tag">HeteroidentificaÃ§Ã£o</span>
+                <span class="panel-tag">Heteroidentificação</span>
                 <span class="panel-tag">Cotas Raciais</span>
                 <span class="panel-tag">Vagas PcD</span>
               </div>
@@ -2873,27 +2873,27 @@
 
         <!-- Panel 04 -->
         <div class="accordion-panel">
-          <img src="assets/images/card_titulos.webp" alt="Diploma e TÃ­tulos" class="panel-bg" style="object-position: center 30%;" loading="lazy">
+          <img src="assets/images/card_titulos.webp" alt="Diploma e Títulos" class="panel-bg" style="object-position: center 30%;" loading="lazy">
           <div class="panel-overlay"></div>
           
           <div class="panel-collapsed-view">
             <span class="panel-collapsed-num">04</span>
-            <span class="panel-collapsed-title">Requisitos & HistÃ³rico</span>
+            <span class="panel-collapsed-title">Requisitos & Histórico</span>
           </div>
 
           <div class="panel-expanded-view">
             <div class="panel-top">
               <span class="panel-num">04</span>
-              <span class="panel-tag">REQUISITOS & HISTÃ“RICO</span>
+              <span class="panel-tag">REQUISITOS & HISTÓRICO</span>
             </div>
             <div>
-              <h3 class="panel-title">Prova de TÃ­tulos, Idade & Vida Pregressa</h3>
+              <h3 class="panel-title">Prova de Títulos, Idade & Vida Pregressa</h3>
               <p class="panel-desc">
-                Pontos de diplomas e certificados ignorados na avaliaÃ§Ã£o de tÃ­tulos, eliminaÃ§Ã£o na investigaÃ§Ã£o social por fatos irrelevantes da vida privada ou exigÃªncias desproporcionais de limite de idade no edital.
+                Pontos de diplomas e certificados ignorados na avaliação de títulos, eliminação na investigação social por fatos irrelevantes da vida privada ou exigências desproporcionais de limite de idade no edital.
               </p>
               <div class="panel-tags">
-                <span class="panel-tag">Prova de TÃ­tulos</span>
-                <span class="panel-tag">InvestigaÃ§Ã£o Social</span>
+                <span class="panel-tag">Prova de Títulos</span>
+                <span class="panel-tag">Investigação Social</span>
                 <span class="panel-tag">Limite de Idade</span>
               </div>
             </div>
@@ -2902,26 +2902,26 @@
 
         <!-- Panel 05 (Destaque) -->
         <div class="accordion-panel" style="border: 1.5px solid var(--rr-orange);">
-          <img src="assets/images/KF_ASSINADO_16x9.webp" alt="Ato de NomeaÃ§Ã£o e Mandado de SeguranÃ§a" class="panel-bg" loading="lazy">
+          <img src="assets/images/KF_ASSINADO_16x9.webp" alt="Ato de Nomeação e Mandado de Segurança" class="panel-bg" loading="lazy">
           <div class="panel-overlay" style="background: linear-gradient(180deg, rgba(21, 15, 11, 0.4) 0%, rgba(21, 15, 11, 0.75) 50%, rgba(21, 15, 11, 0.98) 100%);"></div>
           
           <div class="panel-collapsed-view">
             <span class="panel-collapsed-num" style="background: #F0247C;">05</span>
-            <span class="panel-collapsed-title" style="color: var(--rr-orange);">PreteriÃ§Ã£o / NomeaÃ§Ã£o</span>
+            <span class="panel-collapsed-title" style="color: var(--rr-orange);">Preterição / Nomeação</span>
           </div>
 
           <div class="panel-expanded-view">
             <div class="panel-top">
               <span class="panel-num" style="background: #F0247C;">05</span>
-              <span class="panel-tag" style="background: var(--rr-orange); color: #160D09; font-weight: 700; border: none;">AÃ‡ÃƒO DE DESTAQUE JUDICIAL</span>
+              <span class="panel-tag" style="background: var(--rr-orange); color: #160D09; font-weight: 700; border: none;">AÇÃO DE DESTAQUE JUDICIAL</span>
             </div>
             <div>
-              <h3 class="panel-title">PreteriÃ§Ã£o na NomeaÃ§Ã£o: VocÃª Passou e NÃ£o Foi Chamado?</h3>
+              <h3 class="panel-title">Preterição na Nomeação: Você Passou e Não Foi Chamado?</h3>
               <p class="panel-desc">
-                VocÃª foi aprovado dentro das vagas (ou no cadastro reserva com contrataÃ§Ã£o ilegal de temporÃ¡rios no seu lugar) e a administraÃ§Ã£o burla a ordem ou deixa o prazo expirar. Entramos com medida judicial rÃ¡pida para garantir a sua nomeaÃ§Ã£o.
+                Você foi aprovado dentro das vagas (ou no cadastro reserva com contratação ilegal de temporários no seu lugar) e a administração burla a ordem ou deixa o prazo expirar. Entramos com medida judicial rápida para garantir a sua nomeação.
               </p>
               <div class="panel-tags">
-                <span class="panel-tag" style="border-color: var(--rr-orange); color: #FFF;">Mandado de SeguranÃ§a</span>
+                <span class="panel-tag" style="border-color: var(--rr-orange); color: #FFF;">Mandado de Segurança</span>
                 <span class="panel-tag">Aprovado Dentro das Vagas</span>
                 <span class="panel-tag">Cadastro Reserva</span>
                 <span class="panel-tag">Prazo Expirando</span>
@@ -2936,13 +2936,13 @@
   </section>
 
   <!-- ==========================================================================
-       6. SEÃ‡ÃƒO 3: AUTORIDADE / QUEM Ã‰ O PAULO RINALDI (#quem-somos)
+       6. SEÇÃO 3: AUTORIDADE / QUEM É O PAULO RINALDI (#quem-somos)
        ========================================================================== -->
   <section class="about-section" id="quem-somos">
     <div class="about-glow" aria-hidden="true"></div>
     <div class="about-container">
       
-      <!-- DESKTOP VIEW (> 1024px): OPÃ‡ÃƒO 2 â€” CARD MONUMENTAL -->
+      <!-- DESKTOP VIEW (> 1024px): OPÇÃO 2 — CARD MONUMENTAL -->
       <div class="about-desktop-layout">
         
         <!-- Card Monumental (Foto + Bio Integrados) -->
@@ -2950,30 +2950,30 @@
           
           <!-- Foto Integrada -->
           <div class="monumental-photo">
-            <img src="assets/images/foto_paulo.webp" alt="Paulo Rinaldi â€” Advogado e Servidor PÃºblico do Estado de Santa Catarina" class="monumental-photo-img" loading="lazy">
+            <img src="assets/images/foto_paulo.webp" alt="Paulo Rinaldi — Advogado e Servidor Público do Estado de Santa Catarina" class="monumental-photo-img" loading="lazy">
             <div class="monumental-photo-fade"></div>
           </div>
 
-          <!-- ConteÃºdo Textual -->
+          <!-- Conteúdo Textual -->
           <div class="monumental-content">
             <div class="eyebrow-pill">
               <span class="eyebrow-dot"></span>
-              <span>Advogado e Servidor PÃºblico</span>
+              <span>Advogado e Servidor Público</span>
             </div>
             <h2 class="about-title">
-              O seu recurso nas mÃ£os de quem jÃ¡ passou na prova e conhece os bastidores.
+              O seu recurso nas mãos de quem já passou na prova e conhece os bastidores.
             </h2>
             <p class="about-desc">
-              A maioria dos advogados conhece apenas a teoria jurÃ­dica dos livros. O <strong>Paulo Rinaldi</strong> vivenciou a maratona de estudos e a aprovaÃ§Ã£o em concursos de alta exigÃªncia como <strong>Advogado e Auditor do Estado de Santa Catarina</strong> â€” e hoje alia esse conhecimento dos bastidores da AdministraÃ§Ã£o PÃºblica Ã  advocacia estratÃ©gica de alta performance.
+              A maioria dos advogados conhece apenas a teoria jurídica dos livros. O <strong>Paulo Rinaldi</strong> vivenciou a maratona de estudos e a aprovação em concursos de alta exigência como <strong>Advogado e Auditor do Estado de Santa Catarina</strong> — e hoje alia esse conhecimento dos bastidores da Administração Pública à advocacia estratégica de alta performance.
             </p>
             <p class="about-desc">
-              Sabemos exatamente como as bancas examinadoras raciocinam, onde erram e quais sÃ£o as vulnerabilidades nos espelhos de correÃ§Ã£o e laudos eliminatÃ³rios. <strong>Sua defesa nÃ£o Ã© tratada com teses genÃ©ricas, mas com precisÃ£o tÃ©cnica e vivÃªncia real.</strong>
+              Sabemos exatamente como as bancas examinadoras raciocinam, onde erram e quais são as vulnerabilidades nos espelhos de correção e laudos eliminatórios. <strong>Sua defesa não é tratada com teses genéricas, mas com precisão técnica e vivência real.</strong>
             </p>
             <div class="monumental-badge-row">
               <span class="credential-badge credential-badge--name">Paulo Rinaldi</span>
               <span class="credential-badge credential-badge--oab">OAB/SC 78.309</span>
-              <span class="credential-badge credential-badge--auditor">Servidor PÃºblico</span>
-              <span class="credential-badge" style="background: rgba(255, 94, 26, 0.2); color: var(--rr-orange); border: 1px solid var(--rr-orange);">âš¡ AtuaÃ§Ã£o Nacional (CNJ)</span>
+              <span class="credential-badge credential-badge--auditor">Servidor Público</span>
+              <span class="credential-badge" style="background: rgba(255, 94, 26, 0.2); color: var(--rr-orange); border: 1px solid var(--rr-orange);">⚡ Atuação Nacional (CNJ)</span>
             </div>
           </div>
         </div>
@@ -2982,8 +2982,8 @@
         <div class="about-pillars-grid">
           <div class="pillar-card-light">
             <span class="pillar-num">01</span>
-            <h4>DomÃ­nio dos Bastidores da Banca</h4>
-            <p>Atuamos cirurgicamente onde as bancas desrespeitam o edital ou a jurisprudÃªncia dos Tribunais Superiores.</p>
+            <h4>Domínio dos Bastidores da Banca</h4>
+            <p>Atuamos cirurgicamente onde as bancas desrespeitam o edital ou a jurisprudência dos Tribunais Superiores.</p>
             <div class="pillar-badges">
               <span class="banca-badge">CEBRASPE</span>
               <span class="banca-badge">FGV</span>
@@ -2994,63 +2994,63 @@
 
           <div class="pillar-card-light">
             <span class="pillar-num">02</span>
-            <h4>Atendimento Humanizado & Sem JuridiquÃªs</h4>
-            <p>VocÃª fala diretamente com quem entende sua trajetÃ³ria. Explicamos cada passo em portuguÃªs claro, com transparÃªncia total.</p>
+            <h4>Atendimento Humanizado & Sem Juridiquês</h4>
+            <p>Você fala diretamente com quem entende sua trajetória. Explicamos cada passo em português claro, com transparência total.</p>
           </div>
 
           <div class="pillar-card-light">
             <span class="pillar-num">03</span>
-            <h4>Agilidade & AÃ§Ã£o Imediata</h4>
-            <p>Em concursos pÃºblicos, prazo nÃ£o se recupera. Tratamos liminares e mandados de seguranÃ§a em regime de mÃ¡xima prioridade judicial.</p>
+            <h4>Agilidade & Ação Imediata</h4>
+            <p>Em concursos públicos, prazo não se recupera. Tratamos liminares e mandados de segurança em regime de máxima prioridade judicial.</p>
           </div>
 
-          <!-- Pilar 04: Quebra de ObjeÃ§Ã£o Atendimento Nacional e Processo Virtual -->
+          <!-- Pilar 04: Quebra de Objeção Atendimento Nacional e Processo Virtual -->
           <div class="pillar-card-light" style="border-color: rgba(255, 94, 26, 0.45); background: linear-gradient(145deg, var(--rr-panel-2) 0%, rgba(255, 94, 26, 0.08) 100%);">
             <span class="pillar-num" style="color: var(--rr-orange);">04</span>
-            <h4>AtuaÃ§Ã£o Nacional Â· JuÃ­zo 100% Digital</h4>
-            <p>Atendemos o Brasil inteiro com excelÃªncia. 100% dos processos correm de forma eletrÃ´nica (PJe, e-Proc, BalcÃ£o Virtual CNJ). Protocolamos liminares em minutos e fazemos sustentaÃ§Ãµes orais com juÃ­zes e desembargadores de todo o paÃ­s por videoconferÃªncia.</p>
+            <h4>Atuação Nacional · Juízo 100% Digital</h4>
+            <p>Atendemos o Brasil inteiro com excelência. 100% dos processos correm de forma eletrônica (PJe, e-Proc, Balcão Virtual CNJ). Protocolamos liminares em minutos e fazemos sustentações orais com juízes e desembargadores de todo o país por videoconferência.</p>
             <div class="pillar-badges">
               <span class="banca-badge" style="border-color: var(--rr-orange); color: var(--rr-orange);">PJe / e-Proc</span>
               <span class="banca-badge">TRFs & STJ/STF</span>
-              <span class="banca-badge">BalcÃ£o Virtual CNJ</span>
+              <span class="banca-badge">Balcão Virtual CNJ</span>
             </div>
           </div>
         </div>
 
       </div>
 
-      <!-- MOBILE/TABLET VIEW (<= 1024px): QUADRO MONUMENTAL EXATAMENTE IGUAL Ã€ OPÃ‡ÃƒO 2 -->
+      <!-- MOBILE/TABLET VIEW (<= 1024px): QUADRO MONUMENTAL EXATAMENTE IGUAL À OPÇÃO 2 -->
       <div class="about-mobile-layout">
         
-        <!-- Card / Quadro da OpÃ§Ã£o 2 no Mobile -->
+        <!-- Card / Quadro da Opção 2 no Mobile -->
         <div class="monumental-card monumental-card--mobile">
           
-          <!-- ConteÃºdo Textual e Foto Integrados no Quadro -->
+          <!-- Conteúdo Textual e Foto Integrados no Quadro -->
           <div class="monumental-content monumental-content--mobile">
             <div class="eyebrow-pill">
               <span class="eyebrow-dot"></span>
-              <span>Advogado e Servidor PÃºblico</span>
+              <span>Advogado e Servidor Público</span>
             </div>
             <h2 class="about-title">
-              O seu recurso nas mÃ£os de quem jÃ¡ passou na prova e conhece os bastidores.
+              O seu recurso nas mãos de quem já passou na prova e conhece os bastidores.
             </h2>
 
-            <!-- Foto do Paulo dentro do Quadro da OpÃ§Ã£o 2, entre Headline e Texto, com fade inferior para var(--rr-panel) -->
+            <!-- Foto do Paulo dentro do Quadro da Opção 2, entre Headline e Texto, com fade inferior para var(--rr-panel) -->
             <div class="monumental-photo monumental-photo--mobile">
-              <img src="assets/images/foto_paulo.webp" alt="Paulo Rinaldi â€” Advogado e Servidor PÃºblico do Estado de Santa Catarina" class="monumental-photo-img" loading="lazy">
+              <img src="assets/images/foto_paulo.webp" alt="Paulo Rinaldi — Advogado e Servidor Público do Estado de Santa Catarina" class="monumental-photo-img" loading="lazy">
               <div class="monumental-photo-fade monumental-photo-fade--mobile"></div>
             </div>
 
             <p class="about-desc">
-              A maioria dos advogados conhece apenas a teoria jurÃ­dica dos livros. O <strong>Paulo Rinaldi</strong> vivenciou a maratona de estudos e a aprovaÃ§Ã£o em concursos de alta exigÃªncia como <strong>Advogado e Auditor do Estado de Santa Catarina</strong> â€” e hoje alia esse conhecimento dos bastidores da AdministraÃ§Ã£o PÃºblica Ã  advocacia estratÃ©gica de alta performance.
+              A maioria dos advogados conhece apenas a teoria jurídica dos livros. O <strong>Paulo Rinaldi</strong> vivenciou a maratona de estudos e a aprovação em concursos de alta exigência como <strong>Advogado e Auditor do Estado de Santa Catarina</strong> — e hoje alia esse conhecimento dos bastidores da Administração Pública à advocacia estratégica de alta performance.
             </p>
             <p class="about-desc">
-              Sabemos exatamente como as bancas examinadoras raciocinam, onde erram e quais sÃ£o as vulnerabilidades nos espelhos de correÃ§Ã£o e laudos eliminatÃ³rios. <strong>Sua defesa nÃ£o Ã© tratada com teses genÃ©ricas, mas com precisÃ£o tÃ©cnica e vivÃªncia real.</strong>
+              Sabemos exatamente como as bancas examinadoras raciocinam, onde erram e quais são as vulnerabilidades nos espelhos de correção e laudos eliminatórios. <strong>Sua defesa não é tratada com teses genéricas, mas com precisão técnica e vivência real.</strong>
             </p>
             <div class="monumental-badge-row">
               <span class="credential-badge credential-badge--name">Paulo Rinaldi</span>
               <span class="credential-badge credential-badge--oab">OAB/SC 78.309</span>
-              <span class="credential-badge credential-badge--auditor">Servidor PÃºblico</span>
+              <span class="credential-badge credential-badge--auditor">Servidor Público</span>
             </div>
           </div>
         </div>
@@ -3062,8 +3062,8 @@
             <div class="pillar-card">
               <span class="pillar-num">01</span>
               <div class="pillar-content">
-                <h4>DomÃ­nio dos Bastidores da Banca</h4>
-                <p>Atuamos cirurgicamente onde as bancas desrespeitam o edital ou a jurisprudÃªncia dos Tribunais Superiores.</p>
+                <h4>Domínio dos Bastidores da Banca</h4>
+                <p>Atuamos cirurgicamente onde as bancas desrespeitam o edital ou a jurisprudência dos Tribunais Superiores.</p>
                 <div class="pillar-badges">
                   <span class="banca-badge">CEBRASPE</span>
                   <span class="banca-badge">FGV</span>
@@ -3076,29 +3076,29 @@
             <div class="pillar-card">
               <span class="pillar-num">02</span>
               <div class="pillar-content">
-                <h4>Atendimento Humanizado & Sem JuridiquÃªs</h4>
-                <p>VocÃª fala diretamente com quem entende sua trajetÃ³ria. Explicamos cada passo em portuguÃªs claro, com transparÃªncia total.</p>
+                <h4>Atendimento Humanizado & Sem Juridiquês</h4>
+                <p>Você fala diretamente com quem entende sua trajetória. Explicamos cada passo em português claro, com transparência total.</p>
               </div>
             </div>
 
             <div class="pillar-card">
               <span class="pillar-num">03</span>
               <div class="pillar-content">
-                <h4>Agilidade & AÃ§Ã£o Imediata</h4>
-                <p>Em concursos pÃºblicos, prazo nÃ£o se recupera. Tratamos liminares e mandados de seguranÃ§a em regime de mÃ¡xima prioridade judicial.</p>
+                <h4>Agilidade & Ação Imediata</h4>
+                <p>Em concursos públicos, prazo não se recupera. Tratamos liminares e mandados de segurança em regime de máxima prioridade judicial.</p>
               </div>
             </div>
 
-            <!-- Pilar 04: Quebra de ObjeÃ§Ã£o Atendimento Nacional e Processo Virtual no Mobile -->
+            <!-- Pilar 04: Quebra de Objeção Atendimento Nacional e Processo Virtual no Mobile -->
             <div class="pillar-card" style="border-left: 2px solid var(--rr-orange); padding-left: 12px;">
               <span class="pillar-num" style="color: var(--rr-orange);">04</span>
               <div class="pillar-content">
-                <h4 style="color: var(--rr-orange);">AtuaÃ§Ã£o Nacional Â· JuÃ­zo 100% Digital</h4>
-                <p>Atendemos o Brasil inteiro com excelÃªncia. 100% dos processos correm virtualmente pelo PJe, e-Proc e BalcÃ£o Virtual (CNJ). Protocolamos liminares em minutos e fazemos sustentaÃ§Ãµes orais com juÃ­zes e desembargadores de qualquer tribunal do paÃ­s via videoconferÃªncia.</p>
+                <h4 style="color: var(--rr-orange);">Atuação Nacional · Juízo 100% Digital</h4>
+                <p>Atendemos o Brasil inteiro com excelência. 100% dos processos correm virtualmente pelo PJe, e-Proc e Balcão Virtual (CNJ). Protocolamos liminares em minutos e fazemos sustentações orais com juízes e desembargadores de qualquer tribunal do país via videoconferência.</p>
                 <div class="pillar-badges" style="margin-top: 8px;">
                   <span class="banca-badge" style="border-color: var(--rr-orange); color: var(--rr-orange);">PJe / e-Proc</span>
                   <span class="banca-badge">TRFs & STJ/STF</span>
-                  <span class="banca-badge">BalcÃ£o Virtual CNJ</span>
+                  <span class="banca-badge">Balcão Virtual CNJ</span>
                 </div>
               </div>
             </div>
@@ -3112,7 +3112,7 @@
   </section>
 
   <!-- ==========================================================================
-       7. SEÃ‡ÃƒO 4: METODOLOGIA / COMO FUNCIONA O ATENDIMENTO (#metodologia)
+       7. SEÇÃO 4: METODOLOGIA / COMO FUNCIONA O ATENDIMENTO (#metodologia)
        ========================================================================== -->
   <section class="method-section" id="metodologia">
     <div class="method-container">
@@ -3120,13 +3120,13 @@
       <div class="generic-header">
         <div class="eyebrow-pill" style="border-color: rgba(58, 46, 36, 0.2); background: rgba(58, 46, 36, 0.06);">
           <span class="eyebrow-dot"></span>
-          <span>DO WHATSAPP ATÃ‰ A MEDIDA JUDICIAL</span>
+          <span>DO WHATSAPP ATÉ A MEDIDA JUDICIAL</span>
         </div>
         <h2 class="generic-title">
-          ConheÃ§a o Protocolo R.E.A.L. â€” O mapa cirÃºrgico em 4 fases para blindar a sua vaga.
+          Conheça o Protocolo R.E.A.L. — O mapa cirúrgico em 4 fases para blindar a sua vaga.
         </h2>
         <p class="generic-subtitle" style="max-width: 780px;">
-          Sem burocracia, sem intermediÃ¡rios e com anÃ¡lise tÃ©cnica transparente desde o primeiro contato. VocÃª no controle e com a garantia de uma defesa focada em alta performance.
+          Sem burocracia, sem intermediários e com análise técnica transparente desde o primeiro contato. Você no controle e com a garantia de uma defesa focada em alta performance.
         </p>
       </div>
 
@@ -3144,13 +3144,13 @@
             <div class="journey-card">
               <div class="journey-card-header">
                 <div class="journey-meta">
-                  <span class="journey-chapter-tag">Fase 01 Â· RecepÃ§Ã£o</span>
+                  <span class="journey-chapter-tag">Fase 01 · Recepção</span>
                   <h3>Triagem Direta via WhatsApp</h3>
                 </div>
               </div>
-              <p>VocÃª nos envia seu edital, espelho de correÃ§Ã£o ou ato eliminatÃ³rio no WhatsApp em minutos. Nossa equipe tÃ©cnica faz a triagem inicial e encaminha seu caso para anÃ¡lise especializada com agilidade.</p>
+              <p>Você nos envia seu edital, espelho de correção ou ato eliminatório no WhatsApp em minutos. Nossa equipe técnica faz a triagem inicial e encaminha seu caso para análise especializada com agilidade.</p>
               <div class="journey-status-tag">
-                <span>âš¡ Atendimento em Minutos</span>
+                <span>⚡ Atendimento em Minutos</span>
               </div>
             </div>
           </div>
@@ -3161,13 +3161,13 @@
             <div class="journey-card">
               <div class="journey-card-header">
                 <div class="journey-meta">
-                  <span class="journey-chapter-tag">Fase 02 Â· Exame</span>
-                  <h3>Viabilidade CirÃºrgica</h3>
+                  <span class="journey-chapter-tag">Fase 02 · Exame</span>
+                  <h3>Viabilidade Cirúrgica</h3>
                 </div>
               </div>
-              <p>Colocamos sua prova sob a lente do STF/STJ e da vivÃªncia real de Advogado e Servidor PÃºblico. Se a tese for sÃ³lida, avanÃ§amos com forÃ§a mÃ¡xima; se nÃ£o houver, jogamos limpo na hora, sem falsas promessas.</p>
+              <p>Colocamos sua prova sob a lente do STF/STJ e da vivência real de Advogado e Servidor Público. Se a tese for sólida, avançamos com força máxima; se não houver, jogamos limpo na hora, sem falsas promessas.</p>
               <div class="journey-status-tag">
-                <span>ðŸ” Lente STF/STJ + Advogado e Servidor PÃºblico</span>
+                <span>🔍 Lente STF/STJ + Advogado e Servidor Público</span>
               </div>
             </div>
           </div>
@@ -3178,13 +3178,13 @@
             <div class="journey-card">
               <div class="journey-card-header">
                 <div class="journey-meta">
-                  <span class="journey-chapter-tag">Fase 03 Â· Ataque</span>
+                  <span class="journey-chapter-tag">Fase 03 · Ataque</span>
                   <h3>Protocolo Sob Medida</h3>
                 </div>
               </div>
-              <p>Hora da intervenÃ§Ã£o. Nossos advogados constroem o Mandado de SeguranÃ§a com pedido de liminar ou o Recurso Administrativo artesanalmente, atacando com precisÃ£o onde a banca violou o edital ou a lei.</p>
+              <p>Hora da intervenção. Nossos advogados constroem o Mandado de Segurança com pedido de liminar ou o Recurso Administrativo artesanalmente, atacando com precisão onde a banca violou o edital ou a lei.</p>
               <div class="journey-status-tag">
-                <span>âš–ï¸ Pedido de Liminar PrioritÃ¡rio</span>
+                <span>⚖️ Pedido de Liminar Prioritário</span>
               </div>
             </div>
           </div>
@@ -3195,13 +3195,13 @@
             <div class="journey-card">
               <div class="journey-card-header">
                 <div class="journey-meta">
-                  <span class="journey-chapter-tag">Fase 04 Â· Linha Direta</span>
+                  <span class="journey-chapter-tag">Fase 04 · Linha Direta</span>
                   <h3>Acompanhamento Transparente</h3>
                 </div>
               </div>
-              <p>Monitoramento Ã¡gil de cada movimentaÃ§Ã£o do seu processo ou recurso em portuguÃªs claro e humanizado. Avisamos cada despacho do juiz diretamente no seu celular com transparÃªncia e paz de espÃ­rito.</p>
+              <p>Monitoramento ágil de cada movimentação do seu processo ou recurso em português claro e humanizado. Avisamos cada despacho do juiz diretamente no seu celular com transparência e paz de espírito.</p>
               <div class="journey-status-tag">
-                <span>ðŸ“² Alertas no Celular sem JuridiquÃªs</span>
+                <span>📲 Alertas no Celular sem Juridiquês</span>
               </div>
             </div>
           </div>
@@ -3213,7 +3213,7 @@
   </section>
 
   <!-- ==========================================================================
-       8. SEÃ‡ÃƒO 5: PERGUNTAS FREQUENTES (#faq)
+       8. SEÇÃO 5: PERGUNTAS FREQUENTES (#faq)
        ========================================================================== -->
   <section class="faq-section" id="faq">
     <div class="faq-aurora-left"></div>
@@ -3223,7 +3223,7 @@
       <div class="generic-header">
         <div class="eyebrow-pill">
           <span class="eyebrow-dot"></span>
-          <span>TIRE SUAS DÃšVIDAS</span>
+          <span>TIRE SUAS DÚVIDAS</span>
         </div>
         <h2 class="about-title">
           O que todo concurseiro precisa saber antes de recorrer.
@@ -3238,13 +3238,13 @@
             <button class="faq-header" aria-expanded="false">
               <div style="display: flex; align-items: center; gap: 16px;">
                 <span class="faq-index-num">Q01</span>
-                <span>Vale mais a pena tentar o Recurso Administrativo ou ir direto para a JustiÃ§a?</span>
+                <span>Vale mais a pena tentar o Recurso Administrativo ou ir direto para a Justiça?</span>
               </div>
               <span class="faq-icon-box">+</span>
             </button>
             <div class="faq-content">
               <div class="faq-content-inner">
-                Depende da fase do certame. Se o prazo para o recurso administrativo ainda estiver aberto, uma peÃ§a bem elaborada tÃ©cnica e juridicamente pode garantir seus pontos sem custos judiciais. Contudo, se a banca examinadora rejeitar arbitrariamente o recurso (o que Ã© comum para manter o padrÃ£o do espelho) ou se o prazo jÃ¡ tiver expirado, o Mandado de SeguranÃ§a com pedido liminar Ã© a via cirÃºrgica para garantir a sua permanÃªncia e nomeaÃ§Ã£o no concurso.
+                Depende da fase do certame. Se o prazo para o recurso administrativo ainda estiver aberto, uma peça bem elaborada técnica e juridicamente pode garantir seus pontos sem custos judiciais. Contudo, se a banca examinadora rejeitar arbitrariamente o recurso (o que é comum para manter o padrão do espelho) ou se o prazo já tiver expirado, o Mandado de Segurança com pedido liminar é a via cirúrgica para garantir a sua permanência e nomeação no concurso.
               </div>
             </div>
           </div>
@@ -3254,29 +3254,29 @@
             <button class="faq-header" aria-expanded="false">
               <div style="display: flex; align-items: center; gap: 16px;">
                 <span class="faq-index-num">Q02</span>
-                <span>Qual Ã© o prazo mÃ¡ximo para entrar com uma aÃ§Ã£o na JustiÃ§a contra a eliminaÃ§Ã£o?</span>
+                <span>Qual é o prazo máximo para entrar com uma ação na Justiça contra a eliminação?</span>
               </div>
               <span class="faq-icon-box">+</span>
             </button>
             <div class="faq-content">
               <div class="faq-content-inner">
-                No caso do Mandado de SeguranÃ§a, o prazo decadencial rigoroso Ã© de 120 dias corridos a contar da publicaÃ§Ã£o oficial do ato que te eliminou ou preteriu. Em aÃ§Ãµes ordinÃ¡rias o prazo Ã© superior, mas em concursos pÃºblicos cada dia conta. Quanto mais rÃ¡pido ingressarmos com o pedido de liminar, maiores sÃ£o as chances de reverter sua eliminaÃ§Ã£o antes que as prÃ³ximas etapas do certame aconteÃ§am.
+                No caso do Mandado de Segurança, o prazo decadencial rigoroso é de 120 dias corridos a contar da publicação oficial do ato que te eliminou ou preteriu. Em ações ordinárias o prazo é superior, mas em concursos públicos cada dia conta. Quanto mais rápido ingressarmos com o pedido de liminar, maiores são as chances de reverter sua eliminação antes que as próximas etapas do certame aconteçam.
               </div>
             </div>
           </div>
 
-          <!-- FAQ 3 (Quebra Completa de ObjeÃ§Ã£o: Atendimento Nacional & JuÃ­zo 100% Digital) -->
+          <!-- FAQ 3 (Quebra Completa de Objeção: Atendimento Nacional & Juízo 100% Digital) -->
           <div class="faq-item" style="border-color: rgba(255, 94, 26, 0.45); background: linear-gradient(145deg, var(--rr-panel-2) 0%, rgba(255, 94, 26, 0.06) 100%);">
             <button class="faq-header" aria-expanded="false">
               <div style="display: flex; align-items: center; gap: 16px;">
                 <span class="faq-index-num" style="color: var(--rr-orange);">Q03</span>
-                <span style="font-weight: 800;">Paulo Rinaldi Ã© de Santa Catarina. Como funciona o atendimento em concursos de outros estados ou tribunais federais?</span>
+                <span style="font-weight: 800;">Paulo Rinaldi é de Santa Catarina. Como funciona o atendimento em concursos de outros estados ou tribunais federais?</span>
               </div>
               <span class="faq-icon-box">+</span>
             </button>
             <div class="faq-content">
               <div class="faq-content-inner">
-                Com excelÃªncia, agilidade imediata e sem nenhuma barreira geogrÃ¡fica. Desde a regulamentaÃ§Ã£o do <strong>JuÃ­zo 100% Digital</strong> e do <strong>BalcÃ£o Virtual</strong> pelo Conselho Nacional de JustiÃ§a (CNJ), <strong>100% dos processos judiciais no Brasil correm por meio eletrÃ´nico</strong> (PJe, e-Proc, Projudi, Esaj, e-STJ). Isso significa que, independentemente de onde vocÃª resida ou de qual estado/Ã³rgÃ£o seja o concurso (SÃ£o Paulo, BrasÃ­lia, Bahia, ParÃ¡, TRFs, etc.), protocolamos Mandados de SeguranÃ§a e pedidos de liminar em minutos diretamente na mesa do juiz competente, alÃ©m de realizarmos despachos e sustentaÃ§Ãµes orais por videoconferÃªncia oficial com juÃ­zes, desembargadores e ministros em todo o paÃ­s. Ter um advogado especialista ex-Advogado e Servidor PÃºblico cuidando do seu caso no meio digital Ã© muito mais rÃ¡pido e eficiente do que depender da advocacia presencial tradicional.
+                Com excelência, agilidade imediata e sem nenhuma barreira geográfica. Desde a regulamentação do <strong>Juízo 100% Digital</strong> e do <strong>Balcão Virtual</strong> pelo Conselho Nacional de Justiça (CNJ), <strong>100% dos processos judiciais no Brasil correm por meio eletrônico</strong> (PJe, e-Proc, Projudi, Esaj, e-STJ). Isso significa que, independentemente de onde você resida ou de qual estado/órgão seja o concurso (São Paulo, Brasília, Bahia, Pará, TRFs, etc.), protocolamos Mandados de Segurança e pedidos de liminar em minutos diretamente na mesa do juiz competente, além de realizarmos despachos e sustentações orais por videoconferência oficial com juízes, desembargadores e ministros em todo o país. Ter um advogado especialista ex-Advogado e Servidor Público cuidando do seu caso no meio digital é muito mais rápido e eficiente do que depender da advocacia presencial tradicional.
               </div>
             </div>
           </div>
@@ -3286,13 +3286,13 @@
             <button class="faq-header" aria-expanded="false">
               <div style="display: flex; align-items: center; gap: 16px;">
                 <span class="faq-index-num">Q04</span>
-                <span>Se eu assumir o cargo por forÃ§a de liminar, corro risco de ser demitido depois?</span>
+                <span>Se eu assumir o cargo por força de liminar, corro risco de ser demitido depois?</span>
               </div>
               <span class="faq-icon-box">+</span>
             </button>
             <div class="faq-content">
               <div class="faq-content-inner">
-                A liminar Ã© uma decisÃ£o judicial provisÃ³ria concedida para garantir que vocÃª nÃ£o perca o curso de formaÃ§Ã£o ou a posse enquanto o processo final Ã© julgado. Nossa estratÃ©gia de atuaÃ§Ã£o foca em fundamentar a aÃ§Ã£o em jurisprudÃªncia pacificada do STF e do STJ, buscando blindar o mÃ©rito para que a liminar seja confirmada por sentenÃ§a definitiva com trÃ¢nsito em julgado.
+                A liminar é uma decisão judicial provisória concedida para garantir que você não perca o curso de formação ou a posse enquanto o processo final é julgado. Nossa estratégia de atuação foca em fundamentar a ação em jurisprudência pacificada do STF e do STJ, buscando blindar o mérito para que a liminar seja confirmada por sentença definitiva com trânsito em julgado.
               </div>
             </div>
           </div>
@@ -3302,13 +3302,13 @@
             <button class="faq-header" aria-expanded="false">
               <div style="display: flex; align-items: center; gap: 16px;">
                 <span class="faq-index-num">Q05</span>
-                <span>Como funciona a consulta inicial e o pagamento dos honorÃ¡rios?</span>
+                <span>Como funciona a consulta inicial e o pagamento dos honorários?</span>
               </div>
               <span class="faq-icon-box">+</span>
             </button>
             <div class="faq-content">
               <div class="faq-content-inner">
-                A triagem inicial do seu caso e a anÃ¡lise de viabilidade sÃ£o realizadas diretamente via WhatsApp de forma rÃ¡pida e humanizada, sem compromisso inicial. ApÃ³s analisarmos os documentos do certame, apresentamos uma proposta transparente, sem taxas ocultas ou surpresas, com condiÃ§Ãµes acessÃ­veis pensadas na realidade de quem investe no sonho do serviÃ§o pÃºblico.
+                A triagem inicial do seu caso e a análise de viabilidade são realizadas diretamente via WhatsApp de forma rápida e humanizada, sem compromisso inicial. Após analisarmos os documentos do certame, apresentamos uma proposta transparente, sem taxas ocultas ou surpresas, com condições acessíveis pensadas na realidade de quem investe no sonho do serviço público.
               </div>
             </div>
           </div>
@@ -3316,15 +3316,15 @@
 
         <!-- Coluna da Direita: Card Sticky WhatsApp -->
         <div class="faq-sidebar-card">
-          <div class="faq-sidebar-badge">ðŸ’¬ PlantÃ£o JurÃ­dico</div>
-          <h3>NÃ£o encontrou a resposta para a sua dÃºvida especÃ­fica?</h3>
-          <p>Cada eliminaÃ§Ã£o em concurso tem detalhes Ãºnicos de edital, banca e fase. NÃ£o tome decisÃµes baseadas em suposiÃ§Ãµes gerais da internet.</p>
+          <div class="faq-sidebar-badge">💬 Plantão Jurídico</div>
+          <h3>Não encontrou a resposta para a sua dúvida específica?</h3>
+          <p>Cada eliminação em concurso tem detalhes únicos de edital, banca e fase. Não tome decisões baseadas em suposições gerais da internet.</p>
           <div class="sidebar-highlight">
             Converse agora diretamente via WhatsApp com nosso advogado especialista e receba uma triagem preliminar de viabilidade do seu caso.
           </div>
           <a href="https://wa.me/5511999999999" class="faq-sidebar-btn" target="_blank">
             <span>FALAR COM ADVOGADO AGORA</span>
-            <span>âž”</span>
+            <span>➔</span>
           </a>
         </div>
 
@@ -3334,199 +3334,199 @@
   </section>
 
   <!-- ==========================================================================
-       9. SEÃ‡ÃƒO 6: CTA FINAL & CONTATO (#contato) COM GRÃFICOS E GRID DE GARANTIAS
+       9. SEÇÃO 6: CTA FINAL & CONTATO (#contato) COM GRÁFICOS E GRID DE GARANTIAS
        ========================================================================== -->
   <section class="cta-final-section" id="contato">
     <div class="cta-final-box">
-      <!-- GrÃ¡fico Monumental no Background: Gabarito Ã“ptico Vetorial de Concurso (100% VisÃ­vel em Todo o Card) -->
+      <!-- Gráfico Monumental no Background: Gabarito Óptico Vetorial de Concurso (100% Visível em Todo o Card) -->
       <svg class="cta-gabarito-graphic" viewBox="0 0 1000 1200" preserveAspectRatio="xMidYMid slice" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-        <!-- Linhas e Colunas do CartÃ£o-Resposta cobrindo de ponta a ponta (Top ao Bottom) -->
+        <!-- Linhas e Colunas do Cartão-Resposta cobrindo de ponta a ponta (Top ao Bottom) -->
         <g opacity="0.45" font-family="monospace" font-size="15">
           <!-- Bloco Superior (Linhas 01 a 30) -->
           <g transform="translate(0, 0)">
-            <text x="30" y="60" fill="currentColor" font-weight="bold">01 (A) (B) (â—) (D) (E)</text>
-            <text x="30" y="100" fill="currentColor">02 (â—) (B) (C) (D) (E)</text>
-            <text x="30" y="140" fill="currentColor">03 (A) (B) (C) (â—) (E)</text>
-            <text x="30" y="180" fill="currentColor" font-weight="bold">04 (A) (â—) (C) (D) (E)</text>
-            <text x="30" y="220" fill="currentColor">05 (A) (B) (C) (D) (â—)</text>
-            <text x="30" y="260" fill="currentColor">06 (â—) (B) (C) (D) (E)</text>
-            <text x="30" y="300" fill="currentColor" font-weight="bold">07 (A) (B) (â—) (D) (E)</text>
-            <text x="30" y="340" fill="currentColor">08 (A) (B) (C) (â—) (E)</text>
-            <text x="30" y="380" fill="currentColor">09 (A) (â—) (C) (D) (E)</text>
-            <text x="30" y="420" fill="currentColor" font-weight="bold">10 (â—) (B) (C) (D) (E)</text>
+            <text x="30" y="60" fill="currentColor" font-weight="bold">01 (A) (B) (●) (D) (E)</text>
+            <text x="30" y="100" fill="currentColor">02 (●) (B) (C) (D) (E)</text>
+            <text x="30" y="140" fill="currentColor">03 (A) (B) (C) (●) (E)</text>
+            <text x="30" y="180" fill="currentColor" font-weight="bold">04 (A) (●) (C) (D) (E)</text>
+            <text x="30" y="220" fill="currentColor">05 (A) (B) (C) (D) (●)</text>
+            <text x="30" y="260" fill="currentColor">06 (●) (B) (C) (D) (E)</text>
+            <text x="30" y="300" fill="currentColor" font-weight="bold">07 (A) (B) (●) (D) (E)</text>
+            <text x="30" y="340" fill="currentColor">08 (A) (B) (C) (●) (E)</text>
+            <text x="30" y="380" fill="currentColor">09 (A) (●) (C) (D) (E)</text>
+            <text x="30" y="420" fill="currentColor" font-weight="bold">10 (●) (B) (C) (D) (E)</text>
 
-            <text x="280" y="60" fill="currentColor">11 (A) (B) (C) (â—) (E)</text>
-            <text x="280" y="100" fill="currentColor" font-weight="bold">12 (â—) (B) (C) (D) (E)</text>
-            <text x="280" y="140" fill="currentColor">13 (A) (â—) (C) (D) (E)</text>
-            <text x="280" y="180" fill="currentColor">14 (A) (B) (â—) (D) (E)</text>
-            <text x="280" y="220" fill="currentColor" font-weight="bold">15 (â—) (B) (C) (D) (E)</text>
-            <text x="280" y="260" fill="currentColor">16 (A) (B) (C) (â—) (E)</text>
-            <text x="280" y="300" fill="currentColor">17 (A) (â—) (C) (D) (E)</text>
-            <text x="280" y="340" fill="currentColor" font-weight="bold">18 (A) (B) (â—) (D) (E)</text>
-            <text x="280" y="380" fill="currentColor">19 (â—) (B) (C) (D) (E)</text>
-            <text x="280" y="420" fill="currentColor">20 (A) (B) (C) (â—) (E)</text>
+            <text x="280" y="60" fill="currentColor">11 (A) (B) (C) (●) (E)</text>
+            <text x="280" y="100" fill="currentColor" font-weight="bold">12 (●) (B) (C) (D) (E)</text>
+            <text x="280" y="140" fill="currentColor">13 (A) (●) (C) (D) (E)</text>
+            <text x="280" y="180" fill="currentColor">14 (A) (B) (●) (D) (E)</text>
+            <text x="280" y="220" fill="currentColor" font-weight="bold">15 (●) (B) (C) (D) (E)</text>
+            <text x="280" y="260" fill="currentColor">16 (A) (B) (C) (●) (E)</text>
+            <text x="280" y="300" fill="currentColor">17 (A) (●) (C) (D) (E)</text>
+            <text x="280" y="340" fill="currentColor" font-weight="bold">18 (A) (B) (●) (D) (E)</text>
+            <text x="280" y="380" fill="currentColor">19 (●) (B) (C) (D) (E)</text>
+            <text x="280" y="420" fill="currentColor">20 (A) (B) (C) (●) (E)</text>
 
-            <text x="530" y="60" fill="currentColor" font-weight="bold">21 (A) (â—) (C) (D) (E)</text>
-            <text x="530" y="100" fill="currentColor">22 (â—) (B) (C) (D) (E)</text>
-            <text x="530" y="140" fill="currentColor">23 (A) (B) (â—) (D) (E)</text>
-            <text x="530" y="180" fill="currentColor" font-weight="bold">24 (A) (B) (C) (â—) (E)</text>
-            <text x="530" y="220" fill="currentColor">25 (â—) (B) (C) (D) (E)</text>
-            <text x="530" y="260" fill="currentColor">26 (A) (â—) (C) (D) (E)</text>
-            <text x="530" y="300" fill="currentColor" font-weight="bold">27 (A) (B) (â—) (D) (E)</text>
-            <text x="530" y="340" fill="currentColor">28 (â—) (B) (C) (D) (E)</text>
-            <text x="530" y="380" fill="currentColor">29 (A) (B) (C) (â—) (E)</text>
-            <text x="530" y="420" fill="currentColor" font-weight="bold">30 (A) (â—) (C) (D) (E)</text>
+            <text x="530" y="60" fill="currentColor" font-weight="bold">21 (A) (●) (C) (D) (E)</text>
+            <text x="530" y="100" fill="currentColor">22 (●) (B) (C) (D) (E)</text>
+            <text x="530" y="140" fill="currentColor">23 (A) (B) (●) (D) (E)</text>
+            <text x="530" y="180" fill="currentColor" font-weight="bold">24 (A) (B) (C) (●) (E)</text>
+            <text x="530" y="220" fill="currentColor">25 (●) (B) (C) (D) (E)</text>
+            <text x="530" y="260" fill="currentColor">26 (A) (●) (C) (D) (E)</text>
+            <text x="530" y="300" fill="currentColor" font-weight="bold">27 (A) (B) (●) (D) (E)</text>
+            <text x="530" y="340" fill="currentColor">28 (●) (B) (C) (D) (E)</text>
+            <text x="530" y="380" fill="currentColor">29 (A) (B) (C) (●) (E)</text>
+            <text x="530" y="420" fill="currentColor" font-weight="bold">30 (A) (●) (C) (D) (E)</text>
 
-            <text x="780" y="60" fill="currentColor">31 (A) (B) (C) (D) (â—)</text>
-            <text x="780" y="100" fill="currentColor" font-weight="bold">32 (â—) (B) (C) (D) (E)</text>
-            <text x="780" y="140" fill="currentColor">33 (A) (â—) (C) (D) (E)</text>
-            <text x="780" y="180" fill="currentColor">34 (A) (B) (â—) (D) (E)</text>
-            <text x="780" y="220" fill="currentColor" font-weight="bold">35 (â—) (B) (C) (D) (E)</text>
-            <text x="780" y="260" fill="currentColor">36 (A) (B) (C) (â—) (E)</text>
-            <text x="780" y="300" fill="currentColor">37 (A) (â—) (C) (D) (E)</text>
-            <text x="780" y="340" fill="currentColor" font-weight="bold">38 (A) (B) (â—) (D) (E)</text>
-            <text x="780" y="380" fill="currentColor">39 (â—) (B) (C) (D) (E)</text>
-            <text x="780" y="420" fill="currentColor">40 (A) (B) (C) (â—) (E)</text>
+            <text x="780" y="60" fill="currentColor">31 (A) (B) (C) (D) (●)</text>
+            <text x="780" y="100" fill="currentColor" font-weight="bold">32 (●) (B) (C) (D) (E)</text>
+            <text x="780" y="140" fill="currentColor">33 (A) (●) (C) (D) (E)</text>
+            <text x="780" y="180" fill="currentColor">34 (A) (B) (●) (D) (E)</text>
+            <text x="780" y="220" fill="currentColor" font-weight="bold">35 (●) (B) (C) (D) (E)</text>
+            <text x="780" y="260" fill="currentColor">36 (A) (B) (C) (●) (E)</text>
+            <text x="780" y="300" fill="currentColor">37 (A) (●) (C) (D) (E)</text>
+            <text x="780" y="340" fill="currentColor" font-weight="bold">38 (A) (B) (●) (D) (E)</text>
+            <text x="780" y="380" fill="currentColor">39 (●) (B) (C) (D) (E)</text>
+            <text x="780" y="420" fill="currentColor">40 (A) (B) (C) (●) (E)</text>
           </g>
 
           <!-- Bloco Central (Linhas 41 a 80) -->
           <g transform="translate(0, 400)">
-            <text x="30" y="60" fill="currentColor" font-weight="bold">41 (â—) (B) (C) (D) (E)</text>
-            <text x="30" y="100" fill="currentColor">42 (A) (â—) (C) (D) (E)</text>
-            <text x="30" y="140" fill="currentColor">43 (A) (B) (â—) (D) (E)</text>
-            <text x="30" y="180" fill="currentColor" font-weight="bold">44 (A) (B) (C) (â—) (E)</text>
-            <text x="30" y="220" fill="currentColor">45 (â—) (B) (C) (D) (E)</text>
-            <text x="30" y="260" fill="currentColor">46 (A) (â—) (C) (D) (E)</text>
-            <text x="30" y="300" fill="currentColor" font-weight="bold">47 (A) (B) (â—) (D) (E)</text>
-            <text x="30" y="340" fill="currentColor">48 (A) (B) (C) (â—) (E)</text>
-            <text x="30" y="380" fill="currentColor">49 (â—) (B) (C) (D) (E)</text>
-            <text x="30" y="420" fill="currentColor" font-weight="bold">50 (A) (â—) (C) (D) (E)</text>
+            <text x="30" y="60" fill="currentColor" font-weight="bold">41 (●) (B) (C) (D) (E)</text>
+            <text x="30" y="100" fill="currentColor">42 (A) (●) (C) (D) (E)</text>
+            <text x="30" y="140" fill="currentColor">43 (A) (B) (●) (D) (E)</text>
+            <text x="30" y="180" fill="currentColor" font-weight="bold">44 (A) (B) (C) (●) (E)</text>
+            <text x="30" y="220" fill="currentColor">45 (●) (B) (C) (D) (E)</text>
+            <text x="30" y="260" fill="currentColor">46 (A) (●) (C) (D) (E)</text>
+            <text x="30" y="300" fill="currentColor" font-weight="bold">47 (A) (B) (●) (D) (E)</text>
+            <text x="30" y="340" fill="currentColor">48 (A) (B) (C) (●) (E)</text>
+            <text x="30" y="380" fill="currentColor">49 (●) (B) (C) (D) (E)</text>
+            <text x="30" y="420" fill="currentColor" font-weight="bold">50 (A) (●) (C) (D) (E)</text>
 
-            <text x="280" y="60" fill="currentColor">51 (A) (B) (â—) (D) (E)</text>
-            <text x="280" y="100" fill="currentColor" font-weight="bold">52 (A) (B) (C) (â—) (E)</text>
-            <text x="280" y="140" fill="currentColor">53 (â—) (B) (C) (D) (E)</text>
-            <text x="280" y="180" fill="currentColor">54 (A) (â—) (C) (D) (E)</text>
-            <text x="280" y="220" fill="currentColor" font-weight="bold">55 (A) (B) (â—) (D) (E)</text>
-            <text x="280" y="260" fill="currentColor">56 (A) (B) (C) (â—) (E)</text>
-            <text x="280" y="300" fill="currentColor">57 (â—) (B) (C) (D) (E)</text>
-            <text x="280" y="340" fill="currentColor" font-weight="bold">58 (A) (â—) (C) (D) (E)</text>
-            <text x="280" y="380" fill="currentColor">59 (A) (B) (â—) (D) (E)</text>
-            <text x="280" y="420" fill="currentColor">60 (A) (B) (C) (â—) (E)</text>
+            <text x="280" y="60" fill="currentColor">51 (A) (B) (●) (D) (E)</text>
+            <text x="280" y="100" fill="currentColor" font-weight="bold">52 (A) (B) (C) (●) (E)</text>
+            <text x="280" y="140" fill="currentColor">53 (●) (B) (C) (D) (E)</text>
+            <text x="280" y="180" fill="currentColor">54 (A) (●) (C) (D) (E)</text>
+            <text x="280" y="220" fill="currentColor" font-weight="bold">55 (A) (B) (●) (D) (E)</text>
+            <text x="280" y="260" fill="currentColor">56 (A) (B) (C) (●) (E)</text>
+            <text x="280" y="300" fill="currentColor">57 (●) (B) (C) (D) (E)</text>
+            <text x="280" y="340" fill="currentColor" font-weight="bold">58 (A) (●) (C) (D) (E)</text>
+            <text x="280" y="380" fill="currentColor">59 (A) (B) (●) (D) (E)</text>
+            <text x="280" y="420" fill="currentColor">60 (A) (B) (C) (●) (E)</text>
 
-            <text x="530" y="60" fill="currentColor" font-weight="bold">61 (â—) (B) (C) (D) (E)</text>
-            <text x="530" y="100" fill="currentColor">62 (A) (â—) (C) (D) (E)</text>
-            <text x="530" y="140" fill="currentColor">63 (A) (B) (â—) (D) (E)</text>
-            <text x="530" y="180" fill="currentColor" font-weight="bold">64 (A) (B) (C) (â—) (E)</text>
-            <text x="530" y="220" fill="currentColor">65 (â—) (B) (C) (D) (E)</text>
-            <text x="530" y="260" fill="currentColor">66 (A) (â—) (C) (D) (E)</text>
-            <text x="530" y="300" fill="currentColor" font-weight="bold">67 (A) (B) (â—) (D) (E)</text>
-            <text x="530" y="340" fill="currentColor">68 (A) (B) (C) (â—) (E)</text>
-            <text x="530" y="380" fill="currentColor">69 (â—) (B) (C) (D) (E)</text>
-            <text x="530" y="420" fill="currentColor" font-weight="bold">70 (A) (â—) (C) (D) (E)</text>
+            <text x="530" y="60" fill="currentColor" font-weight="bold">61 (●) (B) (C) (D) (E)</text>
+            <text x="530" y="100" fill="currentColor">62 (A) (●) (C) (D) (E)</text>
+            <text x="530" y="140" fill="currentColor">63 (A) (B) (●) (D) (E)</text>
+            <text x="530" y="180" fill="currentColor" font-weight="bold">64 (A) (B) (C) (●) (E)</text>
+            <text x="530" y="220" fill="currentColor">65 (●) (B) (C) (D) (E)</text>
+            <text x="530" y="260" fill="currentColor">66 (A) (●) (C) (D) (E)</text>
+            <text x="530" y="300" fill="currentColor" font-weight="bold">67 (A) (B) (●) (D) (E)</text>
+            <text x="530" y="340" fill="currentColor">68 (A) (B) (C) (●) (E)</text>
+            <text x="530" y="380" fill="currentColor">69 (●) (B) (C) (D) (E)</text>
+            <text x="530" y="420" fill="currentColor" font-weight="bold">70 (A) (●) (C) (D) (E)</text>
 
-            <text x="780" y="60" fill="currentColor">71 (A) (B) (â—) (D) (E)</text>
-            <text x="780" y="100" fill="currentColor" font-weight="bold">72 (A) (B) (C) (â—) (E)</text>
-            <text x="780" y="140" fill="currentColor">73 (â—) (B) (C) (D) (E)</text>
-            <text x="780" y="180" fill="currentColor">74 (A) (â—) (C) (D) (E)</text>
-            <text x="780" y="220" fill="currentColor" font-weight="bold">75 (A) (B) (â—) (D) (E)</text>
-            <text x="780" y="260" fill="currentColor">76 (A) (B) (C) (â—) (E)</text>
-            <text x="780" y="300" fill="currentColor">77 (â—) (B) (C) (D) (E)</text>
-            <text x="780" y="340" fill="currentColor" font-weight="bold">78 (A) (â—) (C) (D) (E)</text>
-            <text x="780" y="380" fill="currentColor">79 (A) (B) (â—) (D) (E)</text>
-            <text x="780" y="420" fill="currentColor">80 (A) (B) (C) (â—) (E)</text>
+            <text x="780" y="60" fill="currentColor">71 (A) (B) (●) (D) (E)</text>
+            <text x="780" y="100" fill="currentColor" font-weight="bold">72 (A) (B) (C) (●) (E)</text>
+            <text x="780" y="140" fill="currentColor">73 (●) (B) (C) (D) (E)</text>
+            <text x="780" y="180" fill="currentColor">74 (A) (●) (C) (D) (E)</text>
+            <text x="780" y="220" fill="currentColor" font-weight="bold">75 (A) (B) (●) (D) (E)</text>
+            <text x="780" y="260" fill="currentColor">76 (A) (B) (C) (●) (E)</text>
+            <text x="780" y="300" fill="currentColor">77 (●) (B) (C) (D) (E)</text>
+            <text x="780" y="340" fill="currentColor" font-weight="bold">78 (A) (●) (C) (D) (E)</text>
+            <text x="780" y="380" fill="currentColor">79 (A) (B) (●) (D) (E)</text>
+            <text x="780" y="420" fill="currentColor">80 (A) (B) (C) (●) (E)</text>
           </g>
 
           <!-- Bloco Inferior (Linhas 81 a 120) -->
           <g transform="translate(0, 800)">
-            <text x="30" y="60" fill="currentColor" font-weight="bold">81 (â—) (B) (C) (D) (E)</text>
-            <text x="30" y="100" fill="currentColor">82 (A) (â—) (C) (D) (E)</text>
-            <text x="30" y="140" fill="currentColor">83 (A) (B) (â—) (D) (E)</text>
-            <text x="30" y="180" fill="currentColor" font-weight="bold">84 (A) (B) (C) (â—) (E)</text>
-            <text x="30" y="220" fill="currentColor">85 (â—) (B) (C) (D) (E)</text>
-            <text x="30" y="260" fill="currentColor">86 (A) (â—) (C) (D) (E)</text>
-            <text x="30" y="300" fill="currentColor" font-weight="bold">87 (A) (B) (â—) (D) (E)</text>
-            <text x="30" y="340" fill="currentColor">88 (A) (B) (C) (â—) (E)</text>
-            <text x="30" y="380" fill="currentColor">89 (â—) (B) (C) (D) (E)</text>
-            <text x="30" y="420" fill="currentColor" font-weight="bold">90 (A) (â—) (C) (D) (E)</text>
+            <text x="30" y="60" fill="currentColor" font-weight="bold">81 (●) (B) (C) (D) (E)</text>
+            <text x="30" y="100" fill="currentColor">82 (A) (●) (C) (D) (E)</text>
+            <text x="30" y="140" fill="currentColor">83 (A) (B) (●) (D) (E)</text>
+            <text x="30" y="180" fill="currentColor" font-weight="bold">84 (A) (B) (C) (●) (E)</text>
+            <text x="30" y="220" fill="currentColor">85 (●) (B) (C) (D) (E)</text>
+            <text x="30" y="260" fill="currentColor">86 (A) (●) (C) (D) (E)</text>
+            <text x="30" y="300" fill="currentColor" font-weight="bold">87 (A) (B) (●) (D) (E)</text>
+            <text x="30" y="340" fill="currentColor">88 (A) (B) (C) (●) (E)</text>
+            <text x="30" y="380" fill="currentColor">89 (●) (B) (C) (D) (E)</text>
+            <text x="30" y="420" fill="currentColor" font-weight="bold">90 (A) (●) (C) (D) (E)</text>
 
-            <text x="280" y="60" fill="currentColor">91 (A) (B) (â—) (D) (E)</text>
-            <text x="280" y="100" fill="currentColor" font-weight="bold">92 (A) (B) (C) (â—) (E)</text>
-            <text x="280" y="140" fill="currentColor">93 (â—) (B) (C) (D) (E)</text>
-            <text x="280" y="180" fill="currentColor">94 (A) (â—) (C) (D) (E)</text>
-            <text x="280" y="220" fill="currentColor" font-weight="bold">95 (A) (B) (â—) (D) (E)</text>
-            <text x="280" y="260" fill="currentColor">96 (A) (B) (C) (â—) (E)</text>
-            <text x="280" y="300" fill="currentColor">97 (â—) (B) (C) (D) (E)</text>
-            <text x="280" y="340" fill="currentColor" font-weight="bold">98 (A) (â—) (C) (D) (E)</text>
-            <text x="280" y="380" fill="currentColor">99 (A) (B) (â—) (D) (E)</text>
-            <text x="280" y="420" fill="currentColor">100 (A) (B) (C) (â—) (E)</text>
+            <text x="280" y="60" fill="currentColor">91 (A) (B) (●) (D) (E)</text>
+            <text x="280" y="100" fill="currentColor" font-weight="bold">92 (A) (B) (C) (●) (E)</text>
+            <text x="280" y="140" fill="currentColor">93 (●) (B) (C) (D) (E)</text>
+            <text x="280" y="180" fill="currentColor">94 (A) (●) (C) (D) (E)</text>
+            <text x="280" y="220" fill="currentColor" font-weight="bold">95 (A) (B) (●) (D) (E)</text>
+            <text x="280" y="260" fill="currentColor">96 (A) (B) (C) (●) (E)</text>
+            <text x="280" y="300" fill="currentColor">97 (●) (B) (C) (D) (E)</text>
+            <text x="280" y="340" fill="currentColor" font-weight="bold">98 (A) (●) (C) (D) (E)</text>
+            <text x="280" y="380" fill="currentColor">99 (A) (B) (●) (D) (E)</text>
+            <text x="280" y="420" fill="currentColor">100 (A) (B) (C) (●) (E)</text>
 
-            <text x="530" y="60" fill="currentColor" font-weight="bold">101 (â—) (B) (C) (D) (E)</text>
-            <text x="530" y="100" fill="currentColor">102 (A) (â—) (C) (D) (E)</text>
-            <text x="530" y="140" fill="currentColor">103 (A) (B) (â—) (D) (E)</text>
-            <text x="530" y="180" fill="currentColor" font-weight="bold">104 (A) (B) (C) (â—) (E)</text>
-            <text x="530" y="220" fill="currentColor">105 (â—) (B) (C) (D) (E)</text>
-            <text x="530" y="260" fill="currentColor">106 (A) (â—) (C) (D) (E)</text>
-            <text x="530" y="300" fill="currentColor" font-weight="bold">107 (A) (B) (â—) (D) (E)</text>
-            <text x="530" y="340" fill="currentColor">108 (A) (B) (C) (â—) (E)</text>
-            <text x="530" y="380" fill="currentColor">109 (â—) (B) (C) (D) (E)</text>
-            <text x="530" y="420" fill="currentColor" font-weight="bold">110 (A) (â—) (C) (D) (E)</text>
+            <text x="530" y="60" fill="currentColor" font-weight="bold">101 (●) (B) (C) (D) (E)</text>
+            <text x="530" y="100" fill="currentColor">102 (A) (●) (C) (D) (E)</text>
+            <text x="530" y="140" fill="currentColor">103 (A) (B) (●) (D) (E)</text>
+            <text x="530" y="180" fill="currentColor" font-weight="bold">104 (A) (B) (C) (●) (E)</text>
+            <text x="530" y="220" fill="currentColor">105 (●) (B) (C) (D) (E)</text>
+            <text x="530" y="260" fill="currentColor">106 (A) (●) (C) (D) (E)</text>
+            <text x="530" y="300" fill="currentColor" font-weight="bold">107 (A) (B) (●) (D) (E)</text>
+            <text x="530" y="340" fill="currentColor">108 (A) (B) (C) (●) (E)</text>
+            <text x="530" y="380" fill="currentColor">109 (●) (B) (C) (D) (E)</text>
+            <text x="530" y="420" fill="currentColor" font-weight="bold">110 (A) (●) (C) (D) (E)</text>
 
-            <text x="780" y="60" fill="currentColor">111 (A) (B) (â—) (D) (E)</text>
-            <text x="780" y="100" fill="currentColor" font-weight="bold">112 (A) (B) (C) (â—) (E)</text>
-            <text x="780" y="140" fill="currentColor">113 (â—) (B) (C) (D) (E)</text>
-            <text x="780" y="180" fill="currentColor">114 (A) (â—) (C) (D) (E)</text>
-            <text x="780" y="220" fill="currentColor" font-weight="bold">115 (A) (B) (â—) (D) (E)</text>
-            <text x="780" y="260" fill="currentColor">116 (A) (B) (C) (â—) (E)</text>
-            <text x="780" y="300" fill="currentColor">117 (â—) (B) (C) (D) (E)</text>
-            <text x="780" y="340" fill="currentColor" font-weight="bold">118 (A) (â—) (C) (D) (E)</text>
-            <text x="780" y="380" fill="currentColor">119 (A) (B) (â—) (D) (E)</text>
-            <text x="780" y="420" fill="currentColor">120 (A) (B) (C) (â—) (E)</text>
+            <text x="780" y="60" fill="currentColor">111 (A) (B) (●) (D) (E)</text>
+            <text x="780" y="100" fill="currentColor" font-weight="bold">112 (A) (B) (C) (●) (E)</text>
+            <text x="780" y="140" fill="currentColor">113 (●) (B) (C) (D) (E)</text>
+            <text x="780" y="180" fill="currentColor">114 (A) (●) (C) (D) (E)</text>
+            <text x="780" y="220" fill="currentColor" font-weight="bold">115 (A) (B) (●) (D) (E)</text>
+            <text x="780" y="260" fill="currentColor">116 (A) (B) (C) (●) (E)</text>
+            <text x="780" y="300" fill="currentColor">117 (●) (B) (C) (D) (E)</text>
+            <text x="780" y="340" fill="currentColor" font-weight="bold">118 (A) (●) (C) (D) (E)</text>
+            <text x="780" y="380" fill="currentColor">119 (A) (B) (●) (D) (E)</text>
+            <text x="780" y="420" fill="currentColor">120 (A) (B) (C) (●) (E)</text>
           </g>
         </g>
       </svg>
 
       <div class="eyebrow-pill">
         <span class="eyebrow-dot"></span>
-        <span>ATENDIMENTO NACIONAL Â· 100% DIGITAL</span>
+        <span>ATENDIMENTO NACIONAL · 100% DIGITAL</span>
       </div>
       
       <h2 class="cta-final-title">
-        A SUA APROVAÃ‡ÃƒO CUSTOU ANOS DE VIDA. NÃƒO DEIXE UM ERRO ARBITRÃRIO TIRÃ-LA DE VOCÃŠ.
+        A SUA APROVAÇÃO CUSTOU ANOS DE VIDA. NÃO DEIXE UM ERRO ARBITRÁRIO TIRÁ-LA DE VOCÊ.
       </h2>
       
       <p class="cta-final-subtitle">
-        Concurso pÃºblico Ã© corrida contra o tempo. Fale agora com o Paulo Rinaldi e blinde a vaga que vocÃª conquistou por direito.
+        Concurso público é corrida contra o tempo. Fale agora com o Paulo Rinaldi e blinde a vaga que você conquistou por direito.
       </p>
 
       <div class="btn-pulse-wrapper">
         <span class="btn-pulse-ring"></span>
         <a href="https://wa.me/5592994401600" target="_blank" rel="noopener noreferrer" class="btn-primary" style="padding: 18px 36px; font-size: 16px;">
           <span>Analisar meu caso no WhatsApp agora</span>
-          <span aria-hidden="true">â†’</span>
+          <span aria-hidden="true">→</span>
         </a>
       </div>
 
-      <!-- Grid de 3 Cards GrÃ¡ficos de Garantia -->
+      <!-- Grid de 3 Cards Gráficos de Garantia -->
       <div class="cta-guarantee-grid">
         <!-- Garantia 1 -->
         <div class="cta-guarantee-card">
-          <div class="cta-guarantee-icon">âš¡</div>
-          <div class="cta-guarantee-title">Resposta Ãgil & Imediata</div>
-          <div class="cta-guarantee-desc">Atendimento prioritÃ¡rio para anÃ¡lise de prazos fatais de liminares e recursos.</div>
+          <div class="cta-guarantee-icon">⚡</div>
+          <div class="cta-guarantee-title">Resposta Ágil & Imediata</div>
+          <div class="cta-guarantee-desc">Atendimento prioritário para análise de prazos fatais de liminares e recursos.</div>
         </div>
 
         <!-- Garantia 2 -->
         <div class="cta-guarantee-card">
-          <div class="cta-guarantee-icon">ðŸ›¡ï¸</div>
-          <div class="cta-guarantee-title">AnÃ¡lise Sem Compromisso</div>
-          <div class="cta-guarantee-desc">AvaliaÃ§Ã£o preliminar tÃ©cnica do seu edital e espelho de prova antes de qualquer contrataÃ§Ã£o.</div>
+          <div class="cta-guarantee-icon">🛡️</div>
+          <div class="cta-guarantee-title">Análise Sem Compromisso</div>
+          <div class="cta-guarantee-desc">Avaliação preliminar técnica do seu edital e espelho de prova antes de qualquer contratação.</div>
         </div>
 
         <!-- Garantia 3 -->
         <div class="cta-guarantee-card">
-          <div class="cta-guarantee-icon">âš–ï¸</div>
-          <div class="cta-guarantee-title">Sigilo & Ã‰tica Absoluta</div>
-          <div class="cta-guarantee-desc">AtuaÃ§Ã£o conduzida sob rigoroso sigilo profissional e transparÃªncia em cada etapa processual.</div>
+          <div class="cta-guarantee-icon">⚖️</div>
+          <div class="cta-guarantee-title">Sigilo & Ética Absoluta</div>
+          <div class="cta-guarantee-desc">Atuação conduzida sob rigoroso sigilo profissional e transparência em cada etapa processual.</div>
         </div>
       </div>
 
@@ -3534,7 +3534,7 @@
   </section>
 
   <!-- ==========================================================================
-       10. RODAPÃ‰ DEFINITIVO DO SITE
+       10. RODAPÉ DEFINITIVO DO SITE
        ========================================================================== -->
   <footer class="main-footer">
     <div class="footer-top">
@@ -3555,25 +3555,25 @@
     </div>
 
     <div class="footer-bottom">
-      <div>Â© 2026 Ribeiro Rinaldi Advocacia Â· Paulo Rinaldi â€” OAB/SC 78.309 Â· Todos os direitos reservados.</div>
+      <div>© 2026 Ribeiro Rinaldi Advocacia · Paulo Rinaldi — OAB/SC 78.309 · Todos os direitos reservados.</div>
     </div>
   </footer>
 
   <!-- ==========================================================================
-       7. SCRIPTS DE ANIMAÃ‡ÃƒO, LENIS SMOOTH SCROLL & CANVAS IMAGE SEQUENCE SCRUB
+       7. SCRIPTS DE ANIMAÇÃO, LENIS SMOOTH SCROLL & CANVAS IMAGE SEQUENCE SCRUB
        ========================================================================== -->
   <script>
     (function () {
       gsap.registerPlugin(ScrollTrigger);
 
-      // ConfiguraÃ§Ã£o essencial para garantir que o Mobile nÃ£o dÃª saltos (jump) de layout ao transicionar entre seÃ§Ãµes pinadas
+      // Configuração essencial para garantir que o Mobile não dê saltos (jump) de layout ao transicionar entre seções pinadas
       ScrollTrigger.config({ ignoreMobileResize: true });
       if (window.innerWidth >= 1025) {
         ScrollTrigger.normalizeScroll(true);
       }
 
       /* --------------------------------------------------------------------------
-         A. LENIS SMOOTH SCROLL (SensaÃ§Ã£o Amanteigada no Desktop & Scroll Nativo Puro no Celular)
+         A. LENIS SMOOTH SCROLL (Sensação Amanteigada no Desktop & Scroll Nativo Puro no Celular)
          -------------------------------------------------------------------------- */
       const lenis = new Lenis({
         duration: 1.15,
@@ -3630,7 +3630,7 @@
       });
 
       /* --------------------------------------------------------------------------
-         C. APPLE/AWWWARDS-STYLE: SEQUÃŠNCIA DE QUADROS NO CANVAS (100 a 195)
+         C. APPLE/AWWWARDS-STYLE: SEQUÊNCIA DE QUADROS NO CANVAS (100 a 195)
          -------------------------------------------------------------------------- */
       const canvas = document.getElementById('heroCanvas');
       const ctx = canvas ? canvas.getContext('2d') : null;
@@ -3642,7 +3642,7 @@
       const images = [];
       let firstFrameRendered = false;
 
-      // Sincroniza dinamicamente a cor de fundo da pÃ¡gina com os pixels do quadro
+      // Sincroniza dinamicamente a cor de fundo da página com os pixels do quadro
       function syncBackgroundColor(img) {
         try {
           const tempCanvas = document.createElement('canvas');
@@ -3659,7 +3659,7 @@
         } catch (e) {}
       }
 
-      // Renderiza um quadro especÃ­fico mantendo object-fit: cover via CSS na tag <canvas>
+      // Renderiza um quadro específico mantendo object-fit: cover via CSS na tag <canvas>
       function renderFrame(index) {
         if (!canvas || !ctx || !images[index]) return;
         const img = images[index];
@@ -3678,7 +3678,7 @@
         }
       }
 
-      // PrÃ©-carregamento dos 96 quadros WebP em memÃ³ria (Smart Buffer)
+      // Pré-carregamento dos 96 quadros WebP em memória (Smart Buffer)
       for (let i = frameStart; i <= frameEnd; i++) {
         const img = new Image();
         const numStr = String(i).padStart(4, '0');
@@ -3686,7 +3686,7 @@
         
         const arrayIndex = i - frameStart;
         img.onload = () => {
-          // Assim que o primeiro quadro (Ã­ndice 0) carrega, desenha imediatamente e recalcula posiÃ§Ãµes exatas dos gatilhos
+          // Assim que o primeiro quadro (índice 0) carrega, desenha imediatamente e recalcula posições exatas dos gatilhos
           if (arrayIndex === 0) {
             renderFrame(0);
             ScrollTrigger.refresh();
@@ -3695,20 +3695,20 @@
         images.push(img);
       }
 
-      // Motor de Limite de CadÃªncia MÃ¡xima (Speed-Clamped Progress Engine)
+      // Motor de Limite de Cadência Máxima (Speed-Clamped Progress Engine)
       let targetHeroProgress = 0;
       let currentHeroProgress = 0;
 
       function updateHeroScene(progress) {
-        // 1. Scrub de quadros no canvas â€” zero delay de decodificaÃ§Ã£o de vÃ­deo
+        // 1. Scrub de quadros no canvas — zero delay de decodificação de vídeo
         if (images.length > 0) {
           const frameIndex = Math.min(images.length - 1, Math.floor(progress * images.length));
           renderFrame(frameIndex);
         }
 
-        // 2. Efeito de sumir os textos e botÃµes
-        // No Desktop: sÃ³ comeÃ§am a sumir no quadro onde a caneta toca o papel e assina o Termo de Posse (quadro 160, progress 0.625)
-        // No Mobile: a copy some logo no inÃ­cio da rolagem (progress 0.10 a 0.26) para revelar o documento "Concurso PÃºblico" antes da transiÃ§Ã£o para o "Termo de Posse"
+        // 2. Efeito de sumir os textos e botões
+        // No Desktop: só começam a sumir no quadro onde a caneta toca o papel e assina o Termo de Posse (quadro 160, progress 0.625)
+        // No Mobile: a copy some logo no início da rolagem (progress 0.10 a 0.26) para revelar o documento "Concurso Público" antes da transição para o "Termo de Posse"
         let fadeProgress = 0;
         if (window.innerWidth >= 1025) {
           fadeProgress = progress <= 0.625 ? 0 : Math.min(1, (progress - 0.625) / 0.25);
@@ -3738,7 +3738,7 @@
           overwrite: 'auto'
         });
 
-        // No mobile (<900px), o overlay escuro some em sincronia com o sumiÃ§o da copy
+        // No mobile (<900px), o overlay escuro some em sincronia com o sumiço da copy
         if (window.innerWidth <= 900) {
           gsap.to('.hero-bg-overlay', {
             opacity: 0.94 * (1 - fadeProgress),
@@ -3755,13 +3755,13 @@
           gsap.to(scrollIndicator, { opacity: 0.75, duration: 0.25, overwrite: 'auto' });
         }
 
-        // 3. O container do vÃ­deo permanece perfeitamente estÃ¡vel (y: 0, scale: 1) durante o Hero
+        // 3. O container do vídeo permanece perfeitamente estável (y: 0, scale: 1) durante o Hero
         gsap.set('.hero-bg-video-container', { y: 0, scale: 1, opacity: 1 });
       }
 
       gsap.ticker.add((time, deltaTime) => {
         const dt = Math.min(0.1, deltaTime / 1000);
-        // Limite mÃ¡ximo de avanÃ§o: no celular mÃ¡x 42% por segundo (~2.4s de cadÃªncia mÃ­nima garantida), no desktop mÃ¡x 45% (~2.2s)
+        // Limite máximo de avanço: no celular máx 42% por segundo (~2.4s de cadência mínima garantida), no desktop máx 45% (~2.2s)
         const maxSpeed = window.innerWidth < 1025 ? 0.42 : 0.45;
         const maxDelta = maxSpeed * dt;
         
@@ -3773,7 +3773,7 @@
         }
       });
 
-      // ScrollTrigger do Hero: Scrubbing Ã¡gil com repasse para o Motor de CadÃªncia MÃ¡xima e duraÃ§Ã£o nativa no mobile
+      // ScrollTrigger do Hero: Scrubbing ágil com repasse para o Motor de Cadência Máxima e duração nativa no mobile
       ScrollTrigger.create({
         trigger: '#heroPinArea',
         pin: true,
@@ -3785,7 +3785,7 @@
         }
       });
 
-      // Parallax DinÃ¢mico e ContÃ­nuo: Sincronizado perfeitamente com o tÃ©rmino da Hero
+      // Parallax Dinâmico e Contínuo: Sincronizado perfeitamente com o término da Hero
       ScrollTrigger.create({
         trigger: '.post-hero-spacer',
         start: 'top bottom',
@@ -3797,7 +3797,7 @@
       });
 
       /* --------------------------------------------------------------------------
-         D. INTERATIVIDADE ACORDEÃƒO FAQ & REVEAL NO SCROLL (SEÃ‡Ã•ES SUBSEQUENTES)
+         D. INTERATIVIDADE ACORDEÃO FAQ & REVEAL NO SCROLL (SEÇÕES SUBSEQUENTES)
          -------------------------------------------------------------------------- */
       const faqItems = document.querySelectorAll('.faq-item');
       faqItems.forEach(item => {
@@ -3827,7 +3827,7 @@
         });
       });
 
-      // Reveal no Scroll dos cards e painÃ©is via IntersectionObserver (imune a offsets ou compensaÃ§Ãµes duplicadas de pin)
+      // Reveal no Scroll dos cards e painéis via IntersectionObserver (imune a offsets ou compensações duplicadas de pin)
       const revealTargets = gsap.utils.toArray('.about-bio-card, .pillar-card, .step-card, .faq-item, .cta-final-box, .command-nav-item, .command-showcase-panel, .accordion-panel');
       revealTargets.forEach(el => {
         gsap.set(el, { opacity: 0, y: 28 });
@@ -3853,7 +3853,7 @@
 
       revealTargets.forEach(el => revealObserver.observe(el));
 
-      // Recalcula os gatilhos da Hero e Parallax apÃ³s carregamento completo de fontes e imagens
+      // Recalcula os gatilhos da Hero e Parallax após carregamento completo de fontes e imagens
       window.addEventListener('load', () => {
         ScrollTrigger.refresh();
       });
@@ -3861,7 +3861,7 @@
         ScrollTrigger.refresh();
       }, 600);
 
-      // LÃ³gica Desktop: Abordagem 3 (Tabela de Comando)
+      // Lógica Desktop: Abordagem 3 (Tabela de Comando)
       const commandItems = document.querySelectorAll('.command-nav-item');
       const showcaseViews = document.querySelectorAll('.showcase-view');
       if (commandItems.length > 0 && showcaseViews.length > 0) {
@@ -3889,7 +3889,7 @@
         });
       }
 
-      // LÃ³gica Mobile/Tablet: Abordagem 2 (Sanfona Expansiva)
+      // Lógica Mobile/Tablet: Abordagem 2 (Sanfona Expansiva)
       const accordionPanels = document.querySelectorAll('.accordion-panel');
       if (accordionPanels.length > 0) {
         accordionPanels.forEach(panel => {
@@ -3903,6 +3903,42 @@
         });
       }
 
+      /* --------------------------------------------------------------------------
+         E. ANIMAÇÃO DE SCROLL DA LINHA DO TEMPO VERTICAL R.E.A.L. (SEÇÃO 4)
+         -------------------------------------------------------------------------- */
+      const journeyContainer = document.querySelector('.journey-real-container');
+      if (journeyContainer && typeof gsap !== 'undefined') {
+        // 1. Linha alaranjada central crescendo suavemente conforme o scroll desce
+        gsap.to('.journey-line-fill', {
+          scaleY: 1,
+          ease: 'none',
+          scrollTrigger: {
+            trigger: '.journey-real-container',
+            start: 'top 70%',
+            end: 'bottom 80%',
+            scrub: true
+          }
+        });
+
+        // 2. Aparição sequencial e suave de cada passo (Card + Ponto R.E.A.L.) via IntersectionObserver
+        const journeySteps = gsap.utils.toArray('.journey-step');
+        journeySteps.forEach(step => {
+          gsap.set(step, { opacity: 0, y: 50 });
+          const dot = step.querySelector('.journey-dot');
+          if (dot) gsap.set(dot, { scale: 0.4, backgroundColor: 'var(--rr-panel)' });
+        });
+
+        const journeyObserver = new IntersectionObserver((entries, observer) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              const step = entry.target;
+              const dot = step.querySelector('.journey-dot');
+
+              gsap.to(step, {
+                opacity: 1,
+                y: 0,
+                duration: 0.8,
+                ease: 'cubic-bezier(0.16, 1, 0.3, 1)',
                 overwrite: 'auto'
               });
 
@@ -3953,4 +3989,3 @@
     </script>
 </body>
 </html>
-
