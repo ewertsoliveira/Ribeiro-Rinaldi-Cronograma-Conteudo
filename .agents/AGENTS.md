@@ -1,6 +1,6 @@
 # Regras do Projeto — Ribeiro Rinaldi Advocacia
 
-## 📁 Diretrizes de Organização de Arquivos e Pastas
+## 📂 Diretrizes de Organização de Arquivos e Pastas
 
 1. **Categorização Obrigatória:**
    - **NENHUM arquivo novo deve ser criado solto na raiz do repositório** `Ribeiro Rinaldi`.
@@ -19,13 +19,18 @@
 
 ## Regras OAB
 
-- NUNCA utilize termos como 'an�lise gr�tis', 'avalia��o gratuita', 'gr�tis' ou qualquer express�o que indique servi�o jur�dico sem custo. O C�digo de �tica da OAB veda a mercantiliza��o e a capta��o indevida de clientela. Sempre substitua por termos neutros como 'an�lise preliminar', 'avalia��o de viabilidade', 'estudo inicial do caso' ou 'an�lise sem compromisso'.
+- NUNCA utilize termos como 'análise grátis', 'avaliação gratuita', 'grátis' ou qualquer expressão que indique serviço jurídico sem custo. O Código de Ética da OAB veda a mercantilização e a captação indevida de clientela. Sempre substitua por termos neutros como 'análise preliminar', 'avaliação de viabilidade', 'estudo inicial do caso' ou 'análise sem compromisso'.
 
 ## Regras de Imagem e Cargo (Paulo Rinaldi)
 
-- NUNCA inicie uma publicacao, bio ou capa de post chamando Paulo de 'Auditor do Estado' ou 'Auditor Fiscal'. Para evitar problemas com a OAB (carteirada), use sempre 'Advogado e Servidor Publico' nessas posicoes de destaque. A informacao de que ele e Auditor pode aparecer do segundo slide em diante ou no meio do texto, com sutileza.
-- NAO use o pronome de tratamento 'Dr.' (Doutor) antes do nome dele (ex: prefira 'Paulo Rinaldi' em vez de 'Dr. Paulo Rinaldi'), para gerar mais aproximacao e conexao com o publico.
+- NUNCA utilize o cargo de 'Auditor do Estado', 'Auditor Fiscal' ou 'Auditor' para se referir a Paulo Rinaldi EM NENHUM MATERIAL (vídeo, copy, post, legenda, documento, site, etc.). Para apresentar as credenciais dele, utilize sempre 'Advogado e Servidor Público'. Esta instrução se aplica a TUDO, sem exceções. O objetivo é blindar o advogado perante a OAB contra acusações de carteirada.
+- NUNCA use o pronome de tratamento 'Dr.' (Doutor) antes do nome dele EM NENHUM LUGAR. Em qualquer legenda, post, vídeo ou copy, escreva apenas 'Paulo Rinaldi'. Jamais 'Dr. Paulo Rinaldi'. Isso vale para todos os materiais gerados.
 
 ## Sincronia de Cronograma
 
-- REGRA DE OURO: Sempre que voce alterar ou atualizar a copy, texto, titulo ou imagem de algum post nas pastas de 'midias-graficas' ou em qualquer outro lugar, VOCE DEVE, OBRIGATORIAMENTE, replicar e atualizar essa mesma mudanca nos arquivos do Cronograma ('Cronograma de Posts\index.html' e 'Cronograma de Posts\painel-cronograma-ribeiro-rinaldi.html'). O cronograma deve ser mantido como a fonte da verdade exata e atualizada de todo o conteudo aprovado e gerado.
+- REGRA DE OURO: Sempre que você alterar ou atualizar a copy, texto, titulo ou imagem de algum post nas pastas de 'midias-graficas' ou em qualquer outro lugar, VOCÊ DEVE, OBRIGATORIAMENTE, replicar e atualizar essa mesma mudança nos arquivos do Cronograma ('Cronograma de Posts\index.html' e 'Cronograma de Posts\painel-cronograma-ribeiro-rinaldi.html'). O cronograma deve ser mantido como a fonte da verdade exata e atualizada de todo o conteudo aprovado e gerado.
+
+## Padrão de Hashtags (Concurso Público)
+
+- Sempre que o assunto for sobre **Concurso Público**, utilize OBRIGATORIAMENTE o seguinte bloco padrão de hashtags: \#concursopublico #servidorpublico #advogadoconcurso #posse #ribeirorinaldi #concurseiro\.
+- Para outros assuntos ou subnichos, você pode adicionar novas hashtags ou alterar algumas delas mantendo a relevância.
