@@ -31,7 +31,7 @@ System que colei acima. Regras inegociáveis:
 - Tom "de igual pra igual" (80/100): direto, próximo, com urgência, SEM juridiquês.
 - Traduza qualquer termo técnico para linguagem de concurseiro.
 - Transmita: acessibilidade, identidade (o advogado já foi concurseiro), autoridade
-  (é Auditor do Estado). Nunca transmita demora, juridiquês ou descompromisso.
+  (é Advogado e Servidor Público). Nunca transmita demora, juridiquês ou descompromisso.
 - Sempre UM único CTA por peça.
 - Proibido: balança, Themis, martelo, azul-marinho+dourado, "advogado chato".
 - Paleta: laranja #FF5E1A, magenta #F0247C, creme #F7F1E8, preto quente #150F0B.
@@ -126,7 +126,7 @@ Para cada card dê: título, corpo e observação de layout. No fim, a legenda d
 ## 7. Roteiro de Reels / Stories (9:16)
 
 ```
-Escreva um roteiro de Reels (9:16), 30–45s, com o fundador (ex-concurseiro e Auditor
+Escreva um roteiro de Reels (9:16), 30–45s, com o fundador (ex-concurseiro e Advogado e Servidor Público
 do Estado) falando à câmera sobre {{ tema }}.
 
 Entregue em blocos de ~5s:
@@ -164,7 +164,7 @@ Crie um anúncio de rede de pesquisa do Google para {{ serviço }}.
 
 Entregue:
 - 3 títulos (máx 30 caracteres cada) — o 1º com a dor ("Passou e Não Foi Chamado?")
-- 2 descrições (máx 90 caracteres cada) — autoridade (ex-concurseiro + Auditor do
+- 2 descrições (máx 90 caracteres cada) — autoridade (ex-concurseiro + Advogado e Servidor Público do
   Estado), retorno rápido, triagem técnica em 24h
 - Sugestão de palavras-chave (10) e 4 sitelinks
 Sem juridiquês; foco em urgência e confiança.
@@ -178,7 +178,7 @@ Sem juridiquês; foco em urgência e confiança.
 Escreva o conteúdo da primeira dobra do site (impacto em 3s, estilo Apple) para
 {{ objetivo }}.
 
-- Eyebrow: "Advogado · Auditor do Estado"
+- Eyebrow: "Advogado · Advogado e Servidor Público"
 - Manchete Archivo gigante (com uma parte no gradiente laranja→magenta)
 - Subtítulo Manrope (1–2 linhas, sem juridiquês)
 - CTA primário ("Analisar viabilidade do meu caso →") + microcopy ("resposta em 24h")

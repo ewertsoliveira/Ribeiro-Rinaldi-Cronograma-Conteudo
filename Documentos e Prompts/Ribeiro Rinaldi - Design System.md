@@ -20,7 +20,7 @@
 | **Nome** | Ribeiro Rinaldi |
 | **Setor** | Advocacia para servidores e candidatos de concurso público |
 | **Serviços** | Recursos em provas, verbas retroativas, mandado de segurança, preterição, posse atrasada |
-| **Fundador** | Ex-concurseiro e atual Auditor do Estado — autoridade de quem "já esteve do outro lado" |
+| **Fundador** | Ex-concurseiro e atual Advogado e Servidor Público — autoridade de quem "já esteve do outro lado" |
 | **Conceito central** | **A Virada** — o instante em que a incerteza vira certeza, o "quase" vira posse |
 | **Arquétipo** | **Veterano-Estrategista** — metade veterano (já viveu a batalha), metade estrategista frio (sabe onde atacar) |
 | **Promessa** | Tirar o concurseiro da espera e entregar a nomeação, com estratégia e sem enrolação |
@@ -28,7 +28,7 @@
 ### O que a marca DEVE transmitir
 - **Acessibilidade** — qualquer pessoa pode ter esse serviço, com facilidade.
 - **Identidade** — o advogado já foi concurseiro; entende a dor por dentro.
-- **Autoridade / confiança** — Auditor do Estado; lisura total do processo.
+- **Autoridade / confiança** — Advogado e Servidor Público; lisura total do processo.
 
 ### O que a marca NUNCA pode transmitir
 - **Demora** — o cliente tem urgência; respeitamos o esforço dele agindo rápido.
@@ -169,7 +169,7 @@ O símbolo **ampliado atrás/ao fundo** é um **recurso decorativo** (textura), 
 
 ## 7. Imagens & mundo visual
 
-- **Ativo nº1:** o rosto do fundador (Auditor do Estado). Explorado massivamente — retrato P&B com luz quente lateral, olhar direto, autoridade acessível.
+- **Ativo nº1:** o rosto do fundador (Advogado e Servidor Público). Explorado massivamente — retrato P&B com luz quente lateral, olhar direto, autoridade acessível.
 - **Metáforas da vitória** (ver seção 2): a lista com o nome, a assinatura da posse, adeus CLT, o portal, o topo da montanha.
 - Realces em laranja; luz quente; enquadramentos em close com carga emocional.
 - Sem bancos de imagem genéricos de "advogado de terno apertando mão".
@@ -198,7 +198,7 @@ Estrutura de carrossel: **Card 01 (capa/gancho) → cards de conteúdo numerados
 ### 8.4 Anúncios de alta conversão (Meta / Google)
 - **Estrutura:** gancho emocional forte + prova social do fundador + **um único CTA**.
 - **Meta feed:** imagem 1.91:1 ou 4:5, legenda com dor→promessa→convite, botão "Saiba mais" → "Triagem de viabilidade do seu caso".
-- **Google search:** título com a dor ("Passou no Concurso e Não Foi Chamado?"), descrição com autoridade (ex-concurseiro + Auditor) e retorno rápido.
+- **Google search:** título com a dor ("Passou no Concurso e Não Foi Chamado?"), descrição com autoridade (ex-concurseiro + Advogado e Servidor Público) e retorno rápido.
 
 ### 8.5 Website — primeira dobra
 Impacto em 3 segundos (referência Apple): manchete Archivo gigante + rosto do fundador + uma promessa + CTA único. Zero rolagem para entender o valor.
