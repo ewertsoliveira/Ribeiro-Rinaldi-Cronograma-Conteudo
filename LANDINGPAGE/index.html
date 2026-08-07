@@ -3969,8 +3969,31 @@
 
         journeySteps.forEach(step => journeyObserver.observe(step));
       }
-    })();
-  </script>
-
+      })();
+    </script>
+    <script>
+      /* FIX PARA O BUG DE ESPAÇO EXTRA DO ZOOM NO CHROME */
+      function fixZoomScrollBug() {
+        if (window.innerWidth >= 1025) {
+          document.body.style.marginBottom = '0px';
+          // Force layout recalc
+          void document.body.offsetHeight;
+          const unzoomedHeight = document.body.offsetHeight;
+          // O zoom é 0.75, então o espaço extra que o Chrome deixa é 25% da altura real
+          document.body.style.marginBottom = `-${unzoomedHeight * 0.25}px`;
+        } else {
+          document.body.style.marginBottom = '0px';
+        }
+      }
+      window.addEventListener('load', () => {
+        fixZoomScrollBug();
+        setTimeout(fixZoomScrollBug, 500); // Garante que rode após GSAP e fontes
+      });
+      window.addEventListener('resize', fixZoomScrollBug);
+      // Hook no GSAP ScrollTrigger para recalcular caso a página mude de tamanho
+      if (typeof ScrollTrigger !== 'undefined') {
+        ScrollTrigger.addEventListener('refresh', fixZoomScrollBug);
+      }
+    </script>
 </body>
 </html>
