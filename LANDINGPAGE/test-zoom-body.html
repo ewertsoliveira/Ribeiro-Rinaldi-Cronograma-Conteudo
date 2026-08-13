@@ -1,0 +1,24 @@
+const fs = require('fs');
+
+const testHtml = `
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+  body { zoom: 0.75; margin: 0; padding: 0; }
+  .box { height: 1000px; background: red; }
+</style>
+</head>
+<body>
+  <div class="box"></div>
+  <script>
+    console.log('scrollHeight:', document.documentElement.scrollHeight);
+    console.log('offsetHeight:', document.documentElement.offsetHeight);
+    console.log('body scrollHeight:', document.body.scrollHeight);
+    console.log('box height:', document.querySelector('.box').getBoundingClientRect().height);
+  </script>
+</body>
+</html>
+`;
+
+fs.writeFileSync('test-zoom-body.html', testHtml, 'utf8');

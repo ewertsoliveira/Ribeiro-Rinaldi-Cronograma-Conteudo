@@ -34,3 +34,16 @@
 
 - Sempre que o assunto for sobre **Concurso Público**, utilize OBRIGATORIAMENTE o seguinte bloco padrão de hashtags: \#concursopublico #servidorpublico #advogadoconcurso #posse #ribeirorinaldi #concurseiro\.
 - Para outros assuntos ou subnichos, você pode adicionar novas hashtags ou alterar algumas delas mantendo a relevância.
+
+## Assinatura Verbal da Marca (Bordão)
+
+- **O Bordão Oficial:** "Sua vaga tem dono. E o dono é você."
+- **Regra de Fechamento:** Todo roteiro de vídeo DEVE terminar com o bordão escrito EXATAMENTE assim, palavra por palavra. A repetição idêntica é o que constrói o reconhecimento. NUNCA reescreva ou altere a frase no fechamento.
+- **Ordem Obrigatória:** O bordão vem SEMPRE depois do CTA, nunca antes e nunca no lugar dele. Exemplo estrutural: `[CTA único] → [pausa] → "Sua vaga tem dono. E o dono é você."` O bordão é assinatura, não CTA.
+- **Abertura:** É permitido usar o primeiro movimento ("Sua vaga tem dono") como gancho, completando com a dor (ex: "Sua vaga tem dono — só que o órgão fingiu que esqueceu."). Se usado na abertura, DEVE ser repetido íntegro no fechamento.
+- **Frase de Urgência:** No meio do vídeo/texto, use `"Enquanto tem prazo, tem chance. E a gente não perde prazo."`
+- **Peças Gráficas:** Card final de carrossel usa o bordão em Archivo Black, caixa-alta, quebrado em duas linhas: `SUA VAGA TEM DONO.` / `E O DONO É VOCÊ.`. Em peças curtas (anúncio/story), pode-se usar apenas a primeira parte. Nunca aplicar dentro de ícones ou botões.
+- **Frase de Apoio:** `"A vaga é sua. A briga é nossa."` Permitida APENAS em peças gráficas, anúncios e legendas. PROIBIDA em fechamento falado de vídeo.
+- **Legendas e Hashtag:** Toda legenda de vídeo encerra com o bordão na última linha, seguido de `#SuaVagaTemDono`.
+- **Território Semântico:** O concurseiro não está "pedindo", está **reivindicando**. Verbos PERMITIDOS: tomar de volta, garantir, reivindicar, ir atrás, não abrir mão. Verbos PROIBIDOS (súplica/sorte): conquistar seu sonho, torcer, tentar, quem sabe, correr atrás da sorte.
+- **O que invalida a copy:** Encerrar sem o bordão; alterar palavras; usar bordão antes ou como CTA.

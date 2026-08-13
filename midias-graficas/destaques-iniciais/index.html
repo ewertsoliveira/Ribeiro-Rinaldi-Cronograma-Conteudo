@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Artes Destaques Iniciais | Ribeiro Rinaldi</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,700;0,800;0,900;1,900&family=Manrope:wght@400;500;600;700;800&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" crossorigin="anonymous">
+<style>
+  :root {
+    --black: #150F0B;
+    --dark-surface: #1E1712;
+    --dark-border: #3A2E24;
+    --cream: #F7F1E8;
+    --orange: #FF5E1A;
+    --magenta: #F0247C;
+    --muted: #A79C90;
+    --gradient: linear-gradient(135deg, var(--orange) 0%, var(--magenta) 100%);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: #0D0907;
+    color: var(--cream);
+    font-family: 'Manrope', sans-serif;
+    padding: 40px 20px;
+  }
+  header {
+    max-width: 1400px;
+    margin: 0 auto 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--dark-border);
+    padding-bottom: 20px;
+  }
+  header h1 {
+    font-family: 'Archivo', sans-serif;
+    font-weight: 900;
+    font-size: 24px;
+    text-transform: uppercase;
+  }
+  .header-actions {
+    display: flex;
+    gap: 12px;
+  }
+  .btn {
+    background: var(--gradient);
+    color: #fff;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-family: 'Space Mono', monospace;
+    font-weight: 700;
+    font-size: 14px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: transform 0.2s, opacity 0.2s;
+  }
+  .btn:hover { opacity: 0.9; transform: translateY(-2px); }
+  .grid {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 36px;
+    justify-content: center;
+  }
+  .slide-container {
+    background: var(--black);
+    border: 1px solid var(--dark-border);
+    border-radius: 16px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .slide-header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 14px;
+  }
+  .slide-title {
+    font-family: 'Space Mono', monospace;
+    font-weight: 700;
+    font-size: 13px;
+    color: var(--orange);
+  }
+  /* Stories Formato 9:16 - 1080 x 1920 */
+  .card-render {
+    width: 1080px;
+    height: 1920px;
+    transform-origin: top left;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+  }
+  .wrapper {
+    width: 324px;
+    height: 576px;
+    position: relative;
+    overflow: hidden;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div>
+    <h1>Artes Destaques Iniciais</h1>
+    <p style="color: var(--muted); font-size: 14px; margin-top: 4px;">4 Artes para complementar os vídeos • Formato 9:16 (1080x1920 px)</p>
+  </div>
+  <div class="header-actions">
+    <button class="btn" id="zipBtn">📦 Baixar Tudo (JPEG)</button>
+  </div>
+</header>
+
+<div class="grid" id="gallery">
+
+  <!-- SLIDE 01: Trajetória -->
+  <div class="slide-container">
+    <div class="slide-header">
+      <span class="slide-title">DESTAQUE 01 / COMECE AQUI</span>
+      <button class="btn" style="padding: 6px 14px; font-size: 11px;" onclick="downloadJpeg('card-slide-1', '01_destaque_trajetoria.jpg')">Baixar JPEG</button>
+    </div>
+    <div class="wrapper">
+      <div id="card-slide-1" class="card-render" style="transform: scale(0.30);">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1920" width="1080" height="1920">
+          <defs>
+            <linearGradient id="grad1" x1="0%" y1="100%" x2="100%" y2="0%">
+              <stop offset="0%" stop-color="#FF5E1A" />
+              <stop offset="100%" stop-color="#F0247C" />
+            </linearGradient>
+            <style>
+              .t-mono { font-family: 'Space Mono', monospace; }
+              .t-arch { font-family: 'Archivo', sans-serif; font-weight: 900; }
+              .t-man { font-family: 'Manrope', sans-serif; }
+            </style>
+          </defs>
+          <rect width="1080" height="1920" fill="#150F0B" />
+          
+          <rect x="0" y="0" width="1080" height="1000" fill="#1E1712" />
+          <clipPath id="circleClip">
+            <circle cx="540" cy="500" r="300" />
+          </clipPath>
+          <image href="../post-fixado-01/foto_paulo_ia.png" x="240" y="200" width="600" height="600" clip-path="url(#circleClip)" preserveAspectRatio="xMidYMid slice" />
+          <!-- Círculo laranja com opacidade leve por cima para dar o tom da marca -->
+          <circle cx="540" cy="500" r="300" fill="url(#grad1)" opacity="0.15" />
+          <circle cx="540" cy="500" r="300" fill="none" stroke="url(#grad1)" stroke-width="8" />
+          
+          <rect x="0" y="1000" width="1080" height="920" fill="url(#grad1)" />
+          
+          <text x="80" y="1150" class="t-arch" font-size="50" fill="#F7F1E8">A TEORIA DOS LIVROS</text>
+          <text x="80" y="1230" class="t-arch" font-size="50" fill="#150F0B">NÃO GANHA PROCESSO.</text>
+          <text x="80" y="1310" class="t-arch" font-size="50" fill="#F7F1E8">A VIVÊNCIA PRÁTICA GANHA.</text>
+          
+          <text x="80" y="1460" class="t-man" font-weight="700" font-size="40" fill="#150F0B">• Ex-Técnico Legislativo (RR)</text>
+          <text x="80" y="1560" class="t-man" font-weight="700" font-size="40" fill="#150F0B">• Ex-Assistente Judiciário (AM)</text>
+          <text x="80" y="1660" class="t-man" font-weight="700" font-size="40" fill="#150F0B">• Advogado e Servidor Público (SC)</text>
+          
+        </svg>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 02: Concurseiro -->
+  <div class="slide-container">
+    <div class="slide-header">
+      <span class="slide-title">DESTAQUE 02 / CONCURSEIRO</span>
+      <button class="btn" style="padding: 6px 14px; font-size: 11px;" onclick="downloadJpeg('card-slide-2', '02_destaque_concurseiro.jpg')">Baixar JPEG</button>
+    </div>
+    <div class="wrapper">
+      <div id="card-slide-2" class="card-render" style="transform: scale(0.30);">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1920" width="1080" height="1920">
+          <rect width="1080" height="1920" fill="#150F0B" />
+          <rect x="60" y="60" width="960" height="1800" rx="30" fill="none" stroke="#3A2E24" stroke-width="4" />
+          
+          <text x="120" y="300" class="t-mono" font-size="34" fill="#FF5E1A" letter-spacing="3">[ CONCURSO PÚBLICO ]</text>
+          
+          <text x="120" y="440" class="t-arch" font-size="55" fill="#F7F1E8">AS 3 MAIORES</text>
+          <text x="120" y="530" class="t-arch" font-size="55" fill="#F7F1E8">INJUSTIÇAS EM</text>
+          <text x="120" y="620" class="t-arch" font-size="55" fill="#FF5E1A">CONCURSOS</text>
+          <text x="120" y="710" class="t-arch" font-size="55" fill="#F7F1E8">(QUE A JUSTIÇA ANULA)</text>
+          
+          <rect x="120" y="850" width="100" height="100" rx="20" fill="url(#grad1)" />
+          <text x="170" y="920" text-anchor="middle" class="t-arch" font-size="60" fill="#F7F1E8">1</text>
+          <text x="260" y="915" class="t-man" font-weight="700" font-size="45" fill="#F7F1E8">Reprovação no Psicotécnico</text>
+          
+          <rect x="120" y="1050" width="100" height="100" rx="20" fill="url(#grad1)" />
+          <text x="170" y="1120" text-anchor="middle" class="t-arch" font-size="60" fill="#F7F1E8">2</text>
+          <text x="260" y="1115" class="t-man" font-weight="700" font-size="45" fill="#F7F1E8">Mudanças e abusos no TAF</text>
+          
+          <rect x="120" y="1250" width="100" height="100" rx="20" fill="url(#grad1)" />
+          <text x="170" y="1320" text-anchor="middle" class="t-arch" font-size="60" fill="#F7F1E8">3</text>
+          <text x="260" y="1315" class="t-man" font-weight="700" font-size="45" fill="#F7F1E8">Contratação de temporários</text>
+          
+          <text x="540" y="1760" text-anchor="middle" class="t-arch" font-size="45" fill="#FF5E1A">Mande seu edital no link da bio ➔</text>
+        </svg>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 03: Servidor -->
+  <div class="slide-container">
+    <div class="slide-header">
+      <span class="slide-title">DESTAQUE 03 / SERVIDOR</span>
+      <button class="btn" style="padding: 6px 14px; font-size: 11px;" onclick="downloadJpeg('card-slide-3', '03_destaque_servidor.jpg')">Baixar JPEG</button>
+    </div>
+    <div class="wrapper">
+      <div id="card-slide-3" class="card-render" style="transform: scale(0.30);">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1920" width="1080" height="1920">
+          <rect width="1080" height="1920" fill="#F7F1E8" />
+          
+          <rect x="0" y="0" width="1080" height="60" fill="url(#grad1)" />
+          
+          <text x="120" y="280" class="t-mono" font-size="34" fill="#FF5E1A" letter-spacing="3">[ SERVIDOR ATIVO ]</text>
+          
+          <text x="120" y="440" class="t-arch" font-size="90" fill="#150F0B">VOCÊ JÁ É</text>
+          <text x="120" y="550" class="t-arch" font-size="90" fill="#FF5E1A">SERVIDOR?</text>
+          <text x="120" y="660" class="t-arch" font-size="90" fill="#150F0B">CONHEÇA SEUS</text>
+          <text x="120" y="770" class="t-arch" font-size="90" fill="#150F0B">DIREITOS:</text>
+          
+          <line x1="120" y1="880" x2="960" y2="880" stroke="#A79C90" stroke-width="2" />
+          
+          <circle cx="140" cy="1000" r="15" fill="#FF5E1A" />
+          <text x="190" y="1015" class="t-man" font-weight="800" font-size="38" fill="#1E1712">Defesa Especializada em PAD</text>
+          
+          <circle cx="140" cy="1150" r="15" fill="#FF5E1A" />
+          <text x="190" y="1165" class="t-man" font-weight="800" font-size="38" fill="#1E1712">Cobrança de Progressões Atrasadas</text>
+          
+          <circle cx="140" cy="1300" r="15" fill="#FF5E1A" />
+          <text x="190" y="1315" class="t-man" font-weight="800" font-size="38" fill="#1E1712">Revisão de Aposentadoria</text>
+          
+          <text x="540" y="1760" text-anchor="middle" class="t-arch" font-size="40" fill="#FF5E1A">Fale com a equipe no link da bio ➔</text>
+        </svg>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 04: Atendimento -->
+  <div class="slide-container">
+    <div class="slide-header">
+      <span class="slide-title">DESTAQUE 04 / ATENDIMENTO</span>
+      <button class="btn" style="padding: 6px 14px; font-size: 11px;" onclick="downloadJpeg('card-slide-4', '04_destaque_atendimento.jpg')">Baixar JPEG</button>
+    </div>
+    <div class="wrapper">
+      <div id="card-slide-4" class="card-render" style="transform: scale(0.30);">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1920" width="1080" height="1920">
+          <rect width="1080" height="1920" fill="#150F0B" />
+          <rect x="0" y="0" width="1080" height="1920" fill="url(#grad1)" opacity="0.1" />
+          
+          <text x="120" y="250" class="t-mono" font-size="34" fill="#FF5E1A" letter-spacing="3">[ ATENDIMENTO 100% DIGITAL ]</text>
+          
+          <text x="120" y="380" class="t-arch" font-size="80" fill="#F7F1E8">COMO FUNCIONA A</text>
+          <text x="120" y="470" class="t-arch" font-size="80" fill="#FF5E1A">NOSSA DEFESA?</text>
+          
+          <rect x="120" y="600" width="840" height="280" rx="30" fill="#1E1712" stroke="#3A2E24" stroke-width="2" />
+          <circle cx="230" cy="740" r="50" fill="url(#grad1)" />
+          <text x="230" y="755" text-anchor="middle" class="t-arch" font-size="45" fill="#F7F1E8">1</text>
+          <text x="330" y="720" class="t-arch" font-size="35" fill="#F7F1E8">ENVIO PELO WHATSAPP</text>
+          <text x="330" y="770" class="t-man" font-size="30" fill="#A79C90">Você clica no link e manda o seu caso</text>
+          
+          <rect x="120" y="930" width="840" height="280" rx="30" fill="#1E1712" stroke="#3A2E24" stroke-width="2" />
+          <circle cx="230" cy="1070" r="50" fill="url(#grad1)" />
+          <text x="230" y="1085" text-anchor="middle" class="t-arch" font-size="45" fill="#F7F1E8">2</text>
+          <text x="330" y="1050" class="t-arch" font-size="35" fill="#F7F1E8">ANÁLISE DE VIABILIDADE</text>
+          <text x="330" y="1100" class="t-man" font-size="30" fill="#A79C90">Nossa equipe estuda os documentos</text>
+          
+          <rect x="120" y="1260" width="840" height="280" rx="30" fill="#1E1712" stroke="#3A2E24" stroke-width="2" />
+          <circle cx="230" cy="1400" r="50" fill="url(#grad1)" />
+          <text x="230" y="1415" text-anchor="middle" class="t-arch" font-size="45" fill="#F7F1E8">3</text>
+          <text x="330" y="1380" class="t-arch" font-size="35" fill="#FF5E1A">AÇÃO NA JUSTIÇA</text>
+          <text x="330" y="1430" class="t-man" font-size="30" fill="#A79C90">Entramos com Liminar se houver direito</text>
+          
+          <text x="540" y="1760" text-anchor="middle" class="t-arch" font-size="40" fill="#FF5E1A">Toque no link da bio para INICIAR TRIAGEM ➔</text>
+        </svg>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+<script>
+  async function getJpegDataUrl(elementId) {
+    const el = document.getElementById(elementId);
+    const originalTransform = el.style.transform;
+    el.style.transform = 'none'; // Reseta o scale para captura
+    try {
+      const canvas = await html2canvas(el, {
+        scale: 1, // Renderiza na resolução original 1080x1920
+        useCORS: true, // Permite carregar as fontes do Google
+        backgroundColor: '#150F0B'
+      });
+      return canvas.toDataURL('image/jpeg', 0.95);
+    } catch (e) {
+      console.error('Erro no html2canvas:', e);
+      throw e;
+    } finally {
+      el.style.transform = originalTransform; // Restaura o scale
+    }
+  }
+
+  async function downloadJpeg(id, fileName) {
+    try {
+      const dataUrl = await getJpegDataUrl(id);
+      const link = document.createElement('a');
+      link.href = dataUrl;
+      link.download = fileName;
+      link.click();
+    } catch (e) {
+      alert('Erro ao gerar imagem: ' + e.message);
+    }
+  }
+
+  document.getElementById('zipBtn').onclick = async function exportZip() {
+    const btn = document.getElementById('zipBtn');
+    const oldText = btn.innerText;
+    btn.innerText = '⏳ Gerando Arquivo ZIP (Aguarde...)..';
+    btn.disabled = true;
+
+    try {
+      const ids = [
+        ['card-slide-1', '01_destaque_trajetoria.jpg'],
+        ['card-slide-2', '02_destaque_concurseiro.jpg'],
+        ['card-slide-3', '03_destaque_servidor.jpg'],
+        ['card-slide-4', '04_destaque_atendimento.jpg']
+      ];
+
+      const zip = new JSZip();
+      
+      for (let [id, fileName] of ids) {
+        const dataUrl = await getJpegDataUrl(id);
+        const base64Data = dataUrl.replace(/^data:image\/jpeg;base64,/, '');
+        zip.file(fileName, base64Data, { base64: true });
+      }
+
+      const content = await zip.generateAsync({ type: 'blob' });
+      const link = document.createElement('a');
+      link.href = URL.createObjectURL(content);
+      link.download = 'destaques_iniciais_ribeiro_rinaldi.zip';
+      link.click();
+    } catch (e) {
+      alert('Erro ao gerar arquivo ZIP: ' + e.message);
+    } finally {
+      btn.innerText = oldText;
+      btn.disabled = false;
+    }
+  }
+</script>
+</body>
+</html>

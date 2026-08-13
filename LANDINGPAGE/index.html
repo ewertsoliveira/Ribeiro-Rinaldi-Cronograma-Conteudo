@@ -87,12 +87,13 @@
     }
 
     @media (min-width: 1025px) {
-      /* 1. Aplica escala global de 75% no desktop (como desejado pelo usuário em zoom 75%) */
+      /* 1. Aplica escala global de 75% no desktop */
       html {
         zoom: 0.75;
+        overflow-x: hidden; /* Corta o overflow horizontal do pin-spacer (2048px) que inflava o scrollHeight */
       }
-      /* 2. Compensa a redução do zoom nos elementos fixados (ScrollTrigger pin e Film Grain) 
-            para que cubram 100% da largura e altura física da tela e evitem barras pretas/vazias */
+      /* 2. Compensa a redução do zoom nos elementos fixados (ScrollTrigger pin e Film Grain)
+            para que cubram 100% da largura e altura física da tela */
       .film-grain,
       .pin-spacer,
       #heroPinArea,
@@ -2292,6 +2293,7 @@
       background: var(--rr-bg);
       position: relative;
       z-index: 10;
+      overflow: hidden;
     }
 
     /* Seção CTA Final - Opção 1: Cobre Queimado Imperial & Gabarito Óptico */
@@ -2336,6 +2338,7 @@
       z-index: 1 !important;
       opacity: 0.22;
       color: #E2DBD2;
+      overflow: hidden;
     }
 
     .eyebrow-pill,
@@ -3568,9 +3571,9 @@
 
       // Configuração essencial para garantir que o Mobile não dê saltos (jump) de layout ao transicionar entre seções pinadas
       ScrollTrigger.config({ ignoreMobileResize: true });
-      if (window.innerWidth >= 1025) {
-        ScrollTrigger.normalizeScroll(true);
-      }
+      // if (window.innerWidth >= 1025) {
+      //   ScrollTrigger.normalizeScroll(true);
+      // }
 
       /* --------------------------------------------------------------------------
          A. LENIS SMOOTH SCROLL (Sensação Amanteigada no Desktop & Scroll Nativo Puro no Celular)
@@ -3969,23 +3972,26 @@
       })();
     </script>
     <script>
-      /* FIX PARA O BUG DE ESPAÇO EXTRA DO ZOOM NO CHROME */
+      /* TRAVAMENTO DE SCROLL: Impede que o browser role além do rodapé */
       if (window.innerWidth >= 1025) {
-        // Oculta a barra nativa para impedir que o usuário arraste além do limite permitido
-        const style = document.createElement('style');
-        style.innerHTML = '::-webkit-scrollbar { display: none; }';
-        document.head.appendChild(style);
-
-        // Intercepta a leitura da altura total do documento (scrollHeight).
-        // A matemática exata: precisamos subtrair do tamanho total a porção do viewport que foi escalada
-        const originalScrollHeight = Object.getOwnPropertyDescriptor(Element.prototype, 'scrollHeight').get;
-        Object.defineProperty(document.documentElement, 'scrollHeight', {
-          get: function() {
-            const val = originalScrollHeight.call(this);
-            return val - (window.innerHeight * ((1 / 0.75) - 1));
-          }
+        window.addEventListener('load', function() {
+          // Aguarda o GSAP inicializar e criar o pin-spacer
+          setTimeout(function() {
+            var footer = document.querySelector('footer.main-footer');
+            if (footer) {
+              // Define a altura exata do body para eliminar o overflow que infla o scrollHeight
+              var exactHeight = footer.offsetTop + footer.offsetHeight;
+              document.body.style.height = exactHeight + 'px';
+              document.body.style.overflow = 'clip';
+              // Força o GSAP a recalcular com as novas dimensões
+              if (typeof ScrollTrigger !== 'undefined') {
+                ScrollTrigger.refresh();
+              }
+            }
+          }, 1000);
         });
       }
     </script>
+
 </body>
 </html>
