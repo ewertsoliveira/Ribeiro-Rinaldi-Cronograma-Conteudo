@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Capas de Destaques (Instagram) | Ribeiro Rinaldi</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,700;0,800;0,900;1,900&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" crossorigin="anonymous">
+<style>
+  :root {
+    --black: #150F0B;
+    --cream: #F7F1E8;
+    --orange: #FF5E1A;
+    --magenta: #F0247C;
+    --dark-border: #3A2E24;
+    --gradient: linear-gradient(135deg, var(--orange) 0%, var(--magenta) 100%);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: #0D0907;
+    color: var(--cream);
+    font-family: 'Archivo', sans-serif;
+    padding: 40px 20px;
+  }
+  header {
+    max-width: 1400px;
+    margin: 0 auto 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--dark-border);
+    padding-bottom: 20px;
+  }
+  header h1 {
+    font-weight: 900;
+    font-size: 24px;
+    text-transform: uppercase;
+  }
+  .header-actions {
+    display: flex;
+    gap: 12px;
+  }
+  .btn {
+    background: var(--gradient);
+    color: #fff;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-family: 'Space Mono', monospace;
+    font-weight: 700;
+    font-size: 14px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: transform 0.2s, opacity 0.2s;
+  }
+  .btn:hover { opacity: 0.9; transform: translateY(-2px); }
+  
+  .grid {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 36px;
+    justify-content: center;
+  }
+  .slide-container {
+    background: var(--black);
+    border: 1px solid var(--dark-border);
+    border-radius: 16px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .slide-header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 14px;
+  }
+  .slide-title {
+    font-family: 'Space Mono', monospace;
+    font-weight: 700;
+    font-size: 13px;
+    color: var(--orange);
+  }
+  /* Stories Formato 9:16 - 1080 x 1920 */
+  .card-render {
+    width: 1080px;
+    height: 1920px;
+    transform-origin: top left;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+  }
+  .wrapper {
+    width: 324px;
+    height: 576px;
+    position: relative;
+    overflow: hidden;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div>
+    <h1>Ícones Destaques (Instagram)</h1>
+    <p style="color: #A79C90; font-family: 'Space Mono'; font-size: 12px; margin-top: 6px;">Formato 1080x1920 px (Safe zone circular central de 600px)</p>
+  </div>
+  <div class="header-actions">
+    <button class="btn" id="zipBtn">📦 Baixar Tudo (JPEG)</button>
+  </div>
+</header>
+
+<div class="grid" id="gallery">
+
+  <!-- CAPA 01: Comece Aqui -->
+  <div class="slide-container">
+    <div class="slide-header">
+      <span class="slide-title">01 / COMECE AQUI</span>
+      <button class="btn" style="padding: 6px 14px; font-size: 11px;" onclick="downloadJpeg('capa-1', '01_destaque_comece_aqui.jpg')">Baixar JPEG</button>
+    </div>
+    <div class="wrapper">
+      <div id="capa-1" class="card-render" style="transform: scale(0.30);">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1920" width="1080" height="1920">
+          <defs>
+            <linearGradient id="grad1" x1="0%" y1="100%" x2="100%" y2="0%">
+              <stop offset="0%" stop-color="#FF5E1A" />
+              <stop offset="100%" stop-color="#F0247C" />
+            </linearGradient>
+            <!-- Sombra externa sutil -->
+            <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+              <feDropShadow dx="0" dy="10" stdDeviation="25" flood-color="#FF5E1A" flood-opacity="0.3"/>
+            </filter>
+          </defs>
+          <rect width="1080" height="1920" fill="#150F0B" />
+          
+          <!-- Guideline Segura (Opcional, invisível) -->
+          <!-- <circle cx="540" cy="960" r="300" fill="none" stroke="gray" stroke-width="2" /> -->
+          
+          <!-- Ícone: Play / Start Moderno -->
+          <g transform="translate(315, 735) scale(1.5)" filter="url(#glow)">
+            <!-- Um círculo de fundo sutil para dar volume -->
+            <circle cx="150" cy="150" r="180" fill="url(#grad1)" opacity="0.1" />
+            
+            <polygon points="100,50 240,150 100,250" fill="url(#grad1)" />
+          </g>
+        </svg>
+      </div>
+    </div>
+  </div>
+
+  <!-- CAPA 02: Concurseiros -->
+  <div class="slide-container">
+    <div class="slide-header">
+      <span class="slide-title">02 / CONCURSEIROS</span>
+      <button class="btn" style="padding: 6px 14px; font-size: 11px;" onclick="downloadJpeg('capa-2', '02_destaque_concurseiro.jpg')">Baixar JPEG</button>
+    </div>
+    <div class="wrapper">
+      <div id="capa-2" class="card-render" style="transform: scale(0.30);">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1920" width="1080" height="1920">
+          <defs>
+            <linearGradient id="grad2" x1="0%" y1="100%" x2="100%" y2="0%">
+              <stop offset="0%" stop-color="#FF5E1A" />
+              <stop offset="100%" stop-color="#F0247C" />
+            </linearGradient>
+            <filter id="glow2" x="-20%" y="-20%" width="140%" height="140%">
+              <feDropShadow dx="0" dy="10" stdDeviation="25" flood-color="#FF5E1A" flood-opacity="0.3"/>
+            </filter>
+          </defs>
+          <rect width="1080" height="1920" fill="#150F0B" />
+          
+          <!-- Ícone: Checkbox de Múltipla Escolha -->
+          <g transform="translate(315, 735) scale(1.5)" filter="url(#glow2)">
+            <circle cx="150" cy="150" r="180" fill="url(#grad2)" opacity="0.1" />
+            
+            <!-- Quadrado da escolha (mais fino e em gradiente) -->
+            <rect x="60" y="60" width="180" height="180" rx="20" fill="none" stroke="url(#grad2)" stroke-width="15" />
+            
+            <!-- Sinal de correto -->
+            <path d="M 100 150 L 140 210 L 250 50" fill="none" stroke="url(#grad2)" stroke-width="40" stroke-linecap="round" stroke-linejoin="round" />
+          </g>
+        </svg>
+      </div>
+    </div>
+  </div>
+
+  <!-- CAPA 03: Servidores -->
+  <div class="slide-container">
+    <div class="slide-header">
+      <span class="slide-title">03 / SERVIDORES</span>
+      <button class="btn" style="padding: 6px 14px; font-size: 11px;" onclick="downloadJpeg('capa-3', '03_destaque_servidor.jpg')">Baixar JPEG</button>
+    </div>
+    <div class="wrapper">
+      <div id="capa-3" class="card-render" style="transform: scale(0.30);">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1920" width="1080" height="1920">
+          <defs>
+            <linearGradient id="grad3" x1="0%" y1="100%" x2="100%" y2="0%">
+              <stop offset="0%" stop-color="#FF5E1A" />
+              <stop offset="100%" stop-color="#F0247C" />
+            </linearGradient>
+            <filter id="glow3" x="-20%" y="-20%" width="140%" height="140%">
+              <feDropShadow dx="0" dy="10" stdDeviation="25" flood-color="#FF5E1A" flood-opacity="0.3"/>
+            </filter>
+          </defs>
+          <rect width="1080" height="1920" fill="#150F0B" />
+          
+          <!-- Ícone: Escudo de Direitos Adquiridos (Segurança) -->
+          <g transform="translate(315, 735) scale(1.5)" filter="url(#glow3)">
+            <circle cx="150" cy="150" r="180" fill="url(#grad3)" opacity="0.1" />
+            <path d="M 150 20 L 260 60 L 260 140 C 260 210 200 270 150 300 C 100 270 40 210 40 140 L 40 60 Z" fill="none" stroke="url(#grad3)" stroke-width="25" stroke-linejoin="round" />
+            <!-- Checkmark no meio -->
+            <path d="M 100 160 L 140 190 L 200 110" fill="none" stroke="url(#grad3)" stroke-width="25" stroke-linecap="round" stroke-linejoin="round" />
+          </g>
+        </svg>
+      </div>
+    </div>
+  </div>
+
+  <!-- CAPA 04: Atendimento -->
+  <div class="slide-container">
+    <div class="slide-header">
+      <span class="slide-title">04 / ATENDIMENTO</span>
+      <button class="btn" style="padding: 6px 14px; font-size: 11px;" onclick="downloadJpeg('capa-4', '04_destaque_atendimento.jpg')">Baixar JPEG</button>
+    </div>
+    <div class="wrapper">
+      <div id="capa-4" class="card-render" style="transform: scale(0.30);">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1920" width="1080" height="1920">
+          <defs>
+            <linearGradient id="grad4" x1="0%" y1="100%" x2="100%" y2="0%">
+              <stop offset="0%" stop-color="#FF5E1A" />
+              <stop offset="100%" stop-color="#F0247C" />
+            </linearGradient>
+            <filter id="glow4" x="-20%" y="-20%" width="140%" height="140%">
+              <feDropShadow dx="0" dy="10" stdDeviation="25" flood-color="#FF5E1A" flood-opacity="0.3"/>
+            </filter>
+          </defs>
+          <rect width="1080" height="1920" fill="#150F0B" />
+          
+          <!-- Ícone: Balão de Mensagem Rápida -->
+          <g transform="translate(315, 735) scale(1.5)" filter="url(#glow4)">
+            <circle cx="150" cy="150" r="180" fill="url(#grad4)" opacity="0.1" />
+            <!-- Balão de Chat -->
+            <path d="M 40 140 C 40 80 80 40 150 40 C 220 40 260 80 260 140 C 260 200 220 240 150 240 L 70 260 L 90 200 C 60 180 40 160 40 140 Z" fill="none" stroke="url(#grad4)" stroke-width="25" stroke-linejoin="round" />
+            <!-- Raio / Ação Rápida dentro -->
+            <path d="M 160 90 L 120 150 L 160 150 L 140 200 L 190 130 L 150 130 Z" fill="url(#grad4)" />
+          </g>
+        </svg>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html-to-image/1.11.11/html-to-image.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+<script>
+  async function fixSvgImages(el) {
+    const images = el.querySelectorAll('image');
+    for (let img of images) {
+      let href = img.getAttribute('href') || img.getAttribute('xlink:href');
+      if (href && !href.startsWith('data:')) {
+        try {
+          const res = await fetch(href);
+          const blob = await res.blob();
+          const base64 = await new Promise((resolve) => {
+            const reader = new FileReader();
+            reader.onloadend = () => resolve(reader.result);
+            reader.readAsDataURL(blob);
+          });
+          img.setAttribute('href', base64);
+        } catch (err) {
+          console.warn('Erro ao converter imagem em base64', err);
+        }
+      }
+    }
+  }
+
+  async function getJpegDataUrl(elementId) {
+    const el = document.getElementById(elementId);
+    await fixSvgImages(el);
+    const originalTransform = el.style.transform;
+    el.style.transform = 'none';
+    try {
+      const dataUrl = await htmlToImage.toJpeg(el, {
+        quality: 0.95,
+        backgroundColor: '#150F0B',
+        width: 1080,
+        height: 1920,
+        pixelRatio: 1
+      });
+      return dataUrl;
+    } catch (e) {
+      console.error('Erro no html-to-image:', e);
+      throw e;
+    } finally {
+      el.style.transform = originalTransform;
+    }
+  }
+
+  async function downloadJpeg(id, fileName) {
+    try {
+      const dataUrl = await getJpegDataUrl(id);
+      const link = document.createElement('a');
+      link.href = dataUrl;
+      link.download = fileName;
+      link.click();
+    } catch (e) {
+      alert('Erro ao gerar imagem: ' + e.message);
+    }
+  }
+
+  document.getElementById('zipBtn').onclick = async function exportZip() {
+    const btn = document.getElementById('zipBtn');
+    const oldText = btn.innerText;
+    btn.innerText = '⏳ Gerando Arquivo ZIP (Aguarde...)..';
+    btn.disabled = true;
+
+    try {
+      const ids = [
+        ['capa-1', '01_destaque_comece_aqui.jpg'],
+        ['capa-2', '02_destaque_concurseiros.jpg'],
+        ['capa-3', '03_destaque_servidores.jpg'],
+        ['capa-4', '04_destaque_atendimento.jpg']
+      ];
+
+      const zip = new JSZip();
+      
+      for (let [id, fileName] of ids) {
+        const dataUrl = await getJpegDataUrl(id);
+        const base64Data = dataUrl.replace(/^data:image\/jpeg;base64,/, '');
+        zip.file(fileName, base64Data, { base64: true });
+      }
+
+      const content = await zip.generateAsync({ type: 'blob' });
+      const link = document.createElement('a');
+      link.href = URL.createObjectURL(content);
+      link.download = 'capas_destaques_ribeiro_rinaldi.zip';
+      link.click();
+    } catch (e) {
+      alert('Erro ao gerar arquivo ZIP: ' + e.message);
+    } finally {
+      btn.innerText = oldText;
+      btn.disabled = false;
+    }
+  }
+</script>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script>
+  window.addEventListener('message', async (e) => {
+    if (e.data === 'REQUEST_SCREENSHOT') {
+      try {
+        const canvas = await html2canvas(document.body, { 
+            scale: 2, 
+            useCORS: true,
+            allowTaint: true,
+            backgroundColor: null
+        });
+        const base64image = canvas.toDataURL('image/png');
+        window.parent.postMessage({ type: 'SCREENSHOT_DATA', data: base64image, src: window.location.href }, '*');
+      } catch (error) {
+        console.error('Erro na captura:', error);
+      }
+    } else if (e.data === 'REQUEST_DOWNLOAD_ZIP') {
+      if (typeof exportZip === 'function') {
+         exportZip();
+      } else {
+         console.warn('exportZip function not found in this template.');
+      }
+    }
+  });
+</script>
+</body>
+</html>

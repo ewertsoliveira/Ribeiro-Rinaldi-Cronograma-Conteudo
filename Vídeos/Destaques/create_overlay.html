@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@900&display=swap" rel="stylesheet">
+</head>
+<body>
+  <h2>Gerando overlay.png...</h2>
+  <canvas id="c" width="1080" height="1920" style="background:#333; width:300px;"></canvas>
+  <script>
+    window.onload = () => {
+      // Aguarda 1 segundo para garantir que a fonte Archivo carregou
+      setTimeout(() => {
+          const canvas = document.getElementById('c');
+          const ctx = canvas.getContext('2d');
+          
+          ctx.clearRect(0, 0, 1080, 1920);
+          
+          // Fundo Fade Preto (Topo)
+          const bgGrad = ctx.createLinearGradient(0, 0, 0, 537); // 28% de 1920 = 537
+          bgGrad.addColorStop(0, 'rgba(15,12,10,0.95)');
+          bgGrad.addColorStop(0.6, 'rgba(15,12,10,0.3)');
+          bgGrad.addColorStop(1, 'rgba(15,12,10,0)');
+          ctx.fillStyle = bgGrad;
+          ctx.fillRect(0, 0, 1080, 537);
+          
+          const xPos = 72; // equivalente a 30px escalado (30 * 2.4)
+          const yCenter = 240; // 100 * 2.4
+          
+          // Traço Gradiente
+          const lineGrad = ctx.createLinearGradient(xPos, 0, xPos + 144, 0); // 60 * 2.4 = 144
+          lineGrad.addColorStop(0, '#FF5E1A');
+          lineGrad.addColorStop(1, '#F0247C');
+          ctx.shadowColor = 'rgba(0,0,0,0.9)';
+          ctx.shadowOffsetY = 4.8; 
+          ctx.shadowBlur = 9.6;
+          ctx.fillStyle = lineGrad;
+          ctx.fillRect(xPos, yCenter - 72, 144, 14.4);
+          
+          // Fonte Textos
+          ctx.font = "900 76.8px 'Archivo'"; // 32 * 2.4
+          ctx.textBaseline = 'top';
+          
+          // Texto 1
+          ctx.fillStyle = '#FFFFFF';
+          ctx.fillText("ADVOGADO E", xPos, yCenter - 24);
+          
+          // Texto 2
+          ctx.fillStyle = lineGrad;
+          ctx.shadowBlur = 14.4;
+          ctx.fillText("SERVIDOR PÚBLICO", xPos, yCenter + 52.8);
+          
+          // Dispara Download
+          const dataURL = canvas.toDataURL('image/png');
+          const a = document.createElement('a');
+          a.href = dataURL;
+          a.download = 'overlay_rinaldi.png';
+          a.click();
+          
+          document.querySelector('h2').innerText = "Download de 'overlay_rinaldi.png' concluído!";
+      }, 1500);
+    };
+  </script>
+</body>
+</html>

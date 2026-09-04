@@ -1,0 +1,97 @@
+﻿<!DOCTYPE html>
+<html lang='pt-BR'>
+<head>
+  <meta charset='UTF-8'>
+  <title>Mockups de Headline - Ribeiro Rinaldi</title>
+  <link href='https://fonts.googleapis.com/css2?family=Archivo:wght@700;900&display=swap' rel='stylesheet'>
+  <style>
+    body { font-family: 'Archivo', sans-serif; background: #28201A; color: #F7F1E8; margin: 0; padding: 40px; }
+    h1 { text-align: center; margin-bottom: 40px; font-weight: 900; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; }
+    .mockup-container {
+      position: relative; width: 100%; aspect-ratio: 9/16; background-image: url('frame.jpg'); 
+      background-size: cover; background-position: center; border-radius: 20px; overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5); border: 2px solid #3A2E24;
+    }
+    .label { text-align: center; margin-top: 15px; font-weight: 700; font-size: 1.2rem; color: #A79C90; }
+
+    /* Var 1: Solid Dark Box */
+    .v1-overlay { position: absolute; top: 15%; left: 0; width: 100%; background: #0A0A0C; padding: 20px 0; text-align: center; }
+    .v1-text { color: #FF5E1A; font-size: 2rem; font-weight: 900; line-height: 1.1; text-transform: uppercase; }
+    
+    /* Var 2: Gradient Bottom */
+    .v2-overlay { position: absolute; bottom: 0; left: 0; width: 100%; height: 50%; background: linear-gradient(to top, rgba(10,10,12,0.9), transparent); display: flex; align-items: flex-end; padding: 30px; box-sizing: border-box;}
+    .v2-text { color: #F7F1E8; font-size: 2.2rem; font-weight: 900; line-height: 1.1; text-transform: uppercase; text-shadow: 0 4px 10px rgba(0,0,0,0.8); }
+
+    /* Var 3: Rounded Pill */
+    .v3-overlay { position: absolute; top: 10%; left: 10%; right: 10%; background: #FF5E1A; padding: 15px 20px; border-radius: 100px; text-align: center; }
+    .v3-text { color: #F7F1E8; font-size: 1.5rem; font-weight: 900; text-transform: uppercase; letter-spacing: 1px; }
+
+    /* Var 4: Floating Minimal */
+    .v4-overlay { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 80%; text-align: center; }
+    .v4-text { color: #F7F1E8; font-size: 2.5rem; font-weight: 900; line-height: 1; text-transform: uppercase; text-shadow: 0px 4px 20px rgba(10,10,12, 0.9), 0px 1px 5px rgba(10,10,12, 1); }
+    .v4-text span { color: #FF8A5B; }
+
+    /* Var 5: Magenta Block */
+    .v5-overlay { position: absolute; top: 20%; left: 10%; background: #F0247C; padding: 10px 20px; border-left: 8px solid #FF5E1A; }
+    .v5-text { color: #F7F1E8; font-size: 1.8rem; font-weight: 900; line-height: 1.1; text-transform: uppercase; }
+
+  </style>
+</head>
+<body>
+  <h1>Opções de Headline - OpenSquad</h1>
+  <div class='grid'>
+    
+    <!-- Opção 1 -->
+    <div>
+      <div class='mockup-container'>
+        <div class='v1-overlay'>
+          <div class='v1-text'>O SEU DIREITO<br>IMPORTA</div>
+        </div>
+      </div>
+      <div class='label'>1. Tarja Sólida (Cores Oficiais)</div>
+    </div>
+
+    <!-- Opção 2 -->
+    <div>
+      <div class='mockup-container'>
+        <div class='v2-overlay'>
+          <div class='v2-text'>O SEU DIREITO<br>IMPORTA</div>
+        </div>
+      </div>
+      <div class='label'>2. Gradiente Inferior Moderno</div>
+    </div>
+
+    <!-- Opção 3 -->
+    <div>
+      <div class='mockup-container'>
+        <div class='v3-overlay'>
+          <div class='v3-text'>O SEU DIREITO IMPORTA</div>
+        </div>
+      </div>
+      <div class='label'>3. Pill Laranja (Minimalista)</div>
+    </div>
+
+    <!-- Opção 4 -->
+    <div>
+      <div class='mockup-container'>
+        <div class='v4-overlay'>
+          <div class='v4-text'>O SEU DIREITO<br><span>IMPORTA</span></div>
+        </div>
+      </div>
+      <div class='label'>4. Flutuante c/ Contraste</div>
+    </div>
+
+    <!-- Opção 5 -->
+    <div>
+      <div class='mockup-container'>
+        <div class='v5-overlay'>
+          <div class='v5-text'>O SEU DIREITO<br>IMPORTA</div>
+        </div>
+      </div>
+      <div class='label'>5. Bloco Magenta & Laranja</div>
+    </div>
+
+  </div>
+</body>
+</html>

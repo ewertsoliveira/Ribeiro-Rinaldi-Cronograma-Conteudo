@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Mockup Padrão Ribeiro Rinaldi - Slide 2</title>
+  <style>
+    /* RESET E FONTES */
+    @import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=Manrope:wght@400;700&family=Space+Mono:wght@700&display=swap');
+    
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    
+    /* VARIÁVEIS DO DESIGN SYSTEM */
+    :root {
+      --bg-dark: #150F0B; /* Preto Quente */
+      --text-base: #F7F1E8; /* Creme Base */
+      --accent-gradient: linear-gradient(100deg, #FF5E1A, #F0247C); /* Laranja p/ Magenta */
+    }
+
+    body {
+      background-color: #333;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      font-family: 'Manrope', sans-serif;
+    }
+
+    /* O CONTAINER DO SLIDE (Padrão 1080x1350) */
+    .slide-container {
+      width: 400px; /* Reduzido para proporção */
+      height: 500px;
+      background-color: var(--bg-dark);
+      position: relative;
+      overflow: hidden;
+      padding: 40px;
+      color: var(--text-base);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      border: 2px solid #222;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    }
+
+    /* ELEMENTOS DE ANCORAGEM NO FUNDO */
+    .bg-texture {
+      position: absolute;
+      top: -10%; right: -20%;
+      font-size: 200px;
+      font-family: 'Archivo Black', sans-serif;
+      color: rgba(255, 255, 255, 0.02);
+      line-height: 1;
+      z-index: 1;
+    }
+    
+    /* BLOCO A: EYEBROW */
+    .eyebrow {
+      font-family: 'Space Mono', monospace;
+      font-weight: 700;
+      font-size: 10px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      background: var(--accent-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 12px;
+      z-index: 2;
+    }
+
+    /* BLOCO B: MANCHETE */
+    .headline {
+      font-family: 'Archivo Black', sans-serif;
+      font-size: 32px;
+      line-height: 1.1;
+      text-transform: uppercase;
+      letter-spacing: -1px;
+      margin-bottom: 20px;
+      z-index: 2;
+    }
+
+    .headline .highlight {
+      background: var(--accent-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    /* BLOCO C: CORPO DE APOIO E BULLETS */
+    .body-text {
+      font-size: 14px;
+      line-height: 1.5;
+      color: #b0a8a1;
+      margin-bottom: 20px;
+      z-index: 2;
+    }
+    .body-text strong {
+      color: var(--text-base);
+    }
+
+    .bullet-list {
+      list-style: none;
+      z-index: 2;
+    }
+    .bullet-list li {
+      font-size: 14px;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      background: rgba(255,255,255,0.03);
+      padding: 10px 15px;
+      border-radius: 6px;
+      border-left: 2px solid #FF5E1A;
+    }
+    .bullet-list li::before {
+      content: '❌';
+      margin-right: 10px;
+      font-size: 12px;
+    }
+
+    /* BLOCO D: RODAPÉ/INDICADOR */
+    .footer {
+      position: absolute;
+      bottom: 30px;
+      left: 40px;
+      font-family: 'Space Mono', monospace;
+      font-size: 10px;
+      color: rgba(255, 255, 255, 0.2);
+      z-index: 2;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="slide-container">
+    <!-- Ancoragem visual no fundo -->
+    <div class="bg-texture">02</div>
+
+    <!-- Bloco A: Eyebrow -->
+    <div class="eyebrow">Sinal Crítico 02</div>
+
+    <!-- Bloco B: Manchete gigante em Caixa Alta -->
+    <div class="headline">
+      Você perde o controle de <span class="highlight">quem entra.</span>
+    </div>
+
+    <!-- Bloco C: Apoio com Bullets para escanear rápido -->
+    <div class="body-text">
+      Quem indica traz quem ele conhece, não quem você <strong>precisa</strong>. O resultado disso?
+    </div>
+    
+    <ul class="bullet-list">
+      <li>Clientes desqualificados</li>
+      <li>Desgaste na negociação</li>
+      <li>Lucro corroído</li>
+    </ul>
+
+    <!-- Bloco D: Rodapé -->
+    <div class="footer">ARRASTE PARA O LADO ➝</div>
+  </div>
+
+</body>
+</html>

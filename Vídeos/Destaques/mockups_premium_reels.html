@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Teste de Gradientes - Ribeiro Rinaldi</title>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@900&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --orange: #FF5E1A;
+      --magenta: #F0247C;
+      --text-main: #FFFFFF;
+      --brand-gradient: linear-gradient(135deg, var(--orange) 0%, var(--magenta) 100%);
+    }
+    body {
+      background: #111;
+      font-family: 'Inter', sans-serif;
+      margin: 0;
+      padding: 40px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+      justify-content: center;
+    }
+    .mockup-container {
+      width: 300px;
+      height: 533px; /* 9:16 aspect ratio */
+      position: relative;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+      background: #000;
+      border: 1px solid #333;
+    }
+    .mockup-bg {
+      position: absolute;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background-image: url('paulo_rinaldi_bg.png');
+      background-size: cover;
+      background-position: center top;
+    }
+    .label {
+      color: #fff;
+      text-align: center;
+      margin-top: 15px;
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+    .wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    /* Base Styling for all variants */
+    .overlay-base { 
+      position: absolute; 
+      top: 0; 
+      left: 0; 
+      width: 100%; 
+      height: 28%; 
+      display: flex; 
+      flex-direction: column;
+      justify-content: center; 
+      padding: 0 20px; 
+      box-sizing: border-box;
+    }
+    .text-base { 
+      font-family: 'Archivo', sans-serif;
+      color: var(--text-main); 
+      font-size: 1.5rem; 
+      font-weight: 900; 
+      line-height: 0.95; 
+      text-transform: uppercase; 
+      text-shadow: 
+         0px 1px 3px rgba(0,0,0,0.9),
+         0px 2px 8px rgba(0,0,0,0.8);
+    }
+    .line-base {
+      width: 40px;
+      height: 4px;
+      margin-bottom: 8px;
+      border-radius: 2px;
+    }
+
+    /* Variant 1: Original (Approved) */
+    .v1-overlay {
+      background: linear-gradient(to bottom, rgba(15,12,10,0.95) 0%, rgba(15,12,10,0.3) 60%, transparent 100%); 
+    }
+    .v1-line {
+      background: var(--orange);
+    }
+    .v1-text span {
+      color: var(--orange);
+    }
+
+    /* Variant 2: Gradient on Line ONLY */
+    .v2-overlay {
+      background: linear-gradient(to bottom, rgba(15,12,10,0.95) 0%, rgba(15,12,10,0.3) 60%, transparent 100%); 
+    }
+    .v2-line {
+      background: var(--brand-gradient);
+    }
+    .v2-text span {
+      color: var(--orange);
+    }
+
+    /* Variant 3: Gradient on Text ONLY */
+    .v3-overlay {
+      background: linear-gradient(to bottom, rgba(15,12,10,0.95) 0%, rgba(15,12,10,0.3) 60%, transparent 100%); 
+    }
+    .v3-line {
+      background: var(--orange);
+    }
+    .v3-text span {
+      background: var(--brand-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: none; /* Avoid shadow overlaying the transparent clip */
+      filter: drop-shadow(0px 2px 4px rgba(0,0,0,0.8));
+    }
+    
+    /* Variant 4: Gradient on Background Fade ONLY */
+    .v4-overlay {
+      /* Laranja e Magenta suaves descendo em fade */
+      background: linear-gradient(to bottom, rgba(255,94,26,0.8) 0%, rgba(240,36,124,0.4) 60%, transparent 100%); 
+    }
+    .v4-line {
+      background: var(--orange);
+      box-shadow: 0px 1px 3px rgba(0,0,0,0.9), 0px 2px 8px rgba(0,0,0,0.8);
+    }
+    .v4-text span {
+      color: var(--orange);
+    }
+
+    /* Variant 5: ALL Gradient */
+    .v5-overlay {
+      background: linear-gradient(to bottom, rgba(255,94,26,0.8) 0%, rgba(240,36,124,0.4) 60%, transparent 100%); 
+    }
+    .v5-line {
+      background: var(--brand-gradient);
+      box-shadow: 0px 1px 3px rgba(0,0,0,0.9), 0px 2px 8px rgba(0,0,0,0.8);
+    }
+    .v5-text span {
+      background: var(--brand-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: none;
+      filter: drop-shadow(0px 2px 4px rgba(0,0,0,0.8));
+    }
+
+    /* Variant 6: Gradient on Text + Line (Black Fade) */
+    .v6-overlay {
+      background: linear-gradient(to bottom, rgba(15,12,10,0.95) 0%, rgba(15,12,10,0.3) 60%, transparent 100%); 
+    }
+    .v6-line {
+      background: var(--brand-gradient);
+    }
+    .v6-text span {
+      background: var(--brand-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: none;
+      filter: drop-shadow(0px 2px 4px rgba(0,0,0,0.8));
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- Variant 1 -->
+  <div class="wrapper">
+    <div class="mockup-container">
+      <div class="mockup-bg"></div>
+      <div class="overlay-base v1-overlay">
+        <div class="line-base v1-line"></div>
+        <div class="text-base v1-text">O SEU DIREITO<br><span>IMPORTA</span></div>
+      </div>
+    </div>
+    <div class="label">1. Como Aprovado (Sólido)</div>
+  </div>
+
+  <!-- Variant 2 -->
+  <div class="wrapper">
+    <div class="mockup-container">
+      <div class="mockup-bg"></div>
+      <div class="overlay-base v2-overlay">
+        <div class="line-base v2-line"></div>
+        <div class="text-base v2-text">O SEU DIREITO<br><span>IMPORTA</span></div>
+      </div>
+    </div>
+    <div class="label">2. Gradiente Apenas no Traço</div>
+  </div>
+
+  <!-- Variant 3 -->
+  <div class="wrapper">
+    <div class="mockup-container">
+      <div class="mockup-bg"></div>
+      <div class="overlay-base v3-overlay">
+        <div class="line-base v3-line"></div>
+        <div class="text-base v3-text">O SEU DIREITO<br><span>IMPORTA</span></div>
+      </div>
+    </div>
+    <div class="label">3. Gradiente Apenas no Texto</div>
+  </div>
+
+  <!-- Variant 4 -->
+  <div class="wrapper">
+    <div class="mockup-container">
+      <div class="mockup-bg"></div>
+      <div class="overlay-base v4-overlay">
+        <div class="line-base v4-line"></div>
+        <div class="text-base v4-text">O SEU DIREITO<br><span>IMPORTA</span></div>
+      </div>
+    </div>
+    <div class="label">4. Gradiente no Fundo (Fade)</div>
+  </div>
+
+  <!-- Variant 5 -->
+  <div class="wrapper">
+    <div class="mockup-container">
+      <div class="mockup-bg"></div>
+      <div class="overlay-base v5-overlay">
+        <div class="line-base v5-line"></div>
+        <div class="text-base v5-text">O SEU DIREITO<br><span>IMPORTA</span></div>
+      </div>
+    </div>
+    <div class="label">5. Gradiente em Tudo</div>
+  </div>
+
+  <!-- Variant 6 -->
+  <div class="wrapper">
+    <div class="mockup-container">
+      <div class="mockup-bg"></div>
+      <div class="overlay-base v6-overlay">
+        <div class="line-base v6-line"></div>
+        <div class="text-base v6-text">O SEU DIREITO<br><span>IMPORTA</span></div>
+      </div>
+    </div>
+    <div class="label">6. Gradiente Traço + Texto</div>
+  </div>
+
+</body>
+</html>

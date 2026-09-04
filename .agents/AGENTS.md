@@ -47,3 +47,14 @@
 - **Legendas e Hashtag:** Toda legenda de vídeo encerra com o bordão na última linha, seguido de `#SuaVagaTemDono`.
 - **Território Semântico:** O concurseiro não está "pedindo", está **reivindicando**. Verbos PERMITIDOS: tomar de volta, garantir, reivindicar, ir atrás, não abrir mão. Verbos PROIBIDOS (súplica/sorte): conquistar seu sonho, torcer, tentar, quem sabe, correr atrás da sorte.
 - **O que invalida a copy:** Encerrar sem o bordão; alterar palavras; usar bordão antes ou como CTA.
+
+## Regras de Edição de Vídeo (Máquina de Conteúdo)
+
+- **Legenda (Estilo Karaokê Fixo):**
+  - **Paginação Fixa:** O texto deve ser agrupado em blocos (chunks) curtos, preferencialmente de 5 a 6 palavras. A frase fica estática, parada e centralizada na tela, sem efeito de 'janela deslizante'. O sistema deve mudar a 'página' de texto inteiro de uma só vez quando o orador chegar no fim daquele bloco.
+  - **Cor e Destaque:** Todas as palavras (já lidas ou não lidas) devem estar em branco puro (`#FFFFFF`). Apenas a palavra exata que está sendo falada no momento recebe o gradiente da marca (`#FF5E1A` para `#F0247C`).
+  - **Posicionamento:** A legenda não deve ficar grudada no limite inferior do vídeo. Ela deve ser posicionada razoavelmente mais alta, próxima da altura das mãos ou do tórax inferior do orador (ex: `startY=1450` na lógica do script).
+
+- **Headline (Título do Vídeo):**
+  - **Duração e Fades:** A headline deve aparecer nos primeiros segundos com um **fade-in suave** (0 a 0.5s), permanecer 100% legível nos primeiros 4 segundos, e então desaparecer com um **fade-out suave** (de 4.0s a 4.5s).
+  - Após 4.5 segundos, a tela superior deve estar completamente limpa, sem a headline presente, permitindo que a atenção do usuário foque apenas na legenda e na comunicação visual do orador.

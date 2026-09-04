@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ribeiro Rinaldi · Laboratório de Design</title>
+  <!-- Google Fonts: Archivo Black, Manrope, Space Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Manrope:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-dark: #150F0B;
+      --panel-dark: #1E1611;
+      --card-dark: #281F18;
+      --creme: #F7F1E8;
+      --grafite: #A89F91;
+      --orange: #FF5E1A;
+      --orange-glow: rgba(255, 94, 26, 0.35);
+      --border-color: rgba(247, 241, 232, 0.08);
+      --gradient-brand: linear-gradient(135deg, #FF5E1A 0%, #F0247C 100%);
+      --transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background-color: var(--bg-dark);
+      color: var(--creme);
+      font-family: 'Manrope', sans-serif;
+      height: 100vh;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    ::-webkit-scrollbar { width: 8px; height: 8px; }
+    ::-webkit-scrollbar-track { background: var(--bg-dark); }
+    ::-webkit-scrollbar-thumb { background: #3E3228; border-radius: 4px; }
+    ::-webkit-scrollbar-thumb:hover { background: var(--orange); }
+
+    /* HEADER */
+    header {
+      background: var(--panel-dark);
+      border-bottom: 1px solid var(--border-color);
+      padding: 1rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      z-index: 100;
+    }
+
+    .brand-area { display: flex; align-items: center; gap: 1rem; }
+    .brand-logo {
+      width: 44px; height: 44px;
+      background: var(--gradient-brand);
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Archivo Black', sans-serif; font-size: 1.35rem; color: #FFF;
+      box-shadow: 0 4px 15px var(--orange-glow);
+    }
+    .brand-titles h1 { font-family: 'Archivo Black', sans-serif; font-size: 1.15rem; letter-spacing: -0.03em; margin-bottom: 2px; }
+    .brand-titles p { font-size: 0.8rem; color: var(--grafite); font-weight: 500; }
+
+    .header-actions { display: flex; gap: 1rem; align-items: center; }
+    
+    .btn {
+      background: transparent;
+      border: 1px solid var(--border-color);
+      color: var(--creme);
+      font-family: 'Manrope', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 600;
+      padding: 0.65rem 1.4rem;
+      border-radius: 8px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      text-decoration: none;
+      transition: var(--transition);
+    }
+    .btn:hover { background: rgba(247,241,232,0.05); }
+    .btn.primary { background: var(--gradient-brand); border: none; box-shadow: 0 4px 14px var(--orange-glow); }
+    .btn.primary:hover { transform: translateY(-1px); box-shadow: 0 6px 20px rgba(255, 94, 26, 0.5); }
+    
+    .toggle-wrapper { display: flex; align-items: center; gap: 0.5rem; font-size: 0.9rem; font-weight: 500; color: var(--grafite); }
+    .toggle-switch {
+      position: relative; width: 44px; height: 24px;
+      background: var(--card-dark); border-radius: 12px;
+      cursor: pointer; transition: var(--transition);
+    }
+    .toggle-switch.active { background: var(--orange); }
+    .toggle-switch::after {
+      content: ''; position: absolute; top: 2px; left: 2px;
+      width: 20px; height: 20px; background: var(--creme);
+      border-radius: 50%; transition: var(--transition);
+    }
+    .toggle-switch.active::after { transform: translateX(20px); }
+
+    /* LAYOUT */
+    .lab-container {
+      display: flex;
+      flex: 1;
+      overflow: hidden;
+    }
+
+    /* SIDEBAR */
+    .sidebar {
+      width: 320px;
+      background: var(--panel-dark);
+      border-right: 1px solid var(--border-color);
+      display: flex;
+      flex-direction: column;
+      overflow-y: auto;
+    }
+
+    .sidebar-header {
+      padding: 1.5rem;
+      border-bottom: 1px solid var(--border-color);
+      font-family: 'Space Mono', monospace;
+      font-size: 0.75rem;
+      color: var(--orange);
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+    }
+
+    .template-list {
+      display: flex;
+      flex-direction: column;
+      padding: 1rem;
+      gap: 0.5rem;
+    }
+
+    .template-item {
+      padding: 1rem;
+      background: var(--bg-dark);
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      cursor: pointer;
+      transition: var(--transition);
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+
+    .template-item:hover { border-color: var(--grafite); }
+    .template-item.active { border-color: var(--orange); background: rgba(255, 94, 26, 0.05); }
+    
+    .template-name { font-weight: 600; font-size: 0.95rem; }
+    .template-desc { font-size: 0.8rem; color: var(--grafite); }
+
+    /* PREVIEW STAGE */
+    .stage-container {
+      flex: 1;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      background: var(--bg-dark);
+      background-image: radial-gradient(circle at center, #1E1611 0%, #150F0B 100%);
+    }
+
+    .stage {
+      flex: 1;
+      overflow: auto;
+      position: relative;
+    }
+
+    .stage-content {
+      display: table;
+      width: 100%;
+      height: 100%;
+    }
+
+    .stage-cell {
+      display: table-cell;
+      vertical-align: middle;
+      text-align: center;
+      padding: 40px 40px 100px 40px;
+    }
+
+    .scale-wrapper {
+      display: inline-block;
+      position: relative;
+      text-align: left;
+      width: 1080px;
+      height: 1350px;
+      transition: width 0.2s, height 0.2s;
+    }
+
+    .preview-wrapper {
+      position: relative;
+      width: 1080px;
+      height: 1350px;
+      transform-origin: top left;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.8);
+      background: #150F0B;
+    }
+
+    .preview-frame {
+      width: 1080px;
+      height: 1350px;
+      border: none;
+      display: block;
+    }
+
+    .safe-zone {
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      pointer-events: none;
+      display: none;
+      border: 2px dashed #00FF00;
+      z-index: 10;
+    }
+
+    .safe-zone.visible { display: block; }
+    
+    .safe-zone::before {
+      content: 'Margem Top (Interface)';
+      position: absolute; top: 0; left: 0; right: 0; height: 150px;
+      background: rgba(255, 0, 0, 0.2);
+      border-bottom: 1px solid red;
+      color: red; font-family: monospace; padding: 10px; font-size: 16px;
+    }
+    
+    .safe-zone::after {
+      content: 'Margem Bottom (Interface)';
+      position: absolute; bottom: 0; left: 0; right: 0; height: 200px;
+      background: rgba(255, 0, 0, 0.2);
+      border-top: 1px solid red;
+      color: red; font-family: monospace; padding: 10px; font-size: 16px; display: flex; align-items: flex-end;
+    }
+
+    .scale-controls {
+      position: absolute;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--panel-dark);
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      border: 1px solid var(--border-color);
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+      z-index: 20;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    }
+
+    .scale-controls span { font-family: 'Space Mono', monospace; font-size: 0.8rem; color: var(--orange); }
+    .scale-btn {
+      background: none; border: none; color: var(--creme); cursor: pointer;
+      font-size: 1.2rem; display: flex; align-items: center; justify-content: center;
+    }
+    .scale-btn:hover { color: var(--orange); }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="brand-area">
+      <div class="brand-logo">RR</div>
+      <div class="brand-titles">
+        <h1>Ribeiro Rinaldi · Laboratório</h1>
+        <p>Ambiente de Testes e Validação Visual de Templates</p>
+      </div>
+    </div>
+    <div class="header-actions">
+      <button class="btn primary" id="downloadPngBtn">⬇️ Baixar PNG</button>
+      <button class="btn primary" id="downloadZipBtn" style="display: none; background: var(--panel-dark); border: 1px solid var(--border-color); box-shadow: none;">📦 Baixar ZIP</button>
+      <div class="toggle-wrapper">
+        <span>Margens de Segurança (IG)</span>
+        <div class="toggle-switch" id="safe-zone-toggle" onclick="toggleSafeZone()"></div>
+      </div>
+      <div style="width: 1px; height: 24px; background: var(--border-color); margin: 0 0.5rem;"></div>
+      <a href="painel-cronograma-ribeiro-rinaldi.html" class="btn">📅 Voltar ao Cronograma</a>
+    </div>
+  </header>
+
+  <div class="lab-container">
+    <aside class="sidebar">
+      <div class="sidebar-header">Biblioteca de Templates</div>
+      <div class="template-list" id="template-list">
+        <!-- Renderizado via JS -->
+      </div>
+    </aside>
+
+    <div class="stage-container">
+      <main class="stage" id="stage">
+        <div class="stage-content">
+          <div class="stage-cell">
+            <div class="scale-wrapper" id="scale-wrapper">
+              <div class="preview-wrapper" id="preview-wrapper">
+                <iframe class="preview-frame" id="preview-frame" src=""></iframe>
+                <div class="safe-zone" id="safe-zone"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+      
+      <div class="scale-controls">
+        <button class="scale-btn" onclick="adjustScale(-0.1)">-</button>
+        <span id="scale-display">50%</span>
+        <button class="scale-btn" onclick="adjustScale(0.1)">+</button>
+        <button class="scale-btn" style="font-size: 0.9rem; margin-left: 0.5rem;" onclick="fitToScreen()">Ajustar</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const templates = [
+      { id: "PF01", path: "../midias-graficas/post-fixado-01/index.html", name: "Post Fixado 01 (Capa Foto)", desc: "Teste de arte para post fixado 01", isAppView: true },
+      { id: "PF02", path: "../midias-graficas/post-fixado-02/index.html", name: "Post Fixado 02 (Notícia)", desc: "Post fixado com manchete de notícia", isAppView: true },
+      { id: "PF03", path: "../midias-graficas/post-fixado-03/index.html", name: "Post Fixado 03", desc: "Post fixado de autoridade", isAppView: true },
+      { id: "DEST-1", path: "../midias-graficas/destaques-iniciais/capas_destaques_v2.html", name: "Capas de Destaques v2", desc: "Laboratório de destaques iniciais", isAppView: true },
+      { id: "DEST-GEN", path: "../midias-graficas/destaques-iniciais/gerador_artes_v2.html", name: "Gerador de Artes", desc: "Ferramenta de geração de capas", isAppView: true },
+      { id: "VID-MOCK", path: "../Vídeos/Destaques/video_mockup.html", name: "Video Mockup", desc: "Mockup interativo de vídeo", isAppView: true }
+    ];
+
+    let currentScale = 0.5;
+    let currentTemplateIsAppView = false;
+
+    function init() {
+      const listContainer = document.getElementById('template-list');
+      
+      templates.forEach((tpl, index) => {
+        const item = document.createElement('div');
+        item.className = 'template-item';
+        if(index === 0) item.classList.add('active');
+        
+        item.innerHTML = `
+          <div class="template-name">${tpl.id}. ${tpl.name}</div>
+          <div class="template-desc">${tpl.desc}</div>
+        `;
+        
+        item.onclick = () => {
+          document.querySelectorAll('.template-item').forEach(el => el.classList.remove('active'));
+          item.classList.add('active');
+          loadTemplate(tpl);
+        };
+        
+        listContainer.appendChild(item);
+      });
+
+      if (templates.length > 0) {
+        loadTemplate(templates[0]);
+      }
+      fitToScreen();
+      
+      window.addEventListener('resize', fitToScreen);
+    }
+
+    function loadTemplate(tpl) {
+      currentTemplateIsAppView = tpl.isAppView || false;
+      const frame = document.getElementById('preview-frame');
+      const wrapper = document.querySelector('.preview-wrapper');
+      const safeZone = document.getElementById('safe-zone');
+      const toggleWrapper = document.querySelector('.toggle-wrapper');
+      
+      const scaleWrapper = document.getElementById('scale-wrapper');
+      
+      if (currentTemplateIsAppView) {
+        wrapper.style.width = '1200px';
+        wrapper.style.height = '900px';
+        wrapper.style.background = 'transparent';
+        wrapper.style.boxShadow = 'none';
+        
+        scaleWrapper.style.width = '1200px';
+        scaleWrapper.style.height = '900px';
+        
+        frame.style.width = '1200px';
+        frame.style.height = '900px';
+        toggleWrapper.style.opacity = '1';
+        toggleWrapper.style.pointerEvents = 'auto';
+        safeZone.classList.remove('visible');
+        document.getElementById('safe-zone-toggle').classList.remove('active');
+        
+        // Show ZIP button, Hide PNG button
+        document.getElementById('downloadPngBtn').style.display = 'none';
+        document.getElementById('downloadZipBtn').style.display = 'flex';
+      } else {
+        wrapper.style.width = '1080px';
+        wrapper.style.height = '1350px';
+        wrapper.style.background = 'var(--bg-dark)';
+        wrapper.style.boxShadow = '0 20px 50px rgba(0,0,0,0.8)';
+        
+        scaleWrapper.style.width = '1080px';
+        scaleWrapper.style.height = '1350px';
+        
+        frame.style.width = '1080px';
+        frame.style.height = '1350px';
+        toggleWrapper.style.opacity = '1';
+        toggleWrapper.style.pointerEvents = 'auto';
+        
+        // Show PNG button, Hide ZIP button
+        document.getElementById('downloadPngBtn').style.display = 'flex';
+        document.getElementById('downloadZipBtn').style.display = 'none';
+      }
+      
+      fitToScreen();
+      if (window.location.protocol === 'file:') {
+        frame.src = tpl.path;
+      } else {
+        frame.src = tpl.path + '?v=' + new Date().getTime();
+      }
+    }
+
+    function toggleSafeZone() {
+      const btn = document.getElementById('safe-zone-toggle');
+      const zone = document.getElementById('safe-zone');
+      btn.classList.toggle('active');
+      zone.classList.toggle('visible');
+      const frame = document.getElementById('preview-frame');
+      if (frame && frame.contentWindow) {
+        frame.contentWindow.postMessage('TOGGLE_SAFE_ZONE', '*');
+      }
+    }
+
+    function applyScale() {
+      const wrapper = document.getElementById('preview-wrapper');
+      const scaleWrapper = document.getElementById('scale-wrapper');
+      const display = document.getElementById('scale-display');
+      
+      const baseW = currentTemplateIsAppView ? 1200 : 1080;
+      const baseH = currentTemplateIsAppView ? 900 : 1350;
+      
+      wrapper.style.transform = `scale(${currentScale})`;
+      
+      const actualWidth = baseW * currentScale;
+      const actualHeight = baseH * currentScale;
+      
+      scaleWrapper.style.width = `${actualWidth}px`;
+      scaleWrapper.style.height = `${actualHeight}px`;
+      
+      display.innerText = Math.round(currentScale * 100) + '%';
+    }
+
+    function adjustScale(delta) {
+      currentScale += delta;
+      if (currentScale < 0.2) currentScale = 0.2;
+      if (currentScale > 1.5) currentScale = 1.5;
+      applyScale();
+    }
+
+    function fitToScreen() {
+      const stageContainer = document.querySelector('.stage-container');
+      if(!stageContainer) return;
+      
+      const availableHeight = stageContainer.clientHeight - 80;
+      const availableWidth = stageContainer.clientWidth - 80;
+      
+      const baseW = currentTemplateIsAppView ? 1200 : 1080;
+      const baseH = currentTemplateIsAppView ? 900 : 1350;
+      
+      let targetScaleH = availableHeight / baseH;
+      let targetScaleW = availableWidth / baseW;
+      
+      let targetScale = Math.min(targetScaleH, targetScaleW);
+      if (targetScale > 1) targetScale = 1;
+      
+      currentScale = targetScale;
+      applyScale();
+    }
+
+    init();
+  </script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+  <script>
+    const downloadPngBtn = document.getElementById('downloadPngBtn');
+    const downloadZipBtn = document.getElementById('downloadZipBtn');
+    
+    let isZipping = false;
+    let expectedZipCount = 0;
+    let capturedZipScreenshots = [];
+    
+    // Trigger PNG Download
+    downloadPngBtn.addEventListener('click', () => {
+      const frame = document.getElementById('preview-frame');
+      downloadPngBtn.innerHTML = '⏳ Processando...';
+      frame.contentWindow.postMessage('REQUEST_SCREENSHOT', '*');
+    });
+
+    // Trigger ZIP Download
+    downloadZipBtn.addEventListener('click', () => {
+      const frame = document.getElementById('preview-frame');
+      downloadZipBtn.innerHTML = '⏳ Preparando...';
+      isZipping = true;
+      capturedZipScreenshots = [];
+      frame.contentWindow.postMessage('REQUEST_DOWNLOAD_ZIP', '*');
+    });
+
+    window.addEventListener('message', async (e) => {
+      if (e.data && e.data.type === 'ZIP_EXPECTED_COUNT') {
+        expectedZipCount = e.data.count;
+        downloadZipBtn.innerHTML = `⏳ Capturando (0/${expectedZipCount})`;
+      }
+      else if (e.data && e.data.type === 'SCREENSHOT_DATA') {
+        if (isZipping) {
+          capturedZipScreenshots.push(e.data);
+          downloadZipBtn.innerHTML = `⏳ Capturando (${capturedZipScreenshots.length}/${expectedZipCount})`;
+          
+          if (capturedZipScreenshots.length === expectedZipCount) {
+            await generateZip();
+          }
+        } else {
+          // Normal Single PNG Download
+          const base64Data = e.data.data.split(',')[1];
+          const blob = b64toBlob(base64Data, 'image/png');
+          saveAs(blob, "Arte_RibeiroRinaldi.png");
+          downloadPngBtn.innerHTML = '⬇️ Baixar PNG';
+        }
+      }
+      else if (e.data && e.data.type === 'ZIP_COMPLETED') {
+        downloadZipBtn.innerHTML = '📦 Baixar ZIP';
+        isZipping = false;
+      }
+    });
+
+    async function generateZip() {
+      downloadZipBtn.innerHTML = '📦 Compactando...';
+      const zip = new JSZip();
+      
+      capturedZipScreenshots.sort((a,b) => a.src.localeCompare(b.src));
+      
+      capturedZipScreenshots.forEach((shot, i) => {
+        const base64Data = shot.data.split(',')[1];
+        const filename = `Slide_${String(i+1).padStart(2, '0')}.png`;
+        zip.file(filename, base64Data, {base64: true});
+      });
+      
+      const content = await zip.generateAsync({type: "blob"});
+      saveAs(content, "Carrossel_RibeiroRinaldi.zip");
+      
+      downloadZipBtn.innerHTML = '📦 Baixar ZIP';
+      isZipping = false;
+      capturedZipScreenshots = [];
+    }
+
+    function b64toBlob(b64Data, contentType='', sliceSize=512) {
+      const byteCharacters = atob(b64Data);
+      const byteArrays = [];
+      for (let offset = 0; offset < byteCharacters.length; offset += sliceSize) {
+        const slice = byteCharacters.slice(offset, offset + sliceSize);
+        const byteNumbers = new Array(slice.length);
+        for (let i = 0; i < slice.length; i++) {
+          byteNumbers[i] = slice.charCodeAt(i);
+        }
+        const byteArray = new Uint8Array(byteNumbers);
+        byteArrays.push(byteArray);
+      }
+      return new Blob(byteArrays, {type: contentType});
+    }
+  </script>
+</body>
+</html>

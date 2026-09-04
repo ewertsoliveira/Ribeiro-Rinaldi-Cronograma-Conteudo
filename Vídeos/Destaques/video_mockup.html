@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Vídeo Teste - Ribeiro Rinaldi</title>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@900&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --orange: #FF5E1A;
+      --magenta: #F0247C;
+      --text-main: #FFFFFF;
+      --brand-gradient: linear-gradient(135deg, var(--orange) 0%, var(--magenta) 100%);
+    }
+    body {
+      background: #111;
+      font-family: 'Inter', sans-serif;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+    
+    /* Container simulando a tela do celular (9:16) */
+    .video-container {
+      width: 450px;
+      height: 800px; 
+      position: relative;
+      overflow: hidden;
+      background: #000;
+      border-radius: 16px;
+      box-shadow: 0 15px 40px rgba(0,0,0,0.8);
+      border: 1px solid #333;
+    }
+    
+    video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    
+    /* Variante 6 Overlay com Animação */
+    .v6-overlay { 
+      position: absolute; 
+      top: 0; 
+      left: 0; 
+      width: 100%; 
+      height: 28%; 
+      display: flex; 
+      flex-direction: column;
+      justify-content: center; 
+      padding: 0 30px; 
+      box-sizing: border-box;
+      background: linear-gradient(to bottom, rgba(15,12,10,0.95) 0%, rgba(15,12,10,0.3) 60%, transparent 100%); 
+      
+      /* Animação CSS (Dura 5 segundos totais) */
+      opacity: 0;
+      animation: fadeEffect 5s ease-in-out forwards;
+    }
+    
+    .v6-line {
+      width: 60px;
+      height: 6px;
+      margin-bottom: 12px;
+      border-radius: 3px;
+      background: var(--brand-gradient);
+      box-shadow: 0px 1px 3px rgba(0,0,0,0.9), 0px 2px 8px rgba(0,0,0,0.8);
+    }
+
+    .v6-text { 
+      font-family: 'Archivo', sans-serif;
+      color: var(--text-main); 
+      font-size: 2rem; 
+      font-weight: 900; 
+      line-height: 0.95; 
+      white-space: nowrap;
+      text-transform: uppercase; 
+      text-shadow: 
+         0px 1px 3px rgba(0,0,0,0.9),
+         0px 2px 8px rgba(0,0,0,0.8);
+    }
+    
+    .v6-text span {
+      background: var(--brand-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: none;
+      filter: drop-shadow(0px 2px 4px rgba(0,0,0,0.8));
+    }
+
+    /* Keyframes: 
+       0% a 10% (0s a 0.5s): Fade In
+       10% a 90% (0.5s a 4.5s): Mantém visível
+       90% a 100% (4.5s a 5.0s): Fade Out
+    */
+    @keyframes fadeEffect {
+      0% { opacity: 0; }
+      10% { opacity: 1; }
+      90% { opacity: 1; }
+      100% { opacity: 0; }
+    }
+    
+  </style>
+</head>
+<body>
+
+  <div class="video-container">
+    <!-- Adicionando controls para facilitar dar play e testar o tempo -->
+    <video id="reelsVideo" src="teste.mp4" autoplay muted playsinline controls></video>
+    
+    <div class="v6-overlay" id="overlayEffect">
+      <div class="v6-line"></div>
+      <div class="v6-text">Advogado e<br><span>Servidor Público</span></div>
+    </div>
+  </div>
+  
+  <!-- Controles Extras -->
+  <div style="text-align: center; margin-top: 30px;">
+    <button id="downloadBtn" style="padding: 15px 30px; font-size: 1.1rem; background: var(--brand-gradient); color: #fff; border: none; border-radius: 8px; cursor: pointer; font-family: 'Inter', sans-serif; font-weight: 600; box-shadow: 0 4px 15px rgba(240,36,124,0.4); transition: opacity 0.3s;">
+      ⏺️ Gravar e Baixar Vídeo Final
+    </button>
+    <p id="statusMsg" style="color: #A79C90; font-family: 'Inter'; font-size: 0.9rem; margin-top: 15px;">Clique no botão acima para renderizar a animação sobre o vídeo e gerar o arquivo .webm (suportado pelo TikTok/Insta Web).</p>
+  </div>
+  
+  <canvas id="renderCanvas" width="450" height="800" style="display:none;"></canvas>
+
+  <script>
+    // Lógica para que a animação da legenda sincronize sempre que você der play no vídeo
+    const video = document.getElementById('reelsVideo');
+    const overlay = document.getElementById('overlayEffect');
+    
+    video.addEventListener('play', () => {
+      if(video.currentTime < 1) {
+        overlay.style.animation = 'none';
+        void overlay.offsetWidth; 
+        overlay.style.animation = 'fadeEffect 5s ease-in-out forwards';
+      }
+    });
+
+    video.addEventListener('ended', () => {
+        video.currentTime = 0;
+        video.play();
+    });
+
+    // ==========================================
+    // SISTEMA DE RENDERIZAÇÃO E DOWNLOAD DE VÍDEO
+    // ==========================================
+    const downloadBtn = document.getElementById('downloadBtn');
+    const statusMsg = document.getElementById('statusMsg');
+    const canvas = document.getElementById('renderCanvas');
+    const ctx = canvas.getContext('2d');
+    
+    let mediaRecorder;
+    let recordedChunks = [];
+    let isRecording = false;
+    let animationFrameId;
+    let startTime;
+    
+    downloadBtn.addEventListener('click', () => {
+      if(isRecording) return;
+      isRecording = true;
+      recordedChunks = [];
+      
+      downloadBtn.innerText = "⏳ Gravando... Aguarde 6 segundos";
+      downloadBtn.style.opacity = "0.7";
+      statusMsg.innerText = "Renderizando quadro a quadro a sua headline por cima do vídeo...";
+      
+      // Configura resolução máxima nativa do vídeo (Lossless)
+      canvas.width = video.videoWidth || 1080;
+      canvas.height = video.videoHeight || 1920;
+      
+      video.currentTime = 0;
+      const canvasStream = canvas.captureStream(60); // 60 FPS
+      
+      try {
+          const videoStream = video.captureStream();
+          const audioTracks = videoStream.getAudioTracks();
+          if (audioTracks.length > 0) {
+              canvasStream.addTrack(audioTracks[0]); // Puxa o áudio original do vídeo
+          }
+      } catch(e) {
+          console.warn("Aviso: Áudio não capturado", e);
+      }
+      
+      const mimeStr = 'video/webm; codecs=vp9';
+      const fileExt = '.webm';
+      
+      const recOptions = { 
+          mimeType: mimeStr,
+          videoBitsPerSecond: 8000000 // 8 Mbps (Alta Qualidade Estável)
+      };
+      
+      mediaRecorder = new MediaRecorder(canvasStream, recOptions);
+      mediaRecorder.ondataavailable = (e) => {
+          if (e.data.size > 0) recordedChunks.push(e.data);
+      };
+      
+      mediaRecorder.onstop = () => {
+          const blob = new Blob(recordedChunks, { type: mimeStr });
+          const url = URL.createObjectURL(blob);
+          const a = document.createElement('a');
+          a.href = url;
+          a.download = 'Mockup_Ribeiro_Rinaldi' + fileExt;
+          document.body.appendChild(a);
+          a.click();
+          URL.revokeObjectURL(url);
+          
+          isRecording = false;
+          downloadBtn.innerText = "⏺️ Gravar e Baixar Vídeo Final";
+          downloadBtn.style.opacity = "1";
+          statusMsg.innerText = "Download concluído! Verifique a sua pasta de Downloads.";
+      };
+      
+      video.play();
+      mediaRecorder.start();
+      startTime = performance.now();
+      renderLoop();
+      
+      // Encerra a gravação aos 6 segundos
+      setTimeout(() => {
+          mediaRecorder.stop();
+          cancelAnimationFrame(animationFrameId);
+      }, 6000);
+    });
+    
+    function renderLoop() {
+        if(!isRecording) return;
+        const now = performance.now();
+        const elapsed = now - startTime;
+        
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        
+        ctx.save();
+        // Escala a lógica do celular 450x800 para a resolução gigantesta original do vídeo
+        const scaleX = canvas.width / 450;
+        const scaleY = canvas.height / 800;
+        ctx.scale(scaleX, scaleY);
+        
+        // Ao desenhar em 450x800 na matriz escalada, o canvas puxa o frame original na resolução máxima nativa
+        ctx.drawImage(video, 0, 0, 450, 800);
+        
+        // Simulação do CSS fade-in e fade-out (0-500ms in, hold até 4500ms, out 4500-5000ms)
+        let opacity = 0;
+        if(elapsed < 500) opacity = elapsed / 500;
+        else if(elapsed < 4500) opacity = 1;
+        else if(elapsed < 5000) opacity = 1 - ((elapsed - 4500)/500);
+        else opacity = 0;
+        
+        if (opacity > 0) {
+            ctx.save();
+            ctx.globalAlpha = opacity;
+            
+            // Fundo Preto Fade
+            let bgGrad = ctx.createLinearGradient(0, 0, 0, canvas.height * 0.28);
+            bgGrad.addColorStop(0, 'rgba(15,12,10,0.95)');
+            bgGrad.addColorStop(0.6, 'rgba(15,12,10,0.3)');
+            bgGrad.addColorStop(1, 'rgba(15,12,10,0)');
+            ctx.fillStyle = bgGrad;
+            ctx.fillRect(0, 0, canvas.width, canvas.height * 0.28);
+            
+            const xPos = 30;
+            const yCenter = 100;
+            
+            // Traço Gradiente
+            let lineGrad = ctx.createLinearGradient(xPos, 0, xPos + 60, 0);
+            lineGrad.addColorStop(0, '#FF5E1A');
+            lineGrad.addColorStop(1, '#F0247C');
+            ctx.shadowColor = 'rgba(0,0,0,0.9)';
+            ctx.shadowOffsetY = 2; ctx.shadowBlur = 4;
+            ctx.fillStyle = lineGrad;
+            ctx.fillRect(xPos, yCenter - 30, 60, 6);
+            
+            // Texto Linha 1
+            ctx.font = "900 32px 'Archivo'";
+            ctx.fillStyle = '#FFFFFF';
+            ctx.textBaseline = 'top';
+            ctx.fillText("ADVOGADO E", xPos, yCenter - 10);
+            
+            // Texto Linha 2
+            ctx.fillStyle = lineGrad;
+            ctx.shadowBlur = 6; // Sombra um pouco mais espalhada para o gradiente
+            ctx.fillText("SERVIDOR PÚBLICO", xPos, yCenter + 22);
+        }
+        
+        ctx.restore();
+        
+        animationFrameId = requestAnimationFrame(renderLoop);
+    }
+  </script>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script>
+  window.addEventListener('message', async (e) => {
+    if (e.data === 'REQUEST_SCREENSHOT') {
+      try {
+        const canvas = await html2canvas(document.body, { 
+            scale: 2, 
+            useCORS: true,
+            allowTaint: true,
+            backgroundColor: null
+        });
+        const base64image = canvas.toDataURL('image/png');
+        window.parent.postMessage({ type: 'SCREENSHOT_DATA', data: base64image, src: window.location.href }, '*');
+      } catch (error) {
+        console.error('Erro na captura:', error);
+      }
+    } else if (e.data === 'REQUEST_DOWNLOAD_ZIP') {
+      if (typeof exportZip === 'function') {
+         exportZip();
+      } else {
+         console.warn('exportZip function not found in this template.');
+      }
+    }
+  });
+</script>
+</body>
+</html>

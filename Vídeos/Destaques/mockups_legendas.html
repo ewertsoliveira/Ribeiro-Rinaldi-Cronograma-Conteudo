@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mockup de Legendas Premium</title>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;700;900&family=Manrope:wght@500;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --brand-orange: #FF5E1A;
+            --brand-magenta: #F0247C;
+            --gradient-brand: linear-gradient(90deg, var(--brand-orange), var(--brand-magenta));
+        }
+
+        body {
+            background-color: #0d0907;
+            color: white;
+            font-family: 'Manrope', sans-serif;
+            margin: 0;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        h1 {
+            font-family: 'Archivo', sans-serif;
+            font-weight: 900;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        p.desc {
+            color: #aaa;
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 40px;
+            max-width: 1200px;
+            width: 100%;
+        }
+
+        .video-container {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 9/16;
+            background-color: #1a1a1a;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            display: flex;
+            justify-content: center;
+        }
+
+        video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.8;
+        }
+
+        /* Headline já aprovada - Topo */
+        .headline {
+            position: absolute;
+            top: 15%;
+            left: 8%;
+            z-index: 10;
+        }
+
+        .headline .line {
+            width: 50px;
+            height: 5px;
+            background: var(--gradient-brand);
+            margin-bottom: 15px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.8);
+        }
+
+        .headline h2 {
+            font-family: 'Archivo', sans-serif;
+            font-weight: 900;
+            font-size: 26px;
+            line-height: 1.1;
+            margin: 0;
+            color: white;
+            text-shadow: 0px 3px 10px rgba(0,0,0,0.9);
+        }
+
+        .headline h2 .highlight {
+            background: var(--gradient-brand);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            filter: drop-shadow(0px 3px 5px rgba(0,0,0,0.6));
+        }
+
+        /* Gradiente superior para a headline */
+        .top-gradient {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 40%;
+            background: linear-gradient(to bottom, rgba(15,12,10,0.9) 0%, rgba(15,12,10,0) 100%);
+            z-index: 5;
+            pointer-events: none;
+        }
+
+        /* Gradiente inferior para as legendas */
+        .bottom-gradient {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 40%;
+            background: linear-gradient(to top, rgba(15,12,10,0.9) 0%, rgba(15,12,10,0) 100%);
+            z-index: 5;
+            pointer-events: none;
+        }
+
+        /* Container base das legendas */
+        .subtitle-wrapper {
+            position: absolute;
+            bottom: 12%;
+            width: 80%;
+            text-align: center;
+            z-index: 10;
+        }
+
+        /* MODELO 1: Minimalista / Cinematic */
+        .sub-model-1 {
+            font-family: 'Manrope', sans-serif;
+            font-weight: 600;
+            font-size: 22px;
+            color: #ffffff;
+            text-shadow: 0px 2px 8px rgba(0,0,0,0.9);
+            line-height: 1.3;
+        }
+        .sub-model-1 .hl { color: #facc15; } /* Amarelo sutil */
+
+        /* MODELO 2: Impacto (Estilo Retenção Alta / Hormozi) */
+        .sub-model-2 {
+            font-family: 'Archivo', sans-serif;
+            font-weight: 900;
+            font-size: 32px;
+            text-transform: uppercase;
+            color: white;
+            line-height: 1.1;
+            /* text-stroke simulado com shadow grossa */
+            text-shadow: 
+                -2px -2px 0 #000,
+                2px -2px 0 #000,
+                -2px 2px 0 #000,
+                2px 2px 0 #000,
+                0px 6px 10px rgba(0,0,0,0.8);
+        }
+        .sub-model-2 .hl { 
+            color: var(--brand-orange); 
+        }
+
+        /* MODELO 3: Dinâmico Karaokê Moderno */
+        .sub-model-3 {
+            font-family: 'Archivo', sans-serif;
+            font-weight: 700;
+            font-size: 26px;
+            color: rgba(255, 255, 255, 0.4); /* Palavras futuras */
+            line-height: 1.2;
+            text-shadow: 0px 2px 5px rgba(0,0,0,0.8);
+        }
+        .sub-model-3 .read {
+            color: white;
+        }
+        .sub-model-3 .reading {
+            background: var(--gradient-brand);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 900;
+            filter: drop-shadow(0px 2px 4px rgba(0,0,0,0.6));
+            font-size: 28px;
+            transition: all 0.2s ease;
+        }
+
+        /* MODELO 4: Tarja Institucional / Autoridade */
+        .sub-model-4 {
+            font-family: 'Manrope', sans-serif;
+            font-weight: 700;
+            font-size: 20px;
+            color: white;
+            background: rgba(0, 0, 0, 0.6);
+            padding: 10px 20px;
+            border-radius: 8px;
+            display: inline-block;
+            backdrop-filter: blur(4px);
+            border-left: 4px solid var(--brand-magenta);
+            line-height: 1.4;
+        }
+
+        .label {
+            text-align: center;
+            margin-top: 15px;
+            font-size: 16px;
+            font-weight: bold;
+            color: #ddd;
+        }
+
+        .label span {
+            display: block;
+            font-size: 13px;
+            font-weight: normal;
+            color: #888;
+            margin-top: 5px;
+        }
+
+    </style>
+</head>
+<body>
+
+    <h1>Modelos de Legenda - Open Squad</h1>
+    <p class="desc">4 estilos de tipografia e design para acompanhar a identidade visual. (Os vídeos estão pausados para melhor visualização do design)</p>
+
+    <div class="grid">
+        
+        <!-- Modelo 1 -->
+        <div>
+            <div class="video-container">
+                <video src="teste.mp4" loop muted playsinline></video>
+                <div class="top-gradient"></div>
+                <div class="headline">
+                    <div class="line"></div>
+                    <h2>ADVOGADO E<br><span class="highlight">SERVIDOR PÚBLICO</span></h2>
+                </div>
+                
+                <div class="bottom-gradient"></div>
+                <div class="subtitle-wrapper sub-model-1">
+                    É exatamente por isso que o seu <span class="hl">direito de posse</span> está ameaçado.
+                </div>
+            </div>
+            <div class="label">Modelo 1: Minimalista (Cinematic)<span>Fonte Manrope, limpa, sombra difusa, palavras-chave em amarelo. Foco 100% na elegância.</span></div>
+        </div>
+
+        <!-- Modelo 2 -->
+        <div>
+            <div class="video-container">
+                <video src="teste.mp4" loop muted playsinline></video>
+                <div class="top-gradient"></div>
+                <div class="headline">
+                    <div class="line"></div>
+                    <h2>ADVOGADO E<br><span class="highlight">SERVIDOR PÚBLICO</span></h2>
+                </div>
+                
+                <div class="bottom-gradient"></div>
+                <div class="subtitle-wrapper sub-model-2">
+                    É EXATAMENTE POR ISSO QUE O SEU <span class="hl">DIREITO</span> ESTÁ AMEAÇADO.
+                </div>
+            </div>
+            <div class="label">Modelo 2: Impacto (Estilo Retenção Alta)<span>Fonte Archivo Black, tudo em caixa alta, contorno preto (text-stroke) e ênfase na cor da marca. Muito usado no TikTok.</span></div>
+        </div>
+
+        <!-- Modelo 3 -->
+        <div>
+            <div class="video-container">
+                <video src="teste.mp4" loop muted playsinline></video>
+                <div class="top-gradient"></div>
+                <div class="headline">
+                    <div class="line"></div>
+                    <h2>ADVOGADO E<br><span class="highlight">SERVIDOR PÚBLICO</span></h2>
+                </div>
+                
+                <div class="bottom-gradient"></div>
+                <div class="subtitle-wrapper sub-model-3">
+                    <span class="read">É exatamente</span> <span class="read">por isso</span> <span class="reading">que o seu</span> direito está ameaçado.
+                </div>
+            </div>
+            <div class="label">Modelo 3: Dinâmico / Karaokê<span>As palavras acendem em gradiente no momento exato em que são faladas. Mantém o público focado na leitura.</span></div>
+        </div>
+
+        <!-- Modelo 4 -->
+        <div>
+            <div class="video-container">
+                <video src="teste.mp4" loop muted playsinline></video>
+                <div class="top-gradient"></div>
+                <div class="headline">
+                    <div class="line"></div>
+                    <h2>ADVOGADO E<br><span class="highlight">SERVIDOR PÚBLICO</span></h2>
+                </div>
+                
+                <div class="bottom-gradient"></div>
+                <div class="subtitle-wrapper sub-model-4">
+                    É exatamente por isso que o seu<br>direito está ameaçado.
+                </div>
+            </div>
+            <div class="label">Modelo 4: Tarja Institucional<span>Fundo semi-transparente estilo bloco/notícia. Transmite extrema seriedade e autoridade (Jornalístico).</span></div>
+        </div>
+
+    </div>
+
+    <script>
+        // Inicia os vídeos pausados em 1 segundo para mostrar o rosto
+        document.querySelectorAll('video').forEach(vid => {
+            vid.currentTime = 1.5; 
+        });
+    </script>
+</body>
+</html>

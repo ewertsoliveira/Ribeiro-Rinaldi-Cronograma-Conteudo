@@ -1,0 +1,21 @@
+# Dependências
+node_modules/
+
+# Chaves e Segredos
+.env
+*.env
+
+# Arquivos de mídia pesados e exportações binárias
+*.mp4
+*.mov
+*.MOV
+*.webm
+*.mp3
+*.wav
+*.zip
+
+# Sistema e temporários
+.DS_Store
+Thumbs.db
+*.tmp
+*.log
