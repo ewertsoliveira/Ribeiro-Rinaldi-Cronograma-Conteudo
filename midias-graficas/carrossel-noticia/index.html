@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Template Carrossel Notícia — Ribeiro Rinaldi</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,700;0,800;0,900;1,900&family=Manrope:wght@400;500;600;700;800&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" crossorigin="anonymous">
+<style>
+  :root {
+    --black: #150F0B;
+    --dark-surface: #1E1712;
+    --dark-border: #3A2E24;
+    --cream: #F7F1E8;
+    --muted: #A89F91;
+    --orange: #FF5E1A;
+    --magenta: #F0247C;
+    --amber: #D97706;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background-color: #0E0A07;
+    color: var(--cream);
+    font-family: 'Manrope', sans-serif;
+    padding: 32px;
+  }
+  header {
+    max-width: 1400px;
+    margin: 0 auto 32px auto;
+    border-bottom: 1px solid var(--dark-border);
+    padding-bottom: 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+  h1 {
+    font-family: 'Archivo', sans-serif;
+    font-size: 28px;
+    color: var(--cream);
+    letter-spacing: -0.5px;
+  }
+  .header-actions { display: flex; gap: 12px; }
+  .btn {
+    background: var(--orange);
+    color: #000;
+    font-family: 'Space Mono', monospace;
+    font-weight: 700;
+    font-size: 13px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: transform 0.15s, background 0.2s;
+  }
+  .btn:hover { background: #FF7338; transform: translateY(-1px); }
+  .note {
+    max-width: 1400px;
+    margin: 0 auto 28px auto;
+    background: var(--dark-surface);
+    border: 1px solid var(--dark-border);
+    border-radius: 10px;
+    padding: 16px 20px;
+    font-size: 14px;
+    color: var(--muted);
+    line-height: 1.6;
+  }
+  .note b { color: var(--cream); }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+    gap: 36px;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+  .slide-container {
+    background: var(--dark-surface);
+    border: 1px solid var(--dark-border);
+    border-radius: 12px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .slide-header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+  }
+  .slide-title {
+    font-family: 'Space Mono', monospace;
+    font-size: 13px;
+    color: var(--orange);
+    font-weight: 700;
+  }
+  .wrapper {
+    width: 345.6px;
+    height: 432px;
+    position: relative;
+    overflow: hidden;
+    border-radius: 6px;
+    box-shadow: 0 16px 32px rgba(0,0,0,0.6);
+  }
+  .card-render {
+    width: 1080px;
+    height: 1350px;
+    transform-origin: top left;
+    transform: scale(0.32);
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+  .t-arch { font-family: 'Archivo', sans-serif; font-weight: 900; }
+  .t-mono { font-family: 'Space Mono', monospace; font-weight: 700; }
+  .t-man { font-family: 'Manrope', sans-serif; font-weight: 600; }
+</style>
+</head>
+<body>
+
+<header>
+  <div>
+    <h1>Template — Carrossel Notícia</h1>
+    <p style="color: var(--muted); font-size: 14px; margin-top: 4px;">Carrossel de 5 slides para notícias de concurso público e servidor público • Formato 4:5 (1080x1350 px)</p>
+  </div>
+  <div class="header-actions">
+    <button class="btn" id="zipBtn" onclick="exportZip()">📦 Baixar Carrossel Completo em .ZIP (5 Slides)</button>
+  </div>
+</header>
+
+<div class="note">
+  <b>Conteúdo de exemplo usado no protótipo:</b> mesmo caso do template "Post Notícia" (Tema 1.420 STF — heteroidentificação), aqui desdobrado em carrossel: 01 Capa/Notícia → 02 O Fato → 03 O que muda pra você → 04 Base Legal → 05 CTA + Bordão. A área de foto é <b>placeholder</b>. O slide 05 já traz o bordão oficial conforme a Regra de Ouro do <a href="../../.agents/AGENTS.md" style="color:#FF5E1A;">AGENTS.md</a>.
+</div>
+
+<div class="grid" id="gallery">
+
+  <!-- SLIDE 01: CAPA / NOTÍCIA (NOIR) -->
+  <div class="slide-container">
+    <div class="slide-header">
+      <span class="slide-title">SLIDE 01 / 05 — CAPA (NOTÍCIA)</span>
+      <button class="btn" style="padding: 6px 14px; font-size: 11px;" onclick="downloadJpeg('card-slide-1', '01_carrossel_noticia_capa.jpg')">Baixar JPEG</button>
+    </div>
+    <div class="wrapper"><div id="card-slide-1" class="card-render">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1350" width="1080" height="1350">
+        <defs>
+          <linearGradient id="scrim1" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#150F0B" stop-opacity="0"/>
+            <stop offset="100%" stop-color="#150F0B" stop-opacity="0.96"/>
+          </linearGradient>
+          <clipPath id="photoClip1">
+            <rect x="100" y="510" width="880" height="560" rx="20" />
+          </clipPath>
+        </defs>
+        <rect width="1080" height="1350" fill="#150F0B" />
+
+        <rect x="100" y="100" width="330" height="64" rx="10" fill="#FF5E1A" />
+        <circle cx="132" cy="132" r="7" fill="#150F0B" />
+        <text x="155" y="140" class="t-mono" font-size="24" fill="#150F0B">ÚLTIMA HORA</text>
+        <text x="100" y="215" class="t-mono" font-size="21" letter-spacing="1" fill="#A89F91">[ STF · REPERCUSSÃO GERAL · TEMA 1.420 ]</text>
+
+        <text x="100" y="310" class="t-arch" font-size="58" fill="#F7F1E8">A BANCA NÃO TEM</text>
+        <text x="100" y="380" class="t-arch" font-size="58" fill="#FF5E1A">A ÚLTIMA PALAVRA</text>
+        <text x="100" y="450" class="t-arch" font-size="58" fill="#F7F1E8">SOBRE SUA COTA.</text>
+
+        <g clip-path="url(#photoClip1)">
+          <image href="../assets/sessao-plenaria-stf.jpg" x="100" y="510" width="880" height="560" preserveAspectRatio="xMidYMid slice" />
+          <rect x="100" y="510" width="880" height="560" fill="url(#scrim1)" />
+        </g>
+        <text x="960" y="1055" class="t-mono" font-size="14" fill="#F7F1E8" fill-opacity="0.7" text-anchor="end">Foto: Antonio Augusto/STF e Gustavo Moreno/STF</text>
+
+        <text x="150" y="960" class="t-man" font-size="27" fill="#F7F1E8">Repercussão geral reconhecida: o Judiciário pode</text>
+        <text x="150" y="998" class="t-man" font-size="27" fill="#F7F1E8">revisar reprovação em banca de heteroidentificação</text>
+        <text x="150" y="1036" class="t-man" font-size="27" fill="#FF5E1A">quando falta fundamentação clara.</text>
+
+        <text x="100" y="1110" class="t-mono" font-size="24" fill="#FFB347">DESLIZE PRA ENTENDER O CASO →</text>
+
+        <line x1="100" y1="1150" x2="980" y2="1150" stroke="#3A2E24" stroke-width="2" />
+        <polyline points="100,1200 118,1218 150,1180" fill="none" stroke="#FF5E1A" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+        <text x="175" y="1205" class="t-arch" font-size="24" fill="#F7F1E8">RIBEIRO RINALDI</text>
+        <text x="980" y="1205" class="t-mono" font-size="16" fill="#A89F91" text-anchor="end">ANÁLISE DE NOTÍCIAS · CONCURSO PÚBLICO</text>
+        <text x="980" y="1235" class="t-mono" font-size="14" fill="#5C5146" text-anchor="end">FONTE: STF, TEMA 1.420 (REPERCUSSÃO GERAL) · SET/2026</text>
+      </svg>
+    </div></div>
+  </div>
+
+  <!-- SLIDE 02: O QUE ACONTECEU (NOIR INSTITUCIONAL) -->
+  <div class="slide-container">
+    <div class="slide-header">
+      <span class="slide-title">SLIDE 02 / 05 — O QUE ACONTECEU (NOIR)</span>
+      <button class="btn" style="padding: 6px 14px; font-size: 11px;" onclick="downloadJpeg('card-slide-2', '02_carrossel_noticia_fato.jpg')">Baixar JPEG</button>
+    </div>
+    <div class="wrapper"><div id="card-slide-2" class="card-render">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1350" width="1080" height="1350">
+        <rect width="1080" height="1350" fill="#150F0B" />
+        <text x="100" y="150" class="t-mono" font-size="26" fill="#FF5E1A">[ 01 • O QUE ACONTECEU ]</text>
+
+        <text x="100" y="280" class="t-arch" font-size="52" fill="#F7F1E8">O STF ABRIU A PORTA</text>
+        <text x="100" y="355" class="t-arch" font-size="52" fill="#FF5E1A">PRA JUSTIÇA REVER A BANCA.</text>
+
+        <rect x="100" y="440" width="880" height="420" rx="24" fill="#1E1712" stroke="#3A2E24" stroke-width="2" />
+        <text x="150" y="530" class="t-man" font-size="30" fill="#F7F1E8">O plenário reconheceu repercussão geral</text>
+        <text x="150" y="585" class="t-man" font-size="30" fill="#F7F1E8">no Tema 1.420: candidatos reprovados na</text>
+        <text x="150" y="640" class="t-man" font-size="30" fill="#F7F1E8">banca de heteroidentificação podem pedir</text>
+        <text x="150" y="695" class="t-man" font-size="30" fill="#FF5E1A">revisão judicial quando falta fundamentação.</text>
+
+        <text x="150" y="785" class="t-man" font-size="25" fill="#A89F91">Um caso real: a 1ª Vara Cível de Macaé/RJ já</text>
+        <text x="150" y="820" class="t-man" font-size="25" fill="#A89F91">reintegrou uma candidata por decisão sem critério claro.</text>
+
+        <rect x="100" y="910" width="880" height="140" rx="16" fill="#251C15" stroke="#FF5E1A" stroke-width="2" />
+        <text x="150" y="975" class="t-mono" font-size="22" fill="#FF5E1A">✓ TESE NOVA, AINDA POUCO EXPLORADA</text>
+        <text x="150" y="1015" class="t-man" font-size="25" fill="#F7F1E8">Repercussão geral vale pra todo o Brasil, não só pro caso julgado</text>
+
+        <polyline points="100,1210 125,1235 170,1180" fill="none" stroke="#FF5E1A" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+        <text x="200" y="1220" class="t-arch" font-size="28" fill="#F7F1E8">RIBEIRO RINALDI</text>
+        <text x="980" y="1220" class="t-mono" font-size="20" fill="#A89F91" text-anchor="end">SLIDE 02 / 05 👉</text>
+      </svg>
+    </div></div>
+  </div>
+
+  <!-- SLIDE 03: O QUE MUDA PRA VOCÊ (CREME EDITORIAL) -->
+  <div class="slide-container">
+    <div class="slide-header">
+      <span class="slide-title">SLIDE 03 / 05 — O QUE MUDA PRA VOCÊ (CREME)</span>
+      <button class="btn" style="padding: 6px 14px; font-size: 11px;" onclick="downloadJpeg('card-slide-3', '03_carrossel_noticia_impacto.jpg')">Baixar JPEG</button>
+    </div>
+    <div class="wrapper"><div id="card-slide-3" class="card-render">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1350" width="1080" height="1350">
+        <rect width="1080" height="1350" fill="#F7F1E8" />
+        <text x="100" y="150" class="t-mono" font-size="26" fill="#D97706">[ 02 • O QUE MUDA PRA VOCÊ ]</text>
+
+        <text x="100" y="270" class="t-arch" font-size="46" fill="#150F0B">FOI REPROVADO E ACHOU</text>
+        <text x="100" y="325" class="t-arch" font-size="46" fill="#FF5E1A">QUE O JOGO JÁ TINHA</text>
+        <text x="100" y="380" class="t-arch" font-size="46" fill="#FF5E1A">ACABADO?</text>
+
+        <rect x="100" y="430" width="880" height="430" rx="24" fill="#FFFFFF" stroke="#D97706" stroke-width="2" />
+        <text x="150" y="500" class="t-man" font-size="26" fill="#150F0B">Não acabou. Se a banca não te disse, com</text>
+        <text x="150" y="550" class="t-man" font-size="26" fill="#150F0B">clareza, POR QUE reprovou sua autodeclaração,</text>
+        <text x="150" y="600" class="t-man" font-size="26" fill="#150F0B">isso é uma falha que a Justiça pode corrigir —</text>
+        <text x="150" y="650" class="t-man" font-size="26" fill="#D97706">com esse novo entendimento do STF a seu favor.</text>
+
+        <text x="150" y="740" class="t-man" font-size="22" fill="#5C5146">Não é a banca quem decide sozinha. Contraditório</text>
+        <text x="150" y="772" class="t-man" font-size="22" fill="#5C5146">e ampla defesa valem aqui também.</text>
+
+        <rect x="100" y="900" width="880" height="150" rx="16" fill="#150F0B" stroke="#D97706" stroke-width="2" />
+        <text x="150" y="965" class="t-mono" font-size="22" fill="#FF5E1A">✓ PRAZO CONTA A PARTIR DA REPROVAÇÃO</text>
+        <text x="150" y="1010" class="t-man" font-size="24" fill="#F7F1E8">Quanto antes agir, maior a chance de reverter a tempo da posse</text>
+
+        <polyline points="100,1210 125,1235 170,1180" fill="none" stroke="#FF5E1A" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+        <text x="200" y="1220" class="t-arch" font-size="28" fill="#150F0B">RIBEIRO RINALDI</text>
+        <text x="980" y="1220" class="t-mono" font-size="20" fill="#5C5146" text-anchor="end">SLIDE 03 / 05 👉</text>
+      </svg>
+    </div></div>
+  </div>
+
+  <!-- SLIDE 04: BASE LEGAL (NOIR CITAÇÃO) -->
+  <div class="slide-container">
+    <div class="slide-header">
+      <span class="slide-title">SLIDE 04 / 05 — BASE LEGAL (CITAÇÃO)</span>
+      <button class="btn" style="padding: 6px 14px; font-size: 11px;" onclick="downloadJpeg('card-slide-4', '04_carrossel_noticia_base_legal.jpg')">Baixar JPEG</button>
+    </div>
+    <div class="wrapper"><div id="card-slide-4" class="card-render">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1350" width="1080" height="1350">
+        <rect width="1080" height="1350" fill="#150F0B" />
+        <text x="100" y="150" class="t-mono" font-size="26" fill="#FF5E1A">[ 03 • BASE LEGAL ]</text>
+
+        <text x="100" y="290" class="t-arch" font-size="140" fill="#FF5E1A">"</text>
+
+        <rect x="100" y="330" width="880" height="580" rx="24" fill="#1E1712" stroke="#3A2E24" stroke-width="2" />
+        <text x="150" y="420" class="t-arch" font-size="34" fill="#F7F1E8">O JUDICIÁRIO PODE REVISAR</text>
+        <text x="150" y="470" class="t-arch" font-size="34" fill="#F7F1E8">ATOS DE BANCA DE</text>
+        <text x="150" y="520" class="t-arch" font-size="34" fill="#FF5E1A">HETEROIDENTIFICAÇÃO</text>
+        <text x="150" y="570" class="t-arch" font-size="34" fill="#F7F1E8">QUANDO HÁ VÍCIO DE</text>
+        <text x="150" y="620" class="t-arch" font-size="34" fill="#F7F1E8">FUNDAMENTAÇÃO OU OFENSA</text>
+        <text x="150" y="670" class="t-arch" font-size="34" fill="#F7F1E8">AO CONTRADITÓRIO.</text>
+        <text x="150" y="750" class="t-mono" font-size="22" fill="#A89F91">— TESE FIRMADA EM REPERCUSSÃO GERAL,</text>
+        <text x="150" y="782" class="t-mono" font-size="22" fill="#A89F91">STF, TEMA 1.420 (SÍNTESE)</text>
+
+        <rect x="100" y="950" width="880" height="150" rx="16" fill="#251C15" stroke="#FF5E1A" stroke-width="2" />
+        <text x="150" y="1015" class="t-mono" font-size="22" fill="#FF5E1A">✓ VALE PARA TODOS OS CONCURSOS</text>
+        <text x="150" y="1060" class="t-man" font-size="25" fill="#F7F1E8">Federais, estaduais e municipais — a tese é geral</text>
+
+        <polyline points="100,1210 125,1235 170,1180" fill="none" stroke="#FF5E1A" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+        <text x="200" y="1220" class="t-arch" font-size="28" fill="#F7F1E8">RIBEIRO RINALDI</text>
+        <text x="980" y="1220" class="t-mono" font-size="20" fill="#A89F91" text-anchor="end">SLIDE 04 / 05 👉</text>
+      </svg>
+    </div></div>
+  </div>
+
+  <!-- SLIDE 05: CTA + BORDÃO (GRADIENTE OFICIAL) -->
+  <div class="slide-container">
+    <div class="slide-header">
+      <span class="slide-title">SLIDE 05 / 05 — CTA + BORDÃO</span>
+      <button class="btn" style="padding: 6px 14px; font-size: 11px;" onclick="downloadJpeg('card-slide-5', '05_carrossel_noticia_cta.jpg')">Baixar JPEG</button>
+    </div>
+    <div class="wrapper"><div id="card-slide-5" class="card-render">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1350" width="1080" height="1350">
+        <defs>
+          <linearGradient id="gradCta" x1="0%" y1="0%" x2="100%" y2="60%">
+            <stop offset="0%" stop-color="#FF5E1A"/>
+            <stop offset="100%" stop-color="#F0247C"/>
+          </linearGradient>
+        </defs>
+        <rect width="1080" height="1350" fill="url(#gradCta)" />
+
+        <text x="540" y="200" class="t-mono" font-size="24" fill="#F7F1E8" text-anchor="middle">[ FOI REPROVADO NA HETEROIDENTIFICAÇÃO? ]</text>
+
+        <rect x="100" y="260" width="880" height="330" rx="24" fill="#150F0B" />
+        <text x="540" y="350" class="t-man" font-size="30" fill="#F7F1E8" font-weight="800" text-anchor="middle">Fala com a nossa equipe e faça um</text>
+        <text x="540" y="400" class="t-man" font-size="30" fill="#F7F1E8" font-weight="800" text-anchor="middle">estudo inicial do caso, sem juridiquês.</text>
+        <text x="540" y="500" class="t-arch" font-size="26" fill="#FF5E1A" text-anchor="middle">MANDA O TEU CASO NO LINK DA BIO</text>
+        <text x="540" y="540" class="t-man" font-size="22" fill="#A89F91" text-anchor="middle">Atendimento 100% digital em todo o Brasil</text>
+
+        <!-- Bordão oficial (obrigatório no card final, 2 linhas) — creme sobre o gradiente p/ contraste -->
+        <text x="540" y="900" class="t-arch" font-size="66" fill="#F7F1E8" text-anchor="middle">SUA VAGA TEM DONO.</text>
+        <text x="540" y="975" class="t-arch" font-size="66" fill="#F7F1E8" text-anchor="middle">E O DONO É VOCÊ.</text>
+
+        <!-- Rodapé/assinatura centralizado (o card inteiro é composto centralizado, sem coluna esquerda/direita) -->
+        <line x1="100" y1="1150" x2="980" y2="1150" stroke="#F7F1E8" stroke-opacity="0.3" stroke-width="2" />
+        <polyline points="365,1210 383,1228 415,1190" fill="none" stroke="#F7F1E8" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+        <text x="585" y="1220" class="t-arch" font-size="28" fill="#F7F1E8" text-anchor="middle">RIBEIRO RINALDI</text>
+      </svg>
+    </div></div>
+  </div>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/html-to-image@1.11.11/dist/html-to-image.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+<script>
+  async function downloadJpeg(elementId, fileName) {
+    const el = document.getElementById(elementId);
+    const originalTransform = el.style.transform;
+    el.style.transform = 'none';
+    try {
+      const dataUrl = await htmlToImage.toJpeg(el, { quality: 0.95, width: 1080, height: 1350, cacheBust: true });
+      const link = document.createElement('a');
+      link.download = fileName;
+      link.href = dataUrl;
+      link.click();
+    } catch (e) {
+      console.warn('Erro htmlToImage, usando fallback:', e);
+      try {
+        const jpegUrl = await fallbackSvgToJpegUrl(el);
+        const link = document.createElement('a');
+        link.download = fileName;
+        link.href = jpegUrl;
+        link.click();
+      } catch (err2) {
+        alert('Erro ao gerar JPEG no navegador: ' + (e?.message || e));
+      }
+    } finally {
+      el.style.transform = originalTransform;
+    }
+  }
+
+  function fallbackSvgToJpegUrl(el) {
+    return new Promise((resolve, reject) => {
+      const svgEl = el.querySelector('svg');
+      if (!svgEl) return reject(new Error('SVG não encontrado'));
+      const svgString = new XMLSerializer().serializeToString(svgEl);
+      const svgBlob = new Blob([svgString], { type: 'image/svg+xml;charset=utf-8' });
+      const URL = window.URL || window.webkitURL || window;
+      const blobURL = URL.createObjectURL(svgBlob);
+      const image = new Image();
+      image.onload = () => {
+        const canvas = document.createElement('canvas');
+        canvas.width = 1080;
+        canvas.height = 1350;
+        const context = canvas.getContext('2d');
+        context.fillStyle = '#150F0B';
+        context.fillRect(0, 0, 1080, 1350);
+        context.drawImage(image, 0, 0, 1080, 1350);
+        try { resolve(canvas.toDataURL('image/jpeg', 0.95)); } catch (secErr) { reject(secErr); }
+      };
+      image.onerror = reject;
+      image.src = blobURL;
+    });
+  }
+
+  async function getJpegDataUrl(elementId) {
+    const el = document.getElementById(elementId);
+    const originalTransform = el.style.transform;
+    el.style.transform = 'none';
+    try {
+      return await htmlToImage.toJpeg(el, { quality: 0.95, width: 1080, height: 1350, cacheBust: true });
+    } catch (e) {
+      return await fallbackSvgToJpegUrl(el);
+    } finally {
+      el.style.transform = originalTransform;
+    }
+  }
+
+  async function exportZip() {
+    const btn = document.getElementById('zipBtn');
+    const oldText = btn.innerText;
+    btn.innerText = '⏳ Gerando Arquivo ZIP (Aguarde...)..';
+    btn.disabled = true;
+    try {
+      const ids = [
+        ['card-slide-1', '01_carrossel_noticia_capa.jpg'],
+        ['card-slide-2', '02_carrossel_noticia_fato.jpg'],
+        ['card-slide-3', '03_carrossel_noticia_impacto.jpg'],
+        ['card-slide-4', '04_carrossel_noticia_base_legal.jpg'],
+        ['card-slide-5', '05_carrossel_noticia_cta.jpg']
+      ];
+      const zip = new JSZip();
+      for (let [id, fileName] of ids) {
+        const dataUrl = await getJpegDataUrl(id);
+        const base64Data = dataUrl.replace(/^data:image\/jpeg;base64,/, '');
+        zip.file(fileName, base64Data, { base64: true });
+      }
+      const content = await zip.generateAsync({ type: 'blob' });
+      const link = document.createElement('a');
+      link.href = URL.createObjectURL(content);
+      link.download = 'template_carrossel_noticia_ribeiro_rinaldi.zip';
+      link.click();
+    } catch (e) {
+      alert('Erro ao gerar arquivo ZIP: ' + e.message);
+    } finally {
+      btn.innerText = oldText;
+      btn.disabled = false;
+    }
+  }
+</script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script src="../instagram_slider.js"></script>
+<script src="../overflow-check.js"></script>
+</body>
+</html>

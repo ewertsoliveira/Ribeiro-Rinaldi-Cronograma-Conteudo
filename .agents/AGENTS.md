@@ -48,6 +48,13 @@
 - **Território Semântico:** O concurseiro não está "pedindo", está **reivindicando**. Verbos PERMITIDOS: tomar de volta, garantir, reivindicar, ir atrás, não abrir mão. Verbos PROIBIDOS (súplica/sorte): conquistar seu sonho, torcer, tentar, quem sabe, correr atrás da sorte.
 - **O que invalida a copy:** Encerrar sem o bordão; alterar palavras; usar bordão antes ou como CTA.
 
+## Regras de Peças Gráficas em SVG (Cards, Posts, Carrosséis)
+
+- **Margem de segurança:** em qualquer card SVG no formato 1080x1350, todo `<text>` deve ficar com x entre 100 e 980, e não ultrapassar y≈1290 (deixando espaço pro rodapé/assinatura). Isso já vazou da margem duas vezes neste projeto (headline e parágrafo de corpo cortados no meio da palavra) porque as quebras de linha foram feitas "no olho", sem medir a largura real do texto renderizado.
+- **NUNCA** escreva uma frase inteira longa em um único elemento `<text>` só porque "parece que cabe". Quebre em múltiplas linhas (`<text>` separados) sempre que a frase tiver mais de ~35-40 caracteres em corpo (24-28px) ou ~18-22 caracteres em manchete (46-58px) — e ainda assim, valide.
+- **Validação obrigatória antes de considerar o template pronto:** todo arquivo novo de card/carrossel SVG (`midias-graficas/**/index.html`) DEVE incluir `<script src="../overflow-check.js"></script>` (ajustando o caminho relativo conforme a profundidade da pasta). Esse script varre todo `<text>` de cada `.card-render` ao carregar a página, usando `getBBox()` real (não estimativa) — se algo ultrapassar a margem, ele desenha um contorno vermelho tracejado ao redor do texto, insere uma faixa vermelha visível no topo do slide e grava um `console.error`. Antes de entregar/aprovar qualquer peça nova, abra o arquivo e confirme que NENHUMA faixa vermelha aparece.
+- O script fica em `midias-graficas/overflow-check.js` — reaproveitar em todo template novo, nunca duplicar a lógica manualmente.
+
 ## Regras de Edição de Vídeo (Máquina de Conteúdo)
 
 - **Legenda (Estilo Karaokê Fixo):**
