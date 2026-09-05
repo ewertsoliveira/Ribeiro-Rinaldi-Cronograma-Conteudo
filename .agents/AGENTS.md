@@ -71,6 +71,18 @@ Já aconteceu de um arquivo novo (peça real, não só template) ser adicionado 
 - `html2canvas` é dependência do `instagram_slider.js` para o botão de screenshot/exportação do próprio Laboratório funcionar.
 - **Checagem antes de entregar:** depois de criar qualquer arquivo novo em `midias-graficas/`, abra-o dentro do Laboratório de Design (`Cronograma de Posts/painel-laboratorio-rinaldi.html`) e confirme visualmente que aparece a simulação de Instagram (cabeçalho "SIMULAÇÃO INSTAGRAM • CARROSSEL 4:5", contador "1 / N"), não a grade crua. Se aparecer a grade crua, os scripts estão faltando ou fora de ordem.
 
+### Fotos reais embutidas em cards SVG — sempre em base64, nunca por caminho de arquivo
+
+As primeiras peças com foto real (`post-noticia`, `carrossel-noticia`, `noticia-trt-rj-180-cargos`) usaram `<image href="../assets/foto.jpg">` (caminho relativo) e o botão "Baixar JPEG/ZIP" do Laboratório parou de funcionar silenciosamente nessas peças especificamente — todas as peças 100% vetoriais (sem foto) continuaram baixando normalmente. A causa mais provável: o `html-to-image` (biblioteca usada pra exportar) precisa buscar a imagem externa durante a conversão pra JPEG, e isso pode falhar sem lançar erro visível dependendo do timing/contexto (iframe do Laboratório).
+
+- **Regra:** toda foto real usada num `<image>` dentro de um card SVG DEVE ser embutida como `data:image/jpeg;base64,...` diretamente no atributo `href`, nunca como caminho de arquivo (`../assets/foto.jpg`). Isso vale mesmo que a foto pareça carregar normalmente na tela — o problema é especificamente na exportação (JPEG/ZIP), não na visualização.
+- Os arquivos de imagem originais continuam guardados em `midias-graficas/assets/` (para referência/crédito), mas o HTML da peça em si usa a versão embutida.
+- **Checagem obrigatória antes de entregar qualquer peça com foto:** não basta ver a foto aparecer na tela — teste de fato o botão de download (JPEG ou ZIP) e confirme que o arquivo gerado tem tamanho compatível com uma foto real embutida (algumas centenas de KB por slide com foto, não poucos KB).
+
+### `exportZip()` é obrigatório mesmo em peça de 1 card só
+
+O botão "Baixar ZIP" do Laboratório aparece para TODO item marcado como `isAppView: true`, mesmo quando a peça é um post único (1 card, sem carrossel) — e ele sempre dispara `REQUEST_DOWNLOAD_ZIP` via `instagram_slider.js`, que só funciona se a página definir uma função `exportZip()` global. Uma peça de post único que só define `downloadJpeg()` (sem `exportZip()`) faz o botão do Laboratório falhar silenciosamente (nenhum erro, nenhum download). Toda peça nova — carrossel de N slides ou post único — precisa definir `exportZip()`, mesmo que zipando um único arquivo.
+
 ## Regras de Edição de Vídeo (Máquina de Conteúdo)
 
 - **Legenda (Estilo Karaokê Fixo):**
