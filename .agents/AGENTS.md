@@ -55,6 +55,22 @@
 - **Validação obrigatória antes de considerar o template pronto:** todo arquivo novo de card/carrossel SVG (`midias-graficas/**/index.html`) DEVE incluir `<script src="../overflow-check.js"></script>` (ajustando o caminho relativo conforme a profundidade da pasta). Esse script varre todo `<text>` de cada `.card-render` ao carregar a página, usando `getBBox()` real (não estimativa) — se algo ultrapassar a margem, ele desenha um contorno vermelho tracejado ao redor do texto, insere uma faixa vermelha visível no topo do slide e grava um `console.error`. Antes de entregar/aprovar qualquer peça nova, abra o arquivo e confirme que NENHUMA faixa vermelha aparece.
 - O script fica em `midias-graficas/overflow-check.js` — reaproveitar em todo template novo, nunca duplicar a lógica manualmente.
 
+### Scripts obrigatórios em TODO arquivo novo de card/carrossel (`midias-graficas/**/*.html`)
+
+Já aconteceu de um arquivo novo (peça real, não só template) ser adicionado ao Laboratório de Design sem os dois scripts abaixo, e o Laboratório exibiu a peça como uma grade crua em vez da simulação de Instagram — o que só foi notado depois de o usuário abrir o Laboratório e comparar com um template antigo. Antes de considerar qualquer arquivo novo pronto (seja um template reutilizável em `post-noticia/`, `carrossel-noticia/` etc., seja uma peça de conteúdo real como `noticia-*/`), ele DEVE terminar com estes três `<script>`, nesta ordem, logo antes de `</body>`:
+
+```html
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script src="../instagram_slider.js"></script>
+<script src="../overflow-check.js"></script>
+```
+
+(ajuste o `../` conforme a profundidade real da pasta do arquivo em relação a `midias-graficas/`)
+
+- `instagram_slider.js` é o que faz o Laboratório mostrar a peça dentro de uma simulação real de post/carrossel do Instagram (header do perfil, contador de slides, setas, dots, legenda) em vez da grade crua de exportação — funciona tanto para post único quanto para carrossel de várias `.slide-container`, sem precisar de configuração extra.
+- `html2canvas` é dependência do `instagram_slider.js` para o botão de screenshot/exportação do próprio Laboratório funcionar.
+- **Checagem antes de entregar:** depois de criar qualquer arquivo novo em `midias-graficas/`, abra-o dentro do Laboratório de Design (`Cronograma de Posts/painel-laboratorio-rinaldi.html`) e confirme visualmente que aparece a simulação de Instagram (cabeçalho "SIMULAÇÃO INSTAGRAM • CARROSSEL 4:5", contador "1 / N"), não a grade crua. Se aparecer a grade crua, os scripts estão faltando ou fora de ordem.
+
 ## Regras de Edição de Vídeo (Máquina de Conteúdo)
 
 - **Legenda (Estilo Karaokê Fixo):**

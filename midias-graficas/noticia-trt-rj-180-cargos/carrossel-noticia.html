@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Carrossel Notícia — Câmara aprova 180 cargos no TRT-RJ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,700;0,800;0,900;1,900&family=Manrope:wght@400;500;600;700;800&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" crossorigin="anonymous">
+<style>
+  :root {
+    --black: #150F0B; --dark-surface: #1E1712; --dark-border: #3A2E24;
+    --cream: #F7F1E8; --muted: #A89F91; --orange: #FF5E1A; --magenta: #F0247C; --amber: #D97706;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background-color: #0E0A07; color: var(--cream); font-family: 'Manrope', sans-serif; padding: 32px; }
+  header { max-width: 1400px; margin: 0 auto 32px auto; border-bottom: 1px solid var(--dark-border); padding-bottom: 24px; }
+  h1 { font-family: 'Archivo', sans-serif; font-size: 28px; color: var(--cream); letter-spacing: -0.5px; }
+  .btn { background: var(--orange); color: #000; font-family: 'Space Mono', monospace; font-weight: 700; font-size: 13px; padding: 10px 20px; border: none; border-radius: 6px; cursor: pointer; display: inline-flex; align-items: center; gap: 8px; margin-top: 16px; }
+  .btn:hover { background: #FF7338; }
+  .btn.small { padding: 6px 14px; font-size: 11px; margin-top: 0; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(360px, 1fr)); gap: 36px; max-width: 1400px; margin: 0 auto; }
+  .slide-container { background: var(--dark-surface); border: 1px solid var(--dark-border); border-radius: 12px; padding: 20px; display: flex; flex-direction: column; align-items: center; }
+  .slide-header { width: 100%; display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; }
+  .slide-title { font-family: 'Space Mono', monospace; font-size: 13px; color: var(--orange); font-weight: 700; }
+  .wrapper { width: 345.6px; height: 432px; position: relative; overflow: hidden; border-radius: 6px; box-shadow: 0 16px 32px rgba(0,0,0,0.6); }
+  .card-render { width: 1080px; height: 1350px; transform-origin: top left; transform: scale(0.32); position: absolute; top: 0; left: 0; }
+  .t-arch { font-family: 'Archivo', sans-serif; font-weight: 900; }
+  .t-mono { font-family: 'Space Mono', monospace; font-weight: 700; }
+  .t-man { font-family: 'Manrope', sans-serif; font-weight: 600; }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Carrossel Notícia — Câmara aprova 180 cargos no TRT-RJ</h1>
+  <p style="color: var(--muted); font-size: 14px; margin-top: 4px;">PL 1.400/2015 · aprovado na Câmara em 01/09/2026 · 5 slides · Formato 4:5 (1080x1350 px)</p>
+  <button class="btn" id="zipBtn" onclick="exportZip()">📦 Baixar Carrossel Completo em .ZIP (5 Slides)</button>
+</header>
+
+<div class="grid" id="gallery">
+
+  <!-- SLIDE 01: CAPA -->
+  <div class="slide-container">
+    <div class="slide-header">
+      <span class="slide-title">SLIDE 01 / 05 — CAPA</span>
+      <button class="btn small" onclick="downloadJpeg('card-slide-1', '01_trt_rj_capa.jpg')">Baixar JPEG</button>
+    </div>
+    <div class="wrapper"><div id="card-slide-1" class="card-render">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1350" width="1080" height="1350">
+        <defs>
+          <clipPath id="photoClip1"><rect x="100" y="500" width="880" height="570" rx="20" /></clipPath>
+          <linearGradient id="scrim1" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#150F0B" stop-opacity="0"/>
+            <stop offset="100%" stop-color="#150F0B" stop-opacity="0.96"/>
+          </linearGradient>
+        </defs>
+        <rect width="1080" height="1350" fill="#150F0B" />
+
+        <rect x="100" y="100" width="330" height="64" rx="10" fill="#FF5E1A" />
+        <circle cx="132" cy="132" r="7" fill="#150F0B" />
+        <text x="155" y="140" class="t-mono" font-size="24" fill="#150F0B">ÚLTIMA HORA</text>
+        <text x="100" y="215" class="t-mono" font-size="21" letter-spacing="1" fill="#A89F91">[ CÂMARA DOS DEPUTADOS · PL 1.400/2015 ]</text>
+
+        <text x="100" y="310" class="t-arch" font-size="56" fill="#F7F1E8">CÂMARA APROVA</text>
+        <text x="100" y="380" class="t-arch" font-size="56" fill="#FF5E1A">180 CARGOS NOVOS</text>
+        <text x="100" y="450" class="t-arch" font-size="56" fill="#F7F1E8">NO TRT-RJ.</text>
+
+        <g clip-path="url(#photoClip1)">
+          <image href="../assets/plenario-camara-deputados.jpg" x="100" y="500" width="880" height="570" preserveAspectRatio="xMidYMid slice" />
+          <rect x="100" y="500" width="880" height="570" fill="url(#scrim1)" />
+        </g>
+        <text x="960" y="1045" class="t-mono" font-size="14" fill="#F7F1E8" fill-opacity="0.7" text-anchor="end">Foto: Câmara dos Deputados / TV Câmara</text>
+
+        <text x="150" y="950" class="t-man" font-size="27" fill="#F7F1E8">São 24 vagas de juiz do trabalho e 156</text>
+        <text x="150" y="988" class="t-man" font-size="27" fill="#F7F1E8">de analista judiciário — o texto segue</text>
+        <text x="150" y="1026" class="t-man" font-size="27" fill="#FF5E1A">agora para votação no Senado.</text>
+
+        <text x="100" y="1110" class="t-mono" font-size="24" fill="#FFB347">DESLIZE PRA ENTENDER O QUE VEM AGORA →</text>
+
+        <line x1="100" y1="1150" x2="980" y2="1150" stroke="#3A2E24" stroke-width="2" />
+        <polyline points="100,1200 118,1218 150,1180" fill="none" stroke="#FF5E1A" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+        <text x="175" y="1205" class="t-arch" font-size="24" fill="#F7F1E8">RIBEIRO RINALDI</text>
+        <text x="980" y="1205" class="t-mono" font-size="16" fill="#A89F91" text-anchor="end">ANÁLISE DE NOTÍCIAS · CONCURSO PÚBLICO</text>
+        <text x="980" y="1235" class="t-mono" font-size="14" fill="#5C5146" text-anchor="end">FONTE: CÂMARA DOS DEPUTADOS, PL 1.400/2015 · SET/2026</text>
+      </svg>
+    </div></div>
+  </div>
+
+  <!-- SLIDE 02: O QUE ACONTECEU -->
+  <div class="slide-container">
+    <div class="slide-header">
+      <span class="slide-title">SLIDE 02 / 05 — O QUE ACONTECEU</span>
+      <button class="btn small" onclick="downloadJpeg('card-slide-2', '02_trt_rj_fato.jpg')">Baixar JPEG</button>
+    </div>
+    <div class="wrapper"><div id="card-slide-2" class="card-render">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1350" width="1080" height="1350">
+        <rect width="1080" height="1350" fill="#150F0B" />
+        <text x="100" y="150" class="t-mono" font-size="26" fill="#FF5E1A">[ 01 • O QUE ACONTECEU ]</text>
+
+        <text x="100" y="280" class="t-arch" font-size="52" fill="#F7F1E8">11 ANOS DEPOIS,</text>
+        <text x="100" y="355" class="t-arch" font-size="52" fill="#FF5E1A">O PROJETO ANDOU.</text>
+
+        <rect x="100" y="440" width="880" height="420" rx="24" fill="#1E1712" stroke="#3A2E24" stroke-width="2" />
+        <text x="150" y="530" class="t-man" font-size="30" fill="#F7F1E8">Em 01/09/2026 a Câmara aprovou o</text>
+        <text x="150" y="585" class="t-man" font-size="30" fill="#F7F1E8">PL 1.400/2015, criando 180 cargos</text>
+        <text x="150" y="640" class="t-man" font-size="30" fill="#F7F1E8">efetivos no TRT da 1ª Região (RJ):</text>
+        <text x="150" y="695" class="t-man" font-size="30" fill="#FF5E1A">24 de juiz e 156 de analista.</text>
+
+        <text x="150" y="785" class="t-man" font-size="25" fill="#A89F91">O texto agora segue para o Senado —</text>
+        <text x="150" y="820" class="t-man" font-size="25" fill="#A89F91">ainda não virou lei nem tem edital marcado.</text>
+
+        <rect x="100" y="910" width="880" height="140" rx="16" fill="#251C15" stroke="#FF5E1A" stroke-width="2" />
+        <text x="150" y="975" class="t-mono" font-size="22" fill="#FF5E1A">✓ PROJETO DE 2015, APROVADO EM 2026</text>
+        <text x="150" y="1015" class="t-man" font-size="25" fill="#F7F1E8">Mostra como esse tipo de pauta pode demorar — e também avançar</text>
+
+        <polyline points="100,1210 125,1235 170,1180" fill="none" stroke="#FF5E1A" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+        <text x="200" y="1220" class="t-arch" font-size="28" fill="#F7F1E8">RIBEIRO RINALDI</text>
+        <text x="980" y="1220" class="t-mono" font-size="20" fill="#A89F91" text-anchor="end">SLIDE 02 / 05 👉</text>
+      </svg>
+    </div></div>
+  </div>
+
+  <!-- SLIDE 03: O QUE MUDA PRA VOCÊ -->
+  <div class="slide-container">
+    <div class="slide-header">
+      <span class="slide-title">SLIDE 03 / 05 — O QUE MUDA PRA VOCÊ</span>
+      <button class="btn small" onclick="downloadJpeg('card-slide-3', '03_trt_rj_impacto.jpg')">Baixar JPEG</button>
+    </div>
+    <div class="wrapper"><div id="card-slide-3" class="card-render">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1350" width="1080" height="1350">
+        <rect width="1080" height="1350" fill="#F7F1E8" />
+        <text x="100" y="150" class="t-mono" font-size="26" fill="#D97706">[ 02 • O QUE MUDA PRA VOCÊ ]</text>
+
+        <text x="100" y="270" class="t-arch" font-size="46" fill="#150F0B">QUER ENTRAR NO</text>
+        <text x="100" y="325" class="t-arch" font-size="46" fill="#FF5E1A">JUDICIÁRIO DO TRABALHO</text>
+        <text x="100" y="380" class="t-arch" font-size="46" fill="#FF5E1A">NO RIO?</text>
+
+        <rect x="100" y="430" width="880" height="430" rx="24" fill="#FFFFFF" stroke="#D97706" stroke-width="2" />
+        <text x="150" y="500" class="t-man" font-size="26" fill="#150F0B">Ainda não tem edital nem data — mas</text>
+        <text x="150" y="550" class="t-man" font-size="26" fill="#150F0B">quem começa a estudar agora sai na</text>
+        <text x="150" y="600" class="t-man" font-size="26" fill="#150F0B">frente de quem só vai correr quando</text>
+        <text x="150" y="650" class="t-man" font-size="26" fill="#D97706">o concurso já estiver com prazo curto.</text>
+
+        <text x="150" y="740" class="t-man" font-size="22" fill="#5C5146">Entre a aprovação da lei e a publicação do</text>
+        <text x="150" y="772" class="t-man" font-size="22" fill="#5C5146">edital costuma levar tempo — dá pra se planejar.</text>
+
+        <rect x="100" y="900" width="880" height="150" rx="16" fill="#150F0B" stroke="#D97706" stroke-width="2" />
+        <text x="150" y="965" class="t-mono" font-size="22" fill="#FF5E1A">✓ 180 CARGOS NUM SÓ TRIBUNAL</text>
+        <text x="150" y="1010" class="t-man" font-size="24" fill="#F7F1E8">Concurso desse tamanho não é todo dia</text>
+
+        <polyline points="100,1210 125,1235 170,1180" fill="none" stroke="#FF5E1A" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+        <text x="200" y="1220" class="t-arch" font-size="28" fill="#150F0B">RIBEIRO RINALDI</text>
+        <text x="980" y="1220" class="t-mono" font-size="20" fill="#5C5146" text-anchor="end">SLIDE 03 / 05 👉</text>
+      </svg>
+    </div></div>
+  </div>
+
+  <!-- SLIDE 04: OS NÚMEROS -->
+  <div class="slide-container">
+    <div class="slide-header">
+      <span class="slide-title">SLIDE 04 / 05 — OS NÚMEROS</span>
+      <button class="btn small" onclick="downloadJpeg('card-slide-4', '04_trt_rj_numeros.jpg')">Baixar JPEG</button>
+    </div>
+    <div class="wrapper"><div id="card-slide-4" class="card-render">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1350" width="1080" height="1350">
+        <rect width="1080" height="1350" fill="#150F0B" />
+        <text x="100" y="150" class="t-mono" font-size="26" fill="#FF5E1A">[ 03 • OS NÚMEROS ]</text>
+
+        <text x="100" y="290" class="t-arch" font-size="140" fill="#FF5E1A">"</text>
+
+        <rect x="100" y="330" width="880" height="580" rx="24" fill="#1E1712" stroke="#3A2E24" stroke-width="2" />
+        <text x="150" y="430" class="t-arch" font-size="90" fill="#FF5E1A">180</text>
+        <text x="150" y="480" class="t-man" font-size="26" fill="#F7F1E8">cargos efetivos criados no TRT-RJ</text>
+        <line x1="150" y1="520" x2="930" y2="520" stroke="#3A2E24" stroke-width="2" />
+        <text x="150" y="580" class="t-arch" font-size="46" fill="#F7F1E8">24 JUÍZES</text>
+        <text x="150" y="630" class="t-man" font-size="24" fill="#A89F91">do trabalho substitutos</text>
+        <text x="150" y="700" class="t-arch" font-size="46" fill="#F7F1E8">156 ANALISTAS</text>
+        <text x="150" y="750" class="t-man" font-size="24" fill="#A89F91">judiciários</text>
+        <text x="150" y="850" class="t-mono" font-size="20" fill="#A89F91">— PL 1.400/2015, APROVADO NA CÂMARA</text>
+        <text x="150" y="880" class="t-mono" font-size="20" fill="#A89F91">EM 01/09/2026, AGORA NO SENADO</text>
+
+        <rect x="100" y="950" width="880" height="150" rx="16" fill="#251C15" stroke="#FF5E1A" stroke-width="2" />
+        <text x="150" y="1015" class="t-mono" font-size="22" fill="#FF5E1A">✓ AINDA PRECISA PASSAR NO SENADO</text>
+        <text x="150" y="1060" class="t-man" font-size="25" fill="#F7F1E8">Não é lei nem edital ainda — é o momento de acompanhar</text>
+
+        <polyline points="100,1210 125,1235 170,1180" fill="none" stroke="#FF5E1A" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+        <text x="200" y="1220" class="t-arch" font-size="28" fill="#F7F1E8">RIBEIRO RINALDI</text>
+        <text x="980" y="1220" class="t-mono" font-size="20" fill="#A89F91" text-anchor="end">SLIDE 04 / 05 👉</text>
+      </svg>
+    </div></div>
+  </div>
+
+  <!-- SLIDE 05: CTA + BORDÃO -->
+  <div class="slide-container">
+    <div class="slide-header">
+      <span class="slide-title">SLIDE 05 / 05 — CTA + BORDÃO</span>
+      <button class="btn small" onclick="downloadJpeg('card-slide-5', '05_trt_rj_cta.jpg')">Baixar JPEG</button>
+    </div>
+    <div class="wrapper"><div id="card-slide-5" class="card-render">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1350" width="1080" height="1350">
+        <defs>
+          <linearGradient id="gradCta" x1="0%" y1="0%" x2="100%" y2="60%">
+            <stop offset="0%" stop-color="#FF5E1A"/>
+            <stop offset="100%" stop-color="#F0247C"/>
+          </linearGradient>
+        </defs>
+        <rect width="1080" height="1350" fill="url(#gradCta)" />
+
+        <text x="540" y="200" class="t-mono" font-size="24" fill="#F7F1E8" text-anchor="middle">[ 180 CARGOS NOVOS NO TRT-RJ ]</text>
+
+        <rect x="100" y="260" width="880" height="330" rx="24" fill="#150F0B" />
+        <text x="540" y="350" class="t-man" font-size="30" fill="#F7F1E8" font-weight="800" text-anchor="middle">Fica de olho no nosso perfil que a</text>
+        <text x="540" y="400" class="t-man" font-size="30" fill="#F7F1E8" font-weight="800" text-anchor="middle">gente avisa quando sair o edital.</text>
+        <text x="540" y="500" class="t-arch" font-size="26" fill="#FF5E1A" text-anchor="middle">SALVA E COMPARTILHA COM QUEM QUER TRT</text>
+        <text x="540" y="540" class="t-man" font-size="22" fill="#A89F91" text-anchor="middle">Acompanhamento gratuito de editais TRT/RJ</text>
+
+        <text x="540" y="900" class="t-arch" font-size="66" fill="#F7F1E8" text-anchor="middle">SUA VAGA TEM DONO.</text>
+        <text x="540" y="975" class="t-arch" font-size="66" fill="#F7F1E8" text-anchor="middle">E O DONO É VOCÊ.</text>
+
+        <line x1="100" y1="1150" x2="980" y2="1150" stroke="#F7F1E8" stroke-opacity="0.3" stroke-width="2" />
+        <polyline points="365,1210 383,1228 415,1190" fill="none" stroke="#F7F1E8" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+        <text x="585" y="1220" class="t-arch" font-size="28" fill="#F7F1E8" text-anchor="middle">RIBEIRO RINALDI</text>
+      </svg>
+    </div></div>
+  </div>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/html-to-image@1.11.11/dist/html-to-image.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+<script>
+  async function downloadJpeg(elementId, fileName) {
+    const el = document.getElementById(elementId);
+    const originalTransform = el.style.transform;
+    el.style.transform = 'none';
+    try {
+      const dataUrl = await htmlToImage.toJpeg(el, { quality: 0.95, width: 1080, height: 1350, cacheBust: true });
+      const link = document.createElement('a');
+      link.download = fileName;
+      link.href = dataUrl;
+      link.click();
+    } finally {
+      el.style.transform = originalTransform;
+    }
+  }
+
+  async function getJpegDataUrl(elementId) {
+    const el = document.getElementById(elementId);
+    const originalTransform = el.style.transform;
+    el.style.transform = 'none';
+    try {
+      return await htmlToImage.toJpeg(el, { quality: 0.95, width: 1080, height: 1350, cacheBust: true });
+    } finally {
+      el.style.transform = originalTransform;
+    }
+  }
+
+  async function exportZip() {
+    const btn = document.getElementById('zipBtn');
+    const oldText = btn.innerText;
+    btn.innerText = '⏳ Gerando Arquivo ZIP (Aguarde...)..';
+    btn.disabled = true;
+    try {
+      const ids = [
+        ['card-slide-1', '01_trt_rj_capa.jpg'],
+        ['card-slide-2', '02_trt_rj_fato.jpg'],
+        ['card-slide-3', '03_trt_rj_impacto.jpg'],
+        ['card-slide-4', '04_trt_rj_numeros.jpg'],
+        ['card-slide-5', '05_trt_rj_cta.jpg']
+      ];
+      const zip = new JSZip();
+      for (let [id, fileName] of ids) {
+        const dataUrl = await getJpegDataUrl(id);
+        const base64Data = dataUrl.replace(/^data:image\/jpeg;base64,/, '');
+        zip.file(fileName, base64Data, { base64: true });
+      }
+      const content = await zip.generateAsync({ type: 'blob' });
+      const link = document.createElement('a');
+      link.href = URL.createObjectURL(content);
+      link.download = 'carrossel_trt_rj_180_cargos.zip';
+      link.click();
+    } finally {
+      btn.innerText = oldText;
+      btn.disabled = false;
+    }
+  }
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script src="../instagram_slider.js"></script>
+<script src="../overflow-check.js"></script>
+</body>
+</html>
