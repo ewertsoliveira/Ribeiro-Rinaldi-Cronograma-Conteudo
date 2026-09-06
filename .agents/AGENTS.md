@@ -48,6 +48,20 @@
 - **Território Semântico:** O concurseiro não está "pedindo", está **reivindicando**. Verbos PERMITIDOS: tomar de volta, garantir, reivindicar, ir atrás, não abrir mão. Verbos PROIBIDOS (súplica/sorte): conquistar seu sonho, torcer, tentar, quem sabe, correr atrás da sorte.
 - **O que invalida a copy:** Encerrar sem o bordão; alterar palavras; usar bordão antes ou como CTA.
 
+## Linha Editorial de Conteúdo de Notícias (Diretriz do Paulo — 05/09/2026)
+
+Paulo aprovou o Carrossel Notícia (peça sobre os 180 cargos criados no TRT-RJ) e, a partir dessa aprovação, deu uma diretriz explícita sobre qual conteúdo usar nesse formato dali pra frente. Isso vale para qualquer pessoa ou rotina automática que pesquise/sugira notícias para o escritório.
+
+- **Paulo pode municiar temas atuais de concurso diretamente.** Quando fizer sentido, perguntar a ele antes de sair pesquisando sozinho.
+- **A linha que o escritório NÃO quer cruzar: virar "blogueiro de prova".** Alguns advogados do nicho ganham engajamento comentando prova em si — gabarito, conteúdo cobrado, dicas de estudo, correção de questão como "conteúdo educativo". Paulo NÃO quer esse posicionamento; o foco é Direito, não preparação/comentário de prova.
+- **Nuance importante:** isso NÃO significa abandonar temas como TAF, psicotécnico ou anulação de questão — esses continuam válidos, DESDE QUE o ângulo seja sempre a tese jurídica (o direito de recorrer, a ilegalidade do critério, o precedente aplicável), nunca a discussão da prova em si (o que caiu, se a resposta X está certa, dica de gabarito). O teste rápido: a peça teria sentido publicada num veículo jurídico (Conjur, Migalhas, JOTA)? Se sim, é notícia jurídica. Se só faria sentido num canal de cursinho/prova, é "blogueiro de prova" — descartar.
+- **Categorias prioritárias de conteúdo de notícia**, nesta ordem:
+  1. **Notícias jurídicas reais** — leis/decisões que mudam algo concreto (ex: PL que cria cargos, edital barrado por decisão judicial). Foi o caso da peça do TRT-RJ.
+  2. **Entendimentos novos** — mudança de posição de STF/STJ/tribunais sobre um tema.
+  3. **Súmulas** — novas ou usadas de forma didática para explicar um direito.
+  4. **Casos atuais** — casos concretos de terceiros com repercussão relevante pro público do escritório.
+  5. **Casos concretos que o próprio escritório venceu** — categoria NOVA, ainda sem template. Diferente das demais: não é notícia externa, é histórico de vitória real do escritório. NUNCA inventar ou generalizar um caso — só usar quando o Paulo fornecer o caso real (fatos, resultado, e se pode ser divulgado). Perguntar a ele antes de produzir qualquer peça desse tipo.
+
 ## Regras de Peças Gráficas em SVG (Cards, Posts, Carrosséis)
 
 - **Margem de segurança:** em qualquer card SVG no formato 1080x1350, todo `<text>` deve ficar com x entre 100 e 980, e não ultrapassar y≈1290 (deixando espaço pro rodapé/assinatura). Isso já vazou da margem duas vezes neste projeto (headline e parágrafo de corpo cortados no meio da palavra) porque as quebras de linha foram feitas "no olho", sem medir a largura real do texto renderizado.
